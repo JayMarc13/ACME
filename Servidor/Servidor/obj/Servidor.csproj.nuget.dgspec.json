@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jay.paragas.ext\\Downloads\\Servidor\\Servidor\\Servidor.csproj": {}
+    "C:\\Users\\jay.paragas.ext\\Downloads\\ACME\\Servidor\\Servidor\\Servidor.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jay.paragas.ext\\Downloads\\Servidor\\Servidor\\Servidor.csproj": {
+    "C:\\Users\\jay.paragas.ext\\Downloads\\ACME\\Servidor\\Servidor\\Servidor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jay.paragas.ext\\Downloads\\Servidor\\Servidor\\Servidor.csproj",
+        "projectUniqueName": "C:\\Users\\jay.paragas.ext\\Downloads\\ACME\\Servidor\\Servidor\\Servidor.csproj",
         "projectName": "Servidor",
-        "projectPath": "C:\\Users\\jay.paragas.ext\\Downloads\\Servidor\\Servidor\\Servidor.csproj",
+        "projectPath": "C:\\Users\\jay.paragas.ext\\Downloads\\ACME\\Servidor\\Servidor\\Servidor.csproj",
         "packagesPath": "C:\\Users\\jay.paragas.ext\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jay.paragas.ext\\Downloads\\Servidor\\Servidor\\obj\\",
+        "outputPath": "C:\\Users\\jay.paragas.ext\\Downloads\\ACME\\Servidor\\Servidor\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jay.paragas.ext\\AppData\\Roaming\\NuGet\\NuGet.Config",
