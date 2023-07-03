@@ -1,0 +1,11 @@
+.card {
+    margin-top: 5px;
+    text-align: center;
+}
+.input{
+    width: 100%;
+    margin: 5%;
+}
+.btnAceptar{
+    margin-right: 10px;
+}
