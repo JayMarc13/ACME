@@ -1,76 +1,99 @@
-Instalaciones Extensiones y Frameworks
- - Microsoft.EntityFrameworkCore
- - Microsoft.EntityFrameworkCore.Tools
- - Microsoft.EntityFrameworkCore.SqlServer
 
- Comandos de Entity
-  - Add-Migration init
-  - Update-database
+CARPETAS CREADAS Y ARCHIVOS
 
+components
+    agregar-editar-country --> ng g c components/agregar-editar-country
+    lista-country --> ng g c components/lista-country
+    ver-country --> ng g c compoonents/ver-country
 
+interfaces
+    country
 
-CARPETA CONTROLLERS
- - Los controladores sirven para poder interactuar con el lado frontend
+services
+    country --> ng g s services/country
 
-
-CARPETA DB
- - La base de datos local en formato .mdf (Creado en un proyecto tipo "AplicaciÛn Consola")
-
-CARPETA MIGRATIONS
- - Ejecutar el comando "Add-Migration nombre" te crea automaticamente la carpeta y las clases. Pero antes tienes que definir
-   las tablas en la clase "AplicationDbContext.cs" 
-
-
-CARPETA MODELS
- - Los models sÛn componentes que representan la estrucutara de los datos
-	- Clases:
-	 - Country
-	 - City
-	 - Office
-	 - MeetingRoom
-	 - Reserve
-	 - User
-
- - La clase AplicationDbContext.cs es una clase que representa el contexto de la base de datos de una aplicaciÛn y se utiliza 
-   para definir y configurar las tablas mediante la declaraciÛn de entidades y estableciendo las relaciones entre ellas.
-
-
-ARCHIVO appsettings.json
- - Definimos la conexiÛn de la base de datos con: 
-  - "ConnectionStrings": {
-    "Conexion": "Ruta de la base de datos"
-    }
-
-
-CLASE Program.cs
- - El proyecto te crea el codigo.
- - Codigo que hemos aÒadido a la clase: 
-   
-
-   Codigo CORS
-   ------------------------------------------------------------------------
-   // Cors
-   // Para evitar problemas con el cors en el navegador
-   builder.Services.AddCors(options => options.AddPolicy("AllowWebapp",
-                                       builder => builder.AllowAnyOrigin()
-                                                       .AllowAnyHeader()
-                                                       .AllowAnyMethod()));
-
-   //Despues del builder hemos introducio esta linia para el cors
-   app.UseCors("AllowWebapp");
-   -------------------------------------------------------------------------
+shared
 
 
 
-   Codigo para hacer conexiÛn con la base de datos
-   ------------------------------------------------------------------------
-   //Add Context
-   builder.Services.AddDbContext<AplicationDbContext>(options =>
-   {
-       options.UseSqlServer(builder.Configuration.GetConnectionString("Conexion"));
-   });
-   -------------------------------------------------------------------------
+ANGULAR MATERIAL --> https://material.angular.io/guide/getting-started
+ - Custom them: Deep Purple/Amber
+ - Angualr typography style: yes
+ - Angular animations modules: yes
+
+
+En el archivo "app.module.ts" se hacen los import de los componentes de Angular material
+ - Donde esta el comentario "Angular Material" es donde haces el import de los componentes.
+ - Una vez hecho el import el nombre que esta entre el signo { nombre } lo introduces en el import de @NgModule
+
+-----------------------------------------------------------------------------------------------------------------------------------
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+
+//Componentes
+import { AgregarEditarCountryComponent } from './components/agregar-editar-country/agregar-editar-country.component';
+import { ListaCountryComponent } from './components/lista-country/lista-country.component';
+import { VerCountryComponent } from './components/ver-country/ver-country.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//Angular Material
+import {MatTableModule} from '@angular/material/table';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    AgregarEditarCountryComponent,
+    ListaCountryComponent,
+    VerCountryComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatTableModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+En el archivo "app-routing.modules.ts" introduces las rutas de los componentes
+ - En el comentario componentes importamos los componentes que hemos creado
+ - En el comentario Rutas es donde metemos el nombre de la ruta del componente por ejemplo la ruta 'listaCountries' al introducir en la URL "localhost:4200/listaCountries" 
+   te aparecera el contenido del componente.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+//Componentes
+import { ListaCountryComponent } from './components/lista-country/lista-country.component';
+import { AgregarEditarCountryComponent } from './components/agregar-editar-country/agregar-editar-country.component';
+
+//Rutas
+const routes: Routes = [
+  { path: 'listaCountries', component: ListaCountryComponent },
+  { path: 'agregarCountry', component: AgregarEditarCountryComponent}
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Para hacer cuando un usuario clica un bot√≥n y quieres que le rediriga a una pagina es con el atributo: routerLink="nombreRutaDelComponente"
 
 
 
 
+En la carpeta services sirve para hacer la comunicaci√≥n con el backend
