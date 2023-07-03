@@ -1,0 +1,76 @@
+Instalaciones Extensiones y Frameworks
+ - Microsoft.EntityFrameworkCore
+ - Microsoft.EntityFrameworkCore.Tools
+ - Microsoft.EntityFrameworkCore.SqlServer
+
+ Comandos de Entity
+  - Add-Migration init
+  - Update-database
+
+
+
+CARPETA CONTROLLERS
+ - Los controladores sirven para poder interactuar con el lado frontend
+
+
+CARPETA DB
+ - La base de datos local en formato .mdf (Creado en un proyecto tipo "Aplicación Consola")
+
+CARPETA MIGRATIONS
+ - Ejecutar el comando "Add-Migration nombre" te crea automaticamente la carpeta y las clases. Pero antes tienes que definir
+   las tablas en la clase "AplicationDbContext.cs" 
+
+
+CARPETA MODELS
+ - Los models són componentes que representan la estrucutara de los datos
+	- Clases:
+	 - Country
+	 - City
+	 - Office
+	 - MeetingRoom
+	 - Reserve
+	 - User
+
+ - La clase AplicationDbContext.cs es una clase que representa el contexto de la base de datos de una aplicación y se utiliza 
+   para definir y configurar las tablas mediante la declaración de entidades y estableciendo las relaciones entre ellas.
+
+
+ARCHIVO appsettings.json
+ - Definimos la conexión de la base de datos con: 
+  - "ConnectionStrings": {
+    "Conexion": "Ruta de la base de datos"
+    }
+
+
+CLASE Program.cs
+ - El proyecto te crea el codigo.
+ - Codigo que hemos añadido a la clase: 
+   
+
+   Codigo CORS
+   ------------------------------------------------------------------------
+   // Cors
+   // Para evitar problemas con el cors en el navegador
+   builder.Services.AddCors(options => options.AddPolicy("AllowWebapp",
+                                       builder => builder.AllowAnyOrigin()
+                                                       .AllowAnyHeader()
+                                                       .AllowAnyMethod()));
+
+   //Despues del builder hemos introducio esta linia para el cors
+   app.UseCors("AllowWebapp");
+   -------------------------------------------------------------------------
+
+
+
+   Codigo para hacer conexión con la base de datos
+   ------------------------------------------------------------------------
+   //Add Context
+   builder.Services.AddDbContext<AplicationDbContext>(options =>
+   {
+       options.UseSqlServer(builder.Configuration.GetConnectionString("Conexion"));
+   });
+   -------------------------------------------------------------------------
+
+
+
+
