@@ -12,13 +12,15 @@ import { AgregarEditarCountryComponent } from './components/agregar-editar-count
 import { ListaCountryComponent } from './components/lista-country/lista-country.component';
 import { VerCountryComponent } from './components/ver-country/ver-country.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AgregarEditarCountryComponent,
     ListaCountryComponent,
-    VerCountryComponent
+    VerCountryComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
