@@ -18,7 +18,12 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
+
+//styles bootstrap toast
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 //Componentes
 import { SpinnerComponent } from './spinner/spinner.component';
@@ -44,7 +49,10 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatProgressBarModule,
     MatGridListModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule
   ],
   exports:[
     CommonModule,
@@ -63,7 +71,10 @@ import { SpinnerComponent } from './spinner/spinner.component';
     SpinnerComponent,
     MatGridListModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule
   ]
 })
 export class SharedModule { }
