@@ -4190,11 +4190,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\mustapha.bouleili\\Documents\\Projectes\\ACME\\ACME\\Backend.csproj",
       "projectName": "Backend",
       "projectPath": "C:\\Users\\mustapha.bouleili\\Documents\\Projectes\\ACME\\ACME\\Backend.csproj",
       "packagesPath": "C:\\Users\\mustapha.bouleili\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\mustapha.bouleili\\Documents\\Projectes\\ACME\\ACME\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ProyectoACME\\ACME-Backend\\ACME\\Backend.csproj",
+      "projectName": "Backend",
+      "projectPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ProyectoACME\\ACME-Backend\\ACME\\Backend.csproj",
+      "packagesPath": "C:\\Users\\jay.paragas.ext\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ProyectoACME\\ACME-Backend\\ACME\\obj\\",
+>>>>>>> adeb0f37908f0d64a3577acdabe1f46b54370f17
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mustapha.bouleili\\AppData\\Roaming\\NuGet\\NuGet.Config",

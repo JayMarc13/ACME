@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "wsJNE4GLXvhhF6IsRyxhlGWBW0Cq0sPDCEV/z3zqQ90IOh2seYWblQZzMl/PwkqBrHvmgGlOMos1AMpAG7A+2w==",
   "success": true,
   "projectFilePath": "C:\\Users\\mustapha.bouleili\\Documents\\Projectes\\ACME\\ACME\\Backend.csproj",
+=======
+  "dgSpecHash": "9D+iSV29TUXdSs3LZj3oRP7lbGY7tJ8oBYV/gqXoPndW6iF5uXgCqui8OEz0v9+0LzMM7CNTmPkI5rEnpGqRQg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ProyectoACME\\ACME-Backend\\ACME\\Backend.csproj",
+>>>>>>> adeb0f37908f0d64a3577acdabe1f46b54370f17
   "expectedPackageFiles": [
     "C:\\Users\\mustapha.bouleili\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\mustapha.bouleili\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
