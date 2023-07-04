@@ -12,19 +12,37 @@ import { AgregarEditarCountryComponent } from './components/agregar-editar-count
 import { ListaCountryComponent } from './components/lista-country/lista-country.component';
 import { VerCountryComponent } from './components/ver-country/ver-country.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { BookingsComponent } from './components/bookings/bookings.component';
+
+import { HomeAdmComponent } from './components/home-adm/home-adm.component';
+import { UsersComponent } from './components/users/users.component';
+import { RoomsComponent } from './components/rooms/rooms.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     AgregarEditarCountryComponent,
     ListaCountryComponent,
-    VerCountryComponent
+    VerCountryComponent,
+    LoginComponent,
+    HomeComponent,
+    BookingsComponent,
+    HomeAdmComponent,
+    UsersComponent,
+    RoomsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    ToastrModule.forRoot(),
+    ReactiveFormsModule
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]
