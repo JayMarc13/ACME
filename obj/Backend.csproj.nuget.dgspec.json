@@ -1,19 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "C:\\Users\\mustapha.bouleili\\Documents\\Projectes\\ACME\\ACME\\Backend.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\mustapha.bouleili\\Documents\\Projectes\\ACME\\ACME\\Backend.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\mustapha.bouleili\\Documents\\Projectes\\ACME\\ACME\\Backend.csproj",
-        "projectName": "Backend",
-        "projectPath": "C:\\Users\\mustapha.bouleili\\Documents\\Projectes\\ACME\\ACME\\Backend.csproj",
-        "packagesPath": "C:\\Users\\mustapha.bouleili\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mustapha.bouleili\\Documents\\Projectes\\ACME\\ACME\\obj\\",
-=======
     "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ProyectoACME\\ACME-Backend\\ACME\\Backend.csproj": {}
   },
   "projects": {
@@ -25,10 +12,9 @@
         "projectPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ProyectoACME\\ACME-Backend\\ACME\\Backend.csproj",
         "packagesPath": "C:\\Users\\jay.paragas.ext\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ProyectoACME\\ACME-Backend\\ACME\\obj\\",
->>>>>>> adeb0f37908f0d64a3577acdabe1f46b54370f17
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mustapha.bouleili\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jay.paragas.ext\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -36,7 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -55,14 +41,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.AspNet.Identity.Core": {
-              "target": "Package",
-              "version": "[2.2.3, )"
-            },
-            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.8, )"
@@ -76,10 +54,6 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.8, )"
-            },
-            "Microsoft.Extensions.Configuration": {
-              "target": "Package",
-              "version": "[7.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -109,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
