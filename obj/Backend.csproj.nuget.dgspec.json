@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jay.paragas.ext\\Desktop\\Backend\\ACME\\Backend.csproj": {}
+    "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ProyectoACME\\ACME-Backend\\ACME\\Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jay.paragas.ext\\Desktop\\Backend\\ACME\\Backend.csproj": {
+    "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ProyectoACME\\ACME-Backend\\ACME\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jay.paragas.ext\\Desktop\\Backend\\ACME\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ProyectoACME\\ACME-Backend\\ACME\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\jay.paragas.ext\\Desktop\\Backend\\ACME\\Backend.csproj",
+        "projectPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ProyectoACME\\ACME-Backend\\ACME\\Backend.csproj",
         "packagesPath": "C:\\Users\\jay.paragas.ext\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jay.paragas.ext\\Desktop\\Backend\\ACME\\obj\\",
+        "outputPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ProyectoACME\\ACME-Backend\\ACME\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jay.paragas.ext\\AppData\\Roaming\\NuGet\\NuGet.Config",
