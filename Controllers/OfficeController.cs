@@ -38,7 +38,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var office = await _context.Country.FindAsync(officeId);
+                var office = await _context.Office.FindAsync(officeId);
                 if (office == null)
                 {
                     return NotFound();
@@ -57,13 +57,13 @@ namespace Backend.Controllers
         {
             try
             {
-                var office = await _context.Country.FindAsync(officeId);
+                var office = await _context.Office.FindAsync(officeId);
                 if (office == null)
                 {
                     return NotFound();
                 }
 
-                _context.Country.Remove(office);
+                _context.Office.Remove(office);
                 await _context.SaveChangesAsync();
 
                 return NoContent();
@@ -75,23 +75,23 @@ namespace Backend.Controllers
             }
         }
 
-        ////Añadir nuevo país
-        //[HttpPost]
-        //public async Task<IActionResult> Post(Country country)
-        //{
-        //    try
-        //    {
-        //        _context.Add(country); 
-        //        await _context.SaveChangesAsync();
+        //Añadir nuevo país
+        [HttpPost]
+        public async Task<IActionResult> Post(Office office)
+        {
+            try
+            {
+                _context.Add(office);
+                await _context.SaveChangesAsync();
 
-        //        return CreatedAtAction("Get", new { CountryId = country.CountryId }, country);
-        //    }
-        //    catch (Exception e)
-        //    {
+                return CreatedAtAction("Get", new { OfficeId = office.OfficeId }, office);
+            }
+            catch (Exception e)
+            {
 
-        //        return BadRequest(e.Message);
-        //    }
-        //}
+                return BadRequest(e.Message);
+            }
+        }
 
         [HttpPut("{officeId}")]
         public async Task<IActionResult> Put(int officeId, Office office)
