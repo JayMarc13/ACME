@@ -38,7 +38,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var city = await _context.Country.FindAsync(cityId);
+                var city = await _context.City.FindAsync(cityId);
                 if (city == null)
                 {
                     return NotFound();
@@ -57,13 +57,13 @@ namespace Backend.Controllers
         {
             try
             {
-                var city = await _context.Country.FindAsync(cityId);
+                var city = await _context.City.FindAsync(cityId);
                 if (city == null)
                 {
                     return NotFound();
                 }
 
-                _context.Country.Remove(city);
+                _context.City.Remove(city);
                 await _context.SaveChangesAsync();
 
                 return NoContent();
@@ -72,6 +72,52 @@ namespace Backend.Controllers
             catch (Exception e)
             {
                 return BadRequest(e.Message);
+            }
+        }
+        //Add city
+        [HttpPost]
+        public async Task<IActionResult> Post(City city)
+        {
+            try
+            {
+                _context.Add(city);
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction("Get", new { CityId = city.CityId }, city);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPut("{cityId}")]
+        public async Task<IActionResult> Put(int cityId, City city)
+        {
+            try
+            {
+                if (cityId != city.CityId)
+                {
+                    return BadRequest();
+                }
+
+                var cityItem = await _context.City.FindAsync(cityId);
+
+                if (cityItem == null)
+                {
+                    return NotFound();
+                }
+
+                cityItem.CityName = city.CityName;
+
+                await _context.SaveChangesAsync();
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }
