@@ -280,3 +280,5 @@ C:\Users\jay.paragas.ext\Documents\Proyectos\ProyectoACME\ACME-Backend\ACME\obj\
 C:\Users\jay.paragas.ext\Documents\Proyectos\ProyectoACME\ACME-Backend\ACME\obj\Debug\net6.0\Backend.pdb
 C:\Users\jay.paragas.ext\Documents\Proyectos\ProyectoACME\ACME-Backend\ACME\obj\Debug\net6.0\Backend.genruntimeconfig.cache
 C:\Users\jay.paragas.ext\Documents\Proyectos\ProyectoACME\ACME-Backend\ACME\obj\Debug\net6.0\ref\Backend.dll
+C:\Users\jay.paragas.ext\Documents\Proyectos\ProyectoACME\ACME-Backend\ACME\bin\Debug\net6.0\Microsoft.AspNet.Identity.Core.dll
+C:\Users\jay.paragas.ext\Documents\Proyectos\ProyectoACME\ACME-Backend\ACME\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
