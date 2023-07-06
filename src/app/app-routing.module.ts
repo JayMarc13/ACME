@@ -7,7 +7,6 @@ import { AgregarEditarCountryComponent } from './components/agregar-editar-count
 import { VerCountryComponent } from './components/ver-country/ver-country.component';
 import { LoginComponent } from './components/login/login.component';
 
-import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { BookingsComponent } from './components/bookings/bookings.component';
 
@@ -22,10 +21,10 @@ const routes: Routes = [
   { path: 'listaCountries', component: ListaCountryComponent },
   { path: 'agregarCountry', component: AgregarEditarCountryComponent},
   { path: 'verCountry/:countryId', component: VerCountryComponent}, // ":id" es el parametro que le pasara cuando el usuario le de clic a un pais
-<<<<<<< HEAD
+
   { path: 'editarCountry/:countryId', component: AgregarEditarCountryComponent},
   { path: 'login', component: LoginComponent},
-=======
+
   { path: 'editarCountry/:countryId', component: AgregarEditarCountryComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
@@ -33,7 +32,7 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'rooms', component: RoomsComponent },
   { path: 'bookings', component: BookingsComponent },
->>>>>>> cc8425de6799ef973b96923b62ae88ac3c99a74e
+
   { path: '**', redirectTo:'listaCountries', pathMatch: 'full'} //Si no hace match con nada lo redirige al componente listaCountries
 ];
 

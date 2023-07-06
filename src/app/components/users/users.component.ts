@@ -13,7 +13,7 @@ export class UsersComponent implements OnInit {
     {name: 'Delia ',last:'Perez', email:'dcj@gmail', }
   ];
 
-  form: FormGroup;
+  form:FormGroup;
 
   constructor(private fb: FormBuilder,
   private toastr: ToastrService){
