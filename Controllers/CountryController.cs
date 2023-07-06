@@ -111,7 +111,7 @@ namespace Backend.Controllers
                     return NotFound();
                 }
 
-                countryItem.NomPais = country.NomPais;
+                countryItem.CountryName = country.CountryName;
 
                 await _context.SaveChangesAsync();
 

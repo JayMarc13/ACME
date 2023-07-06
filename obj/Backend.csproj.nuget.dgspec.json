@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mustapha.bouleili\\Documents\\Projectes\\ACME\\ACME\\Backend.csproj": {}
+    "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ProyectoACME\\ACME-Backend\\ACME\\Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mustapha.bouleili\\Documents\\Projectes\\ACME\\ACME\\Backend.csproj": {
+    "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ProyectoACME\\ACME-Backend\\ACME\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mustapha.bouleili\\Documents\\Projectes\\ACME\\ACME\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ProyectoACME\\ACME-Backend\\ACME\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\mustapha.bouleili\\Documents\\Projectes\\ACME\\ACME\\Backend.csproj",
-        "packagesPath": "C:\\Users\\mustapha.bouleili\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mustapha.bouleili\\Documents\\Projectes\\ACME\\ACME\\obj\\",
+        "projectPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ProyectoACME\\ACME-Backend\\ACME\\Backend.csproj",
+        "packagesPath": "C:\\Users\\jay.paragas.ext\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ProyectoACME\\ACME-Backend\\ACME\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mustapha.bouleili\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jay.paragas.ext\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -41,35 +41,39 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.AspNet.Identity.Core": {
+            "Microsoft.AspNetCore.Identity": {
               "target": "Package",
-              "version": "[2.2.3, )"
+              "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[6.0.16, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.8, )"
+              "version": "[6.0.16, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[7.0.8, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
+            "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.8, )"
+              "version": "[6.0.16, )"
             },
-            "Swashbuckle.AspNetCore": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[6.0.16, )"
             },
-            "System.Data.SqlClient": {
+            "Swashbuckle.AspNetCore.Swagger": {
               "target": "Package",
-              "version": "[4.8.5, )"
+              "version": "[6.5.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[6.5.0, )"
             }
           },
           "imports": [
@@ -91,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

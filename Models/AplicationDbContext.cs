@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Backend.Models
 {
     //Crear la base de datos
-    public class AplicationDbContext : DbContext
+    public class AplicationDbContext : IdentityDbContext
     {
         public AplicationDbContext(DbContextOptions<AplicationDbContext> options): base(options) 
         { 
@@ -20,6 +22,15 @@ namespace Backend.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<IdentityUserRole<string>>()
+            .HasNoKey();
+
+            modelBuilder.Entity<IdentityUserLogin<string>>()
+            .HasNoKey();
+
+            modelBuilder.Entity<IdentityUserToken<string>>()
+            .HasNoKey();
+
             modelBuilder.Entity<City>()
                 .HasOne<Country>()
                 .WithMany()
@@ -48,11 +59,6 @@ namespace Backend.Models
               .WithMany()
               .HasForeignKey(c => c.UserId);
 
-
-        }
-        internal Task UpdateAsync(Country countryItem)
-        {
-            throw new NotImplementedException();
         }
     }
 }
