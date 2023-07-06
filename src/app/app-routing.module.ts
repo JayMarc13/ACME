@@ -21,10 +21,8 @@ const routes: Routes = [
   { path: 'listaCountries', component: ListaCountryComponent },
   { path: 'agregarCountry', component: AgregarEditarCountryComponent},
   { path: 'verCountry/:countryId', component: VerCountryComponent}, // ":id" es el parametro que le pasara cuando el usuario le de clic a un pais
-
   { path: 'editarCountry/:countryId', component: AgregarEditarCountryComponent},
   { path: 'login', component: LoginComponent},
-
   { path: 'editarCountry/:countryId', component: AgregarEditarCountryComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
