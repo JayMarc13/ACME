@@ -4,8 +4,14 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
+<<<<<<< HEAD
     "\\src\\app\\services"
   ],
   "SelectedNode": "\\tsconfig.json",
+=======
+    "\\src\\app\\interfaces"
+  ],
+  "SelectedNode": "\\src\\app\\app-routing.module.ts",
+>>>>>>> e2efda25fbf0ebb9a0161f7b010ddd7cfdac09ec
   "PreviewInSolutionExplorer": false
 }
