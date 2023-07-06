@@ -22,3 +22,14 @@ body {
 .container {
   margin: 0 20%
 }
+.nav{
+  background-color:black;
+}
+.nav>a{
+  color: white;
+  font-size: medium;
+  padding: 28px;
+}
+.nav a:last-child {
+  padding-left: 40%;
+}
