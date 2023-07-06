@@ -23,7 +23,7 @@
               cityId: ['', Validators.required] 
             })
 
-            this.Officeid = Number(this.aRoute.snapshot.paramMap.get('Officeid'));
+            this.Officeid = Number(this.aRoute.snapshot.paramMap.get('officeId'));
           }
 
 
@@ -68,7 +68,7 @@
           this._officeService.updateOffice(Officeid, office).subscribe(data => {
             this.loading = false;
             this.mensajeExito('actualizada');
-            this.router.navigate(['/listOffices']);
+            this.router.navigate(['/listaOffices']);
           })
         }
 
@@ -76,7 +76,7 @@
          //Enivar el objeto al backend
          this._officeService.addOffice(office).subscribe(data => {
            this.mensajeExito('registrado');
-           this.router.navigate(['/listOffices']);
+           this.router.navigate(['/listaOffices']);
          });
        }
 

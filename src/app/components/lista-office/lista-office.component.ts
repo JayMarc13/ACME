@@ -12,7 +12,7 @@ import { OfficeService } from '../../services/office.service';
   styleUrls: ['./lista-office.component.css']
 })
 export class ListaOfficeComponent {
-  displayedColumns: string[] = ['ID', 'Nombre', 'Ciudad'];
+  displayedColumns: string[] = ['ID', 'Nombre', 'Ciudad', 'Acciones'];
   dataSource = new MatTableDataSource<office>();
   loading: boolean = false;
 
@@ -64,7 +64,7 @@ export class ListaOfficeComponent {
     });
   }
 
-  mensajeExito(texto: string) {
+  mensajeExito() {
     this._snackBar.open('La oficina fue eliminada con éxito', '', {
       duration: 4000,
       horizontalPosition: 'right'

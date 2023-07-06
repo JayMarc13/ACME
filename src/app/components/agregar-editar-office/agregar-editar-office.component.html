@@ -1,7 +1,7 @@
 <div class="title">
   <h1>{{ Operacion }} Oficina</h1>
 </div>
-<app-spinner *ngIf="loading"></app-spinner>
+<!-- <app-spinner *ngIf="loading"></app-spinner> -->
 
 <div class="container mat-elevation-z5">
   <mat-card class="card">
@@ -28,7 +28,7 @@
 
         <mat-grid-tile [colspan]="2">
           <button [disabled]="form.invalid" type="submit" class="btnAceptar" mat-raised-button color="primary">Aceptar</button>
-          <button mat-raised-button routerLink="listaCountries">Volver</button>
+          <button mat-raised-button routerLink="/listaOffices">Volver</button>
         </mat-grid-tile>
       </mat-grid-list>
     </form>

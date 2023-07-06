@@ -19,7 +19,7 @@ export class AgregarEditarCountryComponent {
 
   constructor(private _countryService: CountryService,private fb: FormBuilder, private _snackBar : MatSnackBar, private router: Router, private aRoute: ActivatedRoute){
     this.form = this.fb.group({
-      nomPais: ['', Validators.required] ////Campo requerido
+      countryName: ['', Validators.required] ////Campo requerido
     })
 
     //Obtiene el countryId de la URL
@@ -38,7 +38,7 @@ export class AgregarEditarCountryComponent {
     this.loading = true;
     this._countryService.getCountry(countryId).subscribe(data => {
       this.form.setValue({
-        nomPais: data.nomPais
+        countryName: data.countryName
       })
       
       this.loading = false;
@@ -49,7 +49,7 @@ export class AgregarEditarCountryComponent {
   agregarEditarCountry(){
     //Definir el objeto
     const country : Country = {
-        nomPais: this.form.value.nomPais //Obtener el nombre del pais introducido
+        countryName: this.form.value.countryName //Obtener el nombre del pais introducido
     }
     
     if(this.countryId != 0){
