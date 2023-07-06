@@ -3,7 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\shared"
+    "\\src\\app\\components",
+    "\\src\\app\\services"
   ],
+  "SelectedNode": "\\tsconfig.json",
   "PreviewInSolutionExplorer": false
 }
