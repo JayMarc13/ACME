@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
-  constructor(private fb: FormBuilder, private router:Router) {
+  constructor(private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
     this.form = this.fb.group({
       user: ['', [Validators.required]],
       password: ['', [Validators.required]]
@@ -33,10 +34,23 @@ export class LoginComponent implements OnInit {
       return;
     }
     console.log(this.form.value);
-    this.router.navigate(['/homeAdm']);
+    if (this.form.value.user == 'adm@acme.com' && this.form.value.password) {
+      this.router.navigate(['/homeAdm']);
+    } else {
+      this.error();
+    }
+    
     this.form.reset();
   }
   public get f():any {
     return this.form.controls;
+  }
+
+  error() {
+    this.snackBar.open('User or password incorrect', '', {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    })
   }
 }
