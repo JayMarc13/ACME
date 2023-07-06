@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'rooms', component: RoomsComponent },
   { path: 'bookings', component: BookingsComponent },
-  { path: '**', redirectTo:'listaCountries', pathMatch: 'full'} //Si no hace match con nada lo redirige al componente listaCountries
+  { path: '**', redirectTo:'login', pathMatch: 'full'} //Si no hace match con nada lo redirige al componente listaCountries
 ];
 
 @NgModule({
