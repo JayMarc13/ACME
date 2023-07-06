@@ -321,3 +321,11 @@ input[type=password] {
 * {
   box-sizing: border-box;
 }
+
+.eslogan {
+  text-align: center;
+}
+
+.title {
+  font-size: 5vh;
+}
