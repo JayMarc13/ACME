@@ -9,7 +9,7 @@ import { City } from '../interfaces/city';
 })
 export class CityService {
   private myAppUrl: string = environment.endpoint;
-  private myApiUrl: string = 'api/Office/';
+  private myApiUrl: string = 'api/City/';
 
   constructor(private http: HttpClient) {
   }

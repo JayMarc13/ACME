@@ -12,7 +12,7 @@ import { City } from 'src/app/interfaces/city';
   styleUrls: ['./lista-city.component.css']
 })
 export class ListaCityComponent {
-  displayedColumns: string[] = ['ID', 'Nombre', 'ciudadId', 'Acciones'];
+  displayedColumns: string[] = ['cityId', 'cityName', 'countryId', 'Acciones'];
   dataSource = new MatTableDataSource<City>();
   loading: boolean = false;
 
@@ -47,6 +47,7 @@ export class ListaCityComponent {
   obtenerCity() {
     this.loading = true;
     this._cityService.getCitys().subscribe(data => {
+      console.log(data);
       this.loading = false;
       this.dataSource.data = data;
     });

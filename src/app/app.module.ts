@@ -15,7 +15,6 @@ import { VerCountryComponent } from './components/ver-country/ver-country.compon
 import { AgregarEditarOfficeComponent } from './components/agregar-editar-office/agregar-editar-office.component';
 import { ListaOfficeComponent } from './components/lista-office/lista-office.component';
 import { VerOfficeComponent } from './components/ver-office/ver-office.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';

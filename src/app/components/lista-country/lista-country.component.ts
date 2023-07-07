@@ -12,7 +12,7 @@ import { CountryService } from 'src/app/services/country.service';
   styleUrls: ['./lista-country.component.css']
 })
 export class ListaCountryComponent  implements AfterViewInit{
-  displayedColumns: string[] = ['countryId', 'nomPais','Acciones'];
+  displayedColumns: string[] = ['countryId', 'countryName','Acciones'];
   dataSource = new MatTableDataSource<Country>();
   loading: boolean = false;
 
