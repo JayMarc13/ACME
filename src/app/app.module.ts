@@ -23,6 +23,9 @@ import { BookingsComponent } from './components/bookings/bookings.component';
 import { HomeAdmComponent } from './components/home-adm/home-adm.component';
 import { UsersComponent } from './components/users/users.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
+import { AgregarEditarCityComponent } from './components/agregar-editar-city/agregar-editar-city.component';
+import { ListaCityComponent } from './components/lista-city/lista-city.component';
+import { VerCityComponent } from './components/ver-city/ver-city.component';
 
 
 
@@ -41,7 +44,10 @@ import { RoomsComponent } from './components/rooms/rooms.component';
     BookingsComponent,
     HomeAdmComponent,
     UsersComponent,
-    RoomsComponent
+    RoomsComponent,
+    AgregarEditarCityComponent,
+    ListaCityComponent,
+    VerCityComponent
   ],
   imports: [
     BrowserModule,

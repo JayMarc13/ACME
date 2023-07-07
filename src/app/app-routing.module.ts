@@ -16,6 +16,9 @@ import { DashboardRoutingModule } from './components/dashboard/dashboard-routing
 import { ListaOfficeComponent } from './components/lista-office/lista-office.component';
 import { AgregarEditarOfficeComponent } from './components/agregar-editar-office/agregar-editar-office.component';
 import { VerOfficeComponent } from './components/ver-office/ver-office.component';
+import { AgregarEditarCityComponent } from './components/agregar-editar-city/agregar-editar-city.component';
+import { VerCityComponent } from './components/ver-city/ver-city.component';
+import { ListaCityComponent } from './components/lista-city/lista-city.component';
 
 //Rutas
 const routes: Routes = [
@@ -27,16 +30,20 @@ const routes: Routes = [
   //},
   
   { path: 'listaCountries', component: ListaCountryComponent },
-  { path: 'listaOffices', component: ListaOfficeComponent },
   { path: 'agregarCountry', component: AgregarEditarCountryComponent},
   { path: 'verCountry/:countryId', component: VerCountryComponent}, // ":id" es el parametro que le pasara cuando el usuario le de clic a un pais
   { path: 'editarCountry/:countryId', component: AgregarEditarCountryComponent},
-  { path: 'editarCountry/:countryId', component: AgregarEditarCountryComponent },
+
+  { path: 'listaOffices', component: ListaOfficeComponent },
   { path: 'agregarOffice', component: AgregarEditarOfficeComponent},
-  { path: 'verCountry/:countryId', component: VerCountryComponent},
   { path: 'verOffice/:officeId', component: VerOfficeComponent}, // ":id" es el parametro que le pasara cuando el usuario le de clic a un pais
-  { path: 'editarCountry/:countryId', component: AgregarEditarCountryComponent},
   { path: 'editarOffice/:officeId', component: AgregarEditarOfficeComponent },
+
+  { path: 'listaCities', component: ListaCityComponent },
+  { path: 'agregarCity', component: AgregarEditarCityComponent },
+  { path: 'verCity/:cityId', component: VerCityComponent }, // ":id" es el parametro que le pasara cuando el usuario le de clic a un pais
+  { path: 'editarCity/:cityId', component: AgregarEditarCityComponent },
+
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'homeAdm', component: HomeAdmComponent },
