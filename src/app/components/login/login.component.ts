@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Login } from 'src/app/interfaces/login';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,19 +13,16 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
-  constructor(private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar, private _loginService : LoginService) {
     this.form = this.fb.group({
       user: ['', [Validators.required]],
       password: ['', [Validators.required]]
     })
   }
-  ngOnInit(): void {
-  }
 
   
-  login(form: NgForm) {
-    const user=form.value.user
-    const password=form.value.password
+
+  ngOnInit(): void {
   }
 
   public submitForm() {
@@ -33,15 +32,25 @@ export class LoginComponent implements OnInit {
       });
       return;
     }
-    console.log(this.form.value);
-    if (this.form.value.user == 'adm@acme.com' && this.form.value.password) {
-      this.router.navigate(['/homeAdm']);
-    } else {
-      this.error();
-    }
+
+    const login: Login = {
+      userName: this.form.value.user,
+      password: this.form.value.password
+    };
+
+    console.log(login);
+
+    this._loginService.userLogin(login).subscribe((data) => {
+      console.log(data);
+    }, (error) => {
+      this.error(); 
+      this.form.reset();
+    });
+
     
-    this.form.reset();
   }
+
+
   public get f():any {
     return this.form.controls;
   }
