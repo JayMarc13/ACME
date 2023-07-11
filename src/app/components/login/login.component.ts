@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/interfaces/login';
+import { tokenUser } from 'src/app/interfaces/token';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -13,6 +14,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
+  token?: tokenUser;
   constructor(private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar, private _loginService : LoginService) {
     this.form = this.fb.group({
       user: ['', [Validators.required]],
@@ -41,7 +43,12 @@ export class LoginComponent implements OnInit {
     console.log(login);
 
     this._loginService.userLogin(login).subscribe((data) => {
-      console.log(data);
+      this.token = data;
+      const tokenUser = this.token?.token;
+      if(tokenUser){
+        localStorage.setItem('token', tokenUser);
+      }
+      window.open('/homeAdm');
     }, (error) => {
       this.error(); 
       this.form.reset();
