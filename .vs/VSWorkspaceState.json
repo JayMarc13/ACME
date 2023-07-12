@@ -4,12 +4,8 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
-    "\\src\\app\\components\\bookings",
-    "\\src\\app\\components\\dashboard",
-    "\\src\\app\\components\\home-adm",
-    "\\src\\app\\components\\rooms",
-    "\\src\\app\\components\\users",
-    "\\src\\app\\services"
+    "\\src\\app\\shared"
   ],
+  "SelectedNode": "\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }
