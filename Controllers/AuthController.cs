@@ -2,6 +2,8 @@
 using Backend.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Backend.Controllers
 {
@@ -36,9 +38,13 @@ namespace Backend.Controllers
             if (await _authService.Login(user))
             {
                 var tokenString = _authService.GenerateTokenString(user);
-                return Ok(tokenString);
+
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var jwtToken = tokenHandler.ReadJwtToken(tokenString);
+                return Ok(new { token = tokenString });
+                
             }
-            return BadRequest("Your password or user is wrong!");
+            return Unauthorized();
         }
     }
 }

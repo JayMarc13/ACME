@@ -7,6 +7,7 @@ namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
     public class CountryController : ControllerBase
     {
         private readonly AplicationDbContext _context;

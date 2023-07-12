@@ -47,7 +47,7 @@ namespace Backend.Services
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Email, user.UserName),
-                new Claim(ClaimTypes.Role, "Admin")
+                new Claim(ClaimTypes.Role, "User")
             };
 
             SecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("Jwt:Key").Value));

@@ -20,6 +20,7 @@ namespace Backend.Models
         public DbSet<Reserve> Reserve { get; set; }
 
 
+        //Aqui es donde haces las foreign keys o algo
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<IdentityUserRole<string>>()

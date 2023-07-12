@@ -6,7 +6,7 @@ namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize("token")]
+    [Authorize]
     public class TestController : ControllerBase
     {
         [HttpGet]
