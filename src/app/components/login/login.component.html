@@ -1,23 +1,41 @@
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Acmeet</h5>
-    <h6 class="card-subtitle mb-2 text-muted">booking has never been easier</h6>
-    <form>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-        <input type="email" class="form-control" placeholder="name@example.com">
+<div class="container">
+  <h1 class="title">Welcome to ACMEET</h1>
+  <p class="eslogan">Booking has never been easier</p>
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 class="active"> Sign In </h2>
+
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <i class="fa-regular fa-user"></i>
       </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">password</label>
-        <input type="password" class="form-control" placeholder="password">
+
+      <!-- Login Form -->
+      <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <input formControlName="user" [class.is-invalid]="f.user.errors && f.user.touched" type="text" id="login" class="fadeIn second" name="login" placeholder="User">
+        <div id="validationServer04Feedback" class="invalid-feedback">
+          Mandatory user
+        </div>
+        <div class="col-auto">
+          <label for="inputPassword2" class="visually-hidden">Password</label>
+          <input formControlName="password" [class.is-invalid]="f.password.errors && f.password.touched" name="login" id="password" type="password" class="fadeIn third" placeholder="Password">
+          <div id="validationServer04Feedback" class="invalid-feedback">
+            Mandatory password
+          </div>
+        </div>
+        <input type="submit" class="fadeIn fourth" value="Log In">
+      </form>
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+
+        <a class="underlineHover" routerLink="/forgotPassword">Forgot Password?</a>
+        <br />
+        <a routerLink="/register" class="link-primary">register</a>
       </div>
-      <br />
-      <button type="button" class="btn btn-success">login</button>
-    </form>
-    <br />
-    <a routerLink="/register" class="link-primary">register</a>
-    <br />
-    <a routerLink="/forgotPassword" class="link-secondary">forgot password</a>
+
+    </div>
   </div>
 </div>
+

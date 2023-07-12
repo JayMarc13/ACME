@@ -18,17 +18,23 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/home/profile">Profile</a>
         </li>
-      
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" routerLink="home/admRooms" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Administration
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" routerLink="home/admRooms/countries">Countries</a></li>
-            <li><a class="dropdown-item" routerLink="home/admRooms/cities">Cities</a></li>
-            <li><a class="dropdown-item" routerLink="home/admRooms/offices">Offices</a></li>
-          </ul>
-        </li>
+        <li>
+            <div>
+              <button mat-button [matMenuTriggerFor]="administration" appearance="legacy" xPosition="after">
+                <div class="valign-center">
+                  <span> Administration </span>
+                  <i class="material-icons">arrow_drop_down</i>
+                </div>
+              </button>
+              <mat-menu #administration="matMenu" >
+                <ng-template matMenuContent>
+                  <button routerLink="/home/admRooms/countries" mat-menu-item>Countries</button>
+                  <button routerLink="/home/admRooms/cities" mat-menu-item>Cities</button>
+                  <button routerLink="/home/admRooms/offices" mat-menu-item>Offices</button>
+                </ng-template>
+              </mat-menu>
+            </div>
+         </li>
 
         <li class="nav-item">
           <a class="nav-link" routerLink="/login">log out</a>
