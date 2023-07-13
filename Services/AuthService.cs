@@ -24,7 +24,7 @@ namespace Backend.Services
             var identityUser = new IdentityUser
             {
                 UserName = user.UserName,
-                Email = user.UserName
+                Email = user.Email
             };
 
             var result = await _userManager.CreateAsync(identityUser, user.Password);
@@ -34,13 +34,14 @@ namespace Backend.Services
         //Verificar en la base de datos que el usuario existe
         public async Task<bool> Login(LoginUser user)
         {
-            var identityUser = await _userManager.FindByEmailAsync(user.UserName);
-            if (identityUser is null) 
+            var identityUser = await _userManager.FindByNameAsync(user.UserName);
+            var identityEmail = await _userManager.FindByEmailAsync(user.Email);
+            if (identityUser is not null || identityEmail is not null) 
             {
-                return false;
+                return await _userManager.CheckPasswordAsync(identityUser ?? identityEmail, user.Password);
             }
 
-            return await _userManager.CheckPasswordAsync(identityUser, user.Password);
+            return false; 
         }
 
         public string GenerateTokenString(LoginUser user)
