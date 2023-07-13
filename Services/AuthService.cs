@@ -18,6 +18,7 @@ namespace Backend.Services
             _config = config;
         }
 
+        //Verificar el usuario no existe
         public async Task<bool> RegisterUser(LoginUser user)
         {
             var identityUser = new IdentityUser
@@ -30,6 +31,7 @@ namespace Backend.Services
             return result.Succeeded;
         }
 
+        //Verificar en la base de datos que el usuario existe
         public async Task<bool> Login(LoginUser user)
         {
             var identityUser = await _userManager.FindByEmailAsync(user.UserName);
@@ -54,7 +56,7 @@ namespace Backend.Services
             SigningCredentials signingCred = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha512Signature);
             var securityToken = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(60),
+                expires: DateTime.Now.AddMinutes(1), //Caducación
                 issuer:_config.GetSection("Jwt:Issuer").Value,
                 audience: _config.GetSection("Jwt:Audience").Value,
                 signingCredentials: signingCred);

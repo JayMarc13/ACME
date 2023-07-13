@@ -8,18 +8,20 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//Add Context
+//Conexión a la base de datos
 builder.Services.AddDbContext<AplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetSection("ConnectionStrings:DefaultConnection").Value);
 });
 
+//Configuración del identity
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
     options.Password.RequiredLength = 5;
 }).AddEntityFrameworkStores<AplicationDbContext>()
     .AddDefaultTokenProviders();
 
+//Configuración del token
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme=JwtBearerDefaults.AuthenticationScheme;

@@ -8,7 +8,7 @@ namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize] //<-- Verificar el token 
     public class CityController : ControllerBase
     {
         private readonly AplicationDbContext _context;

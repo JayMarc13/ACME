@@ -53,6 +53,7 @@ namespace Backend.Controllers
             }
         }
 
+
         // Eliminar el pais con la id pasada 
         [HttpDelete("{countryId}")]
         public async Task<IActionResult> Delete(int countryId) 
@@ -95,16 +96,20 @@ namespace Backend.Controllers
             }
         }
 
+
+        //Editar el country
         [HttpPut("{countryId}")]
         public async Task<IActionResult> Put(int countryId, Country country)
         {
             try
             {
+                //Not found id
                 if(countryId != country.CountryId)
                 {
                     return BadRequest();
                 }
 
+                //Definir el country anterior
                 var countryItem = await _context.Country.FindAsync(countryId);
 
                 if (countryItem == null)
@@ -112,6 +117,7 @@ namespace Backend.Controllers
                     return NotFound();
                 }
 
+                //Definir el country nuevo
                 countryItem.CountryName = country.CountryName;
 
                 await _context.SaveChangesAsync();
