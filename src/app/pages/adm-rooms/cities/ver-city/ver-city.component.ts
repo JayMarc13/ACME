@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-ver-city',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./ver-city.component.css']
 })
 export class VerCityComponent {
+  
 
 }

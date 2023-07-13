@@ -1,7 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\pages",
+    "\\src\\app\\pages\\adm-rooms\\cities",
+    "\\src\\app\\pages\\adm-rooms\\cities\\agregar-editar-city",
+    "\\src\\app\\pages\\adm-rooms\\cities\\list-city",
+    "\\src\\app\\pages\\adm-rooms\\countries",
+    "\\src\\app\\pages\\adm-rooms\\countries\\agregar-editar-country",
+    "\\src\\app\\pages\\users"
   ],
-  "SelectedNode": "\\src",
+  "SelectedNode": "\\src\\app\\pages\\users\\users.module.ts",
   "PreviewInSolutionExplorer": false
 }

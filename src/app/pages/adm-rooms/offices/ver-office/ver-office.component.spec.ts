@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OfficesComponent } from './offices.component';
+import { VerOfficeComponent } from './ver-office.component';
 
-describe('OfficesComponent', () => {
-  let component: OfficesComponent;
-  let fixture: ComponentFixture<OfficesComponent>;
+describe('VerOfficeComponent', () => {
+  let component: VerOfficeComponent;
+  let fixture: ComponentFixture<VerOfficeComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [OfficesComponent]
+      declarations: [VerOfficeComponent]
     });
-    fixture = TestBed.createComponent(OfficesComponent);
+    fixture = TestBed.createComponent(VerOfficeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

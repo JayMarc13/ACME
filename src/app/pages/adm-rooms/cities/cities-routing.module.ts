@@ -6,7 +6,10 @@ import { VerCityComponent } from './ver-city/ver-city.component';
 
 const routes: Routes = [
   {
-    path: '', component: ListCityComponent
+    path: '', redirectTo: 'listaCity', pathMatch: 'full'
+  },
+  {
+    path: 'listaCity', component: ListCityComponent
   },
   {
     path: 'agregarCity', component: AgregarEditarCityComponent
