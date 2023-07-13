@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit{
 
     const login: Login = {
       userName: this.form.value.user,
+      email: this.form.value.user,
       password: this.form.value.password
     };
 
@@ -48,7 +49,8 @@ export class LoginComponent implements OnInit{
       if (tokenUser) {
         localStorage.setItem('token', tokenUser);
       }
-      window.open('/home');
+      
+      window.location.href = "/home";
     }, (error: any) => {
       this.error();
       this.form.reset();

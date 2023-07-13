@@ -14,15 +14,15 @@
 
       <!-- Login Form -->
       <form [formGroup]="form" (ngSubmit)="submitForm()">
-        <input formControlName="user" [class.is-invalid]="f.user.errors && f.user.touched" type="text" id="login" class="fadeIn second" name="login" placeholder="User">
+        <input formControlName="user" [class.is-invalid]="f.user.errors && f.user.touched" type="text" id="login" class="fadeIn second" name="login" placeholder="User Name or Email">
         <div id="validationServer04Feedback" class="invalid-feedback">
-          Mandatory user
+          Mandatory User Name or Email
         </div>
         <div class="col-auto">
           <label for="inputPassword2" class="visually-hidden">Password</label>
           <input formControlName="password" [class.is-invalid]="f.password.errors && f.password.touched" name="login" id="password" type="password" class="fadeIn third" placeholder="Password">
           <div id="validationServer04Feedback" class="invalid-feedback">
-            Mandatory password
+            Mandatory Password
           </div>
         </div>
         <input type="submit" class="fadeIn fourth" value="Log In">
@@ -32,7 +32,7 @@
 
         <a class="underlineHover" routerLink="/forgotPassword">Forgot Password?</a>
         <br />
-        <a routerLink="/register" class="link-primary">register</a>
+        <a routerLink="/register" class="link-primary">You don't have account?</a>
       </div>
 
     </div>

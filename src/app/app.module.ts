@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 
 //Modulos Angular Material
 import { SharedModule } from './shared/shared.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -20,8 +21,8 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     NgbModule,
     BrowserAnimationsModule,
-    SharedModule
-    
+    SharedModule,
+    FontAwesomeModule    
 
   ],
   providers: [],
