@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">ACMEET</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/home/homeAdm" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home/bookings">My bookings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home/users">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home/profile">Profile</a>
+        </li>
+        
+
+        
+      </ul>
+      <li class="nav">
+        <div>
+          <button mat-button [matMenuTriggerFor]="administration" appearance="legacy" xPosition="after">
+            <div class="valign-center">
+              <span> Administration </span>
+              <i class="material-icons">arrow_drop_down</i>
+            </div>
+          </button>
+          <mat-menu #administration="matMenu" >
+            <ng-template matMenuContent>
+              <button routerLink="/home/admRooms/countries" mat-menu-item>Countries</button>
+              <button routerLink="/home/admRooms/cities" mat-menu-item>Cities</button>
+              <button routerLink="/home/admRooms/offices" mat-menu-item>Offices</button>
+            </ng-template>
+          </mat-menu>
+        </div>
+        <a class="nav-link" href="">
+          <mat-icon>logout</mat-icon>
+        </a>
+     </li>
+      
+    </div>
+  </div>
+</nav>
