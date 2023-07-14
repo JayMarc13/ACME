@@ -2,17 +2,13 @@
 
 /* BASIC */
 
-html {
-  background-color: #56baed;
-}
-
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
 }
 
 a {
-  color: #92badd;
+  color: #6723d5;
   display: inline-block;
   text-decoration: none;
   font-weight: 400;
@@ -75,7 +71,7 @@ h2.inactive {
 
 h2.active {
   color: #0d0d0d;
-  border-bottom: 2px solid #5fbae9;
+  border-bottom: 2px solid #6723d5;
 }
 
 
@@ -83,7 +79,7 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset] {
-  background-color: #56baed;
+  background-color: #6723d5;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -105,7 +101,7 @@ input[type=button], input[type=submit], input[type=reset] {
 }
 
   input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
-    background-color: #39ace7;
+    background-color: #2e127a;
   }
 
   input[type=button]:active, input[type=submit]:active, input[type=reset]:active {
@@ -139,7 +135,7 @@ input[type=text] {
 
   input[type=text]:focus {
     background-color: #fff;
-    border-bottom: 2px solid #5fbae9;
+    border-bottom: 2px solid #9b5fe9;
   }
 
   input[type=text]:placeholder {
@@ -293,7 +289,7 @@ input[type=password] {
   bottom: -10px;
   width: 0;
   height: 2px;
-  background-color: #56baed;
+  background-color: #5d5b64;
   content: "";
   transition: width 0.2s;
 }
@@ -331,3 +327,4 @@ input[type=password] {
   text-align: center;
   margin-top: 5vh;
 }
+

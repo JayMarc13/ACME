@@ -72,7 +72,7 @@ export class AgregarEditarCityComponent {
     this._cityService.updateCity(cityId, city).subscribe(data => {
       this.loading = false;
       this.mensajeExito('actualizada');
-      this.router.navigate(['/listaCities']);
+      this.router.navigate(['/home/admRooms/cities/listaCity']);
     })
   }
 
@@ -80,7 +80,7 @@ export class AgregarEditarCityComponent {
     //Enivar el objeto al backend
     this._cityService.addCity(city).subscribe(data => {
       this.mensajeExito('registrado');
-      this.router.navigate(['/listaCities']);
+      this.router.navigate(['/home/admRooms/cities/listaCity']);
     });
   }
 

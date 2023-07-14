@@ -72,7 +72,7 @@ export class AgregarEditarOfficeComponent {
     this._officeService.updateOffice(Officeid, office).subscribe(data => {
       this.loading = false;
       this.mensajeExito('actualizada');
-      this.router.navigate(['/listaOffices']);
+      this.router.navigate(['/home/admRooms/offices/listaOffices']);
     })
   }
 
@@ -80,7 +80,7 @@ export class AgregarEditarOfficeComponent {
     //Enivar el objeto al backend
     this._officeService.addOffice(office).subscribe(data => {
       this.mensajeExito('registrado');
-      this.router.navigate(['/listaOffices']);
+      this.router.navigate(['/home/admRooms/offices/listaOffices']);
     });
   }
 
