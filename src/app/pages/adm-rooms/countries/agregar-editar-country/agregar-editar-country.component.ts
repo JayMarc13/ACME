@@ -69,7 +69,7 @@ export class AgregarEditarCountryComponent {
     this._countryService.updateCountry(countryId, country).subscribe(data => {
       this.loading = false;
       this.mensajeExito('actualizada');
-      this.router.navigate(['/listCountries']);
+      this.router.navigate(['/home/admRooms/countries/listaCountries']);
     })
   }
 
@@ -77,7 +77,7 @@ export class AgregarEditarCountryComponent {
     //Enivar el objeto al backend
     this._countryService.addCountry(country).subscribe(data => {
       this.mensajeExito('registrado');
-      this.router.navigate(['/listCountries']);
+      this.router.navigate(['/home/admRooms/countries/listaCountries']);
     });
   }
 
