@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 namespace Backend.Models
 {
     //Crear la base de datos
-    public class AplicationDbContext : IdentityDbContext
+    public class AplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public AplicationDbContext(DbContextOptions<AplicationDbContext> options): base(options) 
         { 
@@ -16,7 +16,7 @@ namespace Backend.Models
         public DbSet<City> City { get; set; }
         public DbSet<Office> Office { get; set; }
         public DbSet<MeetingRoom> MeetingRoom { get; set; }
-        public DbSet<UserAcme> UserAcme { get; set; }
+        public DbSet<AppUsers> User { get; set; }
         public DbSet<Reserve> Reserve { get; set; }
 
 
@@ -52,11 +52,11 @@ namespace Backend.Models
               .WithMany()
               .HasForeignKey(c => c.MeetingRoomId);
 
-            modelBuilder.Entity<UserAcme>()
-                .HasKey(u => u.UserId);
+            modelBuilder.Entity<AppUsers>()
+                .HasKey(u => u.Id);
 
             modelBuilder.Entity<Reserve>()
-              .HasOne<UserAcme>()
+              .HasOne<AppUsers>()
               .WithMany()
               .HasForeignKey(c => c.UserId);
 

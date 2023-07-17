@@ -7,24 +7,24 @@ namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserAcmeController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly AplicationDbContext _context;
 
-        public UserAcmeController(AplicationDbContext context)
+        public UsersController(AplicationDbContext context)
         {
             this._context = context;
         }
 
-        //Enviar la lista de UserAcme
+        //Enviar la lista de Users
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             try
             {
                 Thread.Sleep(500);
-                var listaUserAcme = await _context.UserAcme.ToListAsync();
-                return Ok(listaUserAcme);
+                var listaUsers = await _context.Users.ToListAsync();
+                return Ok(listaUsers);
             }
             catch (Exception ex)
             {
@@ -32,18 +32,18 @@ namespace Backend.Controllers
             }
         }
 
-        //Retornar la oficina con la id que ha pasado
+        //Retornar el usuario con la id que se ha pasado
         [HttpGet("{userId}")]
-        public async Task<IActionResult> Get(int userId)
+        public async Task<IActionResult> Get(string userId)
         {
             try
             {
-                var userAcme = await _context.UserAcme.FindAsync(userId);
-                if (userAcme == null)
+                var user = await _context.Users.FindAsync(userId);
+                if (user == null)
                 {
                     return NotFound();
                 }
-                return Ok(userAcme);
+                return Ok(user);
             }
             catch (Exception e)
             {
@@ -51,19 +51,19 @@ namespace Backend.Controllers
             }
         }
 
-        // Eliminar oficina con la id pasada 
+        // Eliminar usuario con la id pasada 
         [HttpDelete("{userId}")]
-        public async Task<IActionResult> Delete(int userId)
+        public async Task<IActionResult> Delete(string userId)
         {
             try
             {
-                var userAcme = await _context.UserAcme.FindAsync(userId);
-                if (userAcme == null)
+                var user = await _context.Users.FindAsync(userId);
+                if (user == null)
                 {
                     return NotFound();
                 }
 
-                _context.UserAcme.Remove(userAcme);
+                _context.Users.Remove(user);
                 await _context.SaveChangesAsync();
 
                 return NoContent();
@@ -75,42 +75,42 @@ namespace Backend.Controllers
             }
         }
 
-        //Añadir nuevo país
-        [HttpPost]
-        public async Task<IActionResult> Post(UserAcme userAcme)
+        //Añadir nuevo usuario
+/*        [HttpPost]
+        public async Task<IActionResult> Post(AppUsers user)
         {
             try
             {
-                _context.Add(userAcme);
+                _context.Add(user);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction("Get", new { UserId = userAcme.UserId }, userAcme);
+                return CreatedAtAction("Get", new { Id = user.Id }, user);
             }
             catch (Exception e)
             {
 
                 return BadRequest(e.Message);
             }
-        }
+        }*/
 
         [HttpPut("{userId}")]
-        public async Task<IActionResult> Put(int userId, UserAcme userAcme)
+        public async Task<IActionResult> Put(string userId, AppUsers user)
         {
             try
             {
-                if (userId != userAcme.UserId)
+                if (userId != user.Id)
                 {
                     return BadRequest();
                 }
 
-                var userAcmeItem = await _context.UserAcme.FindAsync(userId);
+                var userItem = await _context.Users.FindAsync(userId);
 
-                if (userAcmeItem == null)
+                if (userItem == null)
                 {
                     return NotFound();
                 }
 
-                userAcmeItem.UserName = userAcme.UserName;
+                userItem.UserName = user.UserName;
 
                 await _context.SaveChangesAsync();
 

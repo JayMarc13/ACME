@@ -5,7 +5,7 @@ using System.Data;
 
 namespace Backend.Models
 {
-    public class Users
+    public class AppUsers
     {
  
         public string Id { get; set; }
