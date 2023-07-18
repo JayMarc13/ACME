@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
   <div class="wrapper fadeInDown">
     <div id="formContent">
@@ -37,3 +38,50 @@
     </div>
   </div>
 </div>
+=======
+
+<div class="container">
+    <h1 class="title">Welcome to ACMEET</h1>
+    <p class="eslogan">Booking has never been easier</p>
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <!-- Tabs Titles -->
+        <h2 class="active"> Register </h2>
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+          <i class="fa-regular fa-user"></i>
+        </div>
+
+        <!-- Register Form -->
+        <form [formGroup]="formm" (ngSubmit)="submitForm()">
+          <input formControlName="user" [class.is-invalid]="f.user.errors && f.user.touched" type="text" id="register" class="fadeIn second" name="register" placeholder="User name">
+          <div id="validationServer04Feedback" class="invalid-feedback">
+            Mandatory User Name
+          </div>
+          <input formControlName="email" [class.is-invalid]="f.email.errors && f.email.touched" type="email" id="register" class="fadeIn second" name="register" placeholder="Email">
+          <div id="validationServer04Feedback" class="invalid-feedback">
+            Mandatory Email
+          </div>
+          <div class="col-auto">
+            <label for="inputPassword2" class="visually-hidden">Password</label>
+            <input formControlName="password" [class.is-invalid]="f.password.errors && f.password.touched" name="register" id="password" type="password" class="fadeIn third" placeholder="Password">
+            <div id="validationServer04Feedback" class="invalid-feedback">
+              Mandatory Password
+            </div>
+          </div>
+          <br>
+          <input type="submit" class="fadeIn fourth" value="Sign up">
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+          <a routerLink="/login" class="underlineHover">You have already account?</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+>>>>>>> 26477ff5288675df414f2ec8a0a3783fd12ad510

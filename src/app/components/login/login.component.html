@@ -12,16 +12,41 @@
         <!-- Tabs Titles -->
         <h2 class="active"> Sign In </h2>
 
+<<<<<<< HEAD
         <!-- Icon -->
         <div class="fadeIn first">
           <i class="fa-regular fa-user"></i>
+=======
+<div class="container">
+  <h1 class="title">Welcome to ACMEET</h1>
+  <p class="eslogan">Booking has never been easier</p>
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 class="active"> Sign In </h2>
+
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <i class="fa-regular fa-user"></i>
+      </div>
+
+      <!-- Login Form -->
+      <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <input formControlName="user" [class.is-invalid]="f.user.errors && f.user.touched" type="text" id="login" class="fadeIn second" name="login" placeholder="User Name or Email">
+        <div id="validationServer04Feedback" class="invalid-feedback">
+          Mandatory User Name or Email
+>>>>>>> 26477ff5288675df414f2ec8a0a3783fd12ad510
         </div>
 
         <!-- Login Form -->
         <form [formGroup]="form" (ngSubmit)="submitForm()">
           <input formControlName="user" [class.is-invalid]="f.user.errors && f.user.touched" type="text" id="login" class="fadeIn second" name="login" placeholder="User">
           <div id="validationServer04Feedback" class="invalid-feedback">
+<<<<<<< HEAD
             Mandatory User
+=======
+            Mandatory Password
+>>>>>>> 26477ff5288675df414f2ec8a0a3783fd12ad510
           </div>
           <div class="col-auto">
             <label for="inputPassword2" class="visually-hidden">Password</label>
@@ -34,6 +59,7 @@
           <button type="submit" class="btn btn-primary custom-button custom-outline fadeIn fourth">Log In</button>
         </form>
         <br />
+<<<<<<< HEAD
         <!-- Remind Passowrd -->
         <div id="formFooter">
           <a class="underlineHover" routerLink="/forgotPassword">Forgot Password ?</a>
@@ -41,6 +67,9 @@
           <!-- Register -->
           <a class="underlineHover" routerLink="/register">Register</a>
         </div>
+=======
+        <a routerLink="/register" class="underlineHover">You don't have account?</a>
+>>>>>>> 26477ff5288675df414f2ec8a0a3783fd12ad510
       </div>
     </div>
   </div>

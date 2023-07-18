@@ -13,7 +13,10 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit{
+<<<<<<< HEAD
   eslogan: string = "Booking has never been easier";
+=======
+>>>>>>> 26477ff5288675df414f2ec8a0a3783fd12ad510
   formm: FormGroup;
     token: tokenUser | undefined;
  /* token?: tokenUser;*/
