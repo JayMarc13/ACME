@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,19 +10,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 
 //Modulos Angular Material
-import { SharedModule } from './shared/shared.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     AppRoutingModule,
     NgbModule,
     BrowserAnimationsModule,
-    SharedModule
-    
+    SharedModule,
+    FontAwesomeModule    
 
   ],
   providers: [],

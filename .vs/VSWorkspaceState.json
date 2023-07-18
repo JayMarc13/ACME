@@ -1,7 +1,15 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\components",
+    "\\src\\app\\components\\login",
+    "\\src\\app\\components\\register",
+    "\\src\\app\\pages",
+    "\\src\\app\\pages\\adm-rooms",
+    "\\src\\app\\pages\\adm-rooms\\offices"
   ],
-  "SelectedNode": "\\src",
+  "SelectedNode": "\\src\\app\\components\\register\\register.component.html",
   "PreviewInSolutionExplorer": false
 }

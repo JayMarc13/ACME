@@ -1,41 +1,48 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-sDdDp2JgknRzZvtpFwJW1dozYp1tR/XK6BYBaUc/dk4QPFsIXCx1ehxFf7AvyZ3B1MK8c5Q4dA6ZbsZAWTMeWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Welcome to ACMEET</h1>
+    <div class="eslogan">
+      <span>{{ eslogan }}</span>
+    </div>
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <!-- Tabs Titles -->
+        <h2 class="active"> Sign In </h2>
 
-<div class="container">
-  <h1 class="title">Welcome to ACMEET</h1>
-  <p class="eslogan">Booking has never been easier</p>
-  <div class="wrapper fadeInDown">
-    <div id="formContent">
-      <!-- Tabs Titles -->
-      <h2 class="active"> Sign In </h2>
-
-      <!-- Icon -->
-      <div class="fadeIn first">
-        <i class="fa-regular fa-user"></i>
-      </div>
-
-      <!-- Login Form -->
-      <form [formGroup]="form" (ngSubmit)="submitForm()">
-        <input formControlName="user" [class.is-invalid]="f.user.errors && f.user.touched" type="text" id="login" class="fadeIn second" name="login" placeholder="User">
-        <div id="validationServer04Feedback" class="invalid-feedback">
-          Mandatory user
+        <!-- Icon -->
+        <div class="fadeIn first">
+          <i class="fa-regular fa-user"></i>
         </div>
-        <div class="col-auto">
-          <label for="inputPassword2" class="visually-hidden">Password</label>
-          <input formControlName="password" [class.is-invalid]="f.password.errors && f.password.touched" name="login" id="password" type="password" class="fadeIn third" placeholder="Password">
+
+        <!-- Login Form -->
+        <form [formGroup]="form" (ngSubmit)="submitForm()">
+          <input formControlName="user" [class.is-invalid]="f.user.errors && f.user.touched" type="text" id="login" class="fadeIn second" name="login" placeholder="User">
           <div id="validationServer04Feedback" class="invalid-feedback">
-            Mandatory password
+            Mandatory user
           </div>
-        </div>
-        <input type="submit" class="fadeIn fourth" value="Log In">
-      </form>
-      <!-- Remind Passowrd -->
-      <div id="formFooter">
-
-        <a class="underlineHover" routerLink="/forgotPassword">Forgot Password?</a>
+          <div class="col-auto">
+            <label for="inputPassword2" class="visually-hidden">Password</label>
+            <input formControlName="password" [class.is-invalid]="f.password.errors && f.password.touched" name="login" id="password" type="password" class="fadeIn third" placeholder="Password">
+            <div id="validationServer04Feedback" class="invalid-feedback">
+              Mandatory password
+            </div>
+          </div>
+          <br />
+          <button type="submit" class="btn btn-primary custom-button custom-outline fadeIn fourth">Log In</button>
+        </form>
         <br />
-        <a routerLink="/register" class="link-primary">register</a>
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+          <a class="underlineHover" routerLink="/forgotPassword">Forgot Password ?</a>
+          <br />
+          <!-- Register -->
+          <a class="underlineHover" routerLink="/register">Register</a>
+        </div>
       </div>
-
     </div>
   </div>
-</div>
 
+</body>
