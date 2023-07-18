@@ -21,13 +21,13 @@
         <form [formGroup]="form" (ngSubmit)="submitForm()">
           <input formControlName="user" [class.is-invalid]="f.user.errors && f.user.touched" type="text" id="login" class="fadeIn second" name="login" placeholder="User">
           <div id="validationServer04Feedback" class="invalid-feedback">
-            Mandatory user
+            Mandatory User
           </div>
           <div class="col-auto">
             <label for="inputPassword2" class="visually-hidden">Password</label>
             <input formControlName="password" [class.is-invalid]="f.password.errors && f.password.touched" name="login" id="password" type="password" class="fadeIn third" placeholder="Password">
             <div id="validationServer04Feedback" class="invalid-feedback">
-              Mandatory password
+              Mandatory Password
             </div>
           </div>
           <br />
