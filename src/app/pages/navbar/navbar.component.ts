@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  @ViewChild('admnistration') administration!: MatMenuTrigger;
 
+  openMenu() {
+    this.administration.openMenu();
+  }
 }

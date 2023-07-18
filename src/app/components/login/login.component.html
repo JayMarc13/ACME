@@ -5,52 +5,30 @@
   <div class="container">
     <h1 class="title">Welcome to ACMEET</h1>
     <div class="eslogan">
-      <span>{{ eslogan }}</span>
+      <p class="eslogan">Booking has never been easier</p>
     </div>
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <!-- Tabs Titles -->
         <h2 class="active"> Sign In </h2>
 
-<<<<<<< HEAD
         <!-- Icon -->
         <div class="fadeIn first">
-          <i class="fa-regular fa-user"></i>
-=======
-<div class="container">
-  <h1 class="title">Welcome to ACMEET</h1>
-  <p class="eslogan">Booking has never been easier</p>
-  <div class="wrapper fadeInDown">
-    <div id="formContent">
-      <!-- Tabs Titles -->
-      <h2 class="active"> Sign In </h2>
-
-      <!-- Icon -->
-      <div class="fadeIn first">
-        <i class="fa-regular fa-user"></i>
-      </div>
-
-      <!-- Login Form -->
-      <form [formGroup]="form" (ngSubmit)="submitForm()">
-        <input formControlName="user" [class.is-invalid]="f.user.errors && f.user.touched" type="text" id="login" class="fadeIn second" name="login" placeholder="User Name or Email">
-        <div id="validationServer04Feedback" class="invalid-feedback">
-          Mandatory User Name or Email
->>>>>>> 26477ff5288675df414f2ec8a0a3783fd12ad510
+          <i class="far fa-user"></i>
         </div>
 
         <!-- Login Form -->
         <form [formGroup]="form" (ngSubmit)="submitForm()">
-          <input formControlName="user" [class.is-invalid]="f.user.errors && f.user.touched" type="text" id="login" class="fadeIn second" name="login" placeholder="User">
-          <div id="validationServer04Feedback" class="invalid-feedback">
-<<<<<<< HEAD
-            Mandatory User
-=======
-            Mandatory Password
->>>>>>> 26477ff5288675df414f2ec8a0a3783fd12ad510
+          <div class="col-auto">
+            <label for="login" class="visually-hidden">User Name or Email</label>
+            <input formControlName="user" [class.is-invalid]="f.user.errors && f.user.touched" type="text" id="login" class="fadeIn second" name="login" placeholder="User Name or Email">
+            <div id="validationServer04Feedback" class="invalid-feedback">
+              Mandatory User Name or Email
+            </div>
           </div>
           <div class="col-auto">
-            <label for="inputPassword2" class="visually-hidden">Password</label>
-            <input formControlName="password" [class.is-invalid]="f.password.errors && f.password.touched" name="login" id="password" type="password" class="fadeIn third" placeholder="Password">
+            <label for="password" class="visually-hidden">Password</label>
+            <input formControlName="password" [class.is-invalid]="f.password.errors && f.password.touched" id="password" type="password" class="fadeIn third" placeholder="Password">
             <div id="validationServer04Feedback" class="invalid-feedback">
               Mandatory Password
             </div>
@@ -59,19 +37,12 @@
           <button type="submit" class="btn btn-primary custom-button custom-outline fadeIn fourth">Log In</button>
         </form>
         <br />
-<<<<<<< HEAD
-        <!-- Remind Passowrd -->
         <div id="formFooter">
-          <a class="underlineHover" routerLink="/forgotPassword">Forgot Password ?</a>
-          <br />
-          <!-- Register -->
-          <a class="underlineHover" routerLink="/register">Register</a>
+          <a class="underlineHover" routerLink="/forgotPassword">Forgot Password?</a>
+          <br>
+          <a routerLink="/register" class="underlineHover">You don't have an account?</a>
         </div>
-=======
-        <a routerLink="/register" class="underlineHover">You don't have account?</a>
->>>>>>> 26477ff5288675df414f2ec8a0a3783fd12ad510
       </div>
     </div>
   </div>
-
 </body>

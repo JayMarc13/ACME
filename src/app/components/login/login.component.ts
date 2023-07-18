@@ -41,15 +41,9 @@ export class LoginComponent implements OnInit {
     }
 
     const login: Login = {
-<<<<<<< HEAD
-        userName: this.form.value.user,
-        password: this.form.value.password,
-        email: ''
-=======
       userName: this.form.value.user,
       email: this.form.value.user,
       password: this.form.value.password
->>>>>>> 26477ff5288675df414f2ec8a0a3783fd12ad510
     };
 
     this.loginService.userLogin(login).subscribe(
@@ -65,18 +59,7 @@ export class LoginComponent implements OnInit {
         this.error();
         this.form.reset();
       }
-<<<<<<< HEAD
     );
-=======
-      
-      window.location.href = "/home";
-    }, (error: any) => {
-      this.error();
-      this.form.reset();
-    });
-
-
->>>>>>> 26477ff5288675df414f2ec8a0a3783fd12ad510
   }
 
   get f(): any {

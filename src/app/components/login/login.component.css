@@ -2,13 +2,6 @@
 
 /* BASIC */
 
-<<<<<<< HEAD
-html {
-  background-color: #D9D9D9;
-}
-
-=======
->>>>>>> 26477ff5288675df414f2ec8a0a3783fd12ad510
 body {
   font-family: Roboto, sans-serif;
 }
@@ -40,6 +33,13 @@ h2 {
 
 
 /* Recuadro under title y eslogan */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+}
 
 .wrapper {
   display: flex;
@@ -85,15 +85,8 @@ h2.active {
 
 /* FORM TYPOGRAPHY*/
 
-<<<<<<< HEAD
-input[type=button],
-input[type=submit],
-input[type=reset] {
-  background-color: #56baed;
-=======
 input[type=button], input[type=submit], input[type=reset] {
   background-color: #6723d5;
->>>>>>> 26477ff5288675df414f2ec8a0a3783fd12ad510
   border: none;
   color: white;
   padding: 15px 80px;
@@ -114,15 +107,8 @@ input[type=button], input[type=submit], input[type=reset] {
   transition: all 0.3s ease-in-out;
 }
 
-<<<<<<< HEAD
-  input[type=button]:hover,
-  input[type=submit]:hover {
-    background-color: #38E932;
-    text-shadow: 0 0 5px #38E932, 0 0 10px #38E932, 0 0 20px #38E932, 0 0 40px #38E932;
-=======
   input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
     background-color: #2e127a;
->>>>>>> 26477ff5288675df414f2ec8a0a3783fd12ad510
   }
 
   input[type=reset]:hover {
@@ -139,9 +125,6 @@ input[type=button], input[type=submit], input[type=reset] {
     transform: scale(0.95);
   }
 
-<<<<<<< HEAD
-input[type=text],
-=======
 input[type=text] {
   background-color: #f6f6f6;
   border: none;
@@ -172,7 +155,6 @@ input[type=text] {
     color: #cccccc;
   }
 
->>>>>>> 26477ff5288675df414f2ec8a0a3783fd12ad510
 input[type=password] {
   background-color: #f6f6f6;
   border: none;
@@ -322,11 +304,7 @@ input[type=password] {
   bottom: -10px;
   width: 0;
   height: 2px;
-<<<<<<< HEAD
   background-color: #6723d5;
-=======
-  background-color: #5d5b64;
->>>>>>> 26477ff5288675df414f2ec8a0a3783fd12ad510
   content: "";
   transition: width 0.2s;
 }
@@ -393,4 +371,11 @@ h2.active {
     width: 100%;
   }
 }
-
+.custom-button  {
+  background-color:  #bc13fe;
+  height: 50px;
+  width: 180px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border:none;
+}

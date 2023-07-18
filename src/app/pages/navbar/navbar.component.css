@@ -1,15 +1,18 @@
 /* Estilos generales del navbar */
 #nav {
     padding: 10px;
+    width: 89%;
+    margin: auto;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
   
   .navbar-brand {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
-    
+    color: #6723d5;
   }
-  
-  
   /* Estilos de los enlaces del navbar */
   .navbar-nav .nav-item {
     margin-right: 10px;
@@ -27,6 +30,7 @@
   .mat-menu-panel {
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border-bottom-right-radius: 10px;
   }
   
   .mat-menu-item {
@@ -49,10 +53,25 @@
     display: flex;
     align-items: center;
   }
-  .nav-link{
+  .nav-link:hover{
     margin-left: auto;
     color: #000;
+    
   }
   .nav{
     margin-left: auto;
+  }
+
+  .icon-container {
+    text-align: center;
+  }
+  
+  .icon-container mat-icon {
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .icon-container span {
+    display: block;
+    text-align: center;
   }
