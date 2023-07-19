@@ -28,18 +28,11 @@ h2 {
   text-transform: uppercase;
   display: inline-block;
   margin: 40px 8px 10px 8px;
-  color: #cccccc;
+  color: #9b5fe9;
 }
 
 
 /* Recuadro under title y eslogan */
-
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 85vh;
-}
 
 .wrapper {
   display: flex;
@@ -179,7 +172,7 @@ input[type=password] {
   input[type=text]:focus,
   input[type=password]:focus {
     background-color: #fff;
-    border-bottom: 2px solid #bc13fe;
+    border-bottom: 2px solid #9b5fe9;
   }
 
   input[type=text]::placeholder,
