@@ -1,7 +1,8 @@
 /* Estilos generales del navbar */
+
 #nav {
     padding: 10px;
-    width: 89%;
+    width: 95%;
     margin: auto;
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
@@ -62,16 +63,30 @@
     margin-left: auto;
   }
 
-  .icon-container {
-    text-align: center;
+  li > a{
+    font-size: 20px;
+  }
+  li > a.nav-link:hover {
+    background-color: #6723d580;
+    border-radius: 10px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+
+  li > a {
+    border-radius: 10px; 
+    transition: border-radius 0.3s ease-in-out;
   }
   
-  .icon-container mat-icon {
-    display: block;
-    margin: 0 auto;
+  li > a:hover {
+    background-color: #6723d580;
+    color: white;
   }
   
-  .icon-container span {
-    display: block;
-    text-align: center;
+  li > a:hover,
+  li > a:focus {
+    border-radius: 10px; /* Mantener el border-radius al hacer hover o focus */
   }
+  
+  
+
+  
