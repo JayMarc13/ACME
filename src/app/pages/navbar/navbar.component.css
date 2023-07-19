@@ -13,6 +13,7 @@
     font-size: 2rem;
     font-weight: bold;
     color: #6723d5;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   }
   /* Estilos de los enlaces del navbar */
   .navbar-nav .nav-item {
@@ -68,26 +69,11 @@
     font-weight: 550;
   }
   li > a.nav-link:hover {
-    background-color: #eaddff;
+    color:#6723d5;
     border-radius: 10px;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   }
 
-  li > a {
-    border-radius: 10px; 
-    transition: border-radius 0.3s ease-in-out;
-  }
-  
-  li > a:hover {
-    background-color: #8948f1;
-    color: white;
-  }
-  
-  li > a:hover,
-  li > a:focus {
-    border-radius: 10px; /* Mantener el border-radius al hacer hover o focus */
-  }
-  
   
 
   
