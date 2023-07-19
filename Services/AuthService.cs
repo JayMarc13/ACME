@@ -21,6 +21,7 @@ namespace Backend.Services
         //Verificar el usuario no existe
         public async Task<bool> RegisterUser(LoginUser user)
         {
+
             var identityUser = new IdentityUser
             {
                 UserName = user.UserName,
@@ -44,13 +45,14 @@ namespace Backend.Services
             return false; 
         }
 
+
         public string GenerateTokenString(LoginUser user)
         {
             //
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Email, user.UserName),
-                new Claim(ClaimTypes.Role, "User")
+                new Claim(ClaimTypes.Role, "Administrador")
             };
 
             SecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("Jwt:Key").Value));

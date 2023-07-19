@@ -1,8 +1,8 @@
 using Backend.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using Backend.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -17,9 +17,17 @@ builder.Services.AddDbContext<AplicationDbContext>(options =>
 //Configuración del identity
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
-    options.Password.RequiredLength = 5;
+    // Configuración del password
 }).AddEntityFrameworkStores<AplicationDbContext>()
+    .AddRoles<IdentityRole>()
+    .AddRoleManager<RoleManager<IdentityRole>>()
     .AddDefaultTokenProviders();
+
+builder.Services.AddTransient<IAuthService, AuthService>();
+
+builder.Services.AddIdentityCore<IdentityUser>()
+    .AddUserManager<UserManager<IdentityUser>>();
+
 
 //Configuración del token
 builder.Services.AddAuthentication(options =>
@@ -28,7 +36,7 @@ builder.Services.AddAuthentication(options =>
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(options =>
 {
-    options.TokenValidationParameters = new TokenValidationParameters()
+     options.TokenValidationParameters = new TokenValidationParameters()
     {
         ValidateActor = true,
         ValidateIssuer = true,
@@ -40,8 +48,6 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("Jwt:Key").Value))
     };
 });
-
-builder.Services.AddTransient<IAuthService, AuthService>();
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -57,7 +63,6 @@ builder.Services.AddCors(options => options.AddPolicy("AllowWebapp",
 
 var app = builder.Build();
 
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -69,9 +74,36 @@ app.UseCors("AllowWebapp");
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
-app.Run();
+    var Name = "Administrador";
+    // comprueba si existe
+    if (!await roleManager.RoleExistsAsync(Name))
+    {
+        var role = new IdentityRole(Name);
+        await roleManager.CreateAsync(role);
+    }
+
+    //correo de administrador super adm
+    var usuario = await userManager.FindByNameAsync("sdfsdf");
+
+
+    if (usuario != null)
+    {
+       var isInRole = await userManager.IsInRoleAsync(usuario, Name);
+
+       if (!isInRole)
+       {
+          await userManager.AddToRoleAsync(usuario, Name);
+       }
+    }
+}
+
+    app.Run();
