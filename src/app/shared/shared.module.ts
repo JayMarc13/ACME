@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './spinner/spinner.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule,
-    NgbModule
+    NgbModule,
+    MatTabsModule
   ],
   exports: [
     SpinnerComponent,
@@ -68,7 +70,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule,
-    NgbModule
+    NgbModule,
+    MatTabsModule
   ]
 })
 export class SharedModule { }
