@@ -1,12 +1,11 @@
 
-<div class="title">
+<div class="containerTabla">
     <h1>List Users</h1>
-  </div>
   
   <app-spinner *ngIf="loading"></app-spinner>
   <br />
   
-  <div class="container mat-elevation-z8">
+  <div class="container">
   
     <mat-form-field>
       <mat-label>Filter</mat-label>
@@ -39,7 +38,7 @@
               <!-- ¿ESTA RUTA ESTA BIEN?-->
           <mat-icon routerLink="/home/users/editUser{{ element.Username }}" class="edit" matTooltip="Editar" fontIcon="edit"></mat-icon>
           <mat-icon fontIcon=""></mat-icon>
-          <mat-icon (click)="deleteuser(element.Username)" class="delete" matTooltip="Eliminar" fontIcon="delete"></mat-icon>
+          <mat-icon (click)="deleteuser(element.id)" class="delete" matTooltip="Eliminar" fontIcon="delete"></mat-icon>
         </td>
       </ng-container>
   
@@ -55,8 +54,5 @@
                    showFirstLastButtons
                    aria-label="Select page of periodic elements">
     </mat-paginator>
-  
-  
-  
-  
   </div>
+</div>

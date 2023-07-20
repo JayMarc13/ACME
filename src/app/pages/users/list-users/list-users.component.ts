@@ -12,7 +12,7 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./list-users.component.css']
 })
 export class ListUsersComponent {
-  displayedColumns: string[] = ['userName', 'email'];
+  displayedColumns: string[] = ['userName', 'email','Acciones'];
   dataSource = new MatTableDataSource<users>();
   loading: boolean = false;
 
