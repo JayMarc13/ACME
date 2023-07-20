@@ -9,15 +9,20 @@ import { ProfileService } from 'src/app/services/profile.service';
 export class ProfileComponent implements OnInit {
   user: string | undefined;
   email: string | undefined;
-
+  localUser: string="";
   constructor(private profileService: ProfileService) {}
 
   ngOnInit() {
-    this.profileService.getUserProfile().subscribe(
+    const nombreEmail = localStorage.getItem('user');
+    if(nombreEmail != null){
+      this.localUser = nombreEmail;
+    }
+
+    this.profileService.getUserProfile(this.localUser).subscribe(
       (profileData) => {
         // Aquí obtienes los detalles del perfil del usuario y los asignas a las propiedades user y email.
-        this.user = profileData.name;
-        this.email = profileData.mail;
+        this.user = profileData.userName;
+        this.email = profileData.email;
       },
       (error) => {
         console.error('Error al obtener el perfil:', error);
