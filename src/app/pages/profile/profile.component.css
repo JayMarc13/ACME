@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10%;
+}
+
+.user-img {
+  width: 20%;
+  padding: 10px;
+  justify-content: center;
+}
+
+.img {
+  display: block;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid gray;
+}
+
+.user-info {
+  margin-left: 20px;
+  text-align: left;
+  flex: 1; /* Hacemos que ocupe todo el espacio disponible */
+}
+
+.user-info .text {
+  padding: 2%;
+}
+
+.button-container {
+  display: flex; /* Utilizamos flexbox para alinear el botón al centro verticalmente */
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.button {
+  background-color: gray;
+  width: 50%;
+}
+
+.button:hover {
+  background-color: white;
+  color: gray; /* Cambiamos el color del texto al hacer hover en el botón */
+}
+
+
