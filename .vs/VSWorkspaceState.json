@@ -3,22 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-<<<<<<< HEAD
     "\\src\\app\\components",
-    "\\src\\app\\components\\login",
-    "\\src\\app\\components\\register",
+    "\\src\\app\\components\\forgot-password",
     "\\src\\app\\pages",
     "\\src\\app\\pages\\adm-rooms",
-    "\\src\\app\\pages\\adm-rooms\\offices"
+    "\\src\\app\\pages\\adm-rooms\\offices",
+    "\\src\\app\\pages\\adm-rooms\\offices\\lista-office",
+    "\\src\\app\\pages\\navbar"
   ],
-  "SelectedNode": "\\src\\app\\components\\register\\register.component.html",
-=======
-    "\\src\\app\\pages",
-    "\\src\\app\\pages\\adm-rooms",
-    "\\src\\app\\pages\\adm-rooms\\countries\\agregar-editar-country",
-    "\\src\\app\\pages\\users"
-  ],
-  "SelectedNode": "\\src\\app\\pages\\adm-rooms",
->>>>>>> 26477ff5288675df414f2ec8a0a3783fd12ad510
+  "SelectedNode": "\\angular.json",
   "PreviewInSolutionExplorer": false
 }
