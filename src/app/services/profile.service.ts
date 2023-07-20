@@ -13,10 +13,10 @@ export class ProfileService {
 
   constructor(private http: HttpClient) {}
 
-  getUserProfile(): Observable<profile> {
+  getUserProfile(user: string): Observable<profile> {
     // Aquí realizar la solicitud HTTP para obtener los detalles del perfil del usuario.
     // Asumiendo que la respuesta contiene un objeto con campos "user" y "email".
-    return this.http.get<profile>(this.myAppUrl + this.myApiUrl);
+    return this.http.get<profile>(this.myAppUrl + this.myApiUrl+user);
   }
 }
 

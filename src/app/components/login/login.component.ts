@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
         this.form.reset();
       }
     );
+      localStorage.setItem('user', this.form.value.user);
   }
 
   get f(): any {
