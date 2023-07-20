@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Data.Entity;
 
 namespace Backend.Controllers
 {
@@ -24,7 +23,7 @@ namespace Backend.Controllers
             try
             {
                 Thread.Sleep(500);
-                var listaOffice = _context.Office.ToList();
+                var listaOffice = await _context.Office.ToListAsync();
                 return Ok(listaOffice);
             }
             catch (Exception ex)
@@ -32,7 +31,32 @@ namespace Backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        [HttpGet ("OfficesWithCity")]
+        public async Task<IActionResult> OfficeswithCity()
+        {
+            try
+            {
+                Thread.Sleep(500);
+                var listaOffice = await _context.Office.
+                    Join(
+                    _context.City,
+                    Office => Office.CityId,
+                    City => City.CityId,
+                    (Office , City ) => new
+                    { 
+                        OfficeId = Office.OfficeId,
+                        NameOffice = Office.NameOffice,
+                        CityId = City.CityId,
+                        CityName = City.CityName
+                    }
+                    ).ToListAsync();
+                return Ok(listaOffice);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         //Retornar la oficina con la id que ha pasado
         [HttpGet("{officeId}")]
         public async Task<IActionResult> Get(int officeId)

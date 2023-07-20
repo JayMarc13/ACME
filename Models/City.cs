@@ -9,5 +9,6 @@ namespace Backend.Models
         
         //Foreign Key
         public int CountryId { get; set; }
+
     }
 }

@@ -3,15 +3,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Data.Entity;
-
-
 
 namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-   /* [Authorize] *///<-- Verificar el token 
+    /*[Authorize] //<-*//*- Verificar el token */
     public class CityController : ControllerBase
     {
         private readonly AplicationDbContext _context;
@@ -28,7 +25,7 @@ namespace Backend.Controllers
             try
             {
                 Thread.Sleep(500);
-                var listaCities = _context.City.ToList();
+                var listaCities = await _context.City.ToListAsync();
                 return Ok(listaCities);
             }
             catch (Exception ex)
@@ -56,6 +53,69 @@ namespace Backend.Controllers
             }
         }
 
+        [HttpGet ("CitiesWithCountries")]
+        public async Task<IActionResult> GetCitiesWithCountries()
+        {
+            try
+            {
+                var listaCities = await _context.City.
+                    Join(
+                        _context.Country,
+                        city => city.CountryId,
+                        Country => Country.CountryId,
+                        (City, Country) => new 
+                        {
+                            CityId = City.CityId,
+                            CityName = City.CityName,
+                            CountryId = City.CountryId,
+                            CountryName = Country.CountryName
+                        }
+                    ). ToListAsync();
+
+                return Ok(listaCities);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("byCountryName/{countryName}")]
+        public async Task<IActionResult> ListCitiesWithCountryName(string countryName)
+        {
+            try
+            {
+                var listCityByCountry = await _context.City
+                .Join(
+                    _context.Country,
+                    city => city.CountryId,
+                    country => country.CountryId,
+                    (city, country) => new
+                    {
+                        City = city,
+                        Country = country
+                    }
+                )
+                .Where(item => item.Country.CountryName == countryName)
+                .Select(item => new
+                {
+                    CityName = item.City.CityName
+                })
+                .ToListAsync();
+
+
+                if (listCityByCountry == null)
+                {
+                    return NotFound();
+                }
+                return Ok(listCityByCountry);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         // Eliminar el ciudad con la id pasada 
         [HttpDelete("{cityId}")]
         public async Task<IActionResult> Delete(int cityId)
@@ -69,6 +129,29 @@ namespace Backend.Controllers
                 }
 
                 _context.City.Remove(city);
+                await _context.SaveChangesAsync();
+
+                return NoContent();
+
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete("byCityName/{cityName}")]
+        public async Task<IActionResult> RemoveByCityName(string cityName)
+        {
+            try
+            {
+                City cityToDelete = _context.City.FirstOrDefault(c => c.CityName == cityName);
+                if (cityToDelete == null)
+                {
+                    return NotFound();
+                }
+
+                 _context.City.Remove(cityToDelete);
                 await _context.SaveChangesAsync();
 
                 return NoContent();
@@ -115,6 +198,30 @@ namespace Backend.Controllers
                 }
 
                 cityItem.CityName = city.CityName;
+
+                await _context.SaveChangesAsync();
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("UpdateByCityname/{cityName}")]
+        public async Task<IActionResult> UpdateByCityName(string cityName, City city)
+        {
+            try
+            {
+                var cityToUpdate = _context.City.FirstOrDefault(c => c.CityName == cityName);
+
+                if (cityToUpdate == null)
+                {
+                    return NotFound();
+                }
+
+                cityToUpdate.CityName = city.CityName;
 
                 await _context.SaveChangesAsync();
 

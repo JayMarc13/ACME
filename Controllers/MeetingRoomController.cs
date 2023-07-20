@@ -31,7 +31,32 @@ namespace Backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet ("RoomsWithOffices")]
+        public async Task<IActionResult> GetMeetingRoomsWithOffices()
+        {
+            try
+            {
+                var listaMeetingRoom = await _context.MeetingRoom.
+                    Join(
+                    _context.Office,
+                    MeetingRoom => MeetingRoom.OfficeId,
+                    Office => Office.OfficeId,
+                    (MeetingRoom, Office) => new
+                    { 
+                        MeetingRoomId = MeetingRoom.MeetingRoomId,
+                        MeetingRoomName = MeetingRoom.MeetingRoomName,
+                        OfficeId = MeetingRoom.OfficeId,
+                        NameOffice = Office.NameOffice
+                    }
+                ).ToListAsync();
 
+                return Ok(listaMeetingRoom);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         //Retornar la oficina con la id que ha pasado
         [HttpGet("{meetingRoomId}")]
         public async Task<IActionResult> Get(int meetingRoomId)
@@ -121,6 +146,7 @@ namespace Backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpGet("office/{officeId}")]
         public async Task<IActionResult> GetRoomsByOffice(int officeId)
         {
