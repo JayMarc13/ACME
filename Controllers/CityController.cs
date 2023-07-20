@@ -3,12 +3,15 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
+
+
 
 namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize] //<-- Verificar el token 
+   /* [Authorize] *///<-- Verificar el token 
     public class CityController : ControllerBase
     {
         private readonly AplicationDbContext _context;
@@ -25,7 +28,7 @@ namespace Backend.Controllers
             try
             {
                 Thread.Sleep(500);
-                var listaCities = await _context.City.ToListAsync();
+                var listaCities = _context.City.ToList();
                 return Ok(listaCities);
             }
             catch (Exception ex)
@@ -116,6 +119,25 @@ namespace Backend.Controllers
                 await _context.SaveChangesAsync();
 
                 return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("country/{countryId}")]
+        public async Task<IActionResult> GetCitiesByCountry(int countryId)
+        {
+            try
+            {
+                var cities = _context.City.Where(c => c.CountryId == countryId).ToList();
+
+                if (cities.Count == 0)
+                {
+                    return NotFound();
+                }
+
+                return Ok(cities);
             }
             catch (Exception ex)
             {

@@ -5227,19 +5227,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\veronica.cartagena\\.nuget\\packages\\": {}
+    "C:\\Users\\mustapha.bouleili\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Backend.csproj",
+      "projectUniqueName": "C:\\Users\\mustapha.bouleili\\Documents\\Projectes\\ACME\\ACME\\Backend.csproj",
       "projectName": "Backend",
-      "projectPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Backend.csproj",
-      "packagesPath": "C:\\Users\\veronica.cartagena\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\obj\\",
+      "projectPath": "C:\\Users\\mustapha.bouleili\\Documents\\Projectes\\ACME\\ACME\\Backend.csproj",
+      "packagesPath": "C:\\Users\\mustapha.bouleili\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mustapha.bouleili\\Documents\\Projectes\\ACME\\ACME\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\veronica.cartagena\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mustapha.bouleili\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
 
 namespace Backend.Controllers
 {
@@ -23,7 +24,7 @@ namespace Backend.Controllers
             try
             {
                 Thread.Sleep(500);
-                var listaOffice = await _context.Office.ToListAsync();
+                var listaOffice = _context.Office.ToList();
                 return Ok(listaOffice);
             }
             catch (Exception ex)
@@ -115,6 +116,25 @@ namespace Backend.Controllers
                 await _context.SaveChangesAsync();
 
                 return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("city/{cityId}")]
+        public async Task<IActionResult> GetOfficesByCity(int cityId)
+        {
+            try
+            {
+                var offices = _context.Office.Where(o => o.CityId == cityId).ToList();
+
+                if (offices.Count == 0)
+                {
+                    return NotFound();
+                }
+
+                return Ok(offices);
             }
             catch (Exception ex)
             {

@@ -121,6 +121,25 @@ namespace Backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("office/{officeId}")]
+        public async Task<IActionResult> GetRoomsByOffice(int officeId)
+        {
+            try
+            {
+                var meeting = await _context.MeetingRoom.Where(m => m.OfficeId == officeId).ToListAsync();
+
+                if (meeting.Count == 0)
+                {
+                    return NotFound();
+                }
+
+                return Ok(meeting);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
     }
 }
