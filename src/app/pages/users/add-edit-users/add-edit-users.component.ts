@@ -1,90 +1,73 @@
-import { Component } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { users } from 'src/app/interfaces/users';
 import { UsersService } from 'src/app/services/users.service';
+
 @Component({
-  selector: 'app-add-edit-users',
+  selector: 'app-login',
   templateUrl: './add-edit-users.component.html',
   styleUrls: ['./add-edit-users.component.css']
 })
-export class AddEditUsersComponent {
-  loading: boolean = false;
-  form: FormGroup
-  userName: string ;
-  Operacion: string = 'Add';
-
-
- constructor(private _usersService: UsersService,
-    private fb: FormBuilder,
-    private _snackBar: MatSnackBar,
-    private router: Router,
-    private aRoute: ActivatedRoute) {
-    this.form = this.fb.group({
-      userName: ['', Validators.required], ////Campo requerido
+export class AddEditUsersComponent implements OnInit {
+  formm: FormGroup;
+  constructor(private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar, private _UsersService: UsersService) {
+    this.formm = this.fb.group({
+      user: ['', [Validators.required]],
+      email: ['', [ Validators.email]],
+      password: ['', [Validators.required]]
     })
-
-    this.userName = String(this.aRoute.snapshot.paramMap.get('userName'));
   }
+
+
 
   ngOnInit(): void {
-    if (this.userName != ' ') {
-      this.Operacion = 'Editar';
-      this.obtainUser(this.userName);
+  }
+
+  public submitForm() {
+    if (this.formm.invalid) {
+      Object.values(this.formm.controls).forEach(control => {
+        control.markAllAsTouched();
+      });
+      return;
     }
+
+    const user: users = {
+      userName: this.formm.value.user,
+      email: this.formm.value.email,
+      password: this.formm.value.password
+    };
+
+    console.log(user);
+
+    this._UsersService.adduser(user)
+      .subscribe(
+        () => {
+        },
+        (error: HttpErrorResponse) => {
+          if (error.status === 400) {
+            alert("Los parametros introducidos tienen un error")
+          } else {
+            window.location.href = '/addUser';  
+          }
+        }  
+      );
+
+
   }
 
 
-  obtainUser(userName:string){
-    this.loading = true;
-    this._usersService.getuser(this.userName).subscribe(data => {
-      this.form.setValue({
-        useruseruserName: data.userName,
-      })
-      this.loading = false;
-    });
+  public get f(): any {
+    return this.formm.controls;
   }
 
-
-
-  //Metodos
-  addedituser() {
-    //Definir el objeto
-    const users: users = {
-      userName: this.form.value.userName,
-      email: this.form.value.email,
-    }
-
-    if (this.userName != ' ') {
-      users.userName = this.userName;
-      this.edituser(this.userName, users);
-    } else {
-      this.adduser(users);
-    }
-  }
-
-  edituser(userName: string, users: users) {
-    this.loading = true;
-    this._usersService.adduser(users).subscribe(data => {
-      this.loading = false;
-      this.mensajeExito('actualizada');
-      this.router.navigate(['/home/admRooms/cities/listauser']);
+  error() {
+    this.snackBar.open('The account or password is wrong', '', {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
     })
-  }
-
-  adduser(users: users) {
-    //Enivar el objeto al backend
-    this._usersService.adduser(users).subscribe(data => {
-      this.mensajeExito('registrado');
-      this.router.navigate(['/home/admRooms/users/list-users/listusers']);
-    });
-  }
-
-  mensajeExito(texto: string) {
-    this._snackBar.open(`El usuario fue ${texto} con éxito`, '', {
-      duration: 4000,
-      horizontalPosition: 'right'
-    });
   }
 }
