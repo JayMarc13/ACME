@@ -5261,19 +5261,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\veronica.cartagena\\.nuget\\packages\\": {}
+    "C:\\Users\\jay.paragas.ext\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Backend.csproj",
+      "projectUniqueName": "C:\\Users\\jay.paragas.ext\\Desktop\\BackendHoy\\ACME\\Backend.csproj",
       "projectName": "Backend",
-      "projectPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Backend.csproj",
-      "packagesPath": "C:\\Users\\veronica.cartagena\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\obj\\",
+      "projectPath": "C:\\Users\\jay.paragas.ext\\Desktop\\BackendHoy\\ACME\\Backend.csproj",
+      "packagesPath": "C:\\Users\\jay.paragas.ext\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jay.paragas.ext\\Desktop\\BackendHoy\\ACME\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\veronica.cartagena\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jay.paragas.ext\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5281,7 +5281,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5364,7 +5364,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
