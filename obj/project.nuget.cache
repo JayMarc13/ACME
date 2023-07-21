@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "x1wV1klByLmxupehEAUEJv7l3LUk1jpUPFU6RjF2hnSaTl2nL66fJiIIj/dOzANPiJD/5tzMfeT30v0z9a0Bxg==",
+  "dgSpecHash": "1iGpoJxlSPHBdDNcF84cTqLswjz9Yig8LtSQtyC4sYgfKPXtEv7G/g0XS21/vle70qrS+/Vf1Nl5t02YkwAnmw==",
   "success": true,
   "projectFilePath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Backend.csproj",
   "expectedPackageFiles": [
@@ -25,6 +25,7 @@
     "C:\\Users\\veronica.cartagena\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\veronica.cartagena\\.nuget\\packages\\microsoft.aspnetcore.identity\\2.2.0\\microsoft.aspnetcore.identity.2.2.0.nupkg.sha512",
     "C:\\Users\\veronica.cartagena\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\6.0.16\\microsoft.aspnetcore.identity.entityframeworkcore.6.0.16.nupkg.sha512",
+    "C:\\Users\\veronica.cartagena\\.nuget\\packages\\microsoft.aspnetcore.session\\2.2.0\\microsoft.aspnetcore.session.2.2.0.nupkg.sha512",
     "C:\\Users\\veronica.cartagena\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
     "C:\\Users\\veronica.cartagena\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\veronica.cartagena\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
