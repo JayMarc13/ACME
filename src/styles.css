@@ -10,8 +10,7 @@ body {
   background: linear-gradient(to top,#ADA996,#F2F2F2, #DBDBDB, #EAEAEA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-image: url('assets/img/background.jpg');
   background-size: 100%; /* Tamaño */
-  background-position: center;
-  background-repeat: no-repeat;
+  background-position: fixed;
 }
 
 .containerTabla{
