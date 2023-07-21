@@ -4,13 +4,13 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
-    "\\src\\app\\components\\forgot-password",
+    "\\src\\app\\components\\login",
     "\\src\\app\\pages",
-    "\\src\\app\\pages\\adm-rooms",
-    "\\src\\app\\pages\\adm-rooms\\offices",
-    "\\src\\app\\pages\\adm-rooms\\offices\\lista-office",
+    "\\src\\app\\pages\\dashboard",
+    "\\src\\app\\pages\\footer",
+    "\\src\\app\\pages\\home",
     "\\src\\app\\pages\\navbar"
   ],
-  "SelectedNode": "\\angular.json",
+  "SelectedNode": "\\src\\app\\pages\\home\\home.component.html",
   "PreviewInSolutionExplorer": false
 }
