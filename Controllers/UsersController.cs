@@ -38,9 +38,22 @@ namespace Backend.Controllers
         {
             try
             {
+
                 var user = await _context.Users.FindAsync(userId);
+
                 if (user == null)
                 {
+                    var userByName = await _context.Users.FirstOrDefaultAsync(u => u.UserName == userId);
+                    if (userByName != null)
+                    {
+                        return Ok(userByName);
+                    }
+                    var userByEmail = await _context.Users.FirstOrDefaultAsync(u => u.Email == userId);
+                    if (userByEmail != null)
+                    {
+                        return Ok(userByEmail);
+                    }
+
                     return NotFound();
                 }
                 return Ok(user);
