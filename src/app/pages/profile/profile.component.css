@@ -13,15 +13,14 @@
 
 .img {
   display: block;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   object-fit: cover;
   border: 5px solid gray;
 }
 
 .user-info {
-  margin-left: 20px;
   text-align: left;
   flex: 1; /* Hacemos que ocupe todo el espacio disponible */
 }
@@ -37,12 +36,12 @@
 }
 
 .button {
-  background-color: gray;
-  width: 50%;
+  background-color: #6723d5;
+  width: 100%;
 }
 
 .button:hover {
-  background-color: white;
+  background-color: #8d54ea;
   color: gray; /* Cambiamos el color del texto al hacer hover en el botón */
 }
 
