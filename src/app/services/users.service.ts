@@ -14,6 +14,8 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
+  
+
     //Obtener la lista de Users
   getusers(): Observable<users[]> {
     return this.http.get<users[]>(this.myAppUrl + this.myApiUrl);
@@ -30,12 +32,12 @@ export class UsersService {
     return this.http.delete<void>(this.myAppUrl + this.myApiUrl + userName);
   }
 
-  //Añadir oficinas en la base de datos
+  //Añadir ususario en la base de datos
   adduser(User: users): Observable<users> {
     return this.http.post<users>(this.myAppUrl + this.myApiUrl, User);
   }
 
-  //Editar datos del pais 
+  //Editar datos del u suario 
   updateuser(userName: string, users: users): Observable<void> {
     return this.http.put<void>(this.myAppUrl + this.myApiUrl + userName, users);
   }

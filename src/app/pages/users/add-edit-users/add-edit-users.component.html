@@ -1,41 +1,30 @@
-<div class="title">
-    <h1>{{ Operacion }} Users</h1>
-  </div>
-  <app-spinner *ngIf="loading"></app-spinner>
-  
-  
-    <mat-card-header class="card">
-      <mat-card-title class="subtitle"> Data of Users</mat-card-title>
-      <form [formGroup]="form" (ngSubmit)="addedituser()">
-        <mat-grid-list cols="2" rowHeight="80px">
-          
-          
-            <mat-grid-tile [colspan]="2">
-            <mat-form-field class="input" appearance="outline">
-              <mat-label>User Name</mat-label>
-              <input formControlName="userName" matInput>
-            </mat-form-field>
-          </mat-grid-tile>
-  
-          <mat-grid-tile [colspan]="2">
-            <mat-form-field class="input" appearance="outline">
-              <mat-label>Email</mat-label>
-              <input formControlName="email" matInput>
-            </mat-form-field>
-          </mat-grid-tile>
+<div class="container">
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 class="active"> Add new User </h2>
 
-
-         <!--    <mat-grid-tile [colspan]="2">
-            <mat-form-field class="input" appearance="outline">
-              <mat-label>Password</mat-label>
-              <input formControlName="password" matInput>
-            </mat-form-field>
-          </mat-grid-tile> -->
-  
-          <mat-grid-tile [colspan]="2">
-            <button [disabled]="form.invalid" type="submit" class="btnAceptar" mat-raised-button color="primary">Aceptar</button>
-          <button mat-raised-button routerLink="/home/users/listUser">Volver</button>
-          </mat-grid-tile>
-        </mat-grid-list>
+      <!-- Register Form -->
+      <form [formGroup]="formm" (ngSubmit)="submitForm()">
+        <input formControlName="user" [class.is-invalid]="f.user.errors && f.user.touched" type="text" id="register" class="fadeIn second" name="register" placeholder="User name">
+        <div id="validationServer04Feedback" class="invalid-feedback">
+          Mandatory User Name
+        </div>
+        <input formControlName="email" [class.is-invalid]="f.email.errors && f.email.touched" type="email" id="register" class="fadeIn second" name="register" placeholder="Email">
+        <div id="validationServer04Feedback" class="invalid-feedback">
+          Mandatory Email
+        </div>
+        <div class="col-auto">
+          <label for="inputPassword2" class="visually-hidden">Password</label>
+          <input formControlName="password" [class.is-invalid]="f.password.errors && f.password.touched" name="register" id="password" type="password" class="fadeIn third" placeholder="Password">
+          <div id="validationServer04Feedback" class="invalid-feedback">
+            Mandatory Password
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary custom-button custom-outline fadeIn fourth">Submit</button>
       </form>
-    </mat-card-header>
+
+    </div>
+  </div>
+</div>
+

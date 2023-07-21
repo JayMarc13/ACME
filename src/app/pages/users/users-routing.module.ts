@@ -15,9 +15,6 @@ const routes: Routes = [
     path: 'addUser', component: AddEditUsersComponent
   },
 
-  {
-    path: 'editUser/:userName', component: AddEditUsersComponent
-  }
 
 ];
 
@@ -25,4 +22,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
+
 export class UsersRoutingModule { }
