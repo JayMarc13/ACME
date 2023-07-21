@@ -1,18 +1,27 @@
-<div class="container">
-  <div class="user-img">
-    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.abc.es%2Fmedia%2Fpersonajes%2F000%2F013%2F741%2Ftom-cruise-191547-1.jpg&f=1&nofb=1&ipt=829cb3e7d9eaf3f4139bc7df6f768e25b751b9c27d0198d609b63f0747030a0d&ipo=images"
-         alt="user" class="img">
+<div class="containerTabla">
+<div >
+  <div>
+    <div class="row">
+      <div class="col-4">
+        <div class="user-img">
+          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.abc.es%2Fmedia%2Fpersonajes%2F000%2F013%2F741%2Ftom-cruise-191547-1.jpg&f=1&nofb=1&ipt=829cb3e7d9eaf3f4139bc7df6f768e25b751b9c27d0198d609b63f0747030a0d&ipo=images"
+               alt="user" class="img">
+        </div>
+      </div>
+      <div class="col">
+        <div class="user-info">
+          <mat-card class="text">
+            <strong><h1>Name: {{ user }}</h1></strong>
+            <strong><h1>Email: {{ email }}</h1></strong>
+            <mat-card class="button">
+              <button style="color: white;" mat-button>Change Password</button>
+            </mat-card>
+          </mat-card>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="user-info">
-    <mat-card class="text">
-      <strong><h1>Name: {{ user }}</h1></strong>
-      <strong><h1>Email: {{ email }}</h1></strong>
-      <mat-card class="button">
-        <button mat-button>Reset Password</button>
-      </mat-card>
-    </mat-card>
-   
-  </div>
+</div>
 </div>
 
   
