@@ -48,7 +48,7 @@ namespace Backend.Services
 
         public string GenerateTokenString(LoginUser user)
         {
-            //
+     
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Email, user.UserName),
