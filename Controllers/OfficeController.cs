@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Session;
+using System.Text.Json;
 
 namespace Backend.Controllers
 {
@@ -17,6 +19,7 @@ namespace Backend.Controllers
         }
 
         //Enviar la lista de Offices
+
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -165,6 +168,6 @@ namespace Backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+       
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Session;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,16 @@ builder.Services.AddDbContext<AplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetSection("ConnectionStrings:DefaultConnection").Value);
 });
+
+
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Establece el tiempo de expiración de la sesión
+});
+
+
+
 
 //Configuración del identity
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
@@ -74,6 +85,8 @@ app.UseCors("AllowWebapp");
 
 app.UseHttpsRedirection();
 
+app.UseSession();
+
 app.UseAuthorization();
 
 app.MapControllers();
@@ -92,7 +105,7 @@ using (var scope = app.Services.CreateScope())
     }
 
     //correo de administrador super adm
-    var usuario = await userManager.FindByNameAsync("sdfsdf");
+    var usuario = await userManager.FindByEmailAsync("adm@acme.com");
 
 
     if (usuario != null)
@@ -106,4 +119,6 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-    app.Run();
+
+
+app.Run();

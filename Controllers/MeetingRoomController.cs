@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Identity.Client;
+using System.Text.Json;
 
 namespace Backend.Controllers
 {
@@ -100,23 +103,38 @@ namespace Backend.Controllers
             }
         }
 
-        //Añadir nuevo país
-        [HttpPost]
-        public async Task<IActionResult> Post(MeetingRoom meetingRoom)
+        //Añadir nueva Meeting Rooms
+        //[HttpPost]
+        //public async Task<IActionResult> Post(MeetingRoom meetingRoom)
+        //{
+        //    try
+        //    {
+        //        _context.Add(meetingRoom);
+        //        await _context.SaveChangesAsync();
+
+        //        return CreatedAtAction("Get", new { MeetingRoomId = meetingRoom.MeetingRoomId }, meetingRoom);
+        //    }
+        //    catch (Exception e)
+        //    {
+
+        //        return BadRequest(e.Message);
+        //    }
+        //}
+
+        [HttpGet("offices")]
+        public IActionResult MeetingroomOffices()
         {
             try
             {
-                _context.Add(meetingRoom);
-                await _context.SaveChangesAsync();
-
-                return CreatedAtAction("Get", new { MeetingRoomId = meetingRoom.MeetingRoomId }, meetingRoom);
+                List<Office> offices = _context.Office.ToList();
+                return Ok(offices);
             }
             catch (Exception e)
             {
-
                 return BadRequest(e.Message);
             }
         }
+
 
         [HttpPut("{meetingRoomId}")]
         public async Task<IActionResult> Put(int meetingRoomId, MeetingRoom meetingRoom)
