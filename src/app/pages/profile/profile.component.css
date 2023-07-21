@@ -45,4 +45,6 @@
   color: gray; /* Cambiamos el color del texto al hacer hover en el botón */
 }
 
-
+.text{
+  margin-top: 7%;
+}
