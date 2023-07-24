@@ -9,9 +9,17 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Backend
 build_property.RootNamespace = Backend
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\carta\Documents\My Web Sites\ACMEback\ACME\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\carta\Documents\My Web Sites\ACMEback\ACME
+=======
+build_property.ProjectDir = C:\Users\veronica.cartagena\Documents\My Web Sites\ACME\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\veronica.cartagena\Documents\My Web Sites\ACME
+>>>>>>> b79048b4f42dbdca5882d6f0cd40a768a03d5bcb
 build_property._RazorSourceGeneratorDebug = 

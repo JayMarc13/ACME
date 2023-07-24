@@ -5262,11 +5262,16 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\carta\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\veronica.cartagena\\.nuget\\packages\\": {}
+>>>>>>> b79048b4f42dbdca5882d6f0cd40a768a03d5bcb
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\carta\\Documents\\My Web Sites\\ACMEback\\ACME\\Backend.csproj",
       "projectName": "Backend",
       "projectPath": "C:\\Users\\carta\\Documents\\My Web Sites\\ACMEback\\ACME\\Backend.csproj",
@@ -5275,6 +5280,16 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\carta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Backend.csproj",
+      "projectName": "Backend",
+      "projectPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Backend.csproj",
+      "packagesPath": "C:\\Users\\veronica.cartagena\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\veronica.cartagena\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> b79048b4f42dbdca5882d6f0cd40a768a03d5bcb
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
