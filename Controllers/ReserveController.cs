@@ -55,6 +55,45 @@ namespace Backend.Controllers
             }
         }
 
+        [HttpGet("ReserveRoomUser")]
+        public async Task<IActionResult> ReservasWithUserAndRoom()
+        {
+            try
+            {
+                var listaReservas = await _context.Reserve
+                .Join(
+                    _context.MeetingRoom,
+                    reserve => reserve.MeetingRoomId,
+                    meetingRoom => meetingRoom.MeetingRoomId,
+                    (reserve, meetingRoom) => new { Reserve = reserve, MeetingRoom = meetingRoom }
+                )
+                .Join(
+                    _context.Users,
+                    combined => combined.Reserve.UserId,
+                    user => user.Id,
+                    (combined, user) => new
+                    {
+                        ReserveId = combined.Reserve.ReserveId,
+                        MeetingRoomName = combined.MeetingRoom.MeetingRoomName,
+                        UserName = user.UserName,
+                        ReserveDate = combined.Reserve.ReserveDate,
+                        StartTime = combined.Reserve.StartTime,
+                        EndTime = combined.Reserve.EndTime
+                    }
+                ).ToListAsync();
+
+                if (listaReservas == null)
+                {
+                    return NotFound();
+                }
+                return Ok(listaReservas);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         // Eliminar una reserva por su id
         [HttpDelete("{reserveId}")]
         public async Task<IActionResult> Delete(int reserveId)
