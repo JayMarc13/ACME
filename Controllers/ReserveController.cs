@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+//using System.Data.Entity;
 using System.Threading.Tasks;
 
 namespace Backend.Controllers
@@ -48,6 +49,128 @@ namespace Backend.Controllers
                     return NotFound();
                 }
                 return Ok(reserva);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+        // Obtener una reserva con roomName y userName
+        [HttpGet("ReserveRoomUser")]
+        public async Task<IActionResult> ReservasWithUserAndRoom()
+        {
+            try
+            {
+                var listaReservas = await _context.Reserve
+                .Join(
+                    _context.MeetingRoom,
+                    reserve => reserve.MeetingRoomId,
+                    meetingRoom => meetingRoom.MeetingRoomId,
+                    (reserve, meetingRoom) => new { Reserve = reserve, MeetingRoom = meetingRoom }
+                )
+                .Join(
+                    _context.Users,
+                    combined => combined.Reserve.UserId,
+                    user => user.Id,
+                    (combined, user) => new
+                    {
+                        ReserveId = combined.Reserve.ReserveId,
+                        MeetingRoomName = combined.MeetingRoom.MeetingRoomName,
+                        UserName = user.UserName,
+                        ReserveDate = combined.Reserve.ReserveDate,
+                        StartTime = combined.Reserve.StartTime,
+                        EndTime = combined.Reserve.EndTime
+                    }
+                ).ToListAsync();
+
+                if (listaReservas == null)
+                {
+                    return NotFound();
+                }
+                return Ok(listaReservas);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        // Obtener una reserva por Id user
+        [HttpGet("ReserveByUserId/{userId}")]
+        public async Task<IActionResult> ReservasByUserId( string userId)
+        {
+            try
+            {
+                var listaReservas = await _context.Reserve
+               .Join(
+                   _context.MeetingRoom,
+                   reserve => reserve.MeetingRoomId,
+                   meetingRoom => meetingRoom.MeetingRoomId,
+                   (reserve, meetingRoom) => new
+                   {
+                       Reserve = reserve,
+                       MeetingRoom = meetingRoom
+                   }
+               )
+               .Where(item => item.Reserve.UserId == userId) // Filtrar por UserId
+               .Select(item => new
+               {
+                   ReserveId = item.Reserve.ReserveId,
+                   MeetingRoomName = item.MeetingRoom.MeetingRoomName,
+                   ReserveDate = item.Reserve.ReserveDate,
+                   StartTime = item.Reserve.StartTime,
+                   EndTime = item.Reserve.EndTime
+               })
+               .ToListAsync();
+
+                if (listaReservas == null)
+                {
+                    return NotFound();
+                }
+                return Ok(listaReservas);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+        // Obtener una reserva por userName
+        [HttpGet("ReserveByUserName/{userName}")]
+        public async Task<IActionResult> ReservasByUserName(string userName)
+        {
+            try
+            {
+                var userBD = _context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
+
+                if (userBD == null) { return NotFound(); }
+
+                var listaReservas = await _context.Reserve
+                .Join(
+                    _context.MeetingRoom,
+                    reserve => reserve.MeetingRoomId,
+                    meetingRoom => meetingRoom.MeetingRoomId,
+                    (reserve, meetingRoom) => new
+                    {
+                        Reserve = reserve,
+                        MeetingRoom = meetingRoom
+                    }
+                )
+                .Where(item => item.Reserve.UserId == userBD.Result.Id.ToString()) // Filtrar por UserId
+                .Select(item => new
+                {
+                    ReserveId = item.Reserve.ReserveId,
+                    MeetingRoomName = item.MeetingRoom.MeetingRoomName,
+                    ReserveDate = item.Reserve.ReserveDate,
+                    StartTime = item.Reserve.StartTime,
+                    EndTime = item.Reserve.EndTime
+                })
+                .ToListAsync();
+
+                if (listaReservas == null)
+                {
+                    return NotFound();
+                }
+                return Ok(listaReservas);
             }
             catch (Exception e)
             {
