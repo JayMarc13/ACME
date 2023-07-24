@@ -50,16 +50,14 @@ namespace Backend.Services
 
         public string GenerateTokenString(LoginUser user)
         {
-<<<<<<< HEAD
-     
-            var claims = new List<Claim>
-=======
+
+
             var userToken = _context.Users.FirstOrDefault(u => u.UserName == user.UserName);
 
             var claims = new List<Claim> { };
           
             if (userToken != null) 
->>>>>>> a72373bbbbd4e16e78a24332bb7585f0595de40a
+
             {
                 var roleUser = _context.UserRoles.FirstOrDefault(x => x.UserId == userToken.Id);
                 
