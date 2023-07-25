@@ -16,7 +16,7 @@ export class OfficeService {
 
   //Obtener la lista de Offices
   getOffices(): Observable<office[]> {
-    return this.http.get<office[]>(this.myAppUrl + this.myApiUrl);
+    return this.http.get<office[]>(this.myAppUrl + this.myApiUrl+"OfficesWithCity");
   }
 
   //Obtener la officina dada la id

@@ -31,6 +31,10 @@ const routes: Routes = [
         path: 'admRooms',
         loadChildren: () => import('./adm-rooms/adm-rooms.module').then(m => m.AdmRoomsModule)
       },
+      {
+        path: 'formReserve',
+        loadChildren: () => import('./form-reserve/form-reserve.module').then(m => m.formReserveModule)
+      },
       { path: '', redirectTo: '/home/homeAdm', pathMatch: 'full' }
 
     ]

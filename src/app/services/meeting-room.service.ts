@@ -9,11 +9,11 @@ import { MeetingRoom } from '../interfaces/meetingRoom';
 })
 export class MeetingRoomService {
   private myAppUrl: string = environment.endpoint;
-  private myApiUrl: string =  'api/MeetingRoom';
+  private myApiUrl: string =  'api/MeetingRoom/';
 
   constructor(private http: HttpClient) { }
 
   getMeetingRooms(): Observable <MeetingRoom[]>{
-      return this.http.get<MeetingRoom[]>(this.myAppUrl+this.myApiUrl);
+      return this.http.get<MeetingRoom[]>(this.myAppUrl+this.myApiUrl+"RoomsWithOffices");
   }
 }

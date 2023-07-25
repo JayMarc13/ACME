@@ -16,7 +16,7 @@ export class CityService {
 
   //Obtener la lista de Offices
   getCitys(): Observable<City[]> {
-    return this.http.get<City[]>(this.myAppUrl + this.myApiUrl);
+    return this.http.get<City[]>(this.myAppUrl + this.myApiUrl+"CitiesWithCountries");
   }
 
   //Obtener la officina dada la id

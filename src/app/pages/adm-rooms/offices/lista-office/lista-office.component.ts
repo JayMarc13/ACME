@@ -12,7 +12,7 @@ import { OfficeService } from '../../../../services/office.service';
   styleUrls: ['./lista-office.component.css']
 })
 export class ListaOfficeComponent {
-  displayedColumns: string[] = ['officeId', 'nameOffice', 'cityId', 'Acciones'];
+  displayedColumns: string[] = ['officeId', 'nameOffice', 'cityName', 'Acciones'];
   dataSource = new MatTableDataSource<office>();
   loading: boolean = false;
 
