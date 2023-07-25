@@ -1,34 +1,70 @@
+/* Estilos generales para la página */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.containerTabla {
+  max-width: 800px;
+  padding: 20px;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la tabla */
 table {
-    width: 80%;
-  }
-  h1{
-    font-size: 25px;
-  }
-  
-  td, th {
-    width: 15%;
-  }
-  
-  .mat-mdc-form-field {
-    font-size: 15px;
-    width: 100%;
-  }
-  
-  .delete {
-    cursor: pointer;
-    color: #E15639;
-  }
-  
-  .edit {
-    cursor: pointer;
-    color: #187889;
-  }
-  
-  .visibility {
-    cursor: pointer;
-  }
-  
-  .buttonAceptar {
-    font-size: 11px;
-  }
-  
+  width: 100%;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+/* Estilos para el campo de filtro */
+.mat-form-field {
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* Estilos para los botones de acciones */
+.buttonAceptar {
+  margin-right: 10px;
+}
+
+.mat-icon {
+  cursor: pointer;
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+/* Estilos para el paginador */
+.mat-paginator {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
