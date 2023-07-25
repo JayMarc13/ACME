@@ -12,7 +12,7 @@ import { CityService } from '../../../../services/city.service';
   styleUrls: ['./list-city.component.css']
 })
 export class ListCityComponent {
-  displayedColumns: string[] = ['cityId', 'cityName', 'countryId', 'Acciones'];
+  displayedColumns: string[] = ['cityId', 'cityName', 'countryName', 'Acciones'];
   dataSource = new MatTableDataSource<City>();
   loading: boolean = false;
 

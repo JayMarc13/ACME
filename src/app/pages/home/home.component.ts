@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import  jwt_decode from '../../../../node_modules/jwt-decode';
 
 @Component({
   selector: 'app-home',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  ngOnInit(){
+    const token = localStorage.getItem('token');
+    console.log(token);
+    
+  }
 }

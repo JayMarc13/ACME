@@ -23,7 +23,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './spinner/spinner.component';
 import {MatTabsModule} from '@angular/material/tabs';
-
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [SpinnerComponent],
@@ -48,7 +50,10 @@ import {MatTabsModule} from '@angular/material/tabs';
     HttpClientModule,
     ToastrModule,
     NgbModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     SpinnerComponent,
@@ -71,7 +76,10 @@ import {MatTabsModule} from '@angular/material/tabs';
     HttpClientModule,
     ToastrModule,
     NgbModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class SharedModule { }
