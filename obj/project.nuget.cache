@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "qzRQhNbFCmI8Tz6011HFMCWQKCyrRd/tiZWiGqeg9NW1z1GsqnMg6aL9W32bLb9/Wd77mbIJi+Qmmzviy+ankA==",
+  "dgSpecHash": "KjA5mmVxI04yiIPMNndUltHgMX/6BGSPj86IEtUWmkcs+9HtDUXM95aw7mmCxQMmpwqjbKXFZcYJ4ojp0qs6Kg==",
   "success": true,
   "projectFilePath": "C:\\Users\\abel.valdes\\Documents\\ACME-PROYECT\\ACME-back\\Backend.csproj",
   "expectedPackageFiles": [
@@ -83,7 +83,7 @@
     "C:\\Users\\abel.valdes\\.nuget\\packages\\system.codedom\\4.7.0\\system.codedom.4.7.0.nupkg.sha512",
     "C:\\Users\\abel.valdes\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
     "C:\\Users\\abel.valdes\\.nuget\\packages\\system.configuration.configurationmanager\\5.0.0\\system.configuration.configurationmanager.5.0.0.nupkg.sha512",
-    "C:\\Users\\abel.valdes\\.nuget\\packages\\system.data.sqlclient\\4.8.1\\system.data.sqlclient.4.8.1.nupkg.sha512",
+    "C:\\Users\\abel.valdes\\.nuget\\packages\\system.data.sqlclient\\4.8.5\\system.data.sqlclient.4.8.5.nupkg.sha512",
     "C:\\Users\\abel.valdes\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",
     "C:\\Users\\abel.valdes\\.nuget\\packages\\system.drawing.common\\5.0.0\\system.drawing.common.5.0.0.nupkg.sha512",
     "C:\\Users\\abel.valdes\\.nuget\\packages\\system.formats.asn1\\5.0.0\\system.formats.asn1.5.0.0.nupkg.sha512",
