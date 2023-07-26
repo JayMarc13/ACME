@@ -35,6 +35,10 @@ const routes: Routes = [
         path: 'formReserve',
         loadChildren: () => import('./form-reserve/form-reserve.module').then(m => m.formReserveModule)
       },
+      {
+        path: 'help',
+        loadChildren: () => import('./help/help.module').then(m => m.HelpModule)
+      },
       { path: '', redirectTo: '/home/homeAdm', pathMatch: 'full' }
 
     ]
