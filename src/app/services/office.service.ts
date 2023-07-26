@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environments';
-import { office } from '../interfaces/office';
+import { Office } from '../interfaces/office';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +15,13 @@ export class OfficeService {
   }
 
   //Obtener la lista de Offices
-  getOffices(): Observable<office[]> {
-    return this.http.get<office[]>(this.myAppUrl + this.myApiUrl+"OfficesWithCity");
+  getOffices(): Observable<Office[]> {
+    return this.http.get<Office[]>(this.myAppUrl + this.myApiUrl+"OfficesWithCity");
   }
 
   //Obtener la officina dada la id
-  getOffice(Officeid: number): Observable<office> {
-    return this.http.get<office>(this.myAppUrl + this.myApiUrl + Officeid);
+  getOffice(Officeid: number): Observable<Office> {
+    return this.http.get<Office>(this.myAppUrl + this.myApiUrl + Officeid);
   }
 
 
@@ -31,12 +31,12 @@ export class OfficeService {
   }
 
   //Añadir oficinas en la base de datos
-  addOffice(office: office): Observable<office> {
-    return this.http.post<office>(this.myAppUrl + this.myApiUrl, office);
+  addOffice(office: Office): Observable<Office> {
+    return this.http.post<Office>(this.myAppUrl + this.myApiUrl, office);
   }
 
   //Editar datos del pais 
-  updateOffice(Officeid: number, office: office): Observable<void> {
+  updateOffice(Officeid: number, office: Office): Observable<void> {
     return this.http.put<void>(this.myAppUrl + this.myApiUrl + Officeid, office);
   }
 

@@ -24,6 +24,9 @@ export class CityService {
     return this.http.get<City>(this.myAppUrl + this.myApiUrl + Cityid);
   }
 
+  getCitiesByCountryId(CountryId: number): Observable<City[]>{
+    return this.http.get<City[]>(this.myAppUrl + this.myApiUrl+ "Country/"+CountryId);
+  }
 
   //Eliminar la oficina (void porque no retornaremos nada)
   deleteCity(Cityid: number): Observable<void> {

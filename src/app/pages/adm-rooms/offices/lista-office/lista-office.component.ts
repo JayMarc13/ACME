@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { office } from '../../../../interfaces/office';
+import { Office } from '../../../../interfaces/office';
 import { OfficeService } from '../../../../services/office.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { OfficeService } from '../../../../services/office.service';
 })
 export class ListaOfficeComponent {
   displayedColumns: string[] = ['officeId', 'nameOffice', 'cityName', 'Acciones'];
-  dataSource = new MatTableDataSource<office>();
+  dataSource = new MatTableDataSource<Office>();
   loading: boolean = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

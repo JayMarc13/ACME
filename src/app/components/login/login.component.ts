@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
         this.token = data;
         const tokenUser = this.token?.token;
         if (tokenUser) {
-          localStorage.setItem('token', tokenUser);
+          sessionStorage.setItem('token', tokenUser);
         }
         this.router.navigate(['/home']);
       },
@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
         this.form.reset();
       }
     );
-      localStorage.setItem('user', this.form.value.user);
+      sessionStorage.setItem('user', this.form.value.user);
   }
 
   get f(): any {
