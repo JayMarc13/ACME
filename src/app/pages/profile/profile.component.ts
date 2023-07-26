@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   constructor(private profileService: ProfileService) {}
 
   ngOnInit() {
-    const nombreEmail = localStorage.getItem('user');
+    const nombreEmail = sessionStorage.getItem('user');
     if(nombreEmail != null){
       this.localUser = nombreEmail;
     }

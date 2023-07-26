@@ -21,6 +21,9 @@ export class MeetingRoomService {
         return this.http.get<MeetingRoom>(this.myAppUrl + this.myApiUrl + meetingRoomId);
       }
     
+      getRoomByOfficeId(officeId: number): Observable<MeetingRoom[]>{
+        return this.http.get<MeetingRoom[]>(this.myAppUrl+this.myApiUrl+"office/"+ officeId);
+      }
     
       //Eliminar la oficina (void porque no retornaremos nada)
       deleteRoom(meetingRoomId: number): Observable<void> {
