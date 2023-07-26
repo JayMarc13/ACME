@@ -3,5 +3,6 @@ export interface Booking{
     ReserveDate: Date,
     StartTime: string,
     EndTime: string,
-    UserId: number
+    UserId: number,
+    MeetingRoomName?: string
 }
