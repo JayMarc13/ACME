@@ -11,7 +11,7 @@ import { Booking } from '../interfaces/booking';
 })
 export class BookingService {
   private myAppUrl: string = environment.endpoint;
-  private myApiUrl: string = 'api/Reserves';
+  private myApiUrl: string = 'api/Reserve';
 
   constructor(private http: HttpClient) { }
 
@@ -24,6 +24,6 @@ export class BookingService {
   }
 
   createBooking(reserve:Booking){
-    return this.http
+    return this.http.post(this.myAppUrl + this.myApiUrl, reserve);
   }
 }

@@ -24,7 +24,9 @@ export class OfficeService {
     return this.http.get<Office>(this.myAppUrl + this.myApiUrl + Officeid);
   }
 
-
+  getOfficesByCityId(cityId: number): Observable<Office[]>{
+    return this.http.get<Office[]>(this.myAppUrl + this.myApiUrl + "city/"+ cityId);
+  }
   //Eliminar la oficina (void porque no retornaremos nada)
   deleteOffice(Officeid: number): Observable<void> {
     return this.http.delete<void>(this.myAppUrl + this.myApiUrl + Officeid);

@@ -21,8 +21,16 @@
             <mat-grid-tile [colspan]="1">
                 <mat-form-field>
                     <mat-label>Office</mat-label>
-                    <mat-select    [formControl]="cityFormControl" >
+                    <mat-select    [formControl]="officeFormControl" >
                         <mat-option *ngFor="let office of offices" [value]="office">{{office.nameOffice}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1">
+                <mat-form-field>
+                    <mat-label>Meeting Rooms</mat-label>
+                    <mat-select    [formControl]="meetingRoomFormControl" >
+                        <mat-option *ngFor="let meetingRoom of meetingRooms" [value]="meetingRoom">{{meetingRoom.meetingRoomName}}</mat-option>
                     </mat-select>
                   </mat-form-field>
             </mat-grid-tile>
@@ -36,12 +44,12 @@
                 </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1">
-                <input placeholder="24hr format" aria-label="24hr format" [ngxTimepicker]="startHour" [format]="24"  readonly>
-                <ngx-material-timepicker #startHour></ngx-material-timepicker>
+                <input formControlName="startHour" placeholder="24hr format" aria-label="24hr format" [ngxTimepicker]="startHour" [format]="24"  readonly>
+                <ngx-material-timepicker  #startHour></ngx-material-timepicker>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1">
-                <input placeholder="24hr format" aria-label="24hr format" [ngxTimepicker]="endHour" [format]="24"  readonly>
-                <ngx-material-timepicker #endHour></ngx-material-timepicker>
+                <input formControlName="endHour" placeholder="24hr format" aria-label="24hr format" [ngxTimepicker]="endHour" [format]="24"  readonly>
+                <ngx-material-timepicker  #endHour></ngx-material-timepicker>
             </mat-grid-tile>
             <mat-grid-tile  [colspan]="2">
                 <button  type="submit" class="btnAceptar" mat-raised-button color="primary">Aceptar</button>
