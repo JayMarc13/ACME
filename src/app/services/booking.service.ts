@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environments';
 import { Country } from '../interfaces/country';
+import { Booking } from '../interfaces/booking';
 
 
 @Injectable({
@@ -20,5 +21,9 @@ export class BookingService {
 
   cancelBooking(reserveId:number){
     return this.http.delete(this.myAppUrl+this.myApiUrl+reserveId);
+  }
+
+  createBooking(reserve:Booking){
+    return this.http
   }
 }

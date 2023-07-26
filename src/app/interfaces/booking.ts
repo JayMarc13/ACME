@@ -1,6 +1,5 @@
 export interface Booking{
-    ReserveId: number,
-    MeetingRoomId: string,
+    MeetingRoomId: number,
     ReserveDate: Date,
     StartTime: string,
     EndTime: string,

@@ -1,4 +1,4 @@
-export interface office {
+export interface Office {
   officeId?: number,
   nameOffice: string,
   cityId: number
