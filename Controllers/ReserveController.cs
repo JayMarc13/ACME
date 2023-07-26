@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Globalization;
 using System.Threading.Tasks;
 
 namespace Backend.Controllers
@@ -84,6 +85,45 @@ namespace Backend.Controllers
         {
             try
             {
+                // Convertir horas de inicio y fin a objetos DateTime
+                DateTime startTime = DateTime.ParseExact(reserve.StartTime, "HH:mm", CultureInfo.InvariantCulture);
+                DateTime endTime = DateTime.ParseExact(reserve.EndTime, "HH:mm", CultureInfo.InvariantCulture);
+
+                // Verificar que las horas de inicio y fin sean válidas
+                if (startTime >= endTime)
+                {
+                    return BadRequest("Las horas de inicio y fin no son válidas.");
+                }
+
+                // Obtener todas las reservas para el mismo día y sala desde la base de datos
+                var existingReservations = await _context.Reserve
+                    .Where(r =>
+                        r.MeetingRoomId == reserve.MeetingRoomId &&
+                        r.ReserveDate.Date == reserve.ReserveDate.Date)
+                    .ToListAsync();
+
+                // Verificar si ya existe una reserva que colisiona con las horas de inicio y fin
+                bool hasCollisions = existingReservations.Any(r =>
+                    (DateTime.ParseExact(r.StartTime, "HH:mm", CultureInfo.InvariantCulture) >= startTime &&
+                     DateTime.ParseExact(r.StartTime, "HH:mm", CultureInfo.InvariantCulture) < endTime) ||
+                    (DateTime.ParseExact(r.EndTime, "HH:mm", CultureInfo.InvariantCulture) > startTime &&
+                     DateTime.ParseExact(r.EndTime, "HH:mm", CultureInfo.InvariantCulture) <= endTime));
+
+                if (hasCollisions)
+                {
+                    return BadRequest("Existe una reserva que colisiona con las horas de inicio y fin especificadas.");
+                }
+
+                // Verificar si ya existe una reserva que contenga las mismas horas de inicio y fin
+                bool hasExactMatch = existingReservations.Any(r =>
+                    DateTime.ParseExact(r.StartTime, "HH:mm", CultureInfo.InvariantCulture) == startTime &&
+                    DateTime.ParseExact(r.EndTime, "HH:mm", CultureInfo.InvariantCulture) == endTime);
+
+                if (hasExactMatch)
+                {
+                    return BadRequest("Existe una reserva con las mismas horas de inicio y fin para el mismo día y sala.");
+                }
+
                 _context.Add(reserve);
                 await _context.SaveChangesAsync();
 
@@ -113,6 +153,47 @@ namespace Backend.Controllers
                     return NotFound();
                 }
 
+                // Convertir horas de inicio y fin a objetos DateTime
+                DateTime startTime = DateTime.ParseExact(reserve.StartTime, "HH:mm", CultureInfo.InvariantCulture);
+                DateTime endTime = DateTime.ParseExact(reserve.EndTime, "HH:mm", CultureInfo.InvariantCulture);
+
+                // Verificar que las horas de inicio y fin sean válidas
+                if (startTime >= endTime)
+                {
+                    return BadRequest("Las horas de inicio y fin no son válidas.");
+                }
+
+                // Obtener todas las reservas para el mismo día y sala desde la base de datos
+                var existingReservations = await _context.Reserve
+                    .Where(r =>
+                        r.MeetingRoomId == reserve.MeetingRoomId &&
+                        r.ReserveDate.Date == reserve.ReserveDate.Date &&
+                        r.ReserveId != reserveId)
+                    .ToListAsync();
+
+                // Verificar si ya existe una reserva que colisiona con las horas de inicio y fin
+                bool hasCollisions = existingReservations.Any(r =>
+                    (DateTime.ParseExact(r.StartTime, "HH:mm", CultureInfo.InvariantCulture) >= startTime &&
+                     DateTime.ParseExact(r.StartTime, "HH:mm", CultureInfo.InvariantCulture) < endTime) ||
+                    (DateTime.ParseExact(r.EndTime, "HH:mm", CultureInfo.InvariantCulture) > startTime &&
+                     DateTime.ParseExact(r.EndTime, "HH:mm", CultureInfo.InvariantCulture) <= endTime));
+
+                if (hasCollisions)
+                {
+                    return BadRequest("Existe una reserva que colisiona con las horas de inicio y fin especificadas.");
+                }
+
+                // Verificar si ya existe una reserva que contenga las mismas horas de inicio y fin
+                bool hasExactMatch = existingReservations.Any(r =>
+                    DateTime.ParseExact(r.StartTime, "HH:mm", CultureInfo.InvariantCulture) == startTime &&
+                    DateTime.ParseExact(r.EndTime, "HH:mm", CultureInfo.InvariantCulture) == endTime);
+
+                if (hasExactMatch)
+                {
+                    return BadRequest("Existe una reserva con las mismas horas de inicio y fin para el mismo día y sala.");
+                }
+
+                // Actualizar propiedades de reserva
                 reservaItem.MeetingRoomId = reserve.MeetingRoomId;
                 reservaItem.ReserveDate = reserve.ReserveDate;
                 reservaItem.StartTime = reserve.StartTime;
