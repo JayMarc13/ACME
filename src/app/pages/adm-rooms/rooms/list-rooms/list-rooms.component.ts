@@ -3,16 +3,16 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { MeetingRoom } from 'src/app/interfaces/meetingRoom';
-import { MeetingRoomService } from 'src/app/services/meeting-room.service';
+import { MeetingRoom } from '../../../../interfaces/meetingRoom';
+import { MeetingRoomService } from '../../../../services/meeting-room.service';
 
 @Component({
-  selector: 'app-',
-  templateUrl: './meeting-room.component.html',
-  styleUrls: ['./meeting-room.component.css']
+  selector: 'app-list-rooms',
+  templateUrl: './list-rooms.component.html',
+  styleUrls: ['./list-rooms.component.css']
 })
-export class MeetingRoomComponent {
-  displayedColumns: string[] = ['meetingRoomId', 'meetingRoomName', 'nameOffice'];
+export class ListRoomsComponent {
+  displayedColumns: string[] = ['meetingRoomId', 'meetingRoomName', 'officeId', 'Acciones'];
   dataSource = new MatTableDataSource<MeetingRoom>();
   loading: boolean = false;
 
@@ -20,10 +20,10 @@ export class MeetingRoomComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
   //Pop up y lista offices
-  constructor(private _snackBar: MatSnackBar, private _meetingRoomService : MeetingRoomService) { }
+  constructor(private _snackBar: MatSnackBar, private _meetingRoomService: MeetingRoomService) { }
 
   ngOnInit(): void {
-    this.obtenerRooms();
+    this.obtenerRoom();
   }
   //Paginaciones y ordenar
   ngAfterViewInit() {
@@ -44,11 +44,24 @@ export class MeetingRoomComponent {
     }
   }
 
-  obtenerRooms() {
+  obtenerRoom() {
     this.loading = true;
     this._meetingRoomService.getMeetingRooms().subscribe(data => {
+      console.log(data);
       this.loading = false;
       this.dataSource.data = data;
+    });
+  }
+
+
+  //Funcion pop up de eliminar
+  eliminarRoom(meetingRoomId: number) {
+    this.loading = true;
+
+    this._meetingRoomService.deleteRoom(meetingRoomId).subscribe(() => {
+      this.mensajeExito();
+      this.loading = false;
+      this.obtenerRoom();
     });
   }
 
