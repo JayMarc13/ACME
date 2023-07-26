@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginService } from '../../services/login.service';
 import { Login } from '../../interfaces/login';
 import { tokenUser } from '../../interfaces/token';
+import jwt_decode from 'jwt-decode';
+
 
 @Component({
   selector: 'app-login',
@@ -52,8 +54,13 @@ export class LoginComponent implements OnInit {
         const tokenUser = this.token?.token;
         if (tokenUser) {
           sessionStorage.setItem('token', tokenUser);
+
+          const tokenInfo = this.getDecodedAccessToken(tokenUser);
+          const userRole = tokenInfo['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+          sessionStorage.setItem('userRole', userRole);
         }
         this.router.navigate(['/home']);
+
       },
       (error: any) => {
         this.error();
@@ -66,6 +73,15 @@ export class LoginComponent implements OnInit {
   get f(): any {
     return this.form.controls;
   }
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch(Error) {
+      return null;
+    }
+  }
+
 
   error(): void {
     this.snackBar.open('User or password incorrect', '', {
