@@ -15,15 +15,19 @@ export class BookingService {
 
   constructor(private http: HttpClient) { }
 
-  getBookings(userId: number){
-    return this.http.get(this.myAppUrl+this.myApiUrl+userId);
+  getBookings(userId: string){
+    return this.http.get(`${this.myAppUrl}${this.myApiUrl}/ReserveByUserId/${userId}`);
   }
 
   cancelBooking(reserveId:number){
-    return this.http.delete(this.myAppUrl+this.myApiUrl+reserveId);
+    return this.http.delete(`${this.myAppUrl}${this.myApiUrl}/${reserveId}`);
   }
 
   createBooking(reserve:Booking){
     return this.http.post(this.myAppUrl + this.myApiUrl, reserve);
+  }
+
+  updateBooking(reserveId:number, reserve:Booking){
+    return this.http.put(`${this.myAppUrl}${this.myApiUrl}/${reserveId}`, reserve);
   }
 }

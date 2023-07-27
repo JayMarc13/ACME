@@ -13,6 +13,7 @@ import { Booking } from 'src/app/interfaces/booking';
 import { ProfileService } from 'src/app/services/profile.service';
 import { BookingService } from 'src/app/services/booking.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 
 interface Food {
@@ -45,9 +46,18 @@ export class FormReserveComponent {
   cityFormControl = new FormControl();
   officeFormControl = new FormControl();
   meetingRoomFormControl = new FormControl();
- 
 
-  constructor(private _snackBar : MatSnackBar,private _bookingService: BookingService,private _userService: ProfileService,private _meetingRoomService: MeetingRoomService, private _countryService: CountryService, private _cityService : CityService, private _officeService: OfficeService,private fb: FormBuilder){
+  loading: boolean = false;
+
+  constructor(private _bookingService: BookingService,
+    private _userService: ProfileService,
+    private _meetingRoomService: MeetingRoomService,
+    private _countryService: CountryService,
+    private _cityService : CityService,
+    private _officeService: OfficeService,
+    private fb: FormBuilder,
+    private _snackBar: MatSnackBar,
+    private router: Router){
     this.form = this.fb.group({
       meetingRoom : ['', Validators.required],
       date : ['',Validators.required],
@@ -76,7 +86,7 @@ export class FormReserveComponent {
         if(officeId){
           this.ObtenerMeetingRooms(officeId);
         }
-      });    
+      });
 
       this.meetingRoomFormControl.valueChanges.subscribe(selectedMeetingRoom =>{
         this.meetingRoomSelected = selectedMeetingRoom;
@@ -93,12 +103,12 @@ export class FormReserveComponent {
 
   reservarSala(){
     const date = dayjs(this.form.value.date).add(7, 'days').format('YYYY-MM-DD');
-    this.bookingUser.MeetingRoomId = this.meetingRoomSelected.meetingRoomId;
-    this.bookingUser.ReserveDate = date;
-    this.bookingUser.StartTime = this.form.value.startHour;
-    this.bookingUser.EndTime = this.form.value.endHour;
+    this.bookingUser.meetingRoomId = this.meetingRoomSelected.meetingRoomId;
+    this.bookingUser.reserveDate = date;
+    this.bookingUser.startTime = this.form.value.startHour;
+    this.bookingUser.endTime = this.form.value.endHour;
     if(this.user){
-      this.bookingUser.UserId = this.user;
+      this.bookingUser.userId = this.user;
     }
 
     this.hacerReserva(this.bookingUser);
@@ -109,7 +119,7 @@ export class FormReserveComponent {
       this.countries = dataCountries;
     })
   }
-  
+
   ObtenerCities(idCountry:number){
       this._cityService.getCitiesByCountryId(idCountry).subscribe(dataCities =>{
         this.cities = dataCities;
@@ -131,25 +141,43 @@ export class FormReserveComponent {
   ObtenerUsuario(userName: string){
     this._userService.getUserProfile(userName).subscribe(dataUser => {
       this.user = dataUser.id;
+      console.log(this.user);
     });
   }
 
   hacerReserva(reserva: Booking){
     this._bookingService.createBooking(reserva).subscribe(succes =>  {
-      this.mensajeExito("reservada");
-      window.location.href = "/home/bookings";
-    }, error => this.mensajeNoExito());
-  }
-
-  mensajeExito(texto: string) {
-    this._snackBar.open(`La sala fue ${texto} con éxito`, '', {
-      duration: 4000,
-      horizontalPosition: 'right'
+      console.log("Hola que tal");
     });
   }
 
-  mensajeNoExito() {
-    this._snackBar.open(``, '', {
+  // agregarEditarReserva() {
+  //   //Definir el objeto
+  //   const reserva: Booking = {
+  //     reserveId = this.form.value.reserveId,
+  //     // cityName: this.form.value.cityName,
+  //     // countryId: this.form.value.countryId
+  //   }
+
+  //   if (this.cityId != 0) {
+  //     city.cityId = this.cityId;
+  //     this.editarcity(this.cityId, city);
+  //   } else {
+  //     this.agregarcity(city);
+  //   }
+  // }
+
+  editarReserva(reservaId: number, reserva:Booking){
+      this.loading = true;
+      this._bookingService.updateBooking(reservaId, reserva).subscribe(data => {
+      this.loading = false;
+      this.mensajeExito('actualizada');
+      this.router.navigate(['/home/editarReserve']);
+    })
+
+  }
+  mensajeExito(texto: string) {
+    this._snackBar.open(`La reserva fue ${texto} con éxito`, '', {
       duration: 4000,
       horizontalPosition: 'right'
     });

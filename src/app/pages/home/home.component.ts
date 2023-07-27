@@ -16,14 +16,15 @@ export class HomeComponent {
     if(userName){
       this.ObtenerUsuario(userName);
     }
- 
+    const userId = sessionStorage.getItem('userId')
+    console.log(userId);
   }
 
   ObtenerUsuario(userName: string){
     this._userService.getUserProfile(userName).subscribe(dataUser => {
       const userId =  dataUser.id;
       if(userId){
-        sessionStorage.setItem('userId',userId); 
+        sessionStorage.setItem('userId',userId);
       }
     });
   }

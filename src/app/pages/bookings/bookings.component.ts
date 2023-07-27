@@ -3,15 +3,17 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { Booking } from 'src/app/interfaces/booking';
 import { BookingService } from 'src/app/services/booking.service';
+
 
 @Component({
   selector: 'app-booking',
   templateUrl: './bookings.component.html',
   styleUrls: ['./bookings.component.css']
 })export class BookingComponent {
-  displayedColumns: string[] = ['ReserveId', 'MeetingRoomName', 'ReserveDate', 'StartTime', 'EndTime', 'Acciones'];
+  displayedColumns: string[] = ['reserveId', 'meetingRoomName', 'reserveDate', 'startTime', 'endTime', 'Acciones'];
   dataSource = new MatTableDataSource<Booking>();
   loading: boolean = false;
 
@@ -22,7 +24,11 @@ import { BookingService } from 'src/app/services/booking.service';
   constructor(private _snackBar: MatSnackBar, private _bookingService: BookingService) { }
 
   ngOnInit(): void {
-    this.obtenerBookings();
+    const userId = sessionStorage.getItem('userId');
+    if(userId){
+      this.obtenerBookings(userId);
+    }
+
   }
   //Paginaciones y ordenar
   ngAfterViewInit() {
@@ -44,15 +50,27 @@ import { BookingService } from 'src/app/services/booking.service';
   }
 
   //Obtener los bookings del usuario
-  obtenerBookings() {
+  obtenerBookings(userId: string) {
     this.loading = true;
-
+    this._bookingService.getBookings(userId).subscribe((data: Object) => {
+      console.log(data);
+      this.loading = false;
+      this.dataSource.data = data as Booking[];
+    });
   }
 
 
   //Funcion pop up de cancelar la reserva
  cancelarBooking(reserveId: number) {
     this.loading = true;
+    this._bookingService.cancelBooking(reserveId).subscribe(() => {
+      this.mensajeExito();
+      this.loading = false;
+      const userId = sessionStorage.getItem('userId');
+      if(userId){
+        this.obtenerBookings(userId);
+      }
+    });
 
   }
 
