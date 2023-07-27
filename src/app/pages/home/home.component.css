@@ -1,110 +1,114 @@
-h1{
-  font-weight: 800;
-  font-size: 50px;
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
-.container-fluid{
-   width: 80%;
-   background-color: white;
-   padding: 50px;
-   margin-top: 20px;
-   border-radius: 20px;
-   animation: fadeIn 1s ease-in-out forwards;
-   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+h1 {
+  font-weight: 900;
+  font-size: 40px;
+  text-align: center;
 }
 
-.salaImg1{
-    width: 700px;
-    border-radius: 15px;
-    animation: fadeIn 4s ease-in-out forwards;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-.salaImg2{
-    width: 700px;
-    border-radius: 15px;
-    animation: fadeIn 8s ease-in-out forwards;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.titulo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
-.bienvenida{
-    font-size:larger;
-    font-weight: 580;
-    font-family: Roboto, sans-serif;
-    text-align: justify;
-    line-height: 2;
+.title {
+  float:left;
+  text-align: left;
+  margin-right:80px;
+  margin-bottom:20px;
 }
 
-.botones{
-    margin-top:40px;
+.container-fluid {
+  width: 80%;
+  background-color: white;
+  padding: 50px;
+  margin-top: 20px;
+  border-radius: 20px;
+  animation: fadeIn 1s ease-in-out forwards;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.botones> button{
-    margin-right: 25px;
-}
-.botonesReserve> button{
-    margin-top: 100px;
-}
-
-
-.row1{
-    margin-top: 100px;
+.salaImg1 {
+  width: 550px;
+  border-radius: 15px;
+  animation: fadeIn 4s ease-in-out forwards;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.consultaReserva{
-    margin-top: 100px;
-    font-family: Roboto, sans-serif;
-    font-size: 50px;
-    font-weight: 900;
-    margin-left: 10%;
+.salaImg2 {
+  width: 550px;
+  float: right;
+  border-radius: 15px;
+  animation: fadeIn 8s ease-in-out forwards;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.info{
-    margin-left: 2%;
+.bienvenida {
+  font-size: larger;
+  font-family: Roboto, sans-serif;
+  text-align: justify;
+  line-height: 2;
 }
 
-/* Simple CSS3 Fade-in Animation */
-@-webkit-keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-  
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @-moz-keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-  
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-  
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+.botones {
+  margin-top: 30px;
+}
+  .botones > button:first-child {
+    margin-bottom: 10px;
+    margin-right: 3px;
   }
 
-  .fadeIn {
+.botonesReserve > button {
+  margin-top: 20px;
+  margin-left:80px;
+}
+
+.row1 {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.consultaReserva {
+  font-family: Roboto, sans-serif;
+  font-size: 40px;
+  font-weight: 900;
+}
+
+.salaImg2 {
+  width: 550px;
+  float: right;
+  border-radius: 15px;
+  animation: fadeIn 8s ease-in-out forwards;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.info {
+  margin-left: 2%;
+}
+@keyframes fadeIn {
+  from {
     opacity: 0;
-    -webkit-animation: fadeIn ease-in 1;
-    -moz-animation: fadeIn ease-in 1;
-    animation: fadeIn ease-in 1;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-duration: 1s;
-    -moz-animation-duration: 1s;
-    animation-duration: 1s;
+    transform: translateY(-20px);
   }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeIn {
+  opacity: 0;
+  animation: fadeIn ease-in 1;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+}

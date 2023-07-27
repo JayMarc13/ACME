@@ -1,45 +1,53 @@
 <div class="container-fluid">
   <div class="row">
-      <div class="col">     
+      <a class="col">     
               <img class="salaImg1" src="../../../assets/img/job-gd1fb0249b_1920.jpg" alt="oficina">
-      </div>
+      </a>
       <div class="col info">
-          <h1>ACMEET Meeting Rooms</h1>
-          <br>
-          <p class="bienvenida">
-              Welcome to ACMEET, your comprehensive solution to efficiently manage meeting room reservations in our international delegations. Explore our extensive list of lounges available in cities such as New York, London, Paris, Berlin, Barcelona, Rome, Tokyo and many more. With ACMEET, booking the perfect room for your meetings has never
-               been easier. Make reservations, modify and cancel without complications, thanks to our intuitive web application. 
-               Forget the stress of manual management and enjoy 
-              An efficient and hassle-free process. Join ACMEET and optimize your business meeting organization today!
-          </p>
+          <h1>ACMEET</h1>
+          <h1>Meeting Rooms</h1>
+          <div class="bienvenida">
+              Welcome to ACMEET, your comprehensive solution to efficiently manage meeting room reservations.
+              Make reservations, modify and cancel without complications, thanks to our intuitive web application. 
+              Forget the stress of manual management and enjoy !
+          </div>
           <div class="botones">
+<<<<<<< HEAD
+            <button mat-fab extended class="boton" color="primary">
+              <mat-icon>calendar_today</mat-icon>
+              Reserve Now!
+            </button>
+            <button routerLink="/home/meetingRoom" mat-fab extended class="boton boton-basic" color="basic">
+              <mat-icon>list_alt</mat-icon>
+=======
               <button routerLink="/home/formReserve" mat-fab extended color="primary">
                 <mat-icon>calendar_today</mat-icon>
                 Reserve Now!
               </button>
               <button routerLink="/home/meetingRoom" mat-fab extended color="basic">
                 <mat-icon>list_alt</mat-icon>
+>>>>>>> 255a51d56125cd98d2bc98f854b9aa75a25a20d5
               List of Rooms
-              </button>
-            </div>
+            </button>
+          </div>
       </div>
   </div>
-  <br><br><br>
   <hr>
   <div class="row row1">
-      <div class="col consultaReserva">
-             Check your<br><br><br>
-              reserves!
-          <div class="botonesReserve">
-              <button routerLink="/home/bookings" mat-fab extended color="primary">
-                <mat-icon>calendar_today</mat-icon>
-                Check my reserves
-              </button>
-            </div>
+    <div class="col-md-6 consultaReserva">
+      <div class="titulo-container">
+        <h1 class="title">Check your<br/><br/>reserves !</h1>
       </div>
-      <div class="col">
-          <img class="salaImg2" src="../../../assets/img/a0c12c293b8a21038a59c7066ebfff28.jpg" alt="oficina">
+      <div class="botonesReserve">
+        <button routerLink="/home/bookings" mat-fab extended color="primary">
+          <mat-icon>calendar_today</mat-icon>
+          Check my reserves
+        </button>
       </div>
+    </div>
+    <div class="col-md-6">
+      <img class="salaImg2" src="../../../assets/img/a0c12c293b8a21038a59c7066ebfff28.jpg" alt="oficina">
+    </div>
   </div>
 </div>
 <app-footer></app-footer>
