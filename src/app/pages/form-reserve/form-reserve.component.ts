@@ -12,6 +12,7 @@ import { MeetingRoom } from 'src/app/interfaces/meetingRoom';
 import { Booking } from 'src/app/interfaces/booking';
 import { ProfileService } from 'src/app/services/profile.service';
 import { BookingService } from 'src/app/services/booking.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 interface Food {
@@ -44,8 +45,9 @@ export class FormReserveComponent {
   cityFormControl = new FormControl();
   officeFormControl = new FormControl();
   meetingRoomFormControl = new FormControl();
+ 
 
-  constructor(private _bookingService: BookingService,private _userService: ProfileService,private _meetingRoomService: MeetingRoomService, private _countryService: CountryService, private _cityService : CityService, private _officeService: OfficeService,private fb: FormBuilder){
+  constructor(private _snackBar : MatSnackBar,private _bookingService: BookingService,private _userService: ProfileService,private _meetingRoomService: MeetingRoomService, private _countryService: CountryService, private _cityService : CityService, private _officeService: OfficeService,private fb: FormBuilder){
     this.form = this.fb.group({
       meetingRoom : ['', Validators.required],
       date : ['',Validators.required],
@@ -129,13 +131,27 @@ export class FormReserveComponent {
   ObtenerUsuario(userName: string){
     this._userService.getUserProfile(userName).subscribe(dataUser => {
       this.user = dataUser.id;
-      console.log(this.user);
     });
   }
 
   hacerReserva(reserva: Booking){
     this._bookingService.createBooking(reserva).subscribe(succes =>  {
-      console.log("Hola que tal");
+      this.mensajeExito("reservada");
+      window.location.href = "/home/bookings";
+    }, error => this.mensajeNoExito());
+  }
+
+  mensajeExito(texto: string) {
+    this._snackBar.open(`La sala fue ${texto} con éxito`, '', {
+      duration: 4000,
+      horizontalPosition: 'right'
+    });
+  }
+
+  mensajeNoExito() {
+    this._snackBar.open(``, '', {
+      duration: 4000,
+      horizontalPosition: 'right'
     });
   }
 }

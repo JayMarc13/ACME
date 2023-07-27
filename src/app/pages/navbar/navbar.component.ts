@@ -8,8 +8,18 @@ import { MatMenuTrigger } from '@angular/material/menu';
 })
 export class NavbarComponent {
   @ViewChild('admnistration') administration!: MatMenuTrigger;
+  mostrarElemento: boolean = false;
 
   openMenu() {
     this.administration.openMenu();
+  }
+
+  ngOnInit(){
+    const userRole = sessionStorage.getItem('userRole');
+    if(userRole=="Administrador"){
+      this.mostrarElemento= true;
+    }
+
+    console.log(userRole);
   }
 }

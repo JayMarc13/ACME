@@ -10,9 +10,8 @@ import { BookingService } from 'src/app/services/booking.service';
   selector: 'app-booking',
   templateUrl: './bookings.component.html',
   styleUrls: ['./bookings.component.css']
-})
-export class BookingComponent {
-  displayedColumns: string[] = ['ReserveId', 'MeetingRoomId', 'ReserveDate', 'StartTime', 'EndTime', 'Acciones'];
+})export class BookingComponent {
+  displayedColumns: string[] = ['ReserveId', 'MeetingRoomName', 'ReserveDate', 'StartTime', 'EndTime', 'Acciones'];
   dataSource = new MatTableDataSource<Booking>();
   loading: boolean = false;
 
