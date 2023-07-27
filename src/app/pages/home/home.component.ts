@@ -11,7 +11,6 @@ export class HomeComponent {
   constructor(private _userService: ProfileService){}
 
   ngOnInit(){
-    const token = localStorage.getItem('token');
     const userName = sessionStorage.getItem('user');
     if(userName){
       this.ObtenerUsuario(userName);

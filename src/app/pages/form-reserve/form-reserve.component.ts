@@ -149,7 +149,7 @@ export class FormReserveComponent {
   }
 
   mensajeNoExito() {
-    this._snackBar.open(``, '', {
+    this._snackBar.open(`Algo esta mal o la ya esta reservada`, '', {
       duration: 4000,
       horizontalPosition: 'right'
     });
