@@ -147,7 +147,7 @@ export class FormReserveComponent {
 
   hacerReserva(reserva: Booking){
     this._bookingService.createBooking(reserva).subscribe(succes =>  {
-      console.log("Hola que tal");
+      window.location.href = "/home/bookings"
     });
   }
 

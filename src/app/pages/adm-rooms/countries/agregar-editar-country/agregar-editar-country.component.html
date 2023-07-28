@@ -1,14 +1,7 @@
-<div class="title">
+<div class="containerTabla">
   <h1>{{ Operacion }} Pais</h1>
-</div>
-<app-spinner *ngIf="loading"></app-spinner>
 
-<div class="container mat-elevation-z5">
-  <mat-card class="card">
-    <br>
-    <mat-card-title>
-      Datos del país
-    </mat-card-title>
+<app-spinner *ngIf="loading"></app-spinner>
     <br>
     <form [formGroup]="form" (ngSubmit)="agregarEditarCountry()">
       <mat-grid-list cols="2" rowHeight="80px">
@@ -24,5 +17,4 @@
         </mat-grid-tile>
       </mat-grid-list>
     </form>
-  </mat-card>
 </div>
