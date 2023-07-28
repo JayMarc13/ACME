@@ -151,7 +151,6 @@ export class FormReserveComponent {
     });
   }
 
-<<<<<<< HEAD
   // agregarEditarReserva() {
   //   //Definir el objeto
   //   const reserva: Booking = {
@@ -179,10 +178,6 @@ export class FormReserveComponent {
   }
   mensajeExito(texto: string) {
     this._snackBar.open(`La reserva fue ${texto} con éxito`, '', {
-=======
-  mensajeNoExito() {
-    this._snackBar.open(`Algo esta mal o la ya esta reservada`, '', {
->>>>>>> 80bdb38f500ec9b988b22c3f519335c5b58121c1
       duration: 4000,
       horizontalPosition: 'right'
     });

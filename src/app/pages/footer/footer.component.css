@@ -14,12 +14,11 @@
   width: 80%;
   margin: auto;
   box-shadow: -4px -4px 8px rgba(0, 0, 0, 0.2), 4px -4px 8px rgba(0, 0, 0, 0.2);
-  margin-top:30px;
+  margin-top: 30px;
   /* Esquinas superiores redondeadas */
   border-radius: 25px 25px 0 0;
   /* Solapar al margen inferior */
 }
-
 
 /* Ajustes para centrar el contenido horizontalmente */
 .footer-container {
@@ -27,26 +26,26 @@
 }
 
 /* Estilos para el enlace del nombre del equipo */
-  .footer-container .team-name {
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #333;
-    margin-right: 20px;
-    position: relative;
-  }
+.footer-container .team-name {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  margin-right: 20px;
+  position: relative;
+}
 
-    .footer-container .team-name::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 0;
-      height: 2px;
-      background-color: #6723d5;
-      transition: width 0.2s;
-    }
+.footer-container .team-name::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: #6723d5;
+  transition: width 0.2s;
+}
 
 .footer-container .team-name:hover::before {
   width: 100%;
@@ -78,15 +77,15 @@
   text-decoration: none;
   margin-left: 10px;
   font-size: 20px;
- }
+}
 
-  .footer-container .social-icons a:hover {
-    color: #6723d5;
-  }
+.footer-container .social-icons a:hover {
+  color: #6723d5;
+}
 
 /* Estilos para el efecto de "bounce" */
 .bounce-effect:hover {
-animation: bounce 1s infinite;
+  animation: bounce 1s infinite;
 }
 
 @keyframes bounce {
@@ -100,5 +99,22 @@ animation: bounce 1s infinite;
 
   60% {
     transform: translateY(-3px);
+  }
+}
+
+/* Estilos para hacer el footer responsive */
+@media screen and (max-width: 767px) {
+  .footer-container {
+    flex-wrap: wrap;
+  }
+
+  .footer-container .member {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .footer-container .team-name {
+    margin-right: 0;
   }
 }

@@ -12,7 +12,7 @@ body {
   background-size: 100%; /* Tamaño */
   background-position: fixed;
   background-position:absolute;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
 
 }
 
