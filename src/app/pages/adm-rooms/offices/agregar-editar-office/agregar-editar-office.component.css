@@ -1,0 +1,7 @@
+h1{
+    text-align: center;
+    font-weight: 500;
+  }
+  mat-form-field{
+    width: 80%;
+  }
