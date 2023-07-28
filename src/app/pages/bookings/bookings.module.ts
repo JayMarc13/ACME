@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
 import { BookingsRoutingModule } from './bookings-routing.module';
 import { BookingComponent } from './bookings.component';
+import { formReserveModule } from '../form-reserve/form-reserve.module';
 
 
 
@@ -11,6 +12,7 @@ import { BookingComponent } from './bookings.component';
   imports: [
     CommonModule,
     BookingsRoutingModule,
+    formReserveModule,
     SharedModule
   ],
   exports: [BookingComponent]
