@@ -151,38 +151,8 @@ export class FormReserveComponent {
     });
   }
 
-<<<<<<< HEAD
-  // agregarEditarReserva() {
-  //   //Definir el objeto
-  //   const reserva: Booking = {
-  //     reserveId = this.form.value.reserveId,
-  //     // cityName: this.form.value.cityName,
-  //     // countryId: this.form.value.countryId
-  //   }
-
-  //   if (this.cityId != 0) {
-  //     city.cityId = this.cityId;
-  //     this.editarcity(this.cityId, city);
-  //   } else {
-  //     this.agregarcity(city);
-  //   }
-  // }
-
-  editarReserva(reservaId: number, reserva:Booking){
-      this.loading = true;
-      this._bookingService.updateBooking(reservaId, reserva).subscribe(data => {
-      this.loading = false;
-      this.mensajeExito('actualizada');
-      this.router.navigate(['/home/editarReserve']);
-    })
-
-  }
-  mensajeExito(texto: string) {
-    this._snackBar.open(`La reserva fue ${texto} con éxito`, '', {
-=======
   mensajeNoExito() {
     this._snackBar.open(`Algo esta mal o la ya esta reservada`, '', {
->>>>>>> 80bdb38f500ec9b988b22c3f519335c5b58121c1
       duration: 4000,
       horizontalPosition: 'right'
     });
