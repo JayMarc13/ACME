@@ -72,8 +72,14 @@ th {
 
 } */
 
-.edit, .delete {
-  color: #ffc107;
+
+.delete {
+  color: #E15639;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.edit {
+  color: #187889;
   margin-right: 5px;
   cursor: pointer;
 }

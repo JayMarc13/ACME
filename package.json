@@ -28,14 +28,9 @@
     "@ng-bootstrap/ng-bootstrap": "^15.1.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.2.3",
-<<<<<<< HEAD
     "igniteui-angular": "^16.0.13",
     "dayjs": "^1.11.9",
-=======
-    "dayjs": "^1.11.9",
-    "igniteui-angular": "^16.0.13",
     "jsonwebtoken": "^9.0.1",
->>>>>>> 255a51d56125cd98d2bc98f854b9aa75a25a20d5
     "jwt-decode": "^3.1.2",
     "luxon": "^3.3.0",
     "ngx-material-timepicker": "^13.1.1",

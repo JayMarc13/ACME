@@ -30,4 +30,7 @@ export class BookingService {
   updateBooking(reserveId:number, reserve:Booking){
     return this.http.put(`${this.myAppUrl}${this.myApiUrl}/${reserveId}`, reserve);
   }
+  getBookingsById(reserveId:number){
+    return this.http.get(`${this.myAppUrl}${this.myApiUrl}/${reserveId}`);
+  }
 }

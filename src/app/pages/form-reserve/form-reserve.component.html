@@ -1,6 +1,6 @@
 <div class="containerTabla">
     <h1>Meeting Room Reserve</h1>
-    <form  [formGroup]="form" (ngSubmit)="reservarSala()">
+    <form  [formGroup]="form" (ngSubmit)="agregarEditarReserva()">
         <div class="row" >
             <div class="col">
                 <mat-form-field id="input">
@@ -8,9 +8,9 @@
                     <mat-select [formControl]="countryFormControl">
                       <mat-option *ngFor="let country of countries" [value]="country">{{country.countryName}}</mat-option>
                     </mat-select>
-                    <mat-icon matSuffix>public</mat-icon> 
+                    <mat-icon matSuffix>public</mat-icon>
                   </mat-form-field>
-                  
+
             </div>
             <div class="col">
                 <mat-form-field id="input">
@@ -18,8 +18,8 @@
                     <mat-select [formControl]="cityFormControl">
                       <mat-option *ngFor="let city of cities" [value]="city">{{city.cityName}}</mat-option>
                     </mat-select>
-                    <mat-icon matSuffix>location_city</mat-icon> 
-                  </mat-form-field>                  
+                    <mat-icon matSuffix>location_city</mat-icon>
+                  </mat-form-field>
             </div>
             <div class="col">
                 <mat-form-field id="input">
@@ -27,7 +27,7 @@
                     <mat-select    [formControl]="officeFormControl" >
                         <mat-option *ngFor="let office of offices" [value]="office">{{office.nameOffice}}</mat-option>
                     </mat-select>
-                    <mat-icon matSuffix>work</mat-icon> 
+                    <mat-icon matSuffix>work</mat-icon>
                   </mat-form-field>
             </div>
         </div>
@@ -37,7 +37,7 @@
                 <mat-select    [formControl]="meetingRoomFormControl" >
                     <mat-option *ngFor="let meetingRoom of meetingRooms" [value]="meetingRoom">{{meetingRoom.meetingRoomName}}</mat-option>
                 </mat-select>
-                <mat-icon matSuffix>meeting_room</mat-icon> 
+                <mat-icon matSuffix>meeting_room</mat-icon>
               </mat-form-field>
         </div>
         <div class="row" >
@@ -51,7 +51,7 @@
                 </mat-form-field>
             </div>
             <div class="col">
-                <mat-form-field id="input" appearance="fill"> 
+                <mat-form-field id="input" appearance="fill">
                     <mat-label>Start Hour</mat-label>
                     <input formControlName="startHour" matInput [ngxTimepicker]="startHour" [format]="24" readonly>
                     <mat-icon matSuffix>access_time</mat-icon>
