@@ -10,7 +10,7 @@ body {
 h1 {
   font-weight: 900;
   font-size: 40px;
-  text-align: center;
+  text-align: left;
 }
 
 .titulo-container {
@@ -66,10 +66,13 @@ h1 {
     margin-right: 3px;
   }
 
-.botonesReserve > button {
-  margin-top: 20px;
-  margin-left:80px;
+.botonesReserve {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 80px;
 }
+
 
 .row1 {
   margin-top: 50px;
@@ -78,6 +81,7 @@ h1 {
 }
 
 .consultaReserva {
+  margin-top:10px;
   font-family: Roboto, sans-serif;
   font-size: 40px;
   font-weight: 900;

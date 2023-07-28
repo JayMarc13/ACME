@@ -45,6 +45,7 @@ export class AddEditUsersComponent implements OnInit {
     this._UsersService.adduser(user)
       .subscribe(
         () => {
+          this.router.navigateByUrl('/home/users/listUsers');
         },
         (error: HttpErrorResponse) => {
           if (error.status === 400) {
