@@ -42,7 +42,7 @@ export class AgregarEditarRoomsComponent {
     this.loading = true;
     this._meetingRoomService.getRoom(this.meetingRoomId).subscribe(data => {
       this.form.setValue({
-        meetingRoomName: data.meetingRoomId,
+        meetingRoomName: data.meetingRoomName,
         officeId: data.officeId
       })
       this.loading = false;

@@ -158,10 +158,20 @@ export class FormReserveComponent {
 
   hacerReserva(reserva: Booking){
     this._bookingService.createBooking(reserva).subscribe(succes =>  {
-      console.log("Hola que tal");
+      window.location.href = "/home/bookings"
     });
   }
 
+<<<<<<< HEAD
+=======
+  // agregarEditarReserva() {
+  //   //Definir el objeto
+  //   const reserva: Booking = {
+  //     reserveId = this.form.value.reserveId,
+  //     // cityName: this.form.value.cityName,
+  //     // countryId: this.form.value.countryId
+  //   }
+>>>>>>> 208fd95f65af0d8bf28b37beaca771bc09b1e625
 
   agregarEditarReserva() {
     let reserva: Booking;
@@ -204,6 +214,7 @@ export class FormReserveComponent {
     })
 
   }
+<<<<<<< HEAD
   populateFormWithBookingData() {
     // Patch the form with the reservation data from 'bookingUser'
     this.form.patchValue({
@@ -211,6 +222,12 @@ export class FormReserveComponent {
       date: this.bookingUser.reserveDate,
       startHour: this.bookingUser.startTime,
       endHour: this.bookingUser.endTime,
+=======
+  mensajeExito(texto: string) {
+    this._snackBar.open(`La reserva fue ${texto} con éxito`, '', {
+      duration: 4000,
+      horizontalPosition: 'right'
+>>>>>>> 208fd95f65af0d8bf28b37beaca771bc09b1e625
     });
 
     // Set the selected values for the dropdowns based on 'bookingUser' data

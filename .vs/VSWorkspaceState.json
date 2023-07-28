@@ -3,14 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\components",
-    "\\src\\app\\components\\login",
     "\\src\\app\\pages",
-    "\\src\\app\\pages\\dashboard",
-    "\\src\\app\\pages\\footer",
-    "\\src\\app\\pages\\home",
-    "\\src\\app\\pages\\navbar"
+    "\\src\\app\\pages\\adm-rooms",
+    "\\src\\app\\pages\\form-reserve",
+    "\\src\\app\\pages\\users",
+    "\\src\\app\\pages\\users\\add-edit-users",
+    "\\src\\app\\pages\\users\\list-users"
   ],
-  "SelectedNode": "\\src\\app\\pages\\home\\home.component.html",
+  "SelectedNode": "\\src\\app\\pages\\form-reserve\\form-reserve.component.ts",
   "PreviewInSolutionExplorer": false
 }

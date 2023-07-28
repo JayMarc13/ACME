@@ -28,8 +28,13 @@
     "@ng-bootstrap/ng-bootstrap": "^15.1.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.2.3",
+<<<<<<< HEAD
     "igniteui-angular": "^16.0.13",
     "dayjs": "^1.11.9",
+=======
+    "dayjs": "^1.11.9",
+    "igniteui-angular": "^16.0.13",
+>>>>>>> 208fd95f65af0d8bf28b37beaca771bc09b1e625
     "jsonwebtoken": "^9.0.1",
     "jwt-decode": "^3.1.2",
     "luxon": "^3.3.0",

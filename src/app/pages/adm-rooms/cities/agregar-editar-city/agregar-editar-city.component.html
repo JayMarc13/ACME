@@ -1,11 +1,7 @@
-<div class="title">
+<div class="containerTabla">
   <h1>{{ Operacion }} City</h1>
-</div>
+
 <app-spinner *ngIf="loading"></app-spinner>
-
-
-  <mat-card-header class="card">
-    <mat-card-title class="subtitle"> Data of city</mat-card-title>
     <form [formGroup]="form" (ngSubmit)="agregarEditarCity()">
       <mat-grid-list cols="2" rowHeight="80px">
         <mat-grid-tile [colspan]="2">
@@ -28,6 +24,5 @@
         </mat-grid-tile>
       </mat-grid-list>
     </form>
-  </mat-card-header>
-
+</div>
 
