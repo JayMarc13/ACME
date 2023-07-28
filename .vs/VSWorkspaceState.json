@@ -3,11 +3,7 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\components",
-    "\\src\\app\\components\\login",
     "\\src\\app\\pages",
-    "\\src\\app\\pages\\dashboard",
-    "\\src\\app\\pages\\footer",
     "\\src\\app\\pages\\home",
     "\\src\\app\\pages\\navbar"
   ],
