@@ -101,15 +101,15 @@ export class FormReserveComponent {
     if(userName){
       this.ObtenerUsuario(userName);
     }
-     // Check if 'reserveId' has a value (assuming you set it when editing the reservation)
-    if (this.reserveId) {
-      // Fetch reservation data using 'this.reserveId' and assign it to 'bookingUser'
-      // Assuming 'getBookingById' is a method that fetches reservation data by ID from the server
-      this._bookingService.getBookingsById(this.reserveId).subscribe((data) => {
-        this.bookingUser = data as Booking;
-        this.populateFormWithBookingData();
-      });
-  }
+  //    // Check if 'reserveId' has a value (assuming you set it when editing the reservation)
+  //   if (this.reserveId) {
+  //     // Fetch reservation data using 'this.reserveId' and assign it to 'bookingUser'
+  //     // Assuming 'getBookingById' is a method that fetches reservation data by ID from the server
+  //     this._bookingService.getBookingsById(this.reserveId).subscribe((data) => {
+  //       this.bookingUser = data as Booking;
+  //       this.populateFormWithBookingData();
+  //     });
+  // }
   }
 
   reservarSala(){
@@ -162,73 +162,56 @@ export class FormReserveComponent {
     });
   }
 
-<<<<<<< HEAD
-=======
+
   // agregarEditarReserva() {
-  //   //Definir el objeto
-  //   const reserva: Booking = {
-  //     reserveId = this.form.value.reserveId,
-  //     // cityName: this.form.value.cityName,
-  //     // countryId: this.form.value.countryId
+  //   let reserva: Booking;
+
+  //   if (this.reserveId != 0) {
+  //     // Editing existing reservation
+  //     reserva = {
+  //       reserveId: this.reserveId,
+  //       reserveDate: this.bookingUser.reserveDate,
+  //       meetingRoomId: this.bookingUser.meetingRoomId,
+  //       startTime: this.bookingUser.startTime,
+  //       endTime: this.bookingUser.endTime,
+  //       userId: this.bookingUser.userId
+  //     };
+  //     console.log(reserva)
+  //     this.editarReserva(this.reserveId, reserva);
+  //   } else {
+  //     // Adding a new reservation
+  //     reserva = {
+  //       reserveId: 0, // Set to 0 or null as it will be generated on the server side
+  //       reserveDate: this.bookingUser.reserveDate,
+  //       meetingRoomId: this.meetingRoomSelected.meetingRoomId,
+  //       startTime: this.form.value.startHour,
+  //       endTime: this.form.value.endHour,
+  //       userId: this.bookingUser.userId
+  //     };
+  //     this.hacerReserva(reserva);
   //   }
->>>>>>> 208fd95f65af0d8bf28b37beaca771bc09b1e625
-
-  agregarEditarReserva() {
-    let reserva: Booking;
-
-    if (this.reserveId != 0) {
-      // Editing existing reservation
-      reserva = {
-        reserveId: this.reserveId,
-        reserveDate: this.bookingUser.reserveDate,
-        meetingRoomId: this.bookingUser.meetingRoomId,
-        startTime: this.bookingUser.startTime,
-        endTime: this.bookingUser.endTime,
-        userId: this.bookingUser.userId
-      };
-      console.log(reserva)
-      this.editarReserva(this.reserveId, reserva);
-    } else {
-      // Adding a new reservation
-      reserva = {
-        reserveId: 0, // Set to 0 or null as it will be generated on the server side
-        reserveDate: this.bookingUser.reserveDate,
-        meetingRoomId: this.meetingRoomSelected.meetingRoomId,
-        startTime: this.form.value.startHour,
-        endTime: this.form.value.endHour,
-        userId: this.bookingUser.userId
-      };
-      this.hacerReserva(reserva);
-    }
-  }
+  // }
 
 
-  editarReserva(reservaId: number, reserva:Booking){
-      this.loading = true;
-      console.log("form compor"+reserva);
-      console.log("hhhhhhhhhh"+reservaId);
-      this._bookingService.updateBooking(reservaId, reserva).subscribe(data => {
-      this.loading = false;
-      // this.mensajeExito('actualizada');
-      this.router.navigate(['/home/bookings']);
-    })
+  // editarReserva(reservaId: number, reserva:Booking){
+  //     this.loading = true;
+  //     console.log("form compor"+reserva);
+  //     console.log("hhhhhhhhhh"+reservaId);
+  //     this._bookingService.updateBooking(reservaId, reserva).subscribe(data => {
+  //     this.loading = false;
+  //     // this.mensajeExito('actualizada');
+  //     this.router.navigate(['/home/bookings']);
+  //   })
 
-  }
-<<<<<<< HEAD
-  populateFormWithBookingData() {
-    // Patch the form with the reservation data from 'bookingUser'
-    this.form.patchValue({
-      meetingRoom: this.bookingUser.meetingRoomId,
-      date: this.bookingUser.reserveDate,
-      startHour: this.bookingUser.startTime,
-      endHour: this.bookingUser.endTime,
-=======
-  mensajeExito(texto: string) {
-    this._snackBar.open(`La reserva fue ${texto} con éxito`, '', {
-      duration: 4000,
-      horizontalPosition: 'right'
->>>>>>> 208fd95f65af0d8bf28b37beaca771bc09b1e625
-    });
+  // }
+  // populateFormWithBookingData() {
+  //   // Patch the form with the reservation data from 'bookingUser'
+  //   this.form.patchValue({
+  //     meetingRoom: this.bookingUser.meetingRoomId,
+  //     date: this.bookingUser.reserveDate,
+  //     startHour: this.bookingUser.startTime,
+  //     endHour: this.bookingUser.endTime,
+  //   });
 
     // Set the selected values for the dropdowns based on 'bookingUser' data
     // this.countryFormControl.setValue(this.bookingUser.meetingRoom.office.city.country);
@@ -243,5 +226,5 @@ export class FormReserveComponent {
   //   });
   // }
 
-}
+
 
