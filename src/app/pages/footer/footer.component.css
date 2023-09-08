@@ -102,7 +102,7 @@
   }
 }
 
-/* Estilos para hacer el footer responsive */
+
 @media screen and (max-width: 767px) {
   .footer-container {
     flex-wrap: wrap;
