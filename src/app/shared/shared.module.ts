@@ -29,6 +29,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {MatTreeModule} from '@angular/material/tree';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [SpinnerComponent],
@@ -58,7 +59,8 @@ import {MatTreeModule} from '@angular/material/tree';
     MatDatepickerModule,
     MatNativeDateModule,
     NgxMaterialTimepickerModule,
-    MatTreeModule
+    MatTreeModule,
+    MatDialogModule,
   ],
   exports: [
     SpinnerComponent,
@@ -86,7 +88,8 @@ import {MatTreeModule} from '@angular/material/tree';
     MatDatepickerModule,
     MatNativeDateModule,
     NgxMaterialTimepickerModule,
-    MatTreeModule
+    MatTreeModule,
+    MatDialogModule
   ]
 })
 export class SharedModule { }
