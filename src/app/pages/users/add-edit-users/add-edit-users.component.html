@@ -18,9 +18,13 @@
           <label for="inputPassword2" class="visually-hidden">Password</label>
           <input formControlName="password" [class.is-invalid]="f.password.errors && f.password.touched" name="register" id="password" type="password" class="fadeIn third" placeholder="Password">
           <div id="validationServer04Feedback" class="invalid-feedback">
-            Mandatory Password
-          </div>
+            Mandatory Password must have at least 8 characters,
+               Contain at least one uppercase letter, one lowercase letter,
+                and one symbol  
+              </div> 
         </div>
+    
+        
         <button type="submit" class="btn btn-primary custom-button custom-outline fadeIn fourth">Submit</button>
       </form>
 

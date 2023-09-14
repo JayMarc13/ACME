@@ -2,8 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
-import { users } from 'src/app/interfaces/users';
+import { Router } from '@angular/router'; // Importa el Router
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -13,15 +12,14 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class AddEditUsersComponent implements OnInit {
   formm: FormGroup;
-  constructor(private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar, private _UsersService: UsersService) {
+
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, private _UsersService: UsersService, private router: Router) {
     this.formm = this.fb.group({
       user: ['', [Validators.required]],
-      email: ['', [ Validators.email]],
+      email: ['', [Validators.email]],
       password: ['', [Validators.required]]
-    })
+    });
   }
-
-
 
   ngOnInit(): void {
   }
@@ -34,41 +32,52 @@ export class AddEditUsersComponent implements OnInit {
       return;
     }
 
-    const user: users = {
+    const password = this.formm.value.password;
+    if (password.length < 8 || !/[A-Z]/.test(password) || !/\d/.test(password)) {
+      // La contraseña no cumple con los requisitos
+      // Muestra un mensaje de error al usuario
+      this.snackBar.open('La contraseña debe tener al menos 8 caracteres y contener al menos una letra mayúscula y un número.', '', {
+        duration: 5000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+      });
+      return; // No envía la solicitud si la contraseña no cumple con los requisitos
+    }
+
+    // Continúa con el registro si la contraseña cumple con los requisitos
+    const userData = {
       userName: this.formm.value.user,
       email: this.formm.value.email,
-      password: this.formm.value.password
+      password: password
     };
 
-    console.log(user);
+    console.log(userData);
 
-    this._UsersService.adduser(user)
+    this._UsersService.adduser(userData)
       .subscribe(
         () => {
-          this.router.navigateByUrl('/home/users/listUsers');
+          // Registro exitoso
+          this.router.navigate(['/listUser']); // Redirige a /listUser en caso de éxito
         },
         (error: HttpErrorResponse) => {
           if (error.status === 400) {
-            alert("Los parametros introducidos tienen un error")
+            alert("Error 400. No se pudo completar la solicitud");
           } else {
-            window.location.href = '/addUser';  
+            this.router.navigate(['/listUser']); // Redirige a /listUser en caso de error
           }
         }  
       );
-
-
   }
-
 
   public get f(): any {
     return this.formm.controls;
   }
 
   error() {
-    this.snackBar.open('The account or password is wrong', '', {
+    this.snackBar.open('La cuenta o contraseña son incorrectas', '', {
       duration: 5000,
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
-    })
+    });
   }
 }

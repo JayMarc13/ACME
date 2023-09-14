@@ -32,10 +32,14 @@ h2 {
 
 /* STRUCTURE */
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 85vh;
+  width: 80%;
+  background-color: white;
+  position: relative;
+  padding: 50px;
+  margin: 90px auto 20px; /* Margen vertical de 20px arriba, 80px abajo y centrado horizontalmente */
+  border-radius: 20px;
+  animation: fadeIn 1s ease-in-out forwards;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .wrapper {
@@ -381,3 +385,4 @@ input[type=password] {
   margin-bottom: 15px;
   border:none;
 }
+

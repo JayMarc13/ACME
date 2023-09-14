@@ -35,6 +35,10 @@ const routes: Routes = [
         path: 'formReserve',
         loadChildren: () => import('./form-reserve/form-reserve.module').then(m => m.formReserveModule)
       },
+      {
+        path: 'editarPerfil',
+        loadChildren: () => import('./editar-profile/editar-profile.module').then(m =>m.ProfileModule)
+      },
       // {
       //   path: 'editarReserve',
       //   loadChildren: () => import('./form-reserve/form-reserve.module').then(m => m.formReserveModule)
