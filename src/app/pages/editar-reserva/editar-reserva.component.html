@@ -1,0 +1,39 @@
+<div class="containerTabla">
+  <h1>Your Reservation {{reservaId}}</h1>
+
+  <h2>{{meetingRoomName}}</h2>
+
+  <form [formGroup]="form" >
+    <div class="row">
+
+      <mat-form-field class="col">
+        <mat-label>Choose a date</mat-label>
+        <input formControlName="reserveDate" matInput [matDatepicker]="picker" [(ngModel)]="reserva.reserveDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker">15/05/2023</mat-datepicker-toggle>
+        <mat-datepicker #picker>15/05/2023</mat-datepicker>
+      </mat-form-field>
+
+
+      <mat-form-field class="col">
+        <mat-label>Start Hour</mat-label>
+        <input formControlName="startTime" matInput [ngxTimepicker]="startHour" [format]="24" readonly>
+        <mat-icon matSuffix>access_time</mat-icon>
+        <ngx-material-timepicker #startHour></ngx-material-timepicker>
+      </mat-form-field>
+      <mat-form-field class="col">
+        <mat-label>End Hour</mat-label>
+        <input formControlName="endTime" matInput [ngxTimepicker]="endHour" [format]="24" readonly>
+        <mat-icon matSuffix>access_time</mat-icon>
+        <ngx-material-timepicker #endHour></ngx-material-timepicker>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <button [disabled]="form.invalid" (click)="modificarReserva()" type="submit" class="Acciones" mat-raised-button color="primary" routerLink="/home/bookings">Save</button>
+      </div>
+      <div class="col"></div>
+    </div>
+  </form>
+</div>
