@@ -17,8 +17,12 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/adm.module').then(m => m.AdmModule)
   },
-  { path: '**', redirectTo: 'login', pathMatch: 'full' }
-
+  // Agregar una ruta para listUser
+  {
+    path: 'listUser',
+    loadChildren: () => import('./pages/users/users.module').then(m => m.UsersModule)
+  },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({
