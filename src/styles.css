@@ -4,6 +4,8 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
+
+
 body {
   background: #ADA996; /* fallback for old browsers */
   background: -webkit-linear-gradient(to top,#ADA996,#F2F2F2, #DBDBDB, #EAEAEA); /* Chrome 10-25, Safari 5.1-6 */

@@ -1,13 +1,19 @@
 /* Estilos generales del navbar */
 
 #nav {
-    padding: 10px;
-    width: 80%;
-    margin: auto;
-    border-bottom-right-radius: 25px;
-    border-bottom-left-radius: 25px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
+  padding: 10px;
+  width: 80%;
+  margin: auto;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
 
 .navbar-brand {
   font-size: 2rem;

@@ -18,5 +18,9 @@ export class ProfileService {
     // Asumiendo que la respuesta contiene un objeto con campos "user" y "email".
     return this.http.get<profile>(this.myAppUrl + this.myApiUrl+user);
   }
+
+  editUserProfile(user: string, profile: profile): Observable <void>{
+    return this.http.put<void>(this.myAppUrl+this.myApiUrl+user, profile);
+  }
 }
 
