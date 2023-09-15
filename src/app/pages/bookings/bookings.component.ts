@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
@@ -12,7 +12,7 @@ import { BookingService } from 'src/app/services/booking.service';
 @Component({
   selector: 'app-booking',
   templateUrl: './bookings.component.html',
-  styleUrls: ['./bookings.component.css']
+  styleUrls: ['./bookings.component.css'],
 })export class BookingComponent {
   displayedColumns: string[] = ['reserveId', 'meetingRoomName', 'reserveDate', 'startTime', 'endTime', 'Acciones'];
   dataSource = new MatTableDataSource<Booking>();
@@ -23,7 +23,7 @@ import { BookingService } from 'src/app/services/booking.service';
 
   //Pop up y lista offices
   constructor(private _snackBar: MatSnackBar,
-    private _bookingService: BookingService) {
+    private _bookingService: BookingService,) {
 
   }
 

@@ -95,8 +95,7 @@ export class EditarReservaComponent {
     this.loading = true;
     this._bookingService.updateBooking(reservaId, reserva).subscribe(data => {
       this.loading = false;
-      this.mensajeExito('actualizada');
-      this.router.navigate(['/home/bookings']);
+      // this.router.navigate(['/home/bookings']);
     })
   }
 
@@ -128,12 +127,19 @@ export class EditarReservaComponent {
         meetingRoomId: this.meetingRoomId
       }
       this.editarReserva(this.reservaId, this.reserva);
+
+      setTimeout(function(){
+        window.location.reload();
+     }, 10);
+    //  this.mensajeExito("actualizada");
     }
+
   }
+
 
   mensajeExito(texto: string) {
     this._snackBar.open(`La reserva fue ${texto} con éxito`, '', {
-      duration: 4000,
+      duration: 2000,
       horizontalPosition: 'right'
     });
   }

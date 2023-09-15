@@ -14,13 +14,7 @@ export class AddEditUsersComponent implements OnInit {
   userId: string="";
   formm: FormGroup;
 
-<<<<<<< HEAD
-  constructor(private fb: FormBuilder, private snackBar: MatSnackBar,
-    private _UsersService: UsersService,
-    private router: Router) {
-=======
   constructor(private fb: FormBuilder, private snackBar: MatSnackBar, private _UsersService: UsersService, private router: Router, private route: ActivatedRoute) {
->>>>>>> 3936356ba4d4414a126e5a2bd92b9b93da4b15bc
     this.formm = this.fb.group({
       user: ['', [Validators.required]],
       email: ['', [Validators.email]],
