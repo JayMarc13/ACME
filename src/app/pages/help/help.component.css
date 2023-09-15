@@ -24,7 +24,7 @@ h2 {
 }
 
 /* STRUCTURE */
-.containerTabla row {
+.containerTabla {
   width: 80%;
   background-color: white;
   position: relative;

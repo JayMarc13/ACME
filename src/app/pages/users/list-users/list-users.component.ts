@@ -3,8 +3,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { users } from 'src/app/interfaces/users';
 import { UsersService } from 'src/app/services/users.service';
+import { EditarUsuariosComponent } from '../../editar-usuarios/editar-usuarios.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list-users',
@@ -12,7 +15,7 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./list-users.component.css']
 })
 export class ListUsersComponent {
-  displayedColumns: string[] = ['userName', 'email','Acciones'];
+  displayedColumns: string[] = ['userName', 'email','phone','Acciones'];
   dataSource = new MatTableDataSource<users>();
   loading: boolean = false;
 
@@ -20,10 +23,16 @@ export class ListUsersComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
- constructor(private _snackBar: MatSnackBar, private _UsersService: UsersService) { }
+ constructor(private _snackBar: MatSnackBar, private _UsersService: UsersService,  public dialog: MatDialog) { }
+
 
   ngOnInit(): void {
     this.getuser();
+  }
+
+  //Pop up
+  openDialog(idUsuario:string): void {
+    const dialogRef = this.dialog.open(EditarUsuariosComponent, {data: {idUsuario}});
   }
 
   //Paginaciones y ordenar

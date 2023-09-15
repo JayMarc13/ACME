@@ -39,6 +39,13 @@ const routes: Routes = [
         path: 'editarPerfil',
         loadChildren: () => import('./editar-profile/editar-profile.module').then(m =>m.ProfileModule)
       },
+<<<<<<< HEAD
+=======
+      {
+        path: 'editarUsuario',
+        loadChildren: () => import('./editar-usuarios/editar-usuarios.module').then(m =>m.EditarUsuariosModule)
+      },
+>>>>>>> 3936356ba4d4414a126e5a2bd92b9b93da4b15bc
       {
         path: 'editarReserve/:reserveId', loadChildren: () => import('./editar-reserva/editar-reserva.module').then(m => m.EditarReservaModule)
       },

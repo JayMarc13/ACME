@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router'; // Importa el Router
+import { ActivatedRoute, Router } from '@angular/router'; // Importa el Router
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -11,11 +11,16 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./add-edit-users.component.css']
 })
 export class AddEditUsersComponent implements OnInit {
+  userId: string="";
   formm: FormGroup;
 
+<<<<<<< HEAD
   constructor(private fb: FormBuilder, private snackBar: MatSnackBar,
     private _UsersService: UsersService,
     private router: Router) {
+=======
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, private _UsersService: UsersService, private router: Router, private route: ActivatedRoute) {
+>>>>>>> 3936356ba4d4414a126e5a2bd92b9b93da4b15bc
     this.formm = this.fb.group({
       user: ['', [Validators.required]],
       email: ['', [Validators.email]],
@@ -59,13 +64,13 @@ export class AddEditUsersComponent implements OnInit {
       .subscribe(
         () => {
           // Registro exitoso
-          this.router.navigate(['/listUser']); // Redirige a /listUser en caso de éxito
+          this.router.navigate(['/home/users/listUser']); // Redirige a /listUser en caso de éxito
         },
         (error: HttpErrorResponse) => {
           if (error.status === 400) {
             alert("Error 400. No se pudo completar la solicitud");
           } else {
-            this.router.navigate(['/listUser']); // Redirige a /listUser en caso de error
+            this.router.navigate(['/home/users/listUser']); // Redirige a /listUser en caso de error
           }
         }
       );
