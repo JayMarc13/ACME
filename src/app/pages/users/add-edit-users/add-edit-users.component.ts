@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router'; // Importa el Router
+import { RegisterService } from 'src/app/services/register.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class AddEditUsersComponent implements OnInit {
   userId: string="";
   formm: FormGroup;
 
-  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, private _UsersService: UsersService, private router: Router, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, private _UsersService: UsersService, private router: Router, private route: ActivatedRoute,private  _registerService: RegisterService) {
     this.formm = this.fb.group({
       user: ['', [Validators.required]],
       email: ['', [Validators.email]],
@@ -54,10 +55,10 @@ export class AddEditUsersComponent implements OnInit {
 
     console.log(userData);
 
-    this._UsersService.adduser(userData)
+    this._registerService.userRegister(userData)
       .subscribe(
         () => {
-          // Registro exitoso
+          // Registro exitoso   
           this.router.navigate(['/home/users/listUser']); // Redirige a /listUser en caso de éxito
         },
         (error: HttpErrorResponse) => {

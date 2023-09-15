@@ -33,8 +33,8 @@ export class UsersService {
   }
 
   //Añadir ususario en la base de datos
-  adduser(User: users): Observable<users> {
-    return this.http.post<users>(this.myAppUrl + this.myApiUrl, User);
+  adduser(User: users): Observable<any> {
+    return this.http.post<any>(this.myAppUrl + this.myApiUrl, User);
   }
 
   //Editar datos del u suario 
