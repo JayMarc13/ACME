@@ -14,6 +14,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { BookingService } from 'src/app/services/booking.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 
 interface Food {
@@ -102,18 +103,11 @@ export class FormReserveComponent {
       this.ObtenerUsuario(userName);
     }
   //    // Check if 'reserveId' has a value (assuming you set it when editing the reservation)
-  //   if (this.reserveId) {
-  //     // Fetch reservation data using 'this.reserveId' and assign it to 'bookingUser'
-  //     // Assuming 'getBookingById' is a method that fetches reservation data by ID from the server
-  //     this._bookingService.getBookingsById(this.reserveId).subscribe((data) => {
-  //       this.bookingUser = data as Booking;
-  //       this.populateFormWithBookingData();
-  //     });
-  // }
-  }
+   }
 
   reservarSala(){
-    const date = dayjs(this.form.value.date).add(7, 'days').format('YYYY-MM-DD');
+    const date = dayjs(this.form.value.date).format('YYYY-MM-DD');
+
     this.bookingUser.meetingRoomId = this.meetingRoomSelected.meetingRoomId;
     this.bookingUser.reserveDate = date;
     this.bookingUser.startTime = this.form.value.startHour;
@@ -162,69 +156,8 @@ export class FormReserveComponent {
     });
   }
 
-
-  // agregarEditarReserva() {
-  //   let reserva: Booking;
-
-  //   if (this.reserveId != 0) {
-  //     // Editing existing reservation
-  //     reserva = {
-  //       reserveId: this.reserveId,
-  //       reserveDate: this.bookingUser.reserveDate,
-  //       meetingRoomId: this.bookingUser.meetingRoomId,
-  //       startTime: this.bookingUser.startTime,
-  //       endTime: this.bookingUser.endTime,
-  //       userId: this.bookingUser.userId
-  //     };
-  //     console.log(reserva)
-  //     this.editarReserva(this.reserveId, reserva);
-  //   } else {
-  //     // Adding a new reservation
-  //     reserva = {
-  //       reserveId: 0, // Set to 0 or null as it will be generated on the server side
-  //       reserveDate: this.bookingUser.reserveDate,
-  //       meetingRoomId: this.meetingRoomSelected.meetingRoomId,
-  //       startTime: this.form.value.startHour,
-  //       endTime: this.form.value.endHour,
-  //       userId: this.bookingUser.userId
-  //     };
-  //     this.hacerReserva(reserva);
-  //   }
-  // }
-
-
-  // editarReserva(reservaId: number, reserva:Booking){
-  //     this.loading = true;
-  //     console.log("form compor"+reserva);
-  //     console.log("hhhhhhhhhh"+reservaId);
-  //     this._bookingService.updateBooking(reservaId, reserva).subscribe(data => {
-  //     this.loading = false;
-  //     // this.mensajeExito('actualizada');
-  //     this.router.navigate(['/home/bookings']);
-  //   })
-
-  // }
-  // populateFormWithBookingData() {
-  //   // Patch the form with the reservation data from 'bookingUser'
-  //   this.form.patchValue({
-  //     meetingRoom: this.bookingUser.meetingRoomId,
-  //     date: this.bookingUser.reserveDate,
-  //     startHour: this.bookingUser.startTime,
-  //     endHour: this.bookingUser.endTime,
-  //   });
-
-    // Set the selected values for the dropdowns based on 'bookingUser' data
-    // this.countryFormControl.setValue(this.bookingUser.meetingRoom.office.city.country);
-    // this.cityFormControl.setValue(this.bookingUser.meetingRoom.office.city);
-    // this.officeFormControl.setValue(this.bookingUser.meetingRoom.office);
-    // this.meetingRoomFormControl.setValue(this.bookingUser.meetingRoom);
   }
-  // mensajeExito(texto: string) {
-  //   this._snackBar.open(`La ciudad fue ${texto} con éxito`, '', {
-  //     duration: 4000,
-  //     horizontalPosition: 'right'
-  //   });
-  // }
+
 
 
 

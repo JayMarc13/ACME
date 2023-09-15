@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatTableModule } from '@angular/material/table';
+import { map } from 'rxjs';
 import { Booking } from 'src/app/interfaces/booking';
 import { BookingService } from 'src/app/services/booking.service';
 
@@ -21,14 +22,15 @@ import { BookingService } from 'src/app/services/booking.service';
   @ViewChild(MatSort) sort!: MatSort;
 
   //Pop up y lista offices
-  constructor(private _snackBar: MatSnackBar, private _bookingService: BookingService) { }
+  constructor(private _snackBar: MatSnackBar, private _bookingService: BookingService) {
+
+  }
 
   ngOnInit(): void {
     const userId = sessionStorage.getItem('userId');
     if(userId){
       this.obtenerBookings(userId);
     }
-
   }
   //Paginaciones y ordenar
   ngAfterViewInit() {
@@ -50,16 +52,33 @@ import { BookingService } from 'src/app/services/booking.service';
   }
 
   //Obtener los bookings del usuario
+  // obtenerBookings(userId: string) {
+  //   this.loading = true;
+  //   this._bookingService.getBookings(userId).subscribe((data: Object) => {
+  //     console.log(data);
+  //     this.loading = false;
+  //     this.dataSource.data = data as Booking[];
+
+  //   });
+  // }
+
   obtenerBookings(userId: string) {
     this.loading = true;
-    this._bookingService.getBookings(userId).subscribe((data: Object) => {
+    this._bookingService.getBookings(userId).pipe(
+      map((data: any) => {
+        // Mapear los datos para modificar el formato de la fecha
+        const reservas = data.map((reserva: any) => {
+          reserva.reserveDate = reserva.reserveDate.split('T')[0]; // Eliminar la parte "T00:00:00"
+          return reserva;
+        });
+        return reservas;
+      })
+    ).subscribe((data: Booking[]) => {
       console.log(data);
       this.loading = false;
-      this.dataSource.data = data as Booking[];
+      this.dataSource.data = data;
     });
   }
-
-
   //Funcion pop up de cancelar la reserva
  cancelarBooking(reserveId: number) {
     this.loading = true;
@@ -73,6 +92,9 @@ import { BookingService } from 'src/app/services/booking.service';
     });
 
   }
+
+
+
 
   mensajeExito() {
     this._snackBar.open('La reserva ha sido cancelada', '', {
