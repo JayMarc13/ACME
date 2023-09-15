@@ -47,6 +47,11 @@ const routes: Routes = [
         path: 'editarReserve/:reserveId', loadChildren: () => import('./editar-reserva/editar-reserva.module').then(m => m.EditarReservaModule)
       },
       {
+        path: 'admReservas',
+        loadChildren: () => import('./adm-reservas/adm-reservas.module').then(m => m.AdmReservasModule)
+      },
+
+      {
         path: 'help',
         loadChildren: () => import('./help/help.module').then(m => m.HelpModule)
       },

@@ -12,7 +12,7 @@ import { BookingService } from 'src/app/services/booking.service';
 @Component({
   selector: 'app-booking',
   templateUrl: './bookings.component.html',
-  styleUrls: ['./bookings.component.css']
+  styleUrls: ['./bookings.component.css'],
 })export class BookingComponent {
   displayedColumns: string[] = ['reserveId', 'meetingRoomName', 'reserveDate', 'startTime', 'endTime', 'Acciones'];
   dataSource = new MatTableDataSource<Booking>();
@@ -22,7 +22,8 @@ import { BookingService } from 'src/app/services/booking.service';
   @ViewChild(MatSort) sort!: MatSort;
 
   //Pop up y lista offices
-  constructor(private _snackBar: MatSnackBar, private _bookingService: BookingService) {
+  constructor(private _snackBar: MatSnackBar,
+    private _bookingService: BookingService,) {
 
   }
 
@@ -30,6 +31,7 @@ import { BookingService } from 'src/app/services/booking.service';
     const userId = sessionStorage.getItem('userId');
     if(userId){
       this.obtenerBookings(userId);
+
     }
   }
   //Paginaciones y ordenar
@@ -50,17 +52,6 @@ import { BookingService } from 'src/app/services/booking.service';
       this.dataSource.paginator.firstPage();
     }
   }
-
-  //Obtener los bookings del usuario
-  // obtenerBookings(userId: string) {
-  //   this.loading = true;
-  //   this._bookingService.getBookings(userId).subscribe((data: Object) => {
-  //     console.log(data);
-  //     this.loading = false;
-  //     this.dataSource.data = data as Booking[];
-
-  //   });
-  // }
 
   obtenerBookings(userId: string) {
     this.loading = true;
@@ -92,7 +83,6 @@ import { BookingService } from 'src/app/services/booking.service';
     });
 
   }
-
 
 
 

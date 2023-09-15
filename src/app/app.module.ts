@@ -15,14 +15,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+    LoginComponent
   ],
   imports: [
     AppRoutingModule,
     NgbModule,
     BrowserAnimationsModule,
     SharedModule,
-    FontAwesomeModule    
+    FontAwesomeModule
 
   ],
   providers: [],

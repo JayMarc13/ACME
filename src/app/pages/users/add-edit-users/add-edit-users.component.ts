@@ -67,7 +67,7 @@ export class AddEditUsersComponent implements OnInit {
           } else {
             this.router.navigate(['/home/users/listUser']); // Redirige a /listUser en caso de error
           }
-        }  
+        }
       );
   }
 

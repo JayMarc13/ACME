@@ -33,4 +33,7 @@ export class BookingService {
   getBookingsById(reserveId:number){
     return this.http.get(`${this.myAppUrl}${this.myApiUrl}/${reserveId}`);
   }
+  getAllBookings(){
+    return this.http.delete(`${this.myAppUrl}${this.myApiUrl}`);
+  }
 }
