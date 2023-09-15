@@ -13,7 +13,9 @@ import { UsersService } from 'src/app/services/users.service';
 export class AddEditUsersComponent implements OnInit {
   formm: FormGroup;
 
-  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, private _UsersService: UsersService, private router: Router) {
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar,
+    private _UsersService: UsersService,
+    private router: Router) {
     this.formm = this.fb.group({
       user: ['', [Validators.required]],
       email: ['', [Validators.email]],
@@ -65,7 +67,7 @@ export class AddEditUsersComponent implements OnInit {
           } else {
             this.router.navigate(['/listUser']); // Redirige a /listUser en caso de error
           }
-        }  
+        }
       );
   }
 
