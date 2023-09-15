@@ -67,6 +67,10 @@ export class EditarProfileComponent {
           sessionStorage.setItem('user', user.userName);
           this.dialogRef.close();
           this.mensajeErrorExito("Your data already updated");
+          setTimeout(function(){
+            window.location.reload();
+         }, 2000);
+
         }, (error) =>{
           if (error.status == 409){
            this.mensajeErrorExito(error.error);

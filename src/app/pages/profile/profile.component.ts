@@ -16,11 +16,7 @@ export class ProfileComponent implements OnInit {
   constructor(private profileService: ProfileService, public dialog: MatDialog) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(EditarProfileComponent, {
- 
-    });
-
-   
+    const dialogRef = this.dialog.open(EditarProfileComponent, {});
   }
 
 
