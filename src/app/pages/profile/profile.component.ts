@@ -13,7 +13,8 @@ export class ProfileComponent implements OnInit {
   email: string | undefined;
   phone: string | undefined;
   localUser: string="";
-  constructor(private profileService: ProfileService, public dialog: MatDialog) {}
+  constructor(private profileService: ProfileService, 
+    public dialog: MatDialog) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(EditarProfileComponent, {});

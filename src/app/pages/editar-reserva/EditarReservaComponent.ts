@@ -1,5 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
+import { inject } from '@angular/core/testing';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
@@ -46,16 +48,19 @@ export class EditarReservaComponent {
   //Pop up y lista offices
   constructor(private _snackBar: MatSnackBar,
     private _bookingService: BookingService,
-    private router: Router,
     private fb: FormBuilder,
     private _meetingRoomService: MeetingRoomService,
-    private aRoute: ActivatedRoute) {
+    private  dialogRef: MatDialogRef<EditarReservaComponent> ,
+    @Inject(MAT_DIALOG_DATA) public reservaDatos:any) {
       this.form = this.fb.group({
         reserveDate: ['',Validators.required], // Asociar los valores de reserva a los campos del formulario
         startTime: ['',Validators.required], // Asociar los valores de reserva a los campos del formulario
         endTime: ['',Validators.required] // Asociar los valores de reserva a los campos del formulario
       });
-      this.reservaId=  Number(this.aRoute.snapshot.paramMap.get('reserveId'));
+      const reserva: Booking = this.reservaDatos as Booking;
+      this.reservaId= reserva.reserveId;
+      
+      console.log("codifooo "+ reserva.reserveId);
      }
 
   ngOnInit(): void{
@@ -127,15 +132,17 @@ export class EditarReservaComponent {
         meetingRoomId: this.meetingRoomId
       }
       this.editarReserva(this.reservaId, this.reserva);
-
+      this.mensajeExito("actualizada");
       setTimeout(function(){
         window.location.reload();
-     }, 10);
-    //  this.mensajeExito("actualizada");
+     }, 280);
+       
     }
 
   }
-
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
   mensajeExito(texto: string) {
     this._snackBar.open(`La reserva fue ${texto} con éxito`, '', {

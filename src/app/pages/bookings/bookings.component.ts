@@ -7,6 +7,8 @@ import { MatTableModule } from '@angular/material/table';
 import { map } from 'rxjs';
 import { Booking } from 'src/app/interfaces/booking';
 import { BookingService } from 'src/app/services/booking.service';
+import { EditarReservaComponent } from '../editar-reserva/EditarReservaComponent';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -23,8 +25,15 @@ import { BookingService } from 'src/app/services/booking.service';
 
   //Pop up y lista offices
   constructor(private _snackBar: MatSnackBar,
-    private _bookingService: BookingService,) {
+    private _bookingService: BookingService,
+    private dialog: MatDialog) {
 
+  }
+
+  openDialog(element: any): void {
+    const dialogRef = this.dialog.open(EditarReservaComponent, {
+      data: element
+    });
   }
 
   ngOnInit(): void {
