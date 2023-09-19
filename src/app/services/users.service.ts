@@ -14,7 +14,7 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  
+
 
     //Obtener la lista de Users
   getusers(): Observable<users[]> {
@@ -37,12 +37,14 @@ export class UsersService {
     return this.http.post<any>(this.myAppUrl + this.myApiUrl, User);
   }
 
-  //Editar datos del u suario 
+  //Editar datos del u suario
   updateuser(userName: string, users: users): Observable<void> {
     return this.http.put<void>(this.myAppUrl + this.myApiUrl + userName, users);
   }
 
-
+  getUserById(userId: string) {
+    return this.http.get(`${this.myAppUrl}${this.myApiUrl}${userId}`);
+  }
 }
 
 
