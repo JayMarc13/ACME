@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace Backend.Controllers
 {
@@ -123,7 +124,23 @@ namespace Backend.Controllers
                     return NotFound();
                 }
 
-                userItem.UserName = user.UserName;
+                var userNameExist = await _context.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName && u.Id != userId);
+                var userMailExist = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email && u.Id != userId);
+                
+                if (userNameExist != null)
+                {
+                    return Conflict("The name already exist");
+                }else if (userMailExist != null)
+                {
+                    return Conflict("The mail already exist");
+                }
+                else
+                {
+                    userItem.UserName = user.UserName;
+                    userItem.NormalizedUserName = user.NormalizedUserName;
+                    userItem.PhoneNumber = user.PhoneNumber;
+                    userItem.Email = user.Email;
+                }
 
                 await _context.SaveChangesAsync();
 

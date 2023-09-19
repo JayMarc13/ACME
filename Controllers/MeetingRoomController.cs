@@ -154,6 +154,7 @@ namespace Backend.Controllers
                 }
 
                 meetingRoomItem.MeetingRoomName = meetingRoom.MeetingRoomName;
+                meetingRoomItem.OfficeId = meetingRoom.OfficeId;
 
                 await _context.SaveChangesAsync();
 
