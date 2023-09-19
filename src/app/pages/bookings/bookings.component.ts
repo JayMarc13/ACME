@@ -8,7 +8,12 @@ import { MatTableModule } from '@angular/material/table';
 import { map } from 'rxjs';
 import { Booking } from 'src/app/interfaces/booking';
 import { BookingService } from 'src/app/services/booking.service';
+<<<<<<< HEAD
 import { PopRemoveQuestionComponent } from '../pop-remove-question/pop-remove-question.component';
+=======
+import { EditarReservaComponent } from '../editar-reserva/EditarReservaComponent';
+import { MatDialog } from '@angular/material/dialog';
+>>>>>>> e10bd30fbd8f2d6735778027834847414eb981bb
 
 
 @Component({
@@ -28,6 +33,12 @@ import { PopRemoveQuestionComponent } from '../pop-remove-question/pop-remove-qu
     private _bookingService: BookingService,
     private dialog: MatDialog) {
 
+  }
+
+  openDialog(element: any): void {
+    const dialogRef = this.dialog.open(EditarReservaComponent, {
+      data: element
+    });
   }
 
   ngOnInit(): void {

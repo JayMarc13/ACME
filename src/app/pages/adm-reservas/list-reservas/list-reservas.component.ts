@@ -6,6 +6,8 @@ import { BookingService } from 'src/app/services/booking.service';
 import { map } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
 import { Booking } from 'src/app/interfaces/booking';
+import { EditReservasComponent } from '../edit-reservas/edit-reservas.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list-reservas',
@@ -13,7 +15,7 @@ import { Booking } from 'src/app/interfaces/booking';
   styleUrls: ['./list-reservas.component.css']
 })
 export class ListReservasComponent {
-  displayedColumns: string[] = ['UserName',
+  displayedColumns: string[] = ['userName',
   'reserveId',
   'meetingRoomName',
   'reserveDate',
@@ -28,12 +30,19 @@ export class ListReservasComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private _snackBar: MatSnackBar,
-    private _bookingService: BookingService) {
+    private _bookingService: BookingService,
+    private dialog: MatDialog) {
 
   }
   ngOnInit(): void {
 
       this.obtenerAllBookings();
+  }
+
+  openDialog(element: any): void {
+    const dialogRef = this.dialog.open(EditReservasComponent, {
+      data: element
+    });
   }
   obtenerAllBookings() {
     this.loading = true;
@@ -52,4 +61,39 @@ export class ListReservasComponent {
       this.dataSource.data = data;
     });
   }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    if (this.dataSource.data.length > 0) {
+      this.paginator._intl.itemsPerPageLabel = 'Items por página'
+    }
+  }
+
+  //Filtro
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  cancelarBooking(reserveId: number) {
+    this.loading = true;
+    this._bookingService.cancelBooking(reserveId).subscribe(() => {
+      this.mensajeExito();
+      this.loading = false;
+      this.obtenerAllBookings();
+    });
+
+  }
+
+  mensajeExito() {
+    this._snackBar.open('La reserva ha sido cancelada', '', {
+      duration: 4000,
+      horizontalPosition: 'right'
+    });
+  } 
 }

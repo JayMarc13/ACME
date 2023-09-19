@@ -1,8 +1,6 @@
-<div class="containerTabla">
-  <h1>Your Reservation {{reservaId}}</h1>
-
+<div  mat-dialog-content>
+  <h1>Your Reservation Id: {{reservaId}}</h1>
   <h2>{{meetingRoomName}}</h2>
-
   <form [formGroup]="form" >
     <div class="row">
 
@@ -29,11 +27,10 @@
       </mat-form-field>
     </div>
     <div class="row">
-      <div class="col"></div>
-      <div class="col">
+      <div class="col" id="container-botones">
         <button [disabled]="form.invalid" (click)="modificarReserva()" type="submit" class="Acciones" mat-raised-button color="primary" routerLink="/home/bookings">Save</button>
+        <button (click)="onNoClick()" mat-raised-button class="boton">Back</button>
       </div>
-      <div class="col"></div>
     </div>
   </form>
 </div>

@@ -3,7 +3,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { users } from 'src/app/interfaces/users';
 import { UsersService } from 'src/app/services/users.service';
 import { EditarUsuariosComponent } from '../../editar-usuarios/editar-usuarios.component';
@@ -23,7 +22,9 @@ export class ListUsersComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
- constructor(private _snackBar: MatSnackBar, private _UsersService: UsersService,  public dialog: MatDialog) { }
+ constructor(private _snackBar: MatSnackBar, 
+  private _UsersService: UsersService,  
+  public dialog: MatDialog) { }
 
 
   ngOnInit(): void {

@@ -16,7 +16,10 @@ export class EditarProfileComponent {
   form: FormGroup
   idUser: string | undefined
   
-  constructor(public dialogRef: MatDialogRef<EditarProfileComponent>, private profileService: ProfileService,private fb: FormBuilder, private _snackBar: MatSnackBar){
+  constructor(private dialogRef: MatDialogRef<EditarProfileComponent>, 
+    private profileService: ProfileService,
+    private fb: FormBuilder, 
+    private _snackBar: MatSnackBar){
     this.form = this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
