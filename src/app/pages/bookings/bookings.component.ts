@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
@@ -7,6 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 import { map } from 'rxjs';
 import { Booking } from 'src/app/interfaces/booking';
 import { BookingService } from 'src/app/services/booking.service';
+import { PopRemoveQuestionComponent } from '../pop-remove-question/pop-remove-question.component';
 
 
 @Component({
@@ -23,7 +25,8 @@ import { BookingService } from 'src/app/services/booking.service';
 
   //Pop up y lista offices
   constructor(private _snackBar: MatSnackBar,
-    private _bookingService: BookingService,) {
+    private _bookingService: BookingService,
+    private dialog: MatDialog) {
 
   }
 
@@ -70,21 +73,10 @@ import { BookingService } from 'src/app/services/booking.service';
       this.dataSource.data = data;
     });
   }
-  //Funcion pop up de cancelar la reserva
- cancelarBooking(reserveId: number) {
-    this.loading = true;
-    this._bookingService.cancelBooking(reserveId).subscribe(() => {
-      this.mensajeExito();
-      this.loading = false;
-      const userId = sessionStorage.getItem('userId');
-      if(userId){
-        this.obtenerBookings(userId);
-      }
-    });
 
+  openDialog(reserveId: number){
+    const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {reserveId}});
   }
-
-
 
   mensajeExito() {
     this._snackBar.open('La reserva ha sido cancelada', '', {

@@ -1,0 +1,5 @@
+<div mat-dialog-content>
+    <p *ngIf="booking">Are you sure to cancel your booking?</p>
+  <button (click)="onNoClick()" mat-raised-button>No</button>
+  <button (click)="cancelarBooking()"  mat-raised-button color="primary">Yes</button>
+</div>

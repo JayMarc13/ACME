@@ -44,6 +44,10 @@ const routes: Routes = [
         loadChildren: () => import('./editar-usuarios/editar-usuarios.module').then(m =>m.EditarUsuariosModule)
       },
       {
+        path: 'popRemove',
+        loadChildren: () => import('./pop-remove-question/pop-remove-question.module').then(m =>m.PopRemoveQuestionModule)
+      },
+      {
         path: 'editarReserve/:reserveId', loadChildren: () => import('./editar-reserva/editar-reserva.module').then(m => m.EditarReservaModule)
       },
       {

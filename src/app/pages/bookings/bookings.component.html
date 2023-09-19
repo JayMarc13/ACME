@@ -51,7 +51,7 @@
           <mat-icon fontIcon=""></mat-icon>
           <mat-icon routerLink="/home/editarReserve/{{element.reserveId}}" class="edit" matTooltip="Editar" fontIcon="edit"></mat-icon>
           <mat-icon fontIcon=""></mat-icon>
-          <mat-icon (click)="cancelarBooking(element.reserveId)" class="delete" matTooltip="Eliminar" fontIcon="delete"></mat-icon>
+          <mat-icon (click)="openDialog(element.reserveId)" class="delete" matTooltip="Eliminar" fontIcon="delete"></mat-icon>
         </td>
       </ng-container>
 
