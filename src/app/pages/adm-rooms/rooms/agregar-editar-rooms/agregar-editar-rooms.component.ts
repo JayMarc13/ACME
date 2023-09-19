@@ -53,6 +53,7 @@ export class AgregarEditarRoomsComponent {
 
   //Metodos
   agregarEditarRoom() {
+    
     //Definir el objeto
     const meetingRoom: MeetingRoom = {
       meetingRoomName: this.form.value.meetingRoomName,
@@ -81,7 +82,7 @@ export class AgregarEditarRoomsComponent {
     //Enivar el objeto al backend
     this._meetingRoomService.addRoom(meetingRoom).subscribe(data => {
       this.mensajeExito('registrado');
-      this.router.navigate(['/home/admRooms/rooms/listaRooms']);
+      this.router.navigate(['/home/admRooms/rooms/listaRoom']);
     });
   }
 

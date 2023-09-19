@@ -80,9 +80,9 @@ import { EditarReservaComponent } from '../editar-reserva/EditarReservaComponent
     });
   }
 
-  openDialog(reserveId: number){
+  openDialog(identification: number){
     let pathname = window.location.pathname;
-    const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {reserveId, pathname}});
+    const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {identification, pathname}});
   }
 
   mensajeExito() {

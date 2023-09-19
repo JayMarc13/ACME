@@ -65,9 +65,9 @@ export class ListUsersComponent {
     });
   }
 
-  openDialog(identification: number){
+  openDialog(identificationUser: string){
     let pathname = window.location.pathname;
-    const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {identification, pathname}});
+    const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {identificationUser, pathname}});
   }
 
   mensajeExito() {

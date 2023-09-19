@@ -15,6 +15,7 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class PopRemoveQuestionComponent {
   identification: number;
+  identificationUser: string;
   pathName: string;
   booking?: boolean;
   countries?: boolean; 
@@ -35,6 +36,7 @@ export class PopRemoveQuestionComponent {
     ,private _userService: UsersService
     ,private _reserveService: BookingService){
       this.identification = data.identification;
+      this.identificationUser = data.identificationUser;
       this.pathName = data.pathname;
     }
   
@@ -99,7 +101,7 @@ export class PopRemoveQuestionComponent {
         });
       break;
     case "/home/users/listUser":
-        this._userService.deleteuser(this.identification).subscribe(() => {
+        this._userService.deleteuser(this.identificationUser).subscribe(() => {
           this.mensajeExito();
           this.refreshWindow();
         });
