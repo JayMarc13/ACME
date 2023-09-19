@@ -36,7 +36,7 @@
         <mat-icon fontIcon=""></mat-icon>
         <mat-icon routerLink="/home/admRooms/countries/editarCountry/{{ element.countryId }}" class="edit" matTooltip="Editar" fontIcon="edit"></mat-icon>
         <mat-icon fontIcon=""></mat-icon>
-        <mat-icon (click)="eliminarCountry(element.countryId)" class="delete" matTooltip="Eliminar" fontIcon="delete"></mat-icon>
+        <mat-icon (click)="openDialog(element.countryId)" class="delete" matTooltip="Eliminar" fontIcon="delete"></mat-icon>
       </td>
     </ng-container>
 

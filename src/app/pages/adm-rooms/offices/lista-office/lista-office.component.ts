@@ -5,6 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Office } from '../../../../interfaces/office';
 import { OfficeService } from '../../../../services/office.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PopRemoveQuestionComponent } from 'src/app/pages/pop-remove-question/pop-remove-question.component';
 
 @Component({
   selector: 'app-lista-office',
@@ -21,7 +23,8 @@ export class ListaOfficeComponent {
 
   //Pop up y lista offices
   constructor(private _snackBar: MatSnackBar,
-    private _officeService: OfficeService) { }
+    private _officeService: OfficeService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.obtenerOffices();
@@ -54,15 +57,9 @@ export class ListaOfficeComponent {
   }
 
 
-  //Funcion pop up de eliminar
-  eliminarOffice(Officeid: number) {
-    this.loading = true;
-
-    this._officeService.deleteOffice(Officeid).subscribe(() => {
-      this.mensajeExito();
-      this.loading = false;
-      this.obtenerOffices();
-    });
+  openDialog(identification: number){
+    let pathname = window.location.pathname;
+    const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {identification, pathname}});
   }
 
   mensajeExito() {

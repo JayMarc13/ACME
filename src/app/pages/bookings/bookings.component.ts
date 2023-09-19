@@ -4,7 +4,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatTableModule } from '@angular/material/table';
 import { map } from 'rxjs';
 import { Booking } from 'src/app/interfaces/booking';
 import { BookingService } from 'src/app/services/booking.service';
@@ -82,7 +81,8 @@ import { EditarReservaComponent } from '../editar-reserva/EditarReservaComponent
   }
 
   openDialog(reserveId: number){
-    const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {reserveId}});
+    let pathname = window.location.pathname;
+    const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {reserveId, pathname}});
   }
 
   mensajeExito() {

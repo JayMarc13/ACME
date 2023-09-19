@@ -41,7 +41,7 @@
         <mat-icon fontIcon=""></mat-icon>
         <mat-icon routerLink="/home/admRooms/offices/editarOffice/{{ element.officeId }}" class="edit" matTooltip="Editar" fontIcon="edit"></mat-icon>
         <mat-icon fontIcon=""></mat-icon>
-        <mat-icon (click)="eliminarOffice(element.officeId)" class="delete" matTooltip="Eliminar" fontIcon="delete"></mat-icon>
+        <mat-icon (click)="openDialog(element.officeId)" class="delete" matTooltip="Eliminar" fontIcon="delete"></mat-icon>
       </td>
     </ng-container>
 

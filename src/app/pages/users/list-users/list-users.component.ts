@@ -7,6 +7,7 @@ import { users } from 'src/app/interfaces/users';
 import { UsersService } from 'src/app/services/users.service';
 import { EditarUsuariosComponent } from '../../editar-usuarios/editar-usuarios.component';
 import { MatDialog } from '@angular/material/dialog';
+import { PopRemoveQuestionComponent } from '../../pop-remove-question/pop-remove-question.component';
 
 @Component({
   selector: 'app-list-users',
@@ -32,7 +33,7 @@ export class ListUsersComponent {
   }
 
   //Pop up
-  openDialog(idUsuario:string): void {
+  openDialogEditar(idUsuario:string): void {
     const dialogRef = this.dialog.open(EditarUsuariosComponent, {data: {idUsuario}});
   }
 
@@ -64,15 +65,9 @@ export class ListUsersComponent {
     });
   }
 
-    //Funcion pop up de eliminar
-  deleteuser(userName: string) {
-    this.loading = true;
-
-    this._UsersService.deleteuser(userName).subscribe(() => {
-      this.mensajeExito();
-      this.loading = false;
-      this.getuser();
-    });
+  openDialog(identification: number){
+    let pathname = window.location.pathname;
+    const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {identification, pathname}});
   }
 
   mensajeExito() {

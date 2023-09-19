@@ -1,5 +1,11 @@
 <div mat-dialog-content>
     <p *ngIf="booking">Are you sure to cancel your booking?</p>
+    <p *ngIf="countries">Are you sure to remove the country?</p>
+    <p *ngIf="cities">Are you sure to remove the city?</p>
+    <p *ngIf="offices">Are you sure to remove the office?</p>
+    <p *ngIf="rooms">Are you sure to remove the room?</p>
+    <p *ngIf="user">Are you sure to remove the user?</p>
+    <p *ngIf="reservation?">Are you sure to cancel the reserve?</p>
   <button (click)="onNoClick()" mat-raised-button>No</button>
-  <button (click)="cancelarBooking()"  mat-raised-button color="primary">Yes</button>
+  <button (click)="removeElement()"  mat-raised-button color="primary">Yes</button>
 </div>
