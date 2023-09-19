@@ -5,6 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { City } from '../../../../interfaces/city';
 import { CityService } from '../../../../services/city.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PopRemoveQuestionComponent } from 'src/app/pages/pop-remove-question/pop-remove-question.component';
 
 @Component({
   selector: 'app-list-city',
@@ -20,7 +22,7 @@ export class ListCityComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
   //Pop up y lista offices
-  constructor(private _snackBar: MatSnackBar, private _cityService: CityService) { }
+  constructor(private _snackBar: MatSnackBar, private _cityService: CityService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.obtenerCity();
@@ -53,17 +55,11 @@ export class ListCityComponent {
     });
   }
 
-
-  //Funcion pop up de eliminar
-  eliminarCity(cityId: number) {
-    this.loading = true;
-
-    this._cityService.deleteCity(cityId).subscribe(() => {
-      this.mensajeExito();
-      this.loading = false;
-      this.obtenerCity();
-    });
+  openDialog(identification: number){
+    let pathname = window.location.pathname;
+    const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {identification, pathname}});
   }
+
 
   mensajeExito() {
     this._snackBar.open('La oficina fue eliminada con éxito', '', {
