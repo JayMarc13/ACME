@@ -1,12 +1,10 @@
 import { Component, Inject, ViewChild } from '@angular/core';
-import { inject } from '@angular/core/testing';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Booking } from 'src/app/interfaces/booking';
 import { MeetingRoom } from 'src/app/interfaces/meetingRoom';
 import { BookingService } from 'src/app/services/booking.service';
@@ -36,9 +34,7 @@ export class EditarReservaComponent {
     meetingRoomName: '',
     reserveDate: '',
     startTime: '',
-    endTime: '' // Debe tener un valor inicial
-    // Otros campos que no se pueden editar
-    ,
+    endTime: '',
     meetingRoomId: 0,
     userId: ''
   };
@@ -59,8 +55,6 @@ export class EditarReservaComponent {
       });
       const reserva: Booking = this.reservaDatos as Booking;
       this.reservaId= reserva.reserveId;
-      
-      console.log("codifooo "+ reserva.reserveId);
      }
 
   ngOnInit(): void{
@@ -136,7 +130,7 @@ export class EditarReservaComponent {
       setTimeout(function(){
         window.location.reload();
      }, 280);
-       
+
     }
 
   }
