@@ -5,6 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MeetingRoom } from '../../../../interfaces/meetingRoom';
 import { MeetingRoomService } from '../../../../services/meeting-room.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PopRemoveQuestionComponent } from 'src/app/pages/pop-remove-question/pop-remove-question.component';
 
 @Component({
   selector: 'app-list-rooms',
@@ -20,7 +22,7 @@ export class ListRoomsComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
   //Pop up y lista offices
-  constructor(private _snackBar: MatSnackBar, private _meetingRoomService: MeetingRoomService) { }
+  constructor(private _snackBar: MatSnackBar, private _meetingRoomService: MeetingRoomService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.obtenerRoom();
@@ -54,15 +56,9 @@ export class ListRoomsComponent {
   }
 
 
-  //Funcion pop up de eliminar
-  eliminarRoom(meetingRoomId: number) {
-    this.loading = true;
-
-    this._meetingRoomService.deleteRoom(meetingRoomId).subscribe(() => {
-      this.mensajeExito();
-      this.loading = false;
-      this.obtenerRoom();
-    });
+  openDialog(identification: number){
+    let pathname = window.location.pathname;
+    const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {identification, pathname}});
   }
 
   mensajeExito() {

@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Booking } from 'src/app/interfaces/booking';
 import { EditReservasComponent } from '../edit-reservas/edit-reservas.component';
 import { MatDialog } from '@angular/material/dialog';
+import { PopRemoveQuestionComponent } from '../../pop-remove-question/pop-remove-question.component';
 
 @Component({
   selector: 'app-list-reservas',
@@ -39,7 +40,7 @@ export class ListReservasComponent {
       this.obtenerAllBookings();
   }
 
-  openDialog(element: any): void {
+  openDialogEditar(element: any): void {
     const dialogRef = this.dialog.open(EditReservasComponent, {
       data: element
     });
@@ -80,14 +81,9 @@ export class ListReservasComponent {
     }
   }
 
-  cancelarBooking(reserveId: number) {
-    this.loading = true;
-    this._bookingService.cancelBooking(reserveId).subscribe(() => {
-      this.mensajeExito();
-      this.loading = false;
-      this.obtenerAllBookings();
-    });
-
+  openDialog(identification: number){
+    let pathname = window.location.pathname;
+    const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {identification, pathname}});
   }
 
   mensajeExito() {
