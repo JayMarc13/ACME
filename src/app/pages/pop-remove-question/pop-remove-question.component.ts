@@ -32,7 +32,8 @@ export class PopRemoveQuestionComponent {
     ,private _cityService: CityService
     ,private _officeService: OfficeService
     ,private _roomService: MeetingRoomService
-    ,private _userService: UsersService){
+    ,private _userService: UsersService
+    ,private _reserveService: BookingService){
       this.identification = data.identification;
       this.pathName = data.pathname;
     }
@@ -85,6 +86,30 @@ export class PopRemoveQuestionComponent {
           this.refreshWindow();
         });
       break;
+    case "/home/admRooms/offices/listaOffices":
+        this._officeService.deleteOffice(this.identification).subscribe(() => {
+          this.mensajeExito();
+          this.refreshWindow();
+        });
+      break;
+    case "/home/admRooms/rooms/listaRoom":
+        this._roomService.deleteRoom(this.identification).subscribe(() => {
+          this.mensajeExito();
+          this.refreshWindow();
+        });
+      break;
+    case "/home/users/listUser":
+        this._userService.deleteuser(this.identification).subscribe(() => {
+          this.mensajeExito();
+          this.refreshWindow();
+        });
+      break;
+    case "/home/admReservas/listReservas":
+        this._reserveService.cancelBooking(this.identification).subscribe(() => {
+          this.mensajeExito();
+          this.refreshWindow();
+        });
+      break;
   }  
 }
 
@@ -103,6 +128,18 @@ mensajeExito() {
       break;
     case "/home/admRooms/cities/listaCity":
       this.popup("Your removed the city in the database");
+      break;
+      case "/home/admRooms/offices/listaOffices":
+      this.popup("Your removed the office");
+      break;
+    case "/home/admRooms/rooms/listaRoom":
+      this.popup("Your removed the room in the database");
+      break;
+    case "/home/users/listUser":
+      this.popup("Your removed the user in the database");
+      break;
+    case "/home/admReservas/listReservas":
+      this.popup("Your removed the reserve in the database");
       break;
   }  
  
