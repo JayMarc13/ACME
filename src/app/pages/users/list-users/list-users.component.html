@@ -38,9 +38,9 @@
         </th>
         <td mat-cell *matCellDef="let element">
           <mat-icon fontIcon=""></mat-icon>
-          <mat-icon (click)="openDialog(element.id)" class="edit" matTooltip="Editar" fontIcon="edit"></mat-icon>
+          <mat-icon (click)="openDialogEditar(element.id)" class="edit" matTooltip="Editar" fontIcon="edit"></mat-icon>
           <mat-icon fontIcon=""></mat-icon>
-          <mat-icon (click)="deleteuser(element.id)" class="delete" matTooltip="Eliminar" fontIcon="delete"></mat-icon>
+          <mat-icon (click)="openDialog(element.id)" class="delete" matTooltip="Eliminar" fontIcon="delete"></mat-icon>
         </td>
       </ng-container>
   
