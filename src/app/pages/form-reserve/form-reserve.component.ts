@@ -15,6 +15,8 @@ import { BookingService } from 'src/app/services/booking.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { users } from 'src/app/interfaces/users';
+import { profile } from 'src/app/interfaces/profile';
 
 
 interface Food {
@@ -39,6 +41,29 @@ export class FormReserveComponent {
   meetingRooms : MeetingRoom[] = [];
   meetingRoomSelected : MeetingRoom = {} as MeetingRoom;
 
+  listUsers!: string[];
+  userSelected!: string;
+  userRole: string | any;
+  mostrarElemento: boolean = false;
+
+  // userRecuperado: profile = {
+  //   id: '',
+  //   userName: '',
+  //   normalizedUserName: '',
+  //   email: '',
+  //   normalizedEmail: '',
+  //   emailConfirmed: false,
+  //   passwordHash: '',
+  //   securityStamp: '',
+  //   concurrencyStamp: '',
+  //   phoneNumber: '',
+  //   phoneNumberConfirmed: false,
+  //   twoFactorEnabled: false,
+  //   lockoutEnd: '',
+  //   lockoutEnabled: false,
+  //   accessFailedCount: 0
+  // };
+
   reserveId: number | any;
 
   date = new Date();
@@ -49,6 +74,7 @@ export class FormReserveComponent {
   cityFormControl = new FormControl();
   officeFormControl = new FormControl();
   meetingRoomFormControl = new FormControl();
+  userFormControl = new FormControl();
 
   loading: boolean = false;
 
@@ -58,9 +84,7 @@ export class FormReserveComponent {
     private _countryService: CountryService,
     private _cityService : CityService,
     private _officeService: OfficeService,
-    private fb: FormBuilder,
-    private _snackBar: MatSnackBar,
-    private router: Router){
+    private fb: FormBuilder){
     this.form = this.fb.group({
       meetingRoom : ['', Validators.required],
       date : ['',Validators.required],
@@ -94,14 +118,28 @@ export class FormReserveComponent {
       this.meetingRoomFormControl.valueChanges.subscribe(selectedMeetingRoom =>{
         this.meetingRoomSelected = selectedMeetingRoom;
       });
+
+      this.userFormControl.valueChanges.subscribe(selectedUser => {
+        this.userSelected = selectedUser;
+        if(this.userSelected != null){
+          this.ObtenerUsuario(this.userSelected);
+        }
+      });
   }
 
   ngOnInit(){
     this.ObtenerCountries();
     const userName = sessionStorage.getItem('user');
+    this.userRole = sessionStorage.getItem('userRole');
+    console.log(this.userRole);
     if(userName){
       this.ObtenerUsuario(userName);
     }
+    if(this.userRole == 'Administrador'){
+      this.mostrarElemento= true;
+      this.ObtenerAllUsers();
+    }
+
   //    // Check if 'reserveId' has a value (assuming you set it when editing the reservation)
    }
 
@@ -152,12 +190,29 @@ export class FormReserveComponent {
 
   hacerReserva(reserva: Booking){
     this._bookingService.createBooking(reserva).subscribe(succes =>  {
-      window.location.href = "/home/bookings"
+      if(this.userRole=='Administrador'){
+        window.location.href = "/home/admReservas/listReservas"
+      }else{
+        window.location.href = "/home/bookings"
+      }
+
     });
   }
 
+  ObtenerAllUsers() {
+    this._userService.getAllUsers().subscribe(
+      (data: profile[]) => {
+        const listUsers = data;// Asigna la respuesta (array) a this.listUsers
+        this.listUsers = listUsers.map( valor => valor.userName);
+        console.log(this.listUsers);
+      },
+      (error) => {
+        console.error('Error al obtener usuarios:', error);
+      }
+    );
   }
 
+}
 
 
 
