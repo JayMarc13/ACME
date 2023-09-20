@@ -5,10 +5,8 @@
     "\\src\\app",
     "\\src\\app\\pages",
     "\\src\\app\\pages\\adm-rooms",
-    "\\src\\app\\pages\\form-reserve",
-    "\\src\\app\\pages\\users",
-    "\\src\\app\\pages\\users\\add-edit-users",
-    "\\src\\app\\pages\\users\\list-users"
+    "\\src\\app\\pages\\users"
   ],
+  "SelectedNode": "\\src\\app\\pages\\users\\users.module.ts",
   "PreviewInSolutionExplorer": false
 }
