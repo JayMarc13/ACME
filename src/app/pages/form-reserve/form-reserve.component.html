@@ -53,17 +53,23 @@
             <div class="col">
                 <mat-form-field id="input" appearance="fill">
                     <mat-label>Start Hour</mat-label>
-                    <input formControlName="startHour" matInput [ngxTimepicker]="startHour" [format]="24" readonly>
+                        <mat-select matInput  formControlName="startHour" placeholder="Start Hour">
+                          <mat-option *ngFor="let hora of horas"  [value]="hora">
+                            {{ hora }}
+                          </mat-option>
+                        </mat-select>
                     <mat-icon matSuffix>access_time</mat-icon>
-                    <ngx-material-timepicker #startHour></ngx-material-timepicker>
                 </mat-form-field>
             </div>
             <div class="col">
                 <mat-form-field id="input" appearance="fill">
                     <mat-label>End Hour</mat-label>
-                    <input formControlName="endHour" matInput [ngxTimepicker]="endHour" [format]="24" readonly>
+                    <mat-select matInput  formControlName="endHour" placeholder="End Hour">
+                      <mat-option *ngFor="let hora of horas"  [value]="hora">
+                        {{ hora }}
+                      </mat-option>
+                    </mat-select>
                     <mat-icon matSuffix>access_time</mat-icon>
-                    <ngx-material-timepicker #endHour></ngx-material-timepicker>
                   </mat-form-field>
             </div>
         </div>
