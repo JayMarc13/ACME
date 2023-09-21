@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { ProfileService } from 'src/app/services/profile.service';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-change-password',
@@ -7,11 +9,14 @@ import { ProfileService } from 'src/app/services/profile.service';
   styleUrls: ['./change-password.component.css']
 })
 export class ChangePasswordComponent {
+  oldPassword: string = '';
+  newPassword: string = '';
+  confirmPassword: string = '';
 
-constructor(private _profileService: ProfileService){}
+  onChangePassword() {
+    // Aquí puedes agregar la lógica para cambiar la contraseña, por ejemplo, haciendo una solicitud HTTP a tu backend.
+    // Asegúrate de validar las contraseñas antes de enviar la solicitud.
+  }
+}
 
-ngOnInit(){
-  const password = sessionStorage.getItem('*');
-  console.log(password);
-}
-}
+

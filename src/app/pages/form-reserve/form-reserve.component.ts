@@ -139,20 +139,12 @@ export class FormReserveComponent {
     if(userName){
       this.ObtenerUsuario(userName);
     }
-<<<<<<< HEAD
-    this.endHourSelected();
-   }
-
-   endHourSelected(){
-      console.log("this.form.value.endHour");
-=======
     if(this.userRole == 'Administrador'){
       this.mostrarElemento= true;
       this.ObtenerAllUsers();
     }
 
   //    // Check if 'reserveId' has a value (assuming you set it when editing the reservation)
->>>>>>> 0d7efe1f5fc3ab201395660c863d53942bf91a7d
    }
 
   reservarSala(){
