@@ -22,5 +22,10 @@ export class ProfileService {
   editUserProfile(user: string, profile: profile): Observable <void>{
     return this.http.put<void>(this.myAppUrl+this.myApiUrl+user, profile);
   }
+
+  getAllUsers(): Observable<profile[]> { // Especifica el tipo 'profile[]' en la respuesta Observable
+    return this.http.get<profile[]>(this.myAppUrl + this.myApiUrl);
+  }
+
 }
 
