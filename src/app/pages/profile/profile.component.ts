@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service';
 import { EditarProfileComponent } from '../editar-profile/editar-profile.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +14,7 @@ export class ProfileComponent implements OnInit {
   email: string | undefined;
   phone: string | undefined;
   localUser: string="";
-  constructor(private profileService: ProfileService, 
+  constructor(private profileService: ProfileService,
     public dialog: MatDialog) {}
 
   openDialog(): void {
@@ -38,6 +39,10 @@ export class ProfileComponent implements OnInit {
         console.error('Error al obtener el perfil:', error);
       }
     );
+  }
+
+  changePassword(): void{
+    const dialogRefPassword = this.dialog.open(ChangePasswordComponent, {});
   }
 }
 
