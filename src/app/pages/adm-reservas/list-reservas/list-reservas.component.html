@@ -44,7 +44,7 @@
 
       <ng-container matColumnDef="Acciones">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <button routerLink="/home/formReserve" class="buttonAceptar" mat-raised-button color="primary">Add Another Reserve</button>
+          <button  (click)=" openDialogAgregrarReserva()" class="buttonAceptar" mat-raised-button color="primary">Add Another Reserve</button>
         </th>
         <td mat-cell *matCellDef="let element">
           <mat-icon fontIcon=""></mat-icon>
