@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MeetingRoomService } from 'src/app/services/meeting-room.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import * as dayjs from 'dayjs';
 import { Country } from 'src/app/interfaces/country';
 import { City } from 'src/app/interfaces/city';
@@ -12,10 +13,6 @@ import { MeetingRoom } from 'src/app/interfaces/meetingRoom';
 import { Booking } from 'src/app/interfaces/booking';
 import { ProfileService } from 'src/app/services/profile.service';
 import { BookingService } from 'src/app/services/booking.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { DatePipe } from '@angular/common';
-import { users } from 'src/app/interfaces/users';
 import { profile } from 'src/app/interfaces/profile';
 
 
@@ -48,25 +45,8 @@ export class FormReserveComponent {
   listUsers!: string[];
   userSelected!: string;
   userRole: string | any;
-  mostrarElemento: boolean = false;
-
-  // userRecuperado: profile = {
-  //   id: '',
-  //   userName: '',
-  //   normalizedUserName: '',
-  //   email: '',
-  //   normalizedEmail: '',
-  //   emailConfirmed: false,
-  //   passwordHash: '',
-  //   securityStamp: '',
-  //   concurrencyStamp: '',
-  //   phoneNumber: '',
-  //   phoneNumberConfirmed: false,
-  //   twoFactorEnabled: false,
-  //   lockoutEnd: '',
-  //   lockoutEnabled: false,
-  //   accessFailedCount: 0
-  // };
+  mostrarElemento?: boolean;
+  pathName?: string;
 
   reserveId: number | any;
 
@@ -82,7 +62,9 @@ export class FormReserveComponent {
 
   loading: boolean = false;
 
-  constructor(private _bookingService: BookingService,
+  constructor(
+    @Inject(MAT_DIALOG_DATA) private data: any,
+    private _bookingService: BookingService,
     private _userService: ProfileService,
     private _meetingRoomService: MeetingRoomService,
     private _countryService: CountryService,
@@ -129,6 +111,7 @@ export class FormReserveComponent {
           this.ObtenerUsuario(this.userSelected);
         }
       });
+      this.pathName = this.data.pathname;
   }
 
   ngOnInit(){
@@ -139,20 +122,22 @@ export class FormReserveComponent {
     if(userName){
       this.ObtenerUsuario(userName);
     }
-<<<<<<< HEAD
-    this.endHourSelected();
-   }
-
-   endHourSelected(){
-      console.log("this.form.value.endHour");
-=======
     if(this.userRole == 'Administrador'){
       this.mostrarElemento= true;
       this.ObtenerAllUsers();
     }
 
+    switch(this.pathName){
+      case "/home/bookings":
+         this.mostrarElemento = false; 
+        break;
+      case "/home/admReservas/listReservas":
+          this.mostrarElemento = true;
+        break;
+    }
+    console.log(this.pathName);
+
   //    // Check if 'reserveId' has a value (assuming you set it when editing the reservation)
->>>>>>> 0d7efe1f5fc3ab201395660c863d53942bf91a7d
    }
 
   reservarSala(){
