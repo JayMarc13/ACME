@@ -32,21 +32,28 @@ export class ChangePasswordComponent {
       confirmPassword: ['', Validators.required]
     });
   }
-    
+
 
   onChangePassword() {
-    // Aquí puedes agregar la lógica para cambiar la contraseña, por ejemplo, haciendo una solicitud HTTP a tu backend.
-    // Asegúrate de validar las contraseñas antes de enviar la solicitud.
+    
+    const newPassword = this.form.value.password;
+    if (newPassword.length < 8 || !/[A-Z]/.test(newPassword) || !/\d/.test(newPassword)) {
+      // La contraseña no cumple con los requisitos
+      // Muestra un mensaje de error al usuario
+      this.snackBar.open('La contraseña debe tener al menos 8 caracteres y contener al menos una letra mayúscula y un número.', '', {
+        duration: 5000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+      });
+      return false;
+    }
 
     if (this.newPassword !== this.confirmPassword) {
       this.error("New Password and Confirm Password do not match");
       this.form.reset();
       return;
     }
-
   }
-
-
 
   error(message: string): void {
     this.snackBar.open(message, '', {
@@ -56,6 +63,8 @@ export class ChangePasswordComponent {
     });
   }
 
+  
+ 
 
   onNoClick(): void {
     this.dialogRef.close();
