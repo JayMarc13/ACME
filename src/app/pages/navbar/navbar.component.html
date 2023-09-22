@@ -4,14 +4,11 @@
 
   <div class="container-fluid">
 
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="navbar-collapse" id="navbarNavDropdown">
       <a class="navbar-brand" href="/home">ACMEET</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
       <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/home">Home</a>
+            <a class="nav-link" routerLink="/home" fadeIn >Home</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" routerLink="/home/bookings">My Bookings</a>
@@ -38,7 +35,7 @@
           </mat-menu>
         </li>
         <li>
-          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
               <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
