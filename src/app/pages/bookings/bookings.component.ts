@@ -9,6 +9,7 @@ import { Booking } from 'src/app/interfaces/booking';
 import { BookingService } from 'src/app/services/booking.service';
 import { PopRemoveQuestionComponent } from '../pop-remove-question/pop-remove-question.component';
 import { EditarReservaComponent } from '../editar-reserva/EditarReservaComponent';
+import { FormReserveComponent } from '../form-reserve/form-reserve.component';
 
 
 @Component({
@@ -80,9 +81,14 @@ import { EditarReservaComponent } from '../editar-reserva/EditarReservaComponent
     });
   }
 
-  openDialog(identification: number){
+  openDialogEliminarReserva(identification: number){
     let pathname = window.location.pathname;
     const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {identification, pathname}});
+  }
+
+  openDialogAgregarReserva(){
+    let pathname = window.location.pathname;
+    const dialogRef = this.dialog.open(FormReserveComponent, {data: { pathname },  panelClass: 'no-scroll' });
   }
 
   mensajeExito() {

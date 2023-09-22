@@ -16,7 +16,12 @@ export class RegisterComponent implements OnInit {
   eslogan: string = "Booking has never been easier";
   formm: FormGroup;
   token: tokenUser | undefined;
-  constructor(private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar, private _registerService: RegisterService) {
+  
+  constructor(private fb: 
+    FormBuilder, 
+    private router: Router, 
+    private snackBar: MatSnackBar, 
+    private _registerService: RegisterService) {
     this.formm = this.fb.group({
       user: ['', [Validators.required]],
       email: ['', [Validators.email]],

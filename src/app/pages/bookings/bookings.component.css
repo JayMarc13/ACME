@@ -2,7 +2,9 @@
 body {
   background-color: #f2f2f2;
 }
-
+.no-scroll {
+  overflow-x: hidden !important;
+}
 .containerTabla {
   padding: 50px;
   margin: 20px auto 10px; /* Margen vertical de 20px arriba, 80px abajo y centrado horizontalmente */

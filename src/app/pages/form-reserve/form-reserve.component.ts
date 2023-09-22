@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MeetingRoomService } from 'src/app/services/meeting-room.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import * as dayjs from 'dayjs';
 import { Country } from 'src/app/interfaces/country';
 import { City } from 'src/app/interfaces/city';
@@ -12,9 +13,7 @@ import { MeetingRoom } from 'src/app/interfaces/meetingRoom';
 import { Booking } from 'src/app/interfaces/booking';
 import { ProfileService } from 'src/app/services/profile.service';
 import { BookingService } from 'src/app/services/booking.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { DatePipe } from '@angular/common';
+import { profile } from 'src/app/interfaces/profile';
 
 
 interface Food {
@@ -38,6 +37,16 @@ export class FormReserveComponent {
   officeSelected : Office = {} as Office;
   meetingRooms : MeetingRoom[] = [];
   meetingRoomSelected : MeetingRoom = {} as MeetingRoom;
+  horas: string[] = ["10:00", "10:15" , "10:30", "10:45", "11:00", "11:15", "11:45", 
+  "12:00", "12:15", "12:30", "12:45", "13:00", "13:15", "13:30", "13:45", "14:00", "14:15", "14:30", "14:45",
+   "15:00","15:15","15:30","15:45", "16:00", "16:15", "16:30", "16:45", "17:00", "17:15", "17:30", "17:45", 
+   "18:00","18:15","18:30","18:45", "19:00", "19:15", "19:30", "19:45", "20:00", "20:15", "20:30", "20:45", "21:00","21:15","21:30","21:45", "22:00"];
+
+  listUsers!: string[];
+  userSelected!: string;
+  userRole: string | any;
+  mostrarElemento?: boolean;
+  pathName?: string;
 
   reserveId: number | any;
 
@@ -49,18 +58,19 @@ export class FormReserveComponent {
   cityFormControl = new FormControl();
   officeFormControl = new FormControl();
   meetingRoomFormControl = new FormControl();
+  userFormControl = new FormControl();
 
   loading: boolean = false;
 
-  constructor(private _bookingService: BookingService,
+  constructor(
+    @Inject(MAT_DIALOG_DATA) private data: any,
+    private _bookingService: BookingService,
     private _userService: ProfileService,
     private _meetingRoomService: MeetingRoomService,
     private _countryService: CountryService,
     private _cityService : CityService,
     private _officeService: OfficeService,
-    private fb: FormBuilder,
-    private _snackBar: MatSnackBar,
-    private router: Router){
+    private fb: FormBuilder){
     this.form = this.fb.group({
       meetingRoom : ['', Validators.required],
       date : ['',Validators.required],
@@ -94,14 +104,39 @@ export class FormReserveComponent {
       this.meetingRoomFormControl.valueChanges.subscribe(selectedMeetingRoom =>{
         this.meetingRoomSelected = selectedMeetingRoom;
       });
+
+      this.userFormControl.valueChanges.subscribe(selectedUser => {
+        this.userSelected = selectedUser;
+        if(this.userSelected != null){
+          this.ObtenerUsuario(this.userSelected);
+        }
+      });
+      this.pathName = this.data.pathname;
   }
 
   ngOnInit(){
     this.ObtenerCountries();
     const userName = sessionStorage.getItem('user');
+    this.userRole = sessionStorage.getItem('userRole');
+    console.log(this.userRole);
     if(userName){
       this.ObtenerUsuario(userName);
     }
+    if(this.userRole == 'Administrador'){
+      this.mostrarElemento= true;
+      this.ObtenerAllUsers();
+    }
+
+    switch(this.pathName){
+      case "/home/bookings":
+         this.mostrarElemento = false; 
+        break;
+      case "/home/admReservas/listReservas":
+          this.mostrarElemento = true;
+        break;
+    }
+    console.log(this.pathName);
+
   //    // Check if 'reserveId' has a value (assuming you set it when editing the reservation)
    }
 
@@ -152,12 +187,29 @@ export class FormReserveComponent {
 
   hacerReserva(reserva: Booking){
     this._bookingService.createBooking(reserva).subscribe(succes =>  {
-      window.location.href = "/home/bookings"
+      if(this.pathName == "/home/admReservas/listReservas" ){
+        window.location.href = "/home/admReservas/listReservas"
+      }else{
+        window.location.href = "/home/bookings"
+      }
+
     });
   }
 
+  ObtenerAllUsers() {
+    this._userService.getAllUsers().subscribe(
+      (data: profile[]) => {
+        const listUsers = data;// Asigna la respuesta (array) a this.listUsers
+        this.listUsers = listUsers.map( valor => valor.userName);
+        console.log(this.listUsers);
+      },
+      (error) => {
+        console.error('Error al obtener usuarios:', error);
+      }
+    );
   }
 
+}
 
 
 

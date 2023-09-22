@@ -9,6 +9,7 @@ import { Booking } from 'src/app/interfaces/booking';
 import { EditReservasComponent } from '../edit-reservas/edit-reservas.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PopRemoveQuestionComponent } from '../../pop-remove-question/pop-remove-question.component';
+import { FormReserveComponent } from '../../form-reserve/form-reserve.component';
 
 @Component({
   selector: 'app-list-reservas',
@@ -45,6 +46,12 @@ export class ListReservasComponent {
       data: element
     });
   }
+
+  openDialogAgregrarReserva(): void {
+    let pathname = window.location.pathname;
+    const dialogRef = this.dialog.open(FormReserveComponent, {data: {pathname}});
+  }
+
   obtenerAllBookings() {
     this.loading = true;
     this._bookingService.getAllBookings().pipe(
