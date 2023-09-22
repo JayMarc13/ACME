@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environments';
 import { Login } from '../interfaces/login';
-import { ChangePassword } from '../interfaces/changePassword';
+import { changePasswordUser } from '../interfaces/changePasswordUser';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class LoginService {
     return this.http.post<any>(this.myAppUrl + this.myApiUrl,user);
   }
 
-  changePassword(contraseña: ChangePassword): Observable<any>{
+  changePassword(contraseña: changePasswordUser): Observable<any>{
     return this.http.post<any>(this.myAppUrl + this.myApiUrl, contraseña);
   }
 }

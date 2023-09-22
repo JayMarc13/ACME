@@ -8,6 +8,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { ChangePassword } from 'src/app/interfaces/changePassword';
+import { Login } from 'src/app/interfaces/login';
 
 @Component({
   selector: 'app-change-password',
@@ -34,30 +35,27 @@ export class ChangePasswordComponent {
       confirmPassword: ['', Validators.required]
     });
   }
-
+    
 
   onChangePassword() {
-    
-    const newPassword = this.form.value.password;
-    if (newPassword.length < 8 || !/[A-Z]/.test(newPassword) || !/\d/.test(newPassword)) {
-      // La contraseña no cumple con los requisitos
-      // Muestra un mensaje de error al usuario
-      this.snackBar.open('La contraseña debe tener al menos 8 caracteres y contener al menos una letra mayúscula y un número.', '', {
-        duration: 5000,
-        horizontalPosition: 'center',
-        verticalPosition: 'bottom'
-      });
-      return false;
-    }
+    // Aquí puedes agregar la lógica para cambiar la contraseña, por ejemplo, haciendo una solicitud HTTP a tu backend.
+    // Asegúrate de validar las contraseñas antes de enviar la solicitud.
 
     if (this.newPassword !== this.confirmPassword) {
       this.error("New Password and Confirm Password do not match");
       this.form.reset();
       return;
     }else{
-    
+      let userName = sessionStorage.getItem("user");
+     if(userName){
+      let loginUser: Login = {
+        userName: userName,
+        password: this.form.value.oldPassword
+      }
+     }
 
     }
+
   }
 
   error(message: string): void {
@@ -68,8 +66,6 @@ export class ChangePasswordComponent {
     });
   }
 
-  
- 
 
   onNoClick(): void {
     this.dialogRef.close();
