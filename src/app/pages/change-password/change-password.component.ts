@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
+import { ChangePassword } from 'src/app/interfaces/changePassword';
 
 @Component({
   selector: 'app-change-password',
@@ -24,7 +25,8 @@ export class ChangePasswordComponent {
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private authService: LoginService, // Inyecta el servicio de autenticación
-    private router: Router // Inyecta el servicio de enrutamiento
+    private router: Router ,// Inyecta el servicio de enrutamiento
+    private _changePasswordService: LoginService
   ) {
     this.form = this.fb.group({
       oldPassword: ['', Validators.required],
@@ -42,11 +44,12 @@ export class ChangePasswordComponent {
       this.error("New Password and Confirm Password do not match");
       this.form.reset();
       return;
+    }else{
+    
+
     }
 
   }
-
-
 
   error(message: string): void {
     this.snackBar.open(message, '', {
