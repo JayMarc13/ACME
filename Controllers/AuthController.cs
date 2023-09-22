@@ -49,30 +49,28 @@ namespace Backend.Controllers
             }
             return Unauthorized();
         }
-        [HttpPut("CambiarContraseña")]
-        [Authorize] // Requiere autenticación
-        public async Task<IActionResult> CambiarContraseña(ChangePassword model)
+        [HttpPost("ChangePassword")]
+        // Asegura que solo usuarios autenticados puedan cambiar su contraseña
+        public async Task<IActionResult> ChangePassword(ChangePasswordRequest request)
         {
-            var usuario = await _userManager.FindByNameAsync(User.Identity.Name);
-
-            Console.Write(usuario.ToString());
-
-            if (usuario == null)
+            if (ModelState.IsValid)
             {
-                return NotFound("Usuario no encontrado");
+                // Llama al servicio para cambiar la contraseña
+                var result = await _authService.ChangePassword(request.User, request.ChangePassword);
+
+                if (result)
+                {
+                    return Ok(new { message = "Contraseña cambiada con éxito" });
+                }
+                else
+                {
+                    return BadRequest(new { message = "No se pudo cambiar la contraseña. Verifique la contraseña actual y asegúrese de que la nueva contraseña cumpla con los requisitos." });
+                }
             }
 
-            var resultado = await _userManager.ChangePasswordAsync(usuario, model.ContraseñaActual, model.NuevaContraseña);
-
-            if (resultado.Succeeded)
-            {
-                return Ok("Contraseña cambiada exitosamente");
-            }
-            else
-            {
-                return BadRequest("No se pudo cambiar la contraseña");
-            }
+            return BadRequest(new { message = "Los datos proporcionados son inválidos." });
         }
+
 
 
 

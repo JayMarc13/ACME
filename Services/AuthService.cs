@@ -97,5 +97,28 @@ namespace Backend.Services
 
             return tokenString;
         }
+        //cambio de contraseña
+        public async Task<bool> ChangePassword(LoginUser user, ChangePassword model)
+        {
+            var identityUser = await _userManager.FindByNameAsync(user.UserName);
+            var identityEmail = await _userManager.FindByEmailAsync(user.Email);
+
+            if (identityUser is not null || identityEmail is not null)
+            {
+                // Verificar que la contraseña actual sea válida
+                var passwordValid = await _userManager.CheckPasswordAsync(identityUser ?? identityEmail, user.Password);
+
+                if (passwordValid)
+                {
+                    // Cambiar la contraseña
+                    var result = await _userManager.ChangePasswordAsync(identityUser ?? identityEmail, user.Password, model.NuevaContraseña);
+                    return result.Succeeded;
+                }
+            }
+
+            return false;
+        }
+
     }
+
 }
