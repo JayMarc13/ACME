@@ -9,7 +9,9 @@ body {
   align-items: center;
   min-height: 100vh;
 }
-
+.no-scroll {
+  overflow-x: hidden !important;
+}
 .containerTabla {
   width: 80%;
   background-color: white;
