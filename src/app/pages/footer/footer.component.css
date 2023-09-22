@@ -39,7 +39,7 @@
   width: 100%;
 }
 
-/* Estilos para los miembros */
+/* Estilos para los miembros del team1 */
 .footer-container .member {
   display: flex;
   flex-direction: column;
@@ -104,5 +104,17 @@
 
   .footer-container .team-name {
     margin-right: 0;
+  }
+}
+
+.footer-container {
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 767px) {
+  .footer-container .member {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
   }
 }
