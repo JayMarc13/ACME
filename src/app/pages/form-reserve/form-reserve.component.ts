@@ -187,7 +187,7 @@ export class FormReserveComponent {
 
   hacerReserva(reserva: Booking){
     this._bookingService.createBooking(reserva).subscribe(succes =>  {
-      if(this.userRole=='Administrador'){
+      if(this.pathName == "/home/admReservas/listReservas" ){
         window.location.href = "/home/admReservas/listReservas"
       }else{
         window.location.href = "/home/bookings"

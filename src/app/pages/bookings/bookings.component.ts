@@ -88,7 +88,7 @@ import { FormReserveComponent } from '../form-reserve/form-reserve.component';
 
   openDialogAgregarReserva(){
     let pathname = window.location.pathname;
-    const dialogRef = this.dialog.open(FormReserveComponent, {data: { pathname}});
+    const dialogRef = this.dialog.open(FormReserveComponent, {data: { pathname },  panelClass: 'no-scroll' });
   }
 
   mensajeExito() {
