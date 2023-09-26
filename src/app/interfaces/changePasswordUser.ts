@@ -1,7 +1,7 @@
-import { LoginService } from "../services/login.service";
 import { ChangePassword } from "./changePassword";
+import { login } from "./login";
 
 export interface changePasswordUser{
-    LoginUser: LoginService;
-    ChangePassword: ChangePassword;
+    user: login;
+    changePassword: ChangePassword;
 }

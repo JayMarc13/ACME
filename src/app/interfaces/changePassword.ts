@@ -1,5 +1,5 @@
 export interface ChangePassword{
-    ContraseñaActual: string;
-    NuevaContraseña: string;
-    ConfirmarNuevaContraseña: string;
+    contraseñaActual: string;
+    nuevaContraseña: string;
+    confirmarNuevaContraseña: string;
 }

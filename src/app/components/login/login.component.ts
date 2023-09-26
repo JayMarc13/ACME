@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginService } from '../../services/login.service';
-import { Login } from '../../interfaces/login';
+import { login } from '../../interfaces/login';
 import { tokenUser } from '../../interfaces/token';
 import jwt_decode from 'jwt-decode';
 
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    const login: Login = {
+    const login: login = {
       userName: this.form.value.user,
       email: this.form.value.user,
       password: this.form.value.password
