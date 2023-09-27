@@ -3,6 +3,7 @@ using Backend.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration.UserSecrets;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace Backend.Controllers
@@ -71,7 +72,21 @@ namespace Backend.Controllers
             return BadRequest(new { message = "Los datos proporcionados son inválidos." });
         }
 
+        [HttpPost("AddRolAdm")]
+        public async Task<IActionResult> AddRolAdm(String userId)
 
+        {
+            var result = await _authService.addRolAdm(userId);
+            if (result)
+            {
+                return Ok(new { message = "se vinculo el rol con éxito" });
+            }
+            else {
+                return BadRequest(new { message = "error no se añadio el user y rol" });
+            }        
+            
+
+        }
 
 
     }

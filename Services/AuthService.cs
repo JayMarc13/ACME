@@ -13,11 +13,16 @@ namespace Backend.Services
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IConfiguration _config;
         private readonly AplicationDbContext _context;
-        public AuthService(UserManager<IdentityUser> userManager, IConfiguration config, AplicationDbContext context)
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public AuthService(UserManager<IdentityUser> userManager,
+            IConfiguration config,
+            AplicationDbContext context,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _config = config;
             _context = context;
+            _roleManager = roleManager;
         }
 
         //Verificar el usuario no existe
@@ -39,12 +44,12 @@ namespace Backend.Services
         {
             var identityUser = await _userManager.FindByNameAsync(user.UserName);
             var identityEmail = await _userManager.FindByEmailAsync(user.Email);
-            if (identityUser is not null || identityEmail is not null) 
+            if (identityUser is not null || identityEmail is not null)
             {
                 return await _userManager.CheckPasswordAsync(identityUser ?? identityEmail, user.Password);
             }
 
-            return false; 
+            return false;
         }
 
 
@@ -55,12 +60,12 @@ namespace Backend.Services
             var userToken = _context.Users.FirstOrDefault(u => u.UserName == user.UserName);
 
             var claims = new List<Claim> { };
-          
-            if (userToken != null) 
+
+            if (userToken != null)
 
             {
                 var roleUser = _context.UserRoles.FirstOrDefault(x => x.UserId == userToken.Id);
-                
+
                 if (roleUser != null)
                 {
                     claims = new List<Claim>
@@ -69,7 +74,8 @@ namespace Backend.Services
                          new Claim(ClaimTypes.Role, "Administrador")
                         };
                 }
-                else {
+                else
+                {
                     claims = new List<Claim>
                         {
                         new Claim(ClaimTypes.Email, user.UserName),
@@ -84,12 +90,14 @@ namespace Backend.Services
 
 
 
+
+
             SecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("Jwt:Key").Value));
             SigningCredentials signingCred = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha512Signature);
             var securityToken = new JwtSecurityToken(
                 claims: claims,
                 expires: DateTime.Now.AddMinutes(1), //Caducación
-                issuer:_config.GetSection("Jwt:Issuer").Value,
+                issuer: _config.GetSection("Jwt:Issuer").Value,
                 audience: _config.GetSection("Jwt:Audience").Value,
                 signingCredentials: signingCred);
 
@@ -119,6 +127,26 @@ namespace Backend.Services
             return false;
         }
 
-    }
+        public async Task<bool> addRolAdm(String userId)
+        {
+            var identityUser = await _userManager.FindByIdAsync(userId);
+            //var identityUser = await _userManager.FindByNameAsync(userName);
+            if (identityUser != null)
+            {
+                var rol = "Administrador";
+                var isInRole = await _userManager.IsInRoleAsync(identityUser, rol);
 
+                if (!isInRole)
+                {
+                    await _userManager.AddToRoleAsync(identityUser, rol);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+       
+
+
+    }
 }
