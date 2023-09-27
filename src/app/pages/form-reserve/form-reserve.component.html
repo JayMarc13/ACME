@@ -19,7 +19,6 @@
                     </mat-select>
                     <mat-icon matSuffix>public</mat-icon>
                   </mat-form-field>
-
             </div>
             <div class="col">
                 <mat-form-field id="input">
@@ -59,6 +58,17 @@
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
             </div>
+            <div class="col">
+              <mat-form-field id="input">
+                  <mat-label>Hours on the room</mat-label>
+                  <mat-select matInput  formControlName="startHour" placeholder="Start Hour">
+                    <mat-option *ngFor="let hora of horaRoom"  [value]="hora">
+                      {{ hora }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-icon matSuffix>access_time</mat-icon>
+              </mat-form-field>
+          </div>
             <div class="col">
                 <mat-form-field id="input" appearance="fill">
                     <mat-label>Start Hour</mat-label>
