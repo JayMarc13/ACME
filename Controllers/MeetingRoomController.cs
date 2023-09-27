@@ -103,24 +103,7 @@ namespace Backend.Controllers
             }
         }
 
-        //Añadir nueva Meeting Rooms
-        //[HttpPost]
-        //public async Task<IActionResult> Post(MeetingRoom meetingRoom)
-        //{
-        //    try
-        //    {
-        //        _context.Add(meetingRoom);
-        //        await _context.SaveChangesAsync();
-
-        //        return CreatedAtAction("Get", new { MeetingRoomId = meetingRoom.MeetingRoomId }, meetingRoom);
-        //    }
-        //    catch (Exception e)
-        //    {
-
-        //        return BadRequest(e.Message);
-        //    }
-        //}
-
+      
         [HttpGet("offices")]
         public IActionResult MeetingroomOffices()
         {
