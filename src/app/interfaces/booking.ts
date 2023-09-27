@@ -5,5 +5,6 @@ export interface Booking{
     startTime: string,
     endTime: string,
     userId: string,
+    hours?: string,
     meetingRoomName?: string
 }

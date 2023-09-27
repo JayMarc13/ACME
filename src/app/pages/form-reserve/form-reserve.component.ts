@@ -14,6 +14,7 @@ import { Booking } from 'src/app/interfaces/booking';
 import { ProfileService } from 'src/app/services/profile.service';
 import { BookingService } from 'src/app/services/booking.service';
 import { profile } from 'src/app/interfaces/profile';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 interface Food {
@@ -71,10 +72,12 @@ export class FormReserveComponent {
     private _countryService: CountryService,
     private _cityService : CityService,
     private _officeService: OfficeService,
-    private fb: FormBuilder){
+    private fb: FormBuilder,
+    private _snackBar: MatSnackBar){
     this.form = this.fb.group({
       meetingRoom : ['', Validators.required],
       date : ['',Validators.required],
+      hours: ['', Validators.required],
       endHour : ['', Validators.required],
       startHour : ['', Validators.required]
     });
@@ -151,6 +154,7 @@ export class FormReserveComponent {
     if(this.user){
       this.bookingUser.userId = this.user;
     }
+    this.bookingUser.hours = this.form.value.hours;
 
     this.hacerReserva(this.bookingUser);
   }
@@ -194,6 +198,8 @@ export class FormReserveComponent {
         window.location.href = "/home/bookings"
       }
 
+    }, error => {
+      this.mensajeErrorExito("error.error");
     });
   }
 
@@ -210,6 +216,12 @@ export class FormReserveComponent {
     );
   }
 
+  mensajeErrorExito(texto: string) {
+    this._snackBar.open(`${texto}`, '', {
+      duration: 4000,
+      verticalPosition: 'bottom'
+    });
+  }
 }
 
 

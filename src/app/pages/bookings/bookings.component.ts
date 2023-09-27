@@ -17,7 +17,7 @@ import { FormReserveComponent } from '../form-reserve/form-reserve.component';
   templateUrl: './bookings.component.html',
   styleUrls: ['./bookings.component.css'],
 })export class BookingComponent {
-  displayedColumns: string[] = ['reserveId', 'meetingRoomName', 'reserveDate', 'startTime', 'endTime', 'Acciones'];
+  displayedColumns: string[] = ['reserveId', 'meetingRoomName', 'reserveDate', 'startTime', 'endTime', 'hours', 'Acciones'];
   dataSource = new MatTableDataSource<Booking>();
   loading: boolean = false;
 
@@ -75,7 +75,6 @@ import { FormReserveComponent } from '../form-reserve/form-reserve.component';
         return reservas;
       })
     ).subscribe((data: Booking[]) => {
-      console.log(data);
       this.loading = false;
       this.dataSource.data = data;
     });

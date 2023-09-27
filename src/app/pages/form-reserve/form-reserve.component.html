@@ -1,5 +1,4 @@
 <div  >
-    <h1>Meeting Room Reserve</h1>
     <form  [formGroup]="form" (ngSubmit)="reservarSala()">
         <div class="row" >
           <div *ngIf="mostrarElemento" class="col">
@@ -61,7 +60,7 @@
             <div class="col">
               <mat-form-field id="input">
                   <mat-label>Hours on the room</mat-label>
-                  <mat-select matInput  formControlName="startHour" placeholder="Start Hour">
+                  <mat-select matInput  formControlName="hours" placeholder="Hours">
                     <mat-option *ngFor="let hora of horaRoom"  [value]="hora">
                       {{ hora }}
                     </mat-option>
