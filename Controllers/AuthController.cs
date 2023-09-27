@@ -73,10 +73,10 @@ namespace Backend.Controllers
         }
 
         [HttpPost("AddRolAdm")]
-        public async Task<IActionResult> AddRolAdm(String userId)
+        public async Task<IActionResult> AddRolAdm(String userId, String rol)
 
         {
-            var result = await _authService.addRolAdm(userId);
+            var result = await _authService.addRolAdm(userId, rol);
             if (result)
             {
                 return Ok(new { message = "se vinculo el rol con éxito" });

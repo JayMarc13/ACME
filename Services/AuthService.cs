@@ -68,11 +68,28 @@ namespace Backend.Services
 
                 if (roleUser != null)
                 {
-                    claims = new List<Claim>
+                    var roleName = _context.Roles.FirstOrDefault(x => x.Id == roleUser.RoleId);
+                    if (roleName != null) {
+
+                        if (roleName.Name == "Administrador")
                         {
-                         new Claim(ClaimTypes.Email, user.UserName),
-                         new Claim(ClaimTypes.Role, "Administrador")
-                        };
+                            claims = new List<Claim>
+                            {
+                             new Claim(ClaimTypes.Email, user.UserName),
+                             new Claim(ClaimTypes.Role, "Administrador")
+                            };
+
+                        }
+                        if (roleName.Name == "User") {
+                            claims = new List<Claim>
+                            {
+                            new Claim(ClaimTypes.Email, user.UserName),
+                            new Claim(ClaimTypes.Role, "User")
+                            };
+
+                        }
+                    }
+                   
                 }
                 else
                 {
@@ -127,19 +144,56 @@ namespace Backend.Services
             return false;
         }
 
-        public async Task<bool> addRolAdm(String userId)
+        public async Task<bool> addRolAdm(String userId, String rolName)
         {
+            
+            if (!await _roleManager.RoleExistsAsync(rolName))
+            {
+                var role = new IdentityRole(rolName);
+                await _roleManager.CreateAsync(role);
+            }
             var identityUser = await _userManager.FindByIdAsync(userId);
             //var identityUser = await _userManager.FindByNameAsync(userName);
             if (identityUser != null)
             {
-                var rol = "Administrador";
-                var isInRole = await _userManager.IsInRoleAsync(identityUser, rol);
-
-                if (!isInRole)
+                if (rolName == "Administrador")
                 {
-                    await _userManager.AddToRoleAsync(identityUser, rol);
-                    return true;
+                    var isInRole = await _userManager.IsInRoleAsync(identityUser, "User");
+
+                    if (!isInRole)
+                    {
+                        await _userManager.AddToRoleAsync(identityUser, rolName);
+
+                        return true;
+                    }
+                    else {
+
+                        await _userManager.RemoveFromRoleAsync(identityUser, "User");
+                        await _userManager.AddToRoleAsync(identityUser, rolName);
+
+                        return true;
+                    }
+                    
+                }
+                else {
+                    if (rolName == "User") {
+                        var isInRole = await _userManager.IsInRoleAsync(identityUser, "Administrador");
+
+                        if (!isInRole)
+                        {
+                            await _userManager.AddToRoleAsync(identityUser, rolName);
+
+                            return true;
+                        }
+                        else {
+
+                            await _userManager.RemoveFromRoleAsync(identityUser, "Administrador");
+                            await _userManager.AddToRoleAsync(identityUser, rolName);
+
+                            return true;
+                        }
+                    }
+
                 }
             }
             return false;
