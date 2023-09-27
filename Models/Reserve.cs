@@ -18,6 +18,7 @@ namespace Backend.Models
 
         //Foreign Key MeetingRoomId
         public string UserId { get; set; }
+        public string hours { get; set; }
         public Reserve()
         {
             // Initialize the array inside the constructor

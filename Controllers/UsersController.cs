@@ -106,7 +106,8 @@ namespace Backend.Controllers
                 return BadRequest(e.Message);
             }
         }*/
-
+        
+        //Editar los datos del usuario
         [HttpPut("{userId}")]
         public async Task<IActionResult> Put(string userId, AppUsers user)
         {
