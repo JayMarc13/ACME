@@ -71,7 +71,7 @@
             <div class="col">
                 <mat-form-field id="input" appearance="fill">
                     <mat-label>Start Hour</mat-label>
-                        <mat-select matInput  formControlName="startHour" placeholder="Start Hour">
+                        <mat-select matInput  formControlName="startHour" placeholder="Start Hour" (ngModelChange)="seleccionarEndTime()">
                           <mat-option *ngFor="let hora of horas"  [value]="hora">
                             {{ hora }}
                           </mat-option>

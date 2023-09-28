@@ -15,7 +15,12 @@ export class AddEditUsersComponent implements OnInit {
   userId: string="";
   formm: FormGroup;
 
-  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, private _UsersService: UsersService, private router: Router, private route: ActivatedRoute,private  _registerService: RegisterService) {
+  constructor(private fb: FormBuilder,
+    private snackBar: MatSnackBar,
+    private _UsersService: UsersService,
+    private router: Router,
+     private route: ActivatedRoute,
+     private  _registerService: RegisterService) {
     this.formm = this.fb.group({
       user: ['', [Validators.required]],
       email: ['', [Validators.email]],
@@ -58,7 +63,7 @@ export class AddEditUsersComponent implements OnInit {
     this._registerService.userRegister(userData)
       .subscribe(
         () => {
-          // Registro exitoso   
+          // Registro exitoso
           this.router.navigate(['/home/users/listUser']); // Redirige a /listUser en caso de éxito
         },
         (error: HttpErrorResponse) => {

@@ -31,6 +31,10 @@ import { FormReserveComponent } from '../form-reserve/form-reserve.component';
 
   }
 
+ seleccionarEndTime(){
+  alert("hola");
+ }
+
   openDialogEditarReserva(element: any): void {
     const dialogRef = this.dialog.open(EditarReservaComponent, {
       data: element

@@ -14,5 +14,6 @@ export interface profile {
   lockoutEnd: string;
   lockoutEnabled: boolean;
   accessFailedCount: number;
+  RoleId?: string;
 }
 
