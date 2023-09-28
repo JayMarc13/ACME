@@ -126,7 +126,6 @@ export class EditarReservaComponent {
         reserveDate: fechaFormateada,
         startTime: this.form.value.startTime,
         endTime: this.form.value.endTime,
-
         userId: this.userId,
         reserveId: this.reservaId,
         meetingRoomId: this.meetingRoomId

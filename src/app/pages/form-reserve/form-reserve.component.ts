@@ -14,6 +14,7 @@ import { Booking } from 'src/app/interfaces/booking';
 import { ProfileService } from 'src/app/services/profile.service';
 import { BookingService } from 'src/app/services/booking.service';
 import { profile } from 'src/app/interfaces/profile';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 interface Food {
@@ -37,6 +38,7 @@ export class FormReserveComponent {
   officeSelected : Office = {} as Office;
   meetingRooms : MeetingRoom[] = [];
   meetingRoomSelected : MeetingRoom = {} as MeetingRoom;
+  horaRoom: string[] = ["1h", "2h", "3h", "4h"];
   horas: string[] = ["10:00", "10:15" , "10:30", "10:45", "11:00", "11:15", "11:45", 
   "12:00", "12:15", "12:30", "12:45", "13:00", "13:15", "13:30", "13:45", "14:00", "14:15", "14:30", "14:45",
    "15:00","15:15","15:30","15:45", "16:00", "16:15", "16:30", "16:45", "17:00", "17:15", "17:30", "17:45", 
@@ -70,10 +72,12 @@ export class FormReserveComponent {
     private _countryService: CountryService,
     private _cityService : CityService,
     private _officeService: OfficeService,
-    private fb: FormBuilder){
+    private fb: FormBuilder,
+    private _snackBar: MatSnackBar){
     this.form = this.fb.group({
       meetingRoom : ['', Validators.required],
       date : ['',Validators.required],
+      hours: ['', Validators.required],
       endHour : ['', Validators.required],
       startHour : ['', Validators.required]
     });
@@ -150,6 +154,7 @@ export class FormReserveComponent {
     if(this.user){
       this.bookingUser.userId = this.user;
     }
+    this.bookingUser.hours = this.form.value.hours;
 
     this.hacerReserva(this.bookingUser);
   }
@@ -193,6 +198,8 @@ export class FormReserveComponent {
         window.location.href = "/home/bookings"
       }
 
+    }, error => {
+      this.mensajeErrorExito("error.error");
     });
   }
 
@@ -209,6 +216,12 @@ export class FormReserveComponent {
     );
   }
 
+  mensajeErrorExito(texto: string) {
+    this._snackBar.open(`${texto}`, '', {
+      duration: 4000,
+      verticalPosition: 'bottom'
+    });
+  }
 }
 
 
