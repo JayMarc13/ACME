@@ -15,7 +15,7 @@ import { PopRemoveQuestionComponent } from '../../pop-remove-question/pop-remove
   styleUrls: ['./list-users.component.css']
 })
 export class ListUsersComponent {
-  displayedColumns: string[] = ['userName', 'email','phone','Acciones'];
+  displayedColumns: string[] = ['userName', 'email','phone','RoleId','Acciones'];
   dataSource = new MatTableDataSource<users>();
   loading: boolean = false;
 
