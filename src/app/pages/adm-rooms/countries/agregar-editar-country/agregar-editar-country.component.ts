@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Country } from '../../../../interfaces/country';
 import { CountryService } from '../../../../services/country.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-agregar-editar-country',
@@ -17,7 +18,10 @@ export class AgregarEditarCountryComponent {
   countryId: number;
   Operacion: string = 'Agregar';
 
-  constructor(private _countryService: CountryService,
+  constructor(
+    @Inject(MAT_DIALOG_DATA) private data: any,
+    private dialogRef: MatDialogRef<AgregarEditarCountryComponent>,
+    private _countryService: CountryService,
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
     private router: Router,
@@ -26,19 +30,20 @@ export class AgregarEditarCountryComponent {
       countryName: ['', Validators.required] ////Campo requerido
     })
 
+    this.countryId = data.identification;
     //Obtiene el countryId de la URL
-    this.countryId = Number(this.aRoute.snapshot.paramMap.get('countryId'));
+    // this.countryId = Number(this.aRoute.snapshot.paramMap.get('countryId'));
   }
 
   //Cada vez que llama este componente los metodos o variables que tiene dentro se ejecuta
   ngOnInit(): void {
     if (this.countryId != 0) {
       this.Operacion = 'Editar';
-      this.obtenerMacota(this.countryId);
+      this.obtenerCountry(this.countryId);
     }
   }
 
-  obtenerMacota(countryId: number) {
+  obtenerCountry(countryId: number) {
     this.loading = true;
     this._countryService.getCountry(countryId).subscribe(data => {
       this.form.setValue({
@@ -48,7 +53,6 @@ export class AgregarEditarCountryComponent {
       this.loading = false;
     })
   }
-
   //Metodos
   agregarEditarCountry() {
     //Definir el objeto
@@ -80,7 +84,9 @@ export class AgregarEditarCountryComponent {
       this.router.navigate(['/home/admRooms/countries/listaCountries']);
     });
   }
-
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
   mensajeExito(texto: string) {
     this._snackBar.open(`El pais fue ${texto} con éxito`, '', {
       duration: 4000,

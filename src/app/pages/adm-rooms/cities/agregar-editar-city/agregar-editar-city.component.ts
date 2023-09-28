@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { City } from '../../../../interfaces/city';
 import { CityService } from '../../../../services/city.service';
@@ -17,7 +18,10 @@ export class AgregarEditarCityComponent {
   Operacion: string = 'Add';
 
 
-  constructor(private _cityService: CityService,
+  constructor(
+    @Inject(MAT_DIALOG_DATA) private data: any,
+    private dialogRef: MatDialogRef<AgregarEditarCityComponent>,
+    private _cityService: CityService,
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
     private router: Router,
@@ -27,7 +31,7 @@ export class AgregarEditarCityComponent {
       countryId: ['', Validators.required]
     })
 
-    this.cityId = Number(this.aRoute.snapshot.paramMap.get('cityId'));
+    this.cityId = data.identification;
   }
 
 
@@ -48,8 +52,6 @@ export class AgregarEditarCityComponent {
       this.loading = false;
     });
   }
-
-
 
   //Metodos
   agregarEditarCity() {
@@ -89,6 +91,10 @@ export class AgregarEditarCityComponent {
       duration: 4000,
       horizontalPosition: 'right'
     });
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }

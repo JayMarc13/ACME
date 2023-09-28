@@ -1,8 +1,4 @@
-<div class="containerTabla">
-  <h1>{{ Operacion }} Pais</h1>
-
-<app-spinner *ngIf="loading"></app-spinner>
-    <br>
+<div mat-dialog-content>
     <form [formGroup]="form" (ngSubmit)="agregarEditarCountry()">
       <mat-grid-list cols="2" rowHeight="80px">
         <mat-grid-tile [colspan]="2">
@@ -13,7 +9,7 @@
         </mat-grid-tile>
         <mat-grid-tile [colspan]="2">
           <button [disabled]="form.invalid" type="submit" class="btnAceptar" mat-raised-button color="primary">Aceptar</button>
-          <button mat-raised-button routerLink="/home/admRooms/countries">Volver</button>
+          <button  (click)="onNoClick()"  mat-raised-button >Back</button>
         </mat-grid-tile>
       </mat-grid-list>
     </form>
