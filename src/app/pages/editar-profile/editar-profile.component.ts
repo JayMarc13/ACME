@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { profile } from 'src/app/interfaces/profile';
 import { ProfileService } from 'src/app/services/profile.service';
+
 
 @Component({
   selector: 'app-editar-profile',
@@ -16,10 +17,12 @@ export class EditarProfileComponent {
   form: FormGroup
   idUser: string | undefined
   
-  constructor(private dialogRef: MatDialogRef<EditarProfileComponent>, 
+  constructor(
+    private dialogRef: MatDialogRef<EditarProfileComponent>, 
     private profileService: ProfileService,
     private fb: FormBuilder, 
     private _snackBar: MatSnackBar){
+
     this.form = this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.required],

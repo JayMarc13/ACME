@@ -28,6 +28,8 @@ interface Food {
   styleUrls: ['./form-reserve.component.css']
 })
 export class FormReserveComponent {
+  horasSeleccionada?: string;
+  startTimeSeleccionada?: string;
   user?: string;
   bookingUser : Booking = {} as Booking;
   countries : Country[] = [];
@@ -39,10 +41,11 @@ export class FormReserveComponent {
   meetingRooms : MeetingRoom[] = [];
   meetingRoomSelected : MeetingRoom = {} as MeetingRoom;
   horaRoom: string[] = ["1h", "2h", "3h", "4h"];
-  horas: string[] = ["10:00", "10:15" , "10:30", "10:45", "11:00", "11:15", "11:45", 
-  "12:00", "12:15", "12:30", "12:45", "13:00", "13:15", "13:30", "13:45", "14:00", "14:15", "14:30", "14:45",
-   "15:00","15:15","15:30","15:45", "16:00", "16:15", "16:30", "16:45", "17:00", "17:15", "17:30", "17:45", 
-   "18:00","18:15","18:30","18:45", "19:00", "19:15", "19:30", "19:45", "20:00", "20:15", "20:30", "20:45", "21:00","21:15","21:30","21:45", "22:00"];
+    horas: string[] = ["10:00", "10:15" , "10:30", "10:45", "11:00", "11:15","11:30", "11:45", 
+    "12:00", "12:15", "12:30", "12:45", "13:00", "13:15", "13:30", "13:45", "14:00", "14:15", "14:30", "14:45",
+    "15:00","15:15","15:30","15:45", "16:00", "16:15", "16:30", "16:45", "17:00", "17:15", "17:30", "17:45", 
+    "18:00","18:15","18:30","18:45", "19:00", "19:15", "19:30", "19:45", "20:00", "20:15", "20:30", "20:45", "21:00",
+    "21:15","21:30","21:45", "22:00"];
 
   listUsers!: string[];
   userSelected!: string;
@@ -65,6 +68,7 @@ export class FormReserveComponent {
   loading: boolean = false;
 
   constructor(
+    private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) private data: any,
     private _bookingService: BookingService,
     private _userService: ProfileService,
@@ -118,11 +122,40 @@ export class FormReserveComponent {
       this.pathName = this.data.pathname;
   }
 
+  seleccionarEndTime(){
+    let horasSeleccionada = this.form.value.hours;
+    let startTimeSeleccionada = this.form.value.startHour;
+    let positionHora = this.horas.indexOf(startTimeSeleccionada);
+    this.horasSeleccionada = horasSeleccionada;
+    this.startTimeSeleccionada = startTimeSeleccionada;
+    switch(horasSeleccionada){
+      case "1h":
+        this.form = new FormGroup({
+          endHour: new FormControl(this.horas[positionHora + 4])
+        });
+        break;
+      case "2h":
+        this.form = new FormGroup({
+          endHour: new FormControl(this.horas[positionHora + 4])
+        });
+        break;
+      case "3h":
+        this.form = new FormGroup({
+          endHour: new FormControl(this.horas[positionHora + 4])
+        });
+        break;
+      case "4h":
+        this.form = new FormGroup({
+          endHour: new FormControl(this.horas[positionHora + 4])
+        });
+        break;
+    }
+  }
+  
   ngOnInit(){
     this.ObtenerCountries();
     const userName = sessionStorage.getItem('user');
     this.userRole = sessionStorage.getItem('userRole');
-    console.log(this.userRole);
     if(userName){
       this.ObtenerUsuario(userName);
     }
@@ -149,13 +182,14 @@ export class FormReserveComponent {
 
     this.bookingUser.meetingRoomId = this.meetingRoomSelected.meetingRoomId;
     this.bookingUser.reserveDate = date;
-    this.bookingUser.startTime = this.form.value.startHour;
+    if(this.startTimeSeleccionada){
+      this.bookingUser.startTime = this.startTimeSeleccionada;
+    }
     this.bookingUser.endTime = this.form.value.endHour;
     if(this.user){
       this.bookingUser.userId = this.user;
     }
-    this.bookingUser.hours = this.form.value.hours;
-
+    this.bookingUser.hours = this.horasSeleccionada;
     this.hacerReserva(this.bookingUser);
   }
 
@@ -197,9 +231,8 @@ export class FormReserveComponent {
       }else{
         window.location.href = "/home/bookings"
       }
-
     }, error => {
-      this.mensajeErrorExito("error.error");
+      this.mensajeErrorExito(error.error);
     });
   }
 
