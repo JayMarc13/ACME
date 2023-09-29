@@ -23,14 +23,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './spinner/spinner.component';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatSelectModule} from '@angular/material/select';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatTabsModule} from '@angular/material/tabs';
+import { MatSelectModule} from '@angular/material/select';
+import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
-import {MatTreeModule} from '@angular/material/tree';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { MatTreeModule} from '@angular/material/tree';
+import { MatDialogModule} from '@angular/material/dialog';
+import { MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [SpinnerComponent],
