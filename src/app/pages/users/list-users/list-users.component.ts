@@ -26,7 +26,7 @@ export class ListUsersComponent {
 
   userProfile? : profile
   userId !: string;
-  isAdministrador: boolean = false;
+  isAdministrador : boolean = false;
   userRole! : string;
 
 
@@ -49,9 +49,9 @@ export class ListUsersComponent {
     const userRole = sessionStorage.getItem('userRole');
     if(userRole != null){
       this.userRole = userRole;
-      if(this.userRole == "Administrador"){
-
-      }
+      // if(this.userRole == "Administrador"){
+      //   this.isAdministrador= true;
+      // }
     }
 
   }
@@ -97,7 +97,9 @@ export class ListUsersComponent {
   }
   onToggleChange(event: any, userName: string) {
     const isAdministrador = event.checked;
-    console.log("cambio "+isAdministrador); 
+
+    console.log("cambio "+isAdministrador);
+
     this.getUserId(userName).subscribe(userId => {
       console.log("ID del usuario: " + userId);
       if(isAdministrador){
