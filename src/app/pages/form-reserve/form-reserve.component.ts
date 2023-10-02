@@ -15,6 +15,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { BookingService } from 'src/app/services/booking.service';
 import { profile } from 'src/app/interfaces/profile';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DateFilterFn } from '@angular/material/datepicker';
 
 
 interface Food {
@@ -57,7 +58,15 @@ export class FormReserveComponent {
 
   date = new Date();
   form: FormGroup
+  disablePastDates: DateFilterFn<Date | null> = (date: Date | null) => {
+    if (!date) {
+      return false; // Si la fecha es null, no la deshabilitamos
+    }
 
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    return date >= currentDate;
+  };
   //Form Control
   countryFormControl = new FormControl();
   cityFormControl = new FormControl();

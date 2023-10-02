@@ -11,11 +11,13 @@ import { LoginComponent } from './components/login/login.component';
 
 //Modulos Angular Material
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { OnlineStatusComponent } from './components/online-status/online-status.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    OnlineStatusComponent
   ],
   imports: [
     AppRoutingModule,

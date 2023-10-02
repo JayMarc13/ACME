@@ -9,6 +9,7 @@ import { Booking } from 'src/app/interfaces/booking';
 import { MeetingRoom } from 'src/app/interfaces/meetingRoom';
 import { BookingService } from 'src/app/services/booking.service';
 import { MeetingRoomService } from 'src/app/services/meeting-room.service';
+import { DateFilterFn } from '@angular/material/datepicker';
 
 
 @Component({
@@ -31,7 +32,15 @@ export class EditarReservaComponent {
   userId!: string;
   meetingRoomName!: string;
 
+  disablePastDates: DateFilterFn<Date | null> = (date: Date | null) => {
+    if (!date) {
+      return false; // Si la fecha es null, no la deshabilitamos
+    }
 
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    return date >= currentDate;
+  };
 
   reserva: Booking = {
     reserveId: 0,
@@ -64,8 +73,6 @@ export class EditarReservaComponent {
   ngOnInit(): void{
       this.obtenerBookingsById(this.reservaId);
   }
-
-
 
   obtenerBookingsById(reservaId: number ) {
     this.loading = true;
