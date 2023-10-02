@@ -261,6 +261,33 @@ namespace Backend.Controllers
             }
         }
 
+        // Eliminar reservas anteriores a la fecha especificada
+        [HttpDelete("DeleteOldReservations/{fecha}")]
+        public async Task<IActionResult> DeleteOldReservations(DateTime fecha)
+        {
+            try
+            {
+                var reservasAntiguas = await _context.Reserve
+                    .Where(r => r.ReserveDate.Date > fecha.Date)
+                    .ToListAsync();
+
+                if (reservasAntiguas == null || reservasAntiguas.Count == 0)
+                {
+                    return NotFound("No hay reservas antiguas para eliminar.");
+                }
+
+                _context.Reserve.RemoveRange(reservasAntiguas);
+                await _context.SaveChangesAsync();
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
         // Actualizar una reserva por su id
         [HttpPut("{reserveId}")]
         public async Task<IActionResult> Put(int reserveId, Reserve reserve)
