@@ -94,6 +94,17 @@ import { FormReserveComponent } from '../form-reserve/form-reserve.component';
     ).subscribe((data: Booking[]) => {
       this.loading = false;
       this.dataSource.data = data;
+      const jsonData = JSON.stringify(data);
+      localStorage.setItem("bookings", jsonData);
+    },error => {
+      const jsonData= localStorage.getItem("bookings");
+      let bookings = undefined;
+      if(jsonData){
+        bookings = JSON.parse(jsonData);
+      }
+     this.dataSource.data = bookings;
+      
+     
     });
   }
 
