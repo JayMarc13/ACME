@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Threading.Tasks;
 
@@ -250,6 +251,9 @@ namespace Backend.Controllers
                     return Conflict("A reservation exists that conflicts with the specified start and end times.");
                 }
 
+                Debug.Write(reserve.hours);
+                Debug.Write(reserve.ReserveDate);
+
                 _context.Add(reserve);
                 await _context.SaveChangesAsync();
 
@@ -268,7 +272,7 @@ namespace Backend.Controllers
             try
             {
                 var reservasAntiguas = await _context.Reserve
-                    .Where(r => r.ReserveDate.Date > fecha.Date)
+                    .Where(r => r.ReserveDate.Date < fecha.Date)
                     .ToListAsync();
 
                 if (reservasAntiguas == null || reservasAntiguas.Count == 0)
