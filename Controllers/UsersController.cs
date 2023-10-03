@@ -89,23 +89,7 @@ namespace Backend.Controllers
             }
         }
 
-        //Añadir nuevo usuario
-/*        [HttpPost]
-        public async Task<IActionResult> Post(AppUsers user)
-        {
-            try
-            {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-
-                return CreatedAtAction("Get", new { Id = user.Id }, user);
-            }
-            catch (Exception e)
-            {
-
-                return BadRequest(e.Message);
-            }
-        }*/
+     
 
         [HttpPut("{userId}")]
         public async Task<IActionResult> Put(string userId, AppUsers user)

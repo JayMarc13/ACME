@@ -10,6 +10,7 @@ namespace Backend.Services
         string GenerateTokenString(LoginUser user);
 
         Task<bool> ChangePassword(LoginUser user, ChangePassword model);
-        Task<bool> addRolAdm(String userId, String rol);
+        Task<bool> addRol(String userId, String rol);
+        Task<bool> isAdministrador(String userId);
     }
 }

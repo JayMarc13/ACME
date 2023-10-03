@@ -144,14 +144,14 @@ namespace Backend.Services
             return false;
         }
 
-        public async Task<bool> addRolAdm(String userId, String rolName)
+        public async Task<bool> addRol(String userId, String rolName)
         {
             
-            if (!await _roleManager.RoleExistsAsync(rolName))
-            {
-                var role = new IdentityRole(rolName);
-                await _roleManager.CreateAsync(role);
-            }
+            //if (!await _roleManager.RoleExistsAsync(rolName))
+            //{
+            //    var role = new IdentityRole(rolName);
+            //    await _roleManager.CreateAsync(role);
+            //}
             var identityUser = await _userManager.FindByIdAsync(userId);
             //var identityUser = await _userManager.FindByNameAsync(userName);
             if (identityUser != null)
@@ -177,6 +177,7 @@ namespace Backend.Services
                 }
                 else {
                     if (rolName == "User") {
+
                         var isInRole = await _userManager.IsInRoleAsync(identityUser, "Administrador");
 
                         if (!isInRole)
@@ -184,12 +185,9 @@ namespace Backend.Services
                             await _userManager.AddToRoleAsync(identityUser, rolName);
 
                             return true;
-                        }
-                        else {
-
+                        } else {
                             await _userManager.RemoveFromRoleAsync(identityUser, "Administrador");
                             await _userManager.AddToRoleAsync(identityUser, rolName);
-
                             return true;
                         }
                     }
@@ -199,7 +197,17 @@ namespace Backend.Services
             return false;
         }
 
-       
+        public async Task<bool> isAdministrador(String userId) {
+            var identityUser = await _userManager.FindByIdAsync(userId);
+            if (identityUser != null) {
+                var isInRole = await _userManager.IsInRoleAsync(identityUser, "Administrador");
+                if (!isInRole)
+                {
+                    return false;
+                }
+                return true;
+            } else {  return false; }
+        }
 
 
     }

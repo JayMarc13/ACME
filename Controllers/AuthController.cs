@@ -72,11 +72,11 @@ namespace Backend.Controllers
             return BadRequest(new { message = "Los datos proporcionados son inválidos." });
         }
 
-        [HttpPost("AddRolAdm")]
-        public async Task<IActionResult> AddRolAdm(String userId, String rol)
+        [HttpPost("AddRol")]
+        public async Task<IActionResult> AddRol(String userId, String rol)
 
         {
-            var result = await _authService.addRolAdm(userId, rol);
+            var result = await _authService.addRol(userId, rol);
             if (result)
             {
                 return Ok(new { message = "se vinculo el rol con éxito" });
@@ -88,6 +88,13 @@ namespace Backend.Controllers
 
         }
 
+        [HttpGet("verificationAdm")]
+        public async Task<IActionResult> GetVerificationAdm(String userId)
+        {
+            var result = await _authService.isAdministrador(userId);
+            return Ok(result);
+
+        }
 
     }
 }
