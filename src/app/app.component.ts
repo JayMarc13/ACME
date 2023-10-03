@@ -17,7 +17,7 @@ export class AppComponent {
     this._connectionService.isOnline().subscribe((online) => {
       this.isOnline = online;
       if(!this.isOnline){
-        this.mensajeErrorExito("No tiene conexión");
+        this.mensajeErrorExito("does not have an internet connection");
       }
     });
   }
