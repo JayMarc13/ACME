@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -23,9 +23,12 @@ export class ChangePasswordComponent {
   confirmPassword: string = '';
   loginUser?: login;
   NewPasswordUser?: ChangePassword;
+ 
 
 
   constructor(
+    private elementRef: ElementRef,
+    private _snackBar: MatSnackBar,
     private dialogRef: MatDialogRef<ChangePasswordComponent>,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
@@ -40,16 +43,16 @@ export class ChangePasswordComponent {
     });
   }
     
+ngOnInit(){
+  this.elementRef.nativeElement.disabled = !this.form.valid;
 
+    this.form.valueChanges.subscribe(() => {
+      this.elementRef.nativeElement.disabled = !this.form.valid;
+    });
+}
   onChangePassword() {
     // Aquí puedes agregar la lógica para cambiar la contraseña, por ejemplo, haciendo una solicitud HTTP a tu backend.
     // Asegúrate de validar las contraseñas antes de enviar la solicitud.
-
-    if (this.newPassword !== this.confirmPassword) {
-      this.error("New Password and Confirm Password do not match");
-      this.form.reset();
-      return;
-    }else{
     
     let userName = sessionStorage.getItem("user");
      if(userName){
@@ -64,30 +67,32 @@ export class ChangePasswordComponent {
       nuevaContraseña: this.form.value.newPassword,
       confirmarNuevaContraseña: this.form.value.repeatNewPassword
      }
-
-     if(this.loginUser && this.NewPasswordUser){
+     console.log(this.NewPasswordUser.confirmarNuevaContraseña);
+     if(this.loginUser && this.NewPasswordUser && this.NewPasswordUser.confirmarNuevaContraseña == this.NewPasswordUser.nuevaContraseña){
       let updatePassword: changePasswordUser = {
         user: this.loginUser,
         changePassword: this.NewPasswordUser
        }
        this._changePasswordService.changePassword(updatePassword).subscribe(data => {
-        window.location.href = " ";
+        this.mensajeErrorExito("Your password is already updated", 'app-notification-success');
+        this.onNoClick();
        }, error => {
-        console.log("Algo esta mal");
+        this.mensajeErrorExito("Current password is incorrect", 'app-notification-error');
        });;
+     }else{
+      this.mensajeErrorExito("The passwords do not match.", 'app-notification-error');
      }
-    }
+    
 
   }
 
-  error(message: string): void {
-    this.snackBar.open(message, '', {
-      duration: 5000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom'
+  mensajeErrorExito(texto: string, type: string) {
+    this._snackBar.open(`${texto}`, '', {
+      duration: 4000,
+      verticalPosition: 'bottom',
+      panelClass:type
     });
   }
-
 
   onNoClick(): void {
     this.dialogRef.close();
