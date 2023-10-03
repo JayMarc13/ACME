@@ -1,16 +1,15 @@
 <div mat-dialog-content>
-    <form [formGroup]="form" (ngSubmit)="agregarEditarCountry()">
-      <mat-grid-list cols="2" rowHeight="80px">
-        <mat-grid-tile [colspan]="2">
-          <mat-form-field class="input" appearance="outline">
-            <mat-label>Nombre País</mat-label>
-            <input formControlName="countryName" matInput>
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="2">
-          <button [disabled]="form.invalid" type="submit" class="btnAceptar" mat-raised-button color="primary">Aceptar</button>
-          <button  (click)="onNoClick()"  mat-raised-button >Back</button>
-        </mat-grid-tile>
-      </mat-grid-list>
-    </form>
+  <form [formGroup]="form" >
+    <mat-grid-list cols="1" rowHeight="180px" >
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field class="input" appearance="outline">
+          <mat-label>Country Name</mat-label> 
+          <input formControlName="countryName" matInput mat-cell value="cityName">
+        </mat-form-field>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+  </form>
+  <button  (click)="onNoClick()"  mat-raised-button >Back</button>
+  <button (click)="agregarEditarCountry()" mat-raised-button color="primary">Save</button>
 </div>

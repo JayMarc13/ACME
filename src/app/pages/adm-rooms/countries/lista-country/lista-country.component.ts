@@ -64,6 +64,10 @@ export class ListaCountryComponent {
     const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {identification, pathname}});
   }
 
+  editarCountry(identification: number){
+    const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {identification}});
+  }
+
 
   mensajeExito() {
     this._snackBar.open('El pais fue eliminada con éxito', '', {
