@@ -81,7 +81,7 @@ import { FormReserveComponent } from '../form-reserve/form-reserve.component';
   }
   
   obtenerBookings(userId: string) {
-    this.loading = true;
+    // this.loading = true;
     this._bookingService.getBookings(userId).pipe(
       map((data: any) => {
         // Mapear los datos para modificar el formato de la fecha
