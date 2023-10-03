@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Threading.Tasks;
 
@@ -119,7 +120,8 @@ namespace Backend.Controllers
                    MeetingRoomName = item.MeetingRoom.MeetingRoomName,
                    ReserveDate = item.Reserve.ReserveDate,
                    StartTime = item.Reserve.StartTime,
-                   EndTime = item.Reserve.EndTime
+                   EndTime = item.Reserve.EndTime,
+                   Hours = item.Reserve.hours
                })
                .ToListAsync();
 
@@ -217,7 +219,7 @@ namespace Backend.Controllers
                 // Verificar que las horas de inicio y fin sean válidas
                 if (startTime >= endTime)
                 {
-                    return BadRequest("Las horas de inicio y fin no son válidas.");
+                    return Conflict("The hours of start and end are not valids.");
                 }
 
                 // Obtener todas las reservas para el mismo día y sala desde la base de datos
@@ -226,6 +228,16 @@ namespace Backend.Controllers
                         r.MeetingRoomId == reserve.MeetingRoomId &&
                         r.ReserveDate.Date == reserve.ReserveDate.Date)
                     .ToListAsync();
+
+                // Verificar si ya existe una reserva que contenga las mismas horas de inicio y fin
+                bool hasExactMatch = existingReservations.Any(r =>
+                    DateTime.ParseExact(r.StartTime, "HH:mm", CultureInfo.InvariantCulture) == startTime &&
+                    DateTime.ParseExact(r.EndTime, "HH:mm", CultureInfo.InvariantCulture) == endTime);
+
+                if (hasExactMatch)
+                {
+                    return Conflict("There is a reservation with the same start and end times for the same day and room");
+                }
 
                 // Verificar si ya existe una reserva que colisiona con las horas de inicio y fin
                 bool hasCollisions = existingReservations.Any(r =>
@@ -236,18 +248,11 @@ namespace Backend.Controllers
 
                 if (hasCollisions)
                 {
-                    return BadRequest("Existe una reserva que colisiona con las horas de inicio y fin especificadas.");
+                    return Conflict("A reservation exists that conflicts with the specified start and end times.");
                 }
 
-                // Verificar si ya existe una reserva que contenga las mismas horas de inicio y fin
-                bool hasExactMatch = existingReservations.Any(r =>
-                    DateTime.ParseExact(r.StartTime, "HH:mm", CultureInfo.InvariantCulture) == startTime &&
-                    DateTime.ParseExact(r.EndTime, "HH:mm", CultureInfo.InvariantCulture) == endTime);
-
-                if (hasExactMatch)
-                {
-                    return BadRequest("Existe una reserva con las mismas horas de inicio y fin para el mismo día y sala.");
-                }
+                Debug.Write(reserve.hours);
+                Debug.Write(reserve.ReserveDate);
 
                 _context.Add(reserve);
                 await _context.SaveChangesAsync();
@@ -259,6 +264,33 @@ namespace Backend.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        // Eliminar reservas anteriores a la fecha especificada
+        [HttpDelete("DeleteOldReservations/{fecha}")]
+        public async Task<IActionResult> DeleteOldReservations(DateTime fecha)
+        {
+            try
+            {
+                var reservasAntiguas = await _context.Reserve
+                    .Where(r => r.ReserveDate.Date < fecha.Date)
+                    .ToListAsync();
+
+                if (reservasAntiguas == null || reservasAntiguas.Count == 0)
+                {
+                    return NotFound("No hay reservas antiguas para eliminar.");
+                }
+
+                _context.Reserve.RemoveRange(reservasAntiguas);
+                await _context.SaveChangesAsync();
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
         // Actualizar una reserva por su id
         [HttpPut("{reserveId}")]
@@ -285,7 +317,7 @@ namespace Backend.Controllers
                 // Verificar que las horas de inicio y fin sean válidas
                 if (startTime >= endTime)
                 {
-                    return BadRequest("Las horas de inicio y fin no son válidas.");
+                    return BadRequest("The hours of start and end are not valids");
                 }
 
                 // Obtener todas las reservas para el mismo día y sala desde la base de datos
@@ -305,7 +337,7 @@ namespace Backend.Controllers
 
                 if (hasCollisions)
                 {
-                    return BadRequest("Existe una reserva que colisiona con las horas de inicio y fin especificadas.");
+                    return BadRequest("A reservation exists that conflicts with the specified start and end times.");
                 }
 
                 // Verificar si ya existe una reserva que contenga las mismas horas de inicio y fin
@@ -315,7 +347,7 @@ namespace Backend.Controllers
 
                 if (hasExactMatch)
                 {
-                    return BadRequest("Existe una reserva con las mismas horas de inicio y fin para el mismo día y sala.");
+                    return BadRequest("There is a reservation with the same start and end times for the same day and room");
                 }
 
                 // Actualizar propiedades de reserva
