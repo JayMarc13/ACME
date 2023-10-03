@@ -95,7 +95,7 @@ export class ListUsersComponent {
               isAdmin => {
                 // Actualiza la propiedad isAdmin del usuario correspondiente
                 data[i].isAdmin = isAdmin;
-                // console.log(`Usuario con ID ${userId} es administrador: ${isAdmin}`);
+                console.log(`Usuario con ID ${userId} es administrador: ${isAdmin}`);
               }
             );
           }

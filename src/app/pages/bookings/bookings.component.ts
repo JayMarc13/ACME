@@ -68,13 +68,14 @@ import { FormReserveComponent } from '../form-reserve/form-reserve.component';
   }
   eliminarReservasAntiguas() {
     const fechaActual = new Date();
+
     this._bookingService.deleteOldReservations(fechaActual).subscribe(
       () => {
         console.log('Reservas antiguas eliminadas con éxito.');
         // Realiza alguna acción adicional si es necesario
       },
       error => {
-        console.error('Error al eliminar reservas antiguas:', error);
+        console.error('Error al eliminar reservas antiguas:');
         // Maneja el error adecuadamente, por ejemplo, muestra un mensaje de error al usuario
       }
     );

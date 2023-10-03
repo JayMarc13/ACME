@@ -55,17 +55,17 @@ export class FormReserveComponent {
   pathName?: string;
 
   reserveId: number | any;
-
-  date = new Date();
+  ReserveString?:string;
+  ReserveDate = new Date();
   form: FormGroup
-  disablePastDates: DateFilterFn<Date | null> = (date: Date | null) => {
-    if (!date) {
+  disablePastDates: DateFilterFn<Date | null> = (dateHide: Date | null) => {
+    if (!dateHide) {
       return false; // Si la fecha es null, no la deshabilitamos
     }
 
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
-    return date >= currentDate;
+    return dateHide >= currentDate;
   };
   //Form Control
   countryFormControl = new FormControl();
@@ -73,6 +73,7 @@ export class FormReserveComponent {
   officeFormControl = new FormControl();
   meetingRoomFormControl = new FormControl();
   userFormControl = new FormControl();
+
 
   loading: boolean = false;
 
@@ -89,7 +90,7 @@ export class FormReserveComponent {
     private _snackBar: MatSnackBar){
     this.form = this.fb.group({
       meetingRoom : ['', Validators.required],
-      date : ['',Validators.required],
+      ReserveDate : ['',Validators.required],
       hours: ['', Validators.required],
       endHour : ['', Validators.required],
       startHour : ['', Validators.required]
@@ -132,6 +133,7 @@ export class FormReserveComponent {
   }
 
   seleccionarEndTime(){
+    this.ReserveString = this.form.value.ReserveDate;
     let horasSeleccionada = this.form.value.hours;
     let startTimeSeleccionada = this.form.value.startHour;
     let positionHora = this.horas.indexOf(startTimeSeleccionada);
@@ -145,17 +147,17 @@ export class FormReserveComponent {
         break;
       case "2h":
         this.form = new FormGroup({
-          endHour: new FormControl(this.horas[positionHora + 4])
+          endHour: new FormControl(this.horas[positionHora + 8])
         });
         break;
       case "3h":
         this.form = new FormGroup({
-          endHour: new FormControl(this.horas[positionHora + 4])
+          endHour: new FormControl(this.horas[positionHora + 12])
         });
         break;
       case "4h":
         this.form = new FormGroup({
-          endHour: new FormControl(this.horas[positionHora + 4])
+          endHour: new FormControl(this.horas[positionHora + 16])
         });
         break;
     }
@@ -187,7 +189,8 @@ export class FormReserveComponent {
    }
 
   reservarSala(){
-    const date = dayjs(this.form.value.date).format('YYYY-MM-DD');
+    console.log(this.ReserveString);
+    const date = dayjs(this.ReserveString).format('YYYY-MM-DD');
 
     this.bookingUser.meetingRoomId = this.meetingRoomSelected.meetingRoomId;
     this.bookingUser.reserveDate = date;
@@ -199,6 +202,7 @@ export class FormReserveComponent {
       this.bookingUser.userId = this.user;
     }
     this.bookingUser.hours = this.horasSeleccionada;
+  
     this.hacerReserva(this.bookingUser);
   }
 
@@ -235,6 +239,7 @@ export class FormReserveComponent {
 
   hacerReserva(reserva: Booking){
     this._bookingService.createBooking(reserva).subscribe(succes =>  {
+      console.log(succes);
       if(this.pathName == "/home/admReservas/listReservas" ){
         window.location.href = "/home/admReservas/listReservas"
       }else{
