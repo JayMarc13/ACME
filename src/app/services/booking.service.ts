@@ -36,4 +36,9 @@ export class BookingService {
   getAllBookings(){
     return this.http.get(`${this.myAppUrl}${this.myApiUrl}/ReserveRoomUser`);
   }
+  deleteOldReservations(fecha: Date): Observable<void> {
+    const formattedDate = fecha.toISOString(); // convierte la fecha a un formato compatible con el backend
+    return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}/DeleteOldReservations/${formattedDate}`);
+  }
+  
 }

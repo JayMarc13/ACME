@@ -34,7 +34,7 @@
       <td mat-cell *matCellDef="let element">
         <!-- <mat-icon routerLink ="/verCountry/{{ element.countryId }}" class="visibility" matTooltip="Ver" fontIcon="visibility"></mat-icon> -->
         <mat-icon fontIcon=""></mat-icon>
-        <mat-icon routerLink="/home/admRooms/countries/editarCountry/{{ element.countryId }}" class="edit" matTooltip="Editar" fontIcon="edit"></mat-icon>
+        <mat-icon (click)="editarCountry(element.countryId)" class="edit" matTooltip="Editar" fontIcon="edit"></mat-icon>
         <mat-icon fontIcon=""></mat-icon>
         <mat-icon (click)="openDialog(element.countryId)" class="delete" matTooltip="Eliminar" fontIcon="delete"></mat-icon>
       </td>
