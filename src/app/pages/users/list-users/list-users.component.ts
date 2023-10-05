@@ -12,7 +12,7 @@ import { RolsService } from 'src/app/services/rols.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { profile } from 'src/app/interfaces/profile';
 import { map } from 'rxjs/internal/operators/map';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-list-users',
@@ -20,14 +20,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./list-users.component.css']
 })
 export class ListUsersComponent {
-  displayedColumns: string[] = ['userName', 'email','phone','RoleId','Acciones'];
+  displayedColumns: string[] = ['userName', 'email','phone','isAdministrador','Acciones'];
   dataSource = new MatTableDataSource<users>();
   loading: boolean = false;
 
   userProfile? : profile
   userId !: string;
-  isAdministrador : boolean = false;
-  userRole! : string;
+  isAdministrador ?: boolean;
+  userNameSession? : string;
 
 
 
@@ -46,14 +46,13 @@ export class ListUsersComponent {
 
   ngOnInit(): void {
     this.getuser();
-    const userRole = sessionStorage.getItem('userRole');
-    if(userRole != null){
-      this.userRole = userRole;
-      // if(this.userRole == "Administrador"){
-      //   this.isAdministrador= true;
-      // }
+    const userName = sessionStorage.getItem('user');
+    if(userName != null){
+      this.userNameSession = userName;
+      // console.log(this.userNameSession);
     }
-
+    
+    
   }
 
   //Pop up
@@ -83,18 +82,35 @@ export class ListUsersComponent {
   getuser() {
     this.loading = true;
     this._UsersService.getusers().subscribe(data => {
-      console.log(data);
       this.loading = false;
-      this.dataSource.data = data;
+      const filterData = data.filter(user => user.userName !== 'adm' && !( user.userName === this.userNameSession));
+      this.dataSource.data = filterData;
+      const userNames = data.map(user => user.userName);
+  
+      forkJoin(userNames.map(userName => this.getUserId(userName)))
+        .subscribe(userIds => {
+          for (let i = 0; i < userIds.length; i++) {
+            const userId = userIds[i];
+            this._rolService.AdministratorVerification(userId).subscribe(
+              isAdmin => {
+                // Actualiza la propiedad isAdmin del usuario correspondiente
+                data[i].isAdmin = isAdmin;
+                console.log(`Usuario con ID ${userId} es administrador: ${isAdmin}`);
+              }
+            );
+          }
+        });
     });
   }
+  
 
   getUserId(userName: string): Observable<string>{
     return this._userProfile.getUserProfile(userName).pipe(
       map(data => data.id)
-    );
 
+    );
   }
+  
   onToggleChange(event: any, userName: string) {
     const isAdministrador = event.checked;
 
@@ -114,10 +130,11 @@ export class ListUsersComponent {
     this._rolService.AddRoleToUser(userId, rol).subscribe(
       data => {
         console.log(data);
-        // this.mensajeExito('añadido');
       }
     );
   }
+
+
   openDialog(identificationUser: string){
     let pathname = window.location.pathname;
     const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {identificationUser, pathname}});

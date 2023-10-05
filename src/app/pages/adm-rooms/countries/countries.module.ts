@@ -6,13 +6,15 @@ import { AgregarEditarCountryComponent } from './agregar-editar-country/agregar-
 import { ListaCountryComponent } from './lista-country/lista-country.component';
 import { VerCountryComponent } from './ver-country/ver-country.component';
 import { SharedModule } from '../../../shared/shared.module';
+import { AgregarCountryComponent } from './agregar-country/agregar-country.component';
 
 
 @NgModule({
   declarations: [
     AgregarEditarCountryComponent,
     ListaCountryComponent,
-    VerCountryComponent],
+    VerCountryComponent,
+    AgregarCountryComponent],
   imports: [
     CommonModule,
     CountriesRoutingModule,
