@@ -51,18 +51,12 @@
             <div class="col">
                 <mat-form-field id="input">
                     <mat-label>Choose a date</mat-label>
-                    <input formControlName="date" matInput [matDatepicker]="picker" [matDatepickerFilter]="disablePastDates">
+                    <input formControlName="ReserveDate" matInput [matDatepicker]="picker" [matDatepickerFilter]="disablePastDates">
                     <mat-hint>MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
-                <!-- <mat-form-field class="col">
-                  <mat-label>Choose a date</mat-label>
-                  <input formControlName="reserveDate" matInput [matDatepicker]="picker" [(ngModel)]="reserva.reserveDate" [matDatepickerFilter]="disablePastDates">
-                  <mat-hint>MM/DD/YYYY</mat-hint>
-                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field> -->
+    
             </div>
             <div class="col">
               <mat-form-field id="input">

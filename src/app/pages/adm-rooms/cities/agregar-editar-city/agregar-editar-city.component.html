@@ -1,4 +1,3 @@
-
 <div mat-dialog-content>
   <form [formGroup]="form" >
     <mat-grid-list cols="2" rowHeight="80px" >
@@ -8,12 +7,10 @@
           <input formControlName="cityName" matInput mat-cell value="cityName">
         </mat-form-field>
       </mat-grid-tile>
-
       <mat-grid-tile [colspan]="2">
         <mat-form-field class="input" appearance="outline">
           <mat-label>CountryId</mat-label>
           <input formControlName="countryName" matInput>
-          
         </mat-form-field>
       </mat-grid-tile>
     </mat-grid-list>
@@ -25,31 +22,4 @@
 
 
 
-<!-- <div mat-dialog-content>
-  <h1>{{ Operacion }} City</h1>
-
-<app-spinner *ngIf="loading"></app-spinner>
-    <form [formGroup]="form" (ngSubmit)="agregarEditarCity()">
-      <mat-grid-list cols="2" rowHeight="80px">
-        <mat-grid-tile [colspan]="2">
-          <mat-form-field class="input" appearance="outline">
-            <mat-label>City Name</mat-label>
-            <input formControlName="cityName" matInput>
-          </mat-form-field>
-        </mat-grid-tile>
-
-        <mat-grid-tile [colspan]="2">
-          <mat-form-field class="input" appearance="outline">
-            <mat-label>CountryId</mat-label>
-            <input formControlName="countryId" matInput>
-          </mat-form-field>
-        </mat-grid-tile>
-
-        <mat-grid-tile [colspan]="2">
-          <button [disabled]="form.invalid" type="submit" class="btnAceptar" mat-raised-button color="primary">Aceptar</button>
-          <button mat-raised-button routerLink="/home/admRooms/cities/listaCity">Volver</button>
-        </mat-grid-tile>
-      </mat-grid-list>
-    </form>
-</div> -->
 
