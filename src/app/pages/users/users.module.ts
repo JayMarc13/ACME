@@ -5,6 +5,8 @@ import { UsersRoutingModule } from './users-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { AddEditUsersComponent } from './add-edit-users/add-edit-users.component';
 import { ListUsersComponent } from './list-users/list-users.component';
+import { ReactiveFormsModule } from '@angular/forms'; // Asegúrate de importar ReactiveFormsModule
+
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { ListUsersComponent } from './list-users/list-users.component';
   imports: [
     CommonModule,
     UsersRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   exports: [
 

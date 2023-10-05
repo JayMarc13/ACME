@@ -63,7 +63,10 @@ export class ListCityComponent {
 
   editarCity(identification: number, city: City){
     const dialogRefPassword = this.dialog.open(AgregarEditarCityComponent, {data: {identification, city}});
+  }
 
+  agregarCity(){
+    const dialogRefPassword = this.dialog.open(AgregarEditarCityComponent, {data: {}});
   }
 
   mensajeExito() {

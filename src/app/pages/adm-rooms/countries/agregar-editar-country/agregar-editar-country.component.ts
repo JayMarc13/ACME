@@ -72,8 +72,10 @@ export class AgregarEditarCountryComponent {
     this.loading = true;
     this._countryService.updateCountry(countryId, country).subscribe(data => {
       this.loading = false;
-      this.mensajeExito('actualizada');
-      this.router.navigate(['/home/admRooms/countries/listaCountries']);
+      this.mensajeExito("actualizada");
+      setTimeout(function(){
+        window.location.reload();
+     }, 280);
     })
   }
 
