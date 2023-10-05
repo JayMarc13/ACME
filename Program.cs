@@ -1,5 +1,5 @@
 using Backend.Models;
-using Backend.Services;
+/*using Backend.Services;*/
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +35,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
     .AddRoleManager<RoleManager<IdentityRole>>()
     .AddDefaultTokenProviders();
 
-builder.Services.AddTransient<IAuthService, AuthService>();
+/*builder.Services.AddTransient<IAuthService, AuthService>();*/
 
 builder.Services.AddIdentityCore<  IdentityUser>()
     .AddUserManager<UserManager<IdentityUser>>();
