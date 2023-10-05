@@ -442,11 +442,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\Users\\Users.csproj",
+      "projectUniqueName": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Users\\Users.csproj",
       "projectName": "Users",
-      "projectPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\Users\\Users.csproj",
+      "projectPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Users\\Users.csproj",
       "packagesPath": "C:\\Users\\jay.paragas.ext\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\Users\\obj\\",
+      "outputPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Users\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jay.paragas.ext\\AppData\\Roaming\\NuGet\\NuGet.Config",

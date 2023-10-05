@@ -5267,11 +5267,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Backend.csproj",
-      "projectName": "Backend",
-      "projectPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Backend.csproj",
+      "projectUniqueName": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Geolocalizaciones\\Geolocalizaciones.csproj",
+      "projectName": "Geolocalizaciones",
+      "projectPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Geolocalizaciones\\Geolocalizaciones.csproj",
       "packagesPath": "C:\\Users\\jay.paragas.ext\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\obj\\",
+      "outputPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Geolocalizaciones\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jay.paragas.ext\\AppData\\Roaming\\NuGet\\NuGet.Config",

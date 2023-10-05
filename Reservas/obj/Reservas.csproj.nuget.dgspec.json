@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\Reservas\\Reservas.csproj": {}
+    "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Reservas\\Reservas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\Reservas\\Reservas.csproj": {
+    "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Reservas\\Reservas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\Reservas\\Reservas.csproj",
+        "projectUniqueName": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Reservas\\Reservas.csproj",
         "projectName": "Reservas",
-        "projectPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\Reservas\\Reservas.csproj",
+        "projectPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Reservas\\Reservas.csproj",
         "packagesPath": "C:\\Users\\jay.paragas.ext\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\Reservas\\obj\\",
+        "outputPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Reservas\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jay.paragas.ext\\AppData\\Roaming\\NuGet\\NuGet.Config",

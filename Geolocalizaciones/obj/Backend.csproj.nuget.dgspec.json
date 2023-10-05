@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Backend.csproj": {}
+    "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Geolocalizaciones\\Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Backend.csproj": {
+    "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Geolocalizaciones\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Geolocalizaciones\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Backend.csproj",
+        "projectPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Geolocalizaciones\\Backend.csproj",
         "packagesPath": "C:\\Users\\jay.paragas.ext\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\obj\\",
+        "outputPath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\ACME\\Geolocalizaciones\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jay.paragas.ext\\AppData\\Roaming\\NuGet\\NuGet.Config",
