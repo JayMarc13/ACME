@@ -11,9 +11,6 @@
   </mat-form-field>
   <table mat-table [dataSource]="dataSource" matSort>
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
     <!-- Nombre pais Column -->
     <ng-container matColumnDef="countryName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Name Country</th>
@@ -26,15 +23,13 @@
       <td mat-cell *matCellDef="let element"> {{element.countryId}} </td>
     </ng-container>
 
-    <!-- Acciones Column -->
     <ng-container matColumnDef="Acciones">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
-        <button routerLink="/home/admRooms/countries/agregarCountry" class="buttonAceptar" mat-raised-button color="primary">Add Country</button>
+        <button (click)="agregarCountry()" class="add" matTooltip="add" mat-raised-button color="primary">Add Country</button>
       </th>
       <td mat-cell *matCellDef="let element">
-        <!-- <mat-icon routerLink ="/verCountry/{{ element.countryId }}" class="visibility" matTooltip="Ver" fontIcon="visibility"></mat-icon> -->
         <mat-icon fontIcon=""></mat-icon>
-        <mat-icon routerLink="/home/admRooms/countries/editarCountry/{{ element.countryId }}" class="edit" matTooltip="Editar" fontIcon="edit"></mat-icon>
+        <mat-icon (click)="editarCountry(element.countryId, element)" class="edit" matTooltip="Editar" fontIcon="edit"></mat-icon>
         <mat-icon fontIcon=""></mat-icon>
         <mat-icon (click)="openDialog(element.countryId)" class="delete" matTooltip="Eliminar" fontIcon="delete"></mat-icon>
       </td>

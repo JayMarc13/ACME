@@ -7,6 +7,8 @@ import { Country } from '../../../../interfaces/country';
 import { CountryService } from '../../../../services/country.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PopRemoveQuestionComponent } from 'src/app/pages/pop-remove-question/pop-remove-question.component';
+import { AgregarEditarCountryComponent } from '../agregar-editar-country/agregar-editar-country.component';
+import { AgregarCountryComponent } from '../agregar-country/agregar-country.component';
 
 @Component({
   selector: 'app-lista-country',
@@ -29,7 +31,7 @@ export class ListaCountryComponent {
   ngOnInit(): void {
     this.obtenerCountries();
   }
-
+  
   //Paginaciones y ordenar
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -62,6 +64,14 @@ export class ListaCountryComponent {
   openDialog(identification: number){
     let pathname = window.location.pathname;
     const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {identification, pathname}});
+  }
+
+  editarCountry(identification: number, country: Country){
+    const dialogRef = this.dialog.open(AgregarEditarCountryComponent, {data: {identification, country}});
+  }
+
+  agregarCountry() {
+    const dialogRef = this.dialog.open(AgregarCountryComponent);
   }
 
 

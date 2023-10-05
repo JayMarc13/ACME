@@ -23,3 +23,8 @@ mat-raised-button {
     background-color: #673ab7;
     color: white;
   }
+
+  .my-button-container {
+  display: flex;
+  justify-content: center;
+  }
