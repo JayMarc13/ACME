@@ -33,7 +33,7 @@ export class AgregarEditarCityComponent {
     this.cityId = data.identification;
     this.form = this.fb.group({
       cityName: ['', Validators.required],
-      countryId: ['', Validators.required]
+      countryId : ['', Validators.required],
     });
   }
 
@@ -66,9 +66,8 @@ export class AgregarEditarCityComponent {
 
     const city: City = {
       cityName: this.form.value.cityName,
-      countryId: this.form.value.country,
-      countryName: this.form.value.countryName
-    };
+      countryId: this.form.value.country
+        };
 
 
     if (this.cityId !== 0) {
