@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "kXGSIlmixYgz//tFqf0ccOd2dKUrUBGKmf8BmYIJtdB3dxOz0RXZ0OhxKktldnRgsmPLux2xFSDT2mh5VhvMRw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jay.paragas.ext\\Documents\\Proyectos\\ACME\\Microservicios\\Reservas\\Reservas.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jay.paragas.ext\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\jay.paragas.ext\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\jay.paragas.ext\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\jay.paragas.ext\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\jay.paragas.ext\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\jay.paragas.ext\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
