@@ -10,8 +10,8 @@
           <mat-grid-tile [colspan]="2">
             <mat-form-field class="input" appearance="outline" >
               <mat-label>Country</mat-label>
-              <mat-select formControlName="countryName">
-                <mat-option *ngFor="let country of countries" [value]="country.countryName">
+              <mat-select formControlName="countryId">
+                <mat-option *ngFor="let country of countries" [value]="country.countryId">
                   {{ country.countryName }}
                 </mat-option>
               </mat-select>
