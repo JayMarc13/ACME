@@ -12,11 +12,11 @@ namespace Backend.Models
         
         }
 
-        public DbSet<Country> Country { get; set; } //Nombre de la tabla
-        public DbSet<City> City { get; set; }
-        public DbSet<Office> Office { get; set; }
-        public DbSet<MeetingRoom> MeetingRoom { get; set; }
-        public DbSet<AppUsers> User { get; set; }
+        /* public DbSet<Country> Country { get; set; } //Nombre de la tabla
+         public DbSet<City> City { get; set; }
+         public DbSet<Office> Office { get; set; }*/
+         public DbSet<MeetingRoom> MeetingRoom { get; set; }
+        /* public DbSet<AppUsers> User { get; set; }*/
         public DbSet<Reserve> Reserve { get; set; }
 
 
@@ -32,7 +32,7 @@ namespace Backend.Models
             modelBuilder.Entity<IdentityUserToken<string>>()
               .HasKey(t => new { t.UserId, t.LoginProvider, t.Name });
 
-            modelBuilder.Entity<City>()
+            /*modelBuilder.Entity<City>()
                 .HasOne<Country>()
                 .WithMany()
                 .HasForeignKey(c => c.CountryId);
@@ -40,20 +40,21 @@ namespace Backend.Models
             modelBuilder.Entity<Office>()
                 .HasOne<City>()
                 .WithMany()
-                .HasForeignKey(c => c.CityId);
+                .HasForeignKey(c => c.CityId);*/
+
 
             modelBuilder.Entity<MeetingRoom>()
                .HasOne<Office>()
                .WithMany()
-               .HasForeignKey(c => c.OfficeId );
+               .HasForeignKey(c => c.OfficeId);
 
             modelBuilder.Entity<Reserve>()
               .HasOne<MeetingRoom>()
               .WithMany()
               .HasForeignKey(c => c.MeetingRoomId);
 
-            modelBuilder.Entity<AppUsers>()
-                .HasKey(u => u.Id);
+            /*modelBuilder.Entity<AppUsers>()
+                .HasKey(u => u.Id);*/
 
             modelBuilder.Entity<Reserve>()
               .HasOne<AppUsers>()
