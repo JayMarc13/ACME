@@ -70,6 +70,21 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+// Agrega la configuración de CORS aquí
+app.UseCors(options =>
+{
+    options.WithOrigins("http://localhost:4200");
+    options.AllowAnyMethod();
+    options.AllowAnyHeader();
+});
+
+
+app.MapControllers();
+
 app.MapControllers();
 using (var scope = app.Services.CreateScope())
 {
