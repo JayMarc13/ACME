@@ -140,6 +140,7 @@ export class FormReserveComponent {
     let positionHora = this.horas.indexOf(startTimeSeleccionada);
     this.horasSeleccionada = horasSeleccionada;
     this.startTimeSeleccionada = startTimeSeleccionada;
+    console.log(horasSeleccionada);
     switch(horasSeleccionada){
       case "1h":
         this.form = new FormGroup({
@@ -190,7 +191,6 @@ export class FormReserveComponent {
    }
 
   reservarSala(){
-    console.log(this.ReserveString);
     const date = dayjs(this.ReserveString).format('YYYY-MM-DD');
 
     this.bookingUser.meetingRoomId = this.meetingRoomSelected.meetingRoomId;
@@ -234,27 +234,27 @@ export class FormReserveComponent {
   ObtenerUsuario(userName: string){
     this._userService.getUserProfile(userName).subscribe(dataUser => {
       this.user = dataUser.id;
-      // console.log(this.user);
     });
   }
 
   hacerReserva(reserva: Booking){
     this._bookingService.createBooking(reserva).subscribe(succes =>  {
-      console.log(succes);
       if(this.pathName == "/home/admReservas/listReservas" ){
         window.location.href = "/home/admReservas/listReservas"
       }else{
         window.location.href = "/home/bookings"
+        this.mensajeErrorExito("Se ha reservado en exito");
       }
     }, error => {
       this.mensajeErrorExito(error.error);
     });
   }
 
+  
   ObtenerAllUsers() {
     this._userService.getAllUsers().subscribe(
       (data: profile[]) => {
-        const listUsers = data;// Asigna la respuesta (array) a this.listUsers
+        const listUsers = data;  
         this.listUsers = listUsers.map( valor => valor.userName);
         console.log(this.listUsers);
       },

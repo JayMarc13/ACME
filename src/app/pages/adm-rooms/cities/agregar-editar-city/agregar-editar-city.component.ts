@@ -66,15 +66,19 @@ export class AgregarEditarCityComponent {
 
     const city: City = {
       cityName: this.form.value.cityName,
-      countryId: this.form.value.country
+      countryId: this.form.value.countryId
         };
 
 
-    if (this.cityId !== 0) {
+
+    if (this.cityId) {
       city.cityId = this.cityId;
       this.editarCity(this.cityId, city);
+      this.onNoClick();
     } else {
       this.agregarCity(city);
+      console.log(city);
+      this.onNoClick();
     }
   }
 
