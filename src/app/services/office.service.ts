@@ -8,7 +8,7 @@ import { Office } from '../interfaces/office';
   providedIn: 'root'
 })
 export class OfficeService {
-  private myAppUrl: string = environment.endpoint;
+  private myAppUrl: string = environment.endpoint.geolocalizaciones;
   private myApiUrl: string = 'api/Office/';
 
   constructor(private http: HttpClient) {
@@ -37,7 +37,7 @@ export class OfficeService {
     return this.http.post<Office>(this.myAppUrl + this.myApiUrl, office);
   }
 
-  //Editar datos del pais 
+  //Editar datos del pais
   updateOffice(Officeid: number, office: Office): Observable<void> {
     return this.http.put<void>(this.myAppUrl + this.myApiUrl + Officeid, office);
   }

@@ -10,7 +10,7 @@ import { Booking } from '../interfaces/booking';
   providedIn: 'root'
 })
 export class BookingService {
-  private myAppUrl: string = environment.endpoint;
+  private myAppUrl: string = environment.endpoint.reservas;
   private myApiUrl: string = 'api/Reserve';
 
   constructor(private http: HttpClient) { }
@@ -40,5 +40,5 @@ export class BookingService {
     const formattedDate = fecha.toISOString(); // convierte la fecha a un formato compatible con el backend
     return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}/DeleteOldReservations/${formattedDate}`);
   }
-  
+
 }

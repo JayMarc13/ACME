@@ -9,11 +9,11 @@ import { changePasswordUser } from '../interfaces/changePasswordUser';
   providedIn: 'root'
 })
 export class LoginService {
-  private myAppUrl: string = environment.endpoint;
+  private myAppUrl: string = environment.endpoint.users;
   private myApiUrl: string =  'api/Auth/Login';
   private changePasswordURL: string = 'api/Auth/ChangePassword';
 
-  constructor(private http: HttpClient) {} 
+  constructor(private http: HttpClient) {}
 
   userLogin(user : login) : Observable<any>{
     return this.http.post<any>(this.myAppUrl + this.myApiUrl,user);

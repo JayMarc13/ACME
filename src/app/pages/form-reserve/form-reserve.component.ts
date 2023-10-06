@@ -136,6 +136,7 @@ export class FormReserveComponent {
     this.ReserveString = this.form.value.ReserveDate;
     let horasSeleccionada = this.form.value.hours;
     let startTimeSeleccionada = this.form.value.startHour;
+    console.log(startTimeSeleccionada);
     let positionHora = this.horas.indexOf(startTimeSeleccionada);
     this.horasSeleccionada = horasSeleccionada;
     this.startTimeSeleccionada = startTimeSeleccionada;

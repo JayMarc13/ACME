@@ -8,7 +8,7 @@ import { users } from '../interfaces/users';
   providedIn: 'root'
 })
 export class UsersService {
-  private myAppUrl: string = environment.endpoint;
+  private myAppUrl: string = environment.endpoint.users;
   private myApiUrl: string = 'api/Users/';
 
 
