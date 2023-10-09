@@ -16,8 +16,6 @@ namespace Backend.Models
         public DbSet<City> City { get; set; }
         public DbSet<Office> Office { get; set; }
         public DbSet<MeetingRoom> MeetingRoom { get; set; }
-        public DbSet<AppUsers> User { get; set; }
-        public DbSet<Reserve> Reserve { get; set; }
 
 
         //Aqui es donde haces las foreign keys o algo
@@ -46,19 +44,6 @@ namespace Backend.Models
                .HasOne<Office>()
                .WithMany()
                .HasForeignKey(c => c.OfficeId );
-
-            modelBuilder.Entity<Reserve>()
-              .HasOne<MeetingRoom>()
-              .WithMany()
-              .HasForeignKey(c => c.MeetingRoomId);
-
-            modelBuilder.Entity<AppUsers>()
-                .HasKey(u => u.Id);
-
-            modelBuilder.Entity<Reserve>()
-              .HasOne<AppUsers>()
-              .WithMany()
-              .HasForeignKey(c => c.UserId);
 
         }
     }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
 
-namespace Backend.Models
+namespace Reservas.Models
 {
     public class AppUsers
     {
