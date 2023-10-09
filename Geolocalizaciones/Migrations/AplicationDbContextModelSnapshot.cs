@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Backend.Migrations
+namespace Geolocalizaciones.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
     partial class AplicationDbContextModelSnapshot : ModelSnapshot
@@ -56,6 +56,10 @@ namespace Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CountryNameeasdfas")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("CountryId");
 
                     b.ToTable("Country");
@@ -95,6 +99,10 @@ namespace Backend.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("NameOffice")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("capacidad")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -54,9 +54,6 @@ namespace Backend.Models
               .WithMany()
               .HasForeignKey(c => c.MeetingRoomId);
 
-            /*modelBuilder.Entity<AppUsers>()
-                .HasKey(u => u.Id);*/
-
             modelBuilder.Entity<Reserve>()
               .HasOne<AppUsers>()
               .WithMany()
