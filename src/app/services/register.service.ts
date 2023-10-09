@@ -8,10 +8,10 @@ import { Register } from '../interfaces/register';
   providedIn: 'root'
 })
 export class RegisterService {
-  private myAppUrl: string = environment.endpoint;
+  private myAppUrl: string = environment.endpoint.users;
   private myApiUrl: string =  'api/Auth/Register';
 
-  constructor(private http: HttpClient) {} 
+  constructor(private http: HttpClient) {}
 
   userRegister(user : Register) : Observable<any>{
     return this.http.post<any>(this.myAppUrl + this.myApiUrl,user);

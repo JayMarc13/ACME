@@ -8,7 +8,7 @@ import { City } from '../interfaces/city';
   providedIn: 'root'
 })
 export class CityService {
-  private myAppUrl: string = environment.endpoint;
+  private myAppUrl: string = environment.endpoint.geolocalizaciones;
   private myApiUrl: string = 'api/City/';
 
   constructor(private http: HttpClient) {
@@ -38,7 +38,7 @@ export class CityService {
     return this.http.post<City>(this.myAppUrl + this.myApiUrl, City);
   }
 
-  //Editar datos del pais 
+  //Editar datos del pais
   updateCity(Cityid: number, City: City): Observable<void> {
     return this.http.put<void>(this.myAppUrl + this.myApiUrl + Cityid, City);
   }

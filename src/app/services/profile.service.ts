@@ -8,7 +8,7 @@ import { profile } from '../interfaces/profile';
   providedIn: 'root'
 })
 export class ProfileService {
-  private myAppUrl: string = environment.endpoint;
+  private myAppUrl: string = environment.endpoint.users;
   private myApiUrl: string = 'api/Users/'; // Ajusta esto según tu API
 
   constructor(private http: HttpClient) {}

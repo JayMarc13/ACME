@@ -10,10 +10,10 @@ import { Country } from '../interfaces/country';
   providedIn: 'root'
 })
 export class CountryService {
-  private myAppUrl: string = environment.endpoint;
+  private myAppUrl: string = environment.endpoint.geolocalizaciones;
   private myApiUrl: string =  'api/Country/';
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
 
   }
 
@@ -37,7 +37,7 @@ export class CountryService {
     return this.http.post<Country>(this.myAppUrl + this.myApiUrl, country);
   }
 
-  //Editar datos del pais 
+  //Editar datos del pais
   updateCountry(countryId:number, country: Country): Observable<void>{
     return this.http.put<void>(this.myAppUrl + this.myApiUrl+countryId, country);
   }

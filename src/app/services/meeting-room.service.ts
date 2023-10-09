@@ -8,7 +8,7 @@ import { MeetingRoom } from '../interfaces/meetingRoom';
   providedIn: 'root'
 })
 export class MeetingRoomService {
-  private myAppUrl: string = environment.endpoint;
+  private myAppUrl: string = environment.endpoint.geolocalizaciones;
   private myApiUrl: string =  'api/MeetingRoom/';
 
   constructor(private http: HttpClient) { }
@@ -20,22 +20,22 @@ export class MeetingRoomService {
       getRoom(meetingRoomId: number): Observable<MeetingRoom> {
         return this.http.get<MeetingRoom>(this.myAppUrl + this.myApiUrl + meetingRoomId);
       }
-    
+
       getRoomByOfficeId(officeId: number): Observable<MeetingRoom[]>{
         return this.http.get<MeetingRoom[]>(this.myAppUrl+this.myApiUrl+"office/"+ officeId);
       }
-    
+
       //Eliminar la oficina (void porque no retornaremos nada)
       deleteRoom(meetingRoomId: number): Observable<void> {
         return this.http.delete<void>(this.myAppUrl + this.myApiUrl + meetingRoomId);
       }
-    
+
       //Añadir oficinas en la base de datos
       addRoom(MeetingRoom: MeetingRoom): Observable<MeetingRoom> {
         return this.http.post<MeetingRoom>(this.myAppUrl + this.myApiUrl, MeetingRoom);
       }
-    
-      //Editar datos del pais 
+
+      //Editar datos del pais
       updateRoom(meetingRoomId: number, meetingRoom: MeetingRoom): Observable<void> {
         return this.http.put<void>(this.myAppUrl + this.myApiUrl + meetingRoomId, meetingRoom);
       }

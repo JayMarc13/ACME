@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environments';
   providedIn: 'root'
 })
 export class RolsService {
-  private myAppUrl: string = environment.endpoint;
+  private myAppUrl: string = environment.endpoint.users;
   private myApiUrl: string =  'api/Auth/AddRol/';
   private myApiUrlV: string =  'api/Auth/verificationAdm';
 
