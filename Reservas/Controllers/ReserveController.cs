@@ -8,7 +8,6 @@ namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize] // Verificar el token
     public class ReserveController : ControllerBase
     {
         private readonly AplicationDbContext _context;
@@ -131,7 +130,8 @@ namespace Backend.Controllers
                 return BadRequest(e.Message);
             }
         }
-        // Obtener una reserva por userName
+
+        // Obtener una reserva por el nomber del usuario
         [HttpGet("ReserveByUserName/{userName}")]
         public async Task<IActionResult> ReservasByUserName(string userName)
         {
@@ -174,9 +174,6 @@ namespace Backend.Controllers
                 return BadRequest(e.Message);
             }
         }
-
-        
-        
 
         // Eliminar una reserva por su id
         [HttpDelete("{reserveId}")]

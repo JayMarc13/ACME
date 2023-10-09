@@ -18,8 +18,7 @@ namespace Backend.Controllers
             this._context = context;
         }
 
-        //Enviar la lista de Offices
-
+        //Obtener la lista de Oficinas
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -34,6 +33,8 @@ namespace Backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        
+        // Obtener la lista de oficina con el nombre de la ciudad y la id
         [HttpGet ("OfficesWithCity")]
         public async Task<IActionResult> OfficeswithCity()
         {
@@ -60,7 +61,8 @@ namespace Backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        //Retornar la oficina con la id que ha pasado
+
+        //Obtener las oficina con la id que ha pasada
         [HttpGet("{officeId}")]
         public async Task<IActionResult> Get(int officeId)
         {
@@ -103,7 +105,7 @@ namespace Backend.Controllers
             }
         }
 
-        //Añadir nuevo país
+        // Añadir una nueva oficina 
         [HttpPost]
         public async Task<IActionResult> Post(Office office)
         {
@@ -121,6 +123,7 @@ namespace Backend.Controllers
             }
         }
 
+        // Modificar la oficina pasando la id y el objeto Office
         [HttpPut("{officeId}")]
         public async Task<IActionResult> Put(int officeId, Office office)
         {
@@ -149,6 +152,8 @@ namespace Backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        // Obtener la lista de oficinas coincidiendo con la id de la ciudad
         [HttpGet("city/{cityId}")]
         public async Task<IActionResult> GetOfficesByCity(int cityId)
         {

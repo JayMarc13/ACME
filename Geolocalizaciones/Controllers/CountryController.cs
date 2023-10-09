@@ -18,7 +18,7 @@ namespace Backend.Controllers
         }
 
 
-        //Enviar la lista de Paises
+        // Obtener la lista de Paises
         [HttpGet]
         public async Task<IActionResult> Get() 
         {
@@ -34,7 +34,7 @@ namespace Backend.Controllers
             }
         }
        
-        //Retornar la pais con la id que ha pasado
+        // Obtener el pais con la id que ha pasado
         [HttpGet("{countryId}")]
         public async Task<IActionResult> Get(int countryId) 
         {
@@ -78,7 +78,7 @@ namespace Backend.Controllers
             }
         }
 
-        //Añadir nuevo país
+        //Añadir nuevo país pasando un objeto Country
         [HttpPost]
         public async Task<IActionResult> Post(Country country)
         {
@@ -97,7 +97,7 @@ namespace Backend.Controllers
         }
 
 
-        //Editar el country
+        //Editar el country pasando la id del pais y objeto Country
         [HttpPut("{countryId}")]
         public async Task<IActionResult> Put(int countryId, Country country)
         {
@@ -126,6 +126,7 @@ namespace Backend.Controllers
             }
             catch (Exception ex)
             {
+                
                 return BadRequest(ex.Message);
             }
         }

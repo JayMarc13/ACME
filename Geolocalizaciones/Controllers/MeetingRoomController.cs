@@ -19,7 +19,7 @@ namespace Backend.Controllers
             this._context = context;
         }
 
-        //Enviar la lista de MeetingRooms
+        // Obtener la lista de las salas
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -34,6 +34,8 @@ namespace Backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        // Obtener la la lista de Salas con los nombres de las oficinas y las id
         [HttpGet ("RoomsWithOffices")]
         public async Task<IActionResult> GetMeetingRoomsWithOffices()
         {
@@ -60,7 +62,7 @@ namespace Backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        //Retornar la oficina con la id que ha pasado
+        // Obtener la oficina con la id pasada
         [HttpGet("{meetingRoomId}")]
         public async Task<IActionResult> Get(int meetingRoomId)
         {
@@ -103,7 +105,7 @@ namespace Backend.Controllers
             }
         }
 
-      
+        // Obtener las oficinas
         [HttpGet("offices")]
         public IActionResult MeetingroomOffices()
         {
@@ -118,7 +120,7 @@ namespace Backend.Controllers
             }
         }
 
-
+        // Editar la sala pasando la id y el objeto de MeetingRoom
         [HttpPut("{meetingRoomId}")]
         public async Task<IActionResult> Put(int meetingRoomId, MeetingRoom meetingRoom)
         {
@@ -149,6 +151,7 @@ namespace Backend.Controllers
             }
         }
 
+        // Obtener Salas pasando coincidiendo con la id de oficina 
         [HttpGet("office/{officeId}")]
         public async Task<IActionResult> GetRoomsByOffice(int officeId)
         {

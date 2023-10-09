@@ -8,9 +8,6 @@ using Users.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-
-// Add services to the container.
 //Conexión a la base de datos
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -52,6 +49,8 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -74,6 +73,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+
 // Agrega la configuración de CORS aquí
 app.UseCors(options =>
 {
@@ -86,33 +86,33 @@ app.UseCors(options =>
 app.MapControllers();
 
 app.MapControllers();
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
-    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+//using (var scope = app.Services.CreateScope())
+//{
+//    var services = scope.ServiceProvider;
+//    var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+//    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
-    var Name = "Administrador";
-    // comprueba si existe
-    if (!await roleManager.RoleExistsAsync(Name))
-    {
-        var role = new IdentityRole(Name);
-        await roleManager.CreateAsync(role);
-    }
+//    var Name = "Administrador";
+//    // comprueba si existe
+//    if (!await roleManager.RoleExistsAsync(Name))
+//    {
+//        var role = new IdentityRole(Name);
+//        await roleManager.CreateAsync(role);
+//    }
 
-    //correo de administrador super adm
-    var usuario = await userManager.FindByEmailAsync("adm@acme.com");
+//    //correo de administrador super adm
+//    var usuario = await userManager.FindByEmailAsync("adm@acme.com");
 
 
-    if (usuario != null)
-    {
-        var isInRole = await userManager.IsInRoleAsync(usuario, Name);
+//    if (usuario != null)
+//    {
+//        var isInRole = await userManager.IsInRoleAsync(usuario, Name);
 
-        if (!isInRole)
-        {
-            await userManager.AddToRoleAsync(usuario, Name);
-        }
-    }
-}
+//        if (!isInRole)
+//        {
+//            await userManager.AddToRoleAsync(usuario, Name);
+//        }
+//    }
+//}
 
 app.Run();
