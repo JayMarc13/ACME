@@ -22,6 +22,17 @@ namespace Users.Models
 
             modelBuilder.Entity<IdentityUserToken<string>>()
               .HasKey(t => new { t.UserId, t.LoginProvider, t.Name });
+              
+            modelBuilder.Entity<AppUsers>()
+                .HasKey(u => u.Id);
+
+            modelBuilder.Entity<IdentityUserRole<string>>()
+                .HasOne<IdentityUser>()
+                .WithMany()
+                .HasForeignKey(ur => ur.UserId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+
         }
     }
 }
