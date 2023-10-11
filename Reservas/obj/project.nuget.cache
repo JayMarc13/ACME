@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+nYSL5MIoURuBbi6lJ2VQipZygYV2eLr2QIJmPHCjNJ/97gtBu/hs4XDk8HcgkRjEAqlxPM04J1V98PGaIns9g==",
+  "dgSpecHash": "lK3xYJ8wdB8qmiR6BH6eXaIKTcCHggvLJEGXcndLSUsjuuKxxZH+M2ffHLOCsXlCyhrbCC0eKMLhs66cKDSREg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Reservas\\Reservas.csproj",
+  "projectFilePath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Reservas\\Reservas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\veronica.cartagena\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\veronica.cartagena\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

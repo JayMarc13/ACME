@@ -5054,11 +5054,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Reservas\\Reservas.csproj",
+      "projectUniqueName": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Reservas\\Reservas.csproj",
       "projectName": "Reservas",
-      "projectPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Reservas\\Reservas.csproj",
+      "projectPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Reservas\\Reservas.csproj",
       "packagesPath": "C:\\Users\\veronica.cartagena\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Reservas\\obj\\",
+      "outputPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Reservas\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\veronica.cartagena\\AppData\\Roaming\\NuGet\\NuGet.Config",

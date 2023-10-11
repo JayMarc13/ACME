@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Users\\Users.csproj": {}
+    "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Users\\Users.csproj": {}
   },
   "projects": {
-    "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Users\\Users.csproj": {
+    "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Users\\Users.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Users\\Users.csproj",
+        "projectUniqueName": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Users\\Users.csproj",
         "projectName": "Users",
-        "projectPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Users\\Users.csproj",
+        "projectPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Users\\Users.csproj",
         "packagesPath": "C:\\Users\\veronica.cartagena\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Users\\obj\\",
+        "outputPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Users\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\veronica.cartagena\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Geolocalizaciones\\Geolocalizaciones.csproj": {}
+    "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Geolocalizaciones\\Geolocalizaciones.csproj": {}
   },
   "projects": {
-    "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Geolocalizaciones\\Geolocalizaciones.csproj": {
+    "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Geolocalizaciones\\Geolocalizaciones.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Geolocalizaciones\\Geolocalizaciones.csproj",
+        "projectUniqueName": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Geolocalizaciones\\Geolocalizaciones.csproj",
         "projectName": "Geolocalizaciones",
-        "projectPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Geolocalizaciones\\Geolocalizaciones.csproj",
+        "projectPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Geolocalizaciones\\Geolocalizaciones.csproj",
         "packagesPath": "C:\\Users\\veronica.cartagena\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Geolocalizaciones\\obj\\",
+        "outputPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Geolocalizaciones\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\veronica.cartagena\\AppData\\Roaming\\NuGet\\NuGet.Config",

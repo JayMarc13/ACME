@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "I8+y+HNBUkqy0I9xF9GELVDVRjaoZwvvz0V8oChDFYzangaXXpDDH/0WnAhJBCYZgUFNDTiatGMk15HUC7c6rQ==",
+  "dgSpecHash": "+Ty4qWzvdh34PDNhfk+SM9ce/zknjcVuamZe23/BPr7AXbeIl01a9uB5dmK6H4uS92u5h2afqk7Mt0eyCXTnRw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\ACME\\Geolocalizaciones\\Geolocalizaciones.csproj",
+  "projectFilePath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Geolocalizaciones\\Geolocalizaciones.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\veronica.cartagena\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\veronica.cartagena\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
