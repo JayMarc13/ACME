@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environments';
@@ -10,10 +10,17 @@ import { Register } from '../interfaces/register';
 export class RegisterService {
   private myAppUrl: string = environment.endpoint.users;
   private myApiUrl: string =  'api/Auth/Register';
+  private headers?: HttpHeaders;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    let token = sessionStorage.getItem("token");
+    
+    this.headers = new HttpHeaders({
+           'Authorization': `Bearer `+token
+    });
+  }
 
   userRegister(user : Register) : Observable<any>{
-    return this.http.post<any>(this.myAppUrl + this.myApiUrl,user);
+    return this.http.post<any>(this.myAppUrl + this.myApiUrl,user, { headers: this.headers });
   }
 }
