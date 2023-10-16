@@ -24,7 +24,10 @@ namespace Backend.Controllers
         {
             try
             {
-                var listaReservas = await _context.Reserve.ToListAsync();
+                var fechaActual = DateTime.Now.Date;
+                var listaReservas = await _context.Reserve
+                    .Where(r => r.ReserveDate.Date >= fechaActual) // Filtrar por fechas mayores o iguales a la fecha actual
+                    .ToListAsync();
                 return Ok(listaReservas);
             }
             catch (Exception ex)
@@ -40,7 +43,7 @@ namespace Backend.Controllers
             try
             {
                 var reserva = await _context.Reserve.FindAsync(reserveId);
-                if (reserva == null)
+                if (reserva == null || reserva.ReserveDate.Date >= DateTime.Now.Date)
                 {
                     return NotFound();
                 }
@@ -57,9 +60,11 @@ namespace Backend.Controllers
         {
             try
             {
+                var fechaActual = DateTime.Now.Date;
                 var listaReservas = await _context.Reserve
-                .Join(
-                    _context.MeetingRoom,
+                    .Where(r => r.ReserveDate.Date >= fechaActual) // Filtrar por fechas mayores o iguales a la fecha actual
+                    .Join(
+                            _context.MeetingRoom,
                     reserve => reserve.MeetingRoomId,
                     meetingRoom => meetingRoom.MeetingRoomId,
                     (reserve, meetingRoom) => new { Reserve = reserve, MeetingRoom = meetingRoom }
@@ -97,6 +102,7 @@ namespace Backend.Controllers
         {
             try
             {
+                var fechaActual = DateTime.Now.Date;
                 var listaReservas = await _context.Reserve
                .Join(
                    _context.MeetingRoom,
@@ -108,7 +114,7 @@ namespace Backend.Controllers
                        MeetingRoom = meetingRoom
                    }
                )
-               .Where(item => item.Reserve.UserId == userId) // Filtrar por UserId
+               .Where(item => item.Reserve.UserId == userId && item.Reserve.ReserveDate.Date >= fechaActual) // Filtrar por UserId
                .Select(item => new
                {
                    ReserveId = item.Reserve.ReserveId,
@@ -138,7 +144,7 @@ namespace Backend.Controllers
             try
             {
                 var userBD = _context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
-
+                var fechaActual = DateTime.Now.Date;
                 if (userBD == null) { return NotFound(); }
 
                 var listaReservas = await _context.Reserve
@@ -152,7 +158,7 @@ namespace Backend.Controllers
                         MeetingRoom = meetingRoom
                     }
                 )
-                .Where(item => item.Reserve.UserId == userBD.Result.Id.ToString()) // Filtrar por UserId
+                .Where(item => item.Reserve.UserId == userBD.Result.Id.ToString() && item.Reserve.ReserveDate.Date >= fechaActual) // Filtrar por UserId
                 .Select(item => new
                 {
                     ReserveId = item.Reserve.ReserveId,
@@ -259,33 +265,6 @@ namespace Backend.Controllers
                 return BadRequest(e.Message);
             }
         }
-
-        // Eliminar reservas anteriores a la fecha especificada
-        [HttpDelete("DeleteOldReservations/{fecha}")]
-        public async Task<IActionResult> DeleteOldReservations(DateTime fecha)
-        {
-            try
-            {
-                var reservasAntiguas = await _context.Reserve
-                    .Where(r => r.ReserveDate.Date < fecha.Date)
-                    .ToListAsync();
-
-                if (reservasAntiguas == null || reservasAntiguas.Count == 0)
-                {
-                    return NotFound("No hay reservas antiguas para eliminar.");
-                }
-
-                _context.Reserve.RemoveRange(reservasAntiguas);
-                await _context.SaveChangesAsync();
-
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
 
         // Actualizar una reserva por su id
         [HttpPut("{reserveId}")]
