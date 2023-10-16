@@ -26,10 +26,18 @@ namespace Users.Models
             modelBuilder.Entity<AppUsers>()
                 .HasKey(u => u.Id);
 
+            // Configurar la relación con ON DELETE CASCADE para UserRoles
             modelBuilder.Entity<IdentityUserRole<string>>()
-                .HasOne<IdentityUser>()
+               .HasOne<IdentityUser>()
+               .WithMany()
+               .HasForeignKey(ur => ur.UserId)
+               .IsRequired()
+               .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<IdentityUserRole<string>>()
+                .HasOne<IdentityRole>()
                 .WithMany()
-                .HasForeignKey(ur => ur.UserId)
+                .HasForeignKey(ur => ur.RoleId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
 
