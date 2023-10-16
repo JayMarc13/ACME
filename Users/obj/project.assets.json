@@ -4756,19 +4756,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jmarc\\.nuget\\packages\\": {}
+    "C:\\Users\\veronica.cartagena\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jmarc\\OneDrive\\Escritorio\\Backend\\ACME\\Users\\Users.csproj",
+      "projectUniqueName": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Users\\Users.csproj",
       "projectName": "Users",
-      "projectPath": "C:\\Users\\jmarc\\OneDrive\\Escritorio\\Backend\\ACME\\Users\\Users.csproj",
-      "packagesPath": "C:\\Users\\jmarc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jmarc\\OneDrive\\Escritorio\\Backend\\ACME\\Users\\obj\\",
+      "projectPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Users\\Users.csproj",
+      "packagesPath": "C:\\Users\\veronica.cartagena\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Users\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jmarc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\veronica.cartagena\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4862,8 +4862,16 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché C:\\Users\\veronica.cartagena\\Documents\\My Web Sites\\BackCorrectACME\\ACME\\Users\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
