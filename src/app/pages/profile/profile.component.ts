@@ -3,6 +3,8 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { EditarProfileComponent } from '../editar-profile/editar-profile.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
+import { ChangePProfilePictureComponent } from '../change-p-profile-picture/change.p.profile.picture.component';
+import { ImageService } from 'src/app/services/ImageService ';
 
 @Component({
   selector: 'app-profile',
@@ -14,8 +16,15 @@ export class ProfileComponent implements OnInit {
   email: string | undefined;
   phone: string | undefined;
   localUser: string="";
-  constructor(private profileService: ProfileService,
-    public dialog: MatDialog) {}
+  url: string="";
+  constructor(
+    private profileService: ProfileService,
+    public dialog: MatDialog,
+    private imageService: ImageService
+
+    ) {}
+
+    
 
   openDialog(): void {
     const dialogRef = this.dialog.open(EditarProfileComponent, {});
@@ -23,6 +32,7 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit() {
+    this.url = this.imageService.getImageUrl();
     const nombreEmail = sessionStorage.getItem('user');
     if(nombreEmail != null){
       this.localUser = nombreEmail;
@@ -48,21 +58,17 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  url=" ";
 
-  onselectedFile(e:any){
-    if(e.target.files){
-      var reader = new FileReader();
-      reader.readAsDataURL(e.target.files[0]);
-      reader.onload=(event:any)=>{
-        this.url=event.target.result;
-      }
-    }
-    
+  defaultUserImg(url: string){
+    this.url=url;
   }
 
   changePassword(): void{
     const dialogRefPassword = this.dialog.open(ChangePasswordComponent, {});
+  }
+
+  changeProfilePicture(): void{
+    const dialogRefPassword = this.dialog.open(ChangePProfilePictureComponent, {});
   }
 }
 

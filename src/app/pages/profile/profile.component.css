@@ -9,18 +9,18 @@
 }
 
 .user-img {
-  width: 20%;
+  width: 50%;
   padding: 10px;
   justify-content: center;
 }
 
-.img {
+div .img {
   display: block;
   width: 300px;
-  height: 300px;
+  height: 300px;   
   border-radius: 50%;
   object-fit: cover;
-  border: 5px solid gray;
+  border: 5px solid gray round;
 }
 
 .user-info {
@@ -54,5 +54,20 @@
 
 .editPen{
  float: right;
+}
+
+.profile{
+  text-align: center;
+  display: inline;
+  margin-left: 100px;
+  background-color: #6723d5;
+  display: flex; /* Utilizamos flexbox para alinear el botón al centro verticalmente */
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.profile:hover {
+  background-color: #8d54ea;
+  color: gray; /* Cambiamos el color del texto al hacer hover en el botón */
 }
 
