@@ -18,6 +18,7 @@ export class HomeComponent {
       this.ObtenerUsuario(userName);
     }
     const userId = sessionStorage.getItem('userId')
+    console.log(sessionStorage.getItem("token"));
   }
 
   ObtenerUsuario(userName: string){

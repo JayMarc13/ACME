@@ -4,8 +4,8 @@
     <div class="row">
       <div class="col-4">
         <div class="user-img">
-          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.abc.es%2Fmedia%2Fpersonajes%2F000%2F013%2F741%2Ftom-cruise-191547-1.jpg&f=1&nofb=1&ipt=829cb3e7d9eaf3f4139bc7df6f768e25b751b9c27d0198d609b63f0747030a0d&ipo=images"
-               alt="user" class="img">
+          <img [src]="url" height="300px">
+          <input type="file" (change)="onselectedFile($event)">
         </div>
       </div>
       <div class="col">

@@ -28,6 +28,8 @@ export class ProfileComponent implements OnInit {
       this.localUser = nombreEmail;
     }
 
+    
+
     this.profileService.getUserProfile(this.localUser).subscribe(
       (profileData) => {
         // Aquí obtienes los detalles del perfil del usuario y los asignas a las propiedades user y email.
@@ -39,6 +41,24 @@ export class ProfileComponent implements OnInit {
         console.error('Error al obtener el perfil:', error);
       }
     );
+
+
+
+    
+
+  }
+
+  url=" ";
+
+  onselectedFile(e:any){
+    if(e.target.files){
+      var reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload=(event:any)=>{
+        this.url=event.target.result;
+      }
+    }
+    
   }
 
   changePassword(): void{
