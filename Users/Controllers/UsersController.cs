@@ -89,7 +89,7 @@ namespace Users.Controllers
             }
         }
 
-     
+
         // Editar el usuario pasando su id y su nuevos datos
         [HttpPut("{userId}")]
         public async Task<IActionResult> Put(string userId, AppUsers user)
@@ -110,11 +110,12 @@ namespace Users.Controllers
 
                 var userNameExist = await _context.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName && u.Id != userId);
                 var userMailExist = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email && u.Id != userId);
-                
+
                 if (userNameExist != null)
                 {
                     return Conflict("The name already exist");
-                }else if (userMailExist != null)
+                }
+                else if (userMailExist != null)
                 {
                     return Conflict("The mail already exist");
                 }

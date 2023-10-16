@@ -40,7 +40,7 @@ builder.Services.AddAuthentication(options =>
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 
 }).AddJwtBearer(options =>
-{ 
+{
     options.TokenValidationParameters = new TokenValidationParameters()
     {
         ValidateActor = true,
@@ -63,7 +63,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     //Titulo del diseño
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Users", Version = "v1"});
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Users", Version = "v1" });
 
     //Botoón autorize de swagger
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme

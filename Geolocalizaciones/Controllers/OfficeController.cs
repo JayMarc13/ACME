@@ -35,9 +35,9 @@ namespace Backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        
+
         // Obtener la lista de oficina con el nombre de la ciudad y la id
-        [HttpGet ("OfficesWithCity")]
+        [HttpGet("OfficesWithCity")]
         public async Task<IActionResult> OfficeswithCity()
         {
             try
@@ -48,8 +48,8 @@ namespace Backend.Controllers
                     _context.City,
                     Office => Office.CityId,
                     City => City.CityId,
-                    (Office , City ) => new
-                    { 
+                    (Office, City) => new
+                    {
                         OfficeId = Office.OfficeId,
                         NameOffice = Office.NameOffice,
                         CityId = City.CityId,
@@ -131,7 +131,7 @@ namespace Backend.Controllers
         {
             try
             {
-                if(officeId != office.OfficeId)
+                if (officeId != office.OfficeId)
                 {
                     return BadRequest();
                 }
@@ -175,6 +175,6 @@ namespace Backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
-       
+
     }
 }

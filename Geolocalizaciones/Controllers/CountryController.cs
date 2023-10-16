@@ -13,34 +13,34 @@ namespace Backend.Controllers
     {
         private readonly AplicationDbContext _context;
 
-        public CountryController(AplicationDbContext context) 
-        { 
+        public CountryController(AplicationDbContext context)
+        {
             this._context = context;
         }
 
 
         // Obtener la lista de Paises
         [HttpGet]
-        public async Task<IActionResult> Get() 
+        public async Task<IActionResult> Get()
         {
-            try 
-            { 
+            try
+            {
                 Thread.Sleep(500);
                 var listaCountries = await _context.Country.ToListAsync();
                 return Ok(listaCountries);
             }
-            catch (Exception ex) 
-            { 
+            catch (Exception ex)
+            {
                 return BadRequest(ex.Message);
             }
         }
-       
+
         // Obtener el pais con la id que ha pasado
         [HttpGet("{countryId}")]
-        public async Task<IActionResult> Get(int countryId) 
+        public async Task<IActionResult> Get(int countryId)
         {
-            try 
-            { 
+            try
+            {
                 var country = await _context.Country.FindAsync(countryId);
                 if (country == null)
                 {
@@ -48,8 +48,8 @@ namespace Backend.Controllers
                 }
                 return Ok(country);
             }
-            catch(Exception e) 
-            { 
+            catch (Exception e)
+            {
                 return BadRequest(e.Message);
             }
         }
@@ -57,12 +57,12 @@ namespace Backend.Controllers
 
         // Eliminar el pais con la id pasada 
         [HttpDelete("{countryId}")]
-        public async Task<IActionResult> Delete(int countryId) 
+        public async Task<IActionResult> Delete(int countryId)
         {
             try
             {
                 var country = await _context.Country.FindAsync(countryId);
-                if (country == null) 
+                if (country == null)
                 {
                     return NotFound();
                 }
@@ -71,7 +71,7 @@ namespace Backend.Controllers
                 await _context.SaveChangesAsync();
 
                 return NoContent();
-                
+
             }
             catch (Exception e)
             {
@@ -85,7 +85,7 @@ namespace Backend.Controllers
         {
             try
             {
-                _context.Add(country); 
+                _context.Add(country);
                 await _context.SaveChangesAsync();
 
                 return CreatedAtAction("Get", new { CountryId = country.CountryId }, country);
@@ -105,7 +105,7 @@ namespace Backend.Controllers
             try
             {
                 //Not found id
-                if(countryId != country.CountryId)
+                if (countryId != country.CountryId)
                 {
                     return BadRequest();
                 }
@@ -127,7 +127,7 @@ namespace Backend.Controllers
             }
             catch (Exception ex)
             {
-                
+
                 return BadRequest(ex.Message);
             }
         }

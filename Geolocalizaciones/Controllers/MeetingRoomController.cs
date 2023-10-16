@@ -38,7 +38,7 @@ namespace Backend.Controllers
         }
 
         // Obtener la la lista de Salas con los nombres de las oficinas y las id
-        [HttpGet ("RoomsWithOffices")]
+        [HttpGet("RoomsWithOffices")]
         public async Task<IActionResult> GetMeetingRoomsWithOffices()
         {
             try
@@ -49,7 +49,7 @@ namespace Backend.Controllers
                     MeetingRoom => MeetingRoom.OfficeId,
                     Office => Office.OfficeId,
                     (MeetingRoom, Office) => new
-                    { 
+                    {
                         MeetingRoomId = MeetingRoom.MeetingRoomId,
                         MeetingRoomName = MeetingRoom.MeetingRoomName,
                         OfficeId = MeetingRoom.OfficeId,
@@ -176,4 +176,4 @@ namespace Backend.Controllers
 
     }
 }
-    
+

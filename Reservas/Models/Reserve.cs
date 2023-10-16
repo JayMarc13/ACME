@@ -11,6 +11,7 @@ namespace Backend.Models
         public int MeetingRoomId { get; set; }
         public DateTime ReserveDate { get; set; }
 
+
         [NotMapped] [JsonIgnore] public string[] Time { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }

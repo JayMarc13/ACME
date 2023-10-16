@@ -8,7 +8,7 @@ namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize] 
+    [Authorize]
     public class CityController : ControllerBase
     {
         private readonly AplicationDbContext _context;
@@ -54,7 +54,7 @@ namespace Backend.Controllers
         }
 
         //Obtener los ciudades pero con la id del country y el nombre
-        [HttpGet ("CitiesWithCountries")]
+        [HttpGet("CitiesWithCountries")]
         public async Task<IActionResult> GetCitiesWithCountries()
         {
             try
@@ -64,14 +64,14 @@ namespace Backend.Controllers
                         _context.Country,
                         city => city.CountryId,
                         Country => Country.CountryId,
-                        (City, Country) => new 
+                        (City, Country) => new
                         {
                             CityId = City.CityId,
                             CityName = City.CityName,
                             CountryId = City.CountryId,
                             CountryName = Country.CountryName
                         }
-                    ). ToListAsync();
+                    ).ToListAsync();
 
                 return Ok(listaCities);
             }
@@ -154,7 +154,7 @@ namespace Backend.Controllers
                     return NotFound();
                 }
 
-                 _context.City.Remove(cityToDelete);
+                _context.City.Remove(cityToDelete);
                 await _context.SaveChangesAsync();
 
                 return NoContent();

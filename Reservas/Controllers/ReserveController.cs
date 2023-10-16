@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Globalization;
 
+
+
 namespace Backend.Controllers
 {
     [Route("api/[controller]")]
@@ -14,10 +16,14 @@ namespace Backend.Controllers
     {
         private readonly AplicationDbContext _context;
 
+
+
         public ReserveController(AplicationDbContext context)
         {
             this._context = context;
         }
+
+
 
         // Obtener la lista de Reservas
         [HttpGet]
@@ -36,6 +42,8 @@ namespace Backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+
 
         // Obtener una reserva por su id
         [HttpGet("{reserveId}")]
@@ -85,6 +93,8 @@ namespace Backend.Controllers
                     }
                 ).ToListAsync();
 
+
+
                 if (listaReservas == null)
                 {
                     return NotFound();
@@ -97,9 +107,11 @@ namespace Backend.Controllers
             }
         }
 
+
+
         // Obtener una reserva por Id user
         [HttpGet("ReserveByUserId/{userId}")]
-        public async Task<IActionResult> ReservasByUserId( string userId)
+        public async Task<IActionResult> ReservasByUserId(string userId)
         {
             try
             {
@@ -127,6 +139,8 @@ namespace Backend.Controllers
                })
                .ToListAsync();
 
+
+
                 if (listaReservas == null)
                 {
                     return NotFound();
@@ -139,6 +153,8 @@ namespace Backend.Controllers
             }
         }
 
+
+
         // Obtener una reserva por el nomber del usuario
         [HttpGet("ReserveByUserName/{userName}")]
         public async Task<IActionResult> ReservasByUserName(string userName)
@@ -148,6 +164,8 @@ namespace Backend.Controllers
                 var userBD = _context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
                 var fechaActual = DateTime.Now.Date;
                 if (userBD == null) { return NotFound(); }
+
+
 
                 var listaReservas = await _context.Reserve
                 .Join(
@@ -171,6 +189,8 @@ namespace Backend.Controllers
                 })
                 .ToListAsync();
 
+
+
                 if (listaReservas == null)
                 {
                     return NotFound();
@@ -182,6 +202,8 @@ namespace Backend.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+
 
         // Eliminar una reserva por su id
         [HttpDelete("{reserveId}")]
@@ -195,8 +217,12 @@ namespace Backend.Controllers
                     return NotFound();
                 }
 
+
+
                 _context.Reserve.Remove(reserva);
                 await _context.SaveChangesAsync();
+
+
 
                 return NoContent();
             }
@@ -205,6 +231,8 @@ namespace Backend.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+
 
         // Agregar una reserva
         [HttpPost]
@@ -216,11 +244,15 @@ namespace Backend.Controllers
                 DateTime startTime = DateTime.ParseExact(reserve.StartTime, "HH:mm", CultureInfo.InvariantCulture);
                 DateTime endTime = DateTime.ParseExact(reserve.EndTime, "HH:mm", CultureInfo.InvariantCulture);
 
+
+
                 // Verificar que las horas de inicio y fin sean válidas
                 if (startTime >= endTime)
                 {
                     return Conflict("The hours of start and end are not valids.");
                 }
+
+
 
                 // Obtener todas las reservas para el mismo día y sala desde la base de datos
                 var existingReservations = await _context.Reserve
@@ -229,15 +261,21 @@ namespace Backend.Controllers
                         r.ReserveDate.Date == reserve.ReserveDate.Date)
                     .ToListAsync();
 
+
+
                 // Verificar si ya existe una reserva que contenga las mismas horas de inicio y fin
                 bool hasExactMatch = existingReservations.Any(r =>
                     DateTime.ParseExact(r.StartTime, "HH:mm", CultureInfo.InvariantCulture) == startTime &&
                     DateTime.ParseExact(r.EndTime, "HH:mm", CultureInfo.InvariantCulture) == endTime);
 
+
+
                 if (hasExactMatch)
                 {
                     return Conflict("There is a reservation with the same start and end times for the same day and room");
                 }
+
+
 
                 // Verificar si ya existe una reserva que colisiona con las horas de inicio y fin
                 bool hasCollisions = existingReservations.Any(r =>
@@ -246,16 +284,24 @@ namespace Backend.Controllers
                     (DateTime.ParseExact(r.EndTime, "HH:mm", CultureInfo.InvariantCulture) > startTime &&
                      DateTime.ParseExact(r.EndTime, "HH:mm", CultureInfo.InvariantCulture) <= endTime));
 
+
+
                 if (hasCollisions)
                 {
                     return Conflict("A reservation exists that conflicts with the specified start and end times.");
                 }
 
+
+
                 Debug.Write(reserve.hours);
                 Debug.Write(reserve.ReserveDate);
 
+
+
                 _context.Add(reserve);
                 await _context.SaveChangesAsync();
+
+
 
                 return CreatedAtAction("Get", new { ReserveId = reserve.ReserveId }, reserve);
             }
@@ -264,6 +310,8 @@ namespace Backend.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+
 
         // Actualizar una reserva por su id
         [HttpPut("{reserveId}")]
@@ -276,22 +324,32 @@ namespace Backend.Controllers
                     return BadRequest();
                 }
 
+
+
                 var reservaItem = await _context.Reserve.FindAsync(reserveId);
+
+
 
                 if (reservaItem == null)
                 {
                     return NotFound();
                 }
 
+
+
                 // Convertir horas de inicio y fin a objetos DateTime
                 DateTime startTime = DateTime.ParseExact(reserve.StartTime, "HH:mm", CultureInfo.InvariantCulture);
                 DateTime endTime = DateTime.ParseExact(reserve.EndTime, "HH:mm", CultureInfo.InvariantCulture);
+
+
 
                 // Verificar que las horas de inicio y fin sean válidas
                 if (startTime >= endTime)
                 {
                     return BadRequest("The hours of start and end are not valids");
                 }
+
+
 
                 // Obtener todas las reservas para el mismo día y sala desde la base de datos
                 var existingReservations = await _context.Reserve
@@ -301,6 +359,8 @@ namespace Backend.Controllers
                         r.ReserveId != reserveId)
                     .ToListAsync();
 
+
+
                 // Verificar si ya existe una reserva que colisiona con las horas de inicio y fin
                 bool hasCollisions = existingReservations.Any(r =>
                     (DateTime.ParseExact(r.StartTime, "HH:mm", CultureInfo.InvariantCulture) >= startTime &&
@@ -308,20 +368,28 @@ namespace Backend.Controllers
                     (DateTime.ParseExact(r.EndTime, "HH:mm", CultureInfo.InvariantCulture) > startTime &&
                      DateTime.ParseExact(r.EndTime, "HH:mm", CultureInfo.InvariantCulture) <= endTime));
 
+
+
                 if (hasCollisions)
                 {
                     return BadRequest("A reservation exists that conflicts with the specified start and end times.");
                 }
+
+
 
                 // Verificar si ya existe una reserva que contenga las mismas horas de inicio y fin
                 bool hasExactMatch = existingReservations.Any(r =>
                     DateTime.ParseExact(r.StartTime, "HH:mm", CultureInfo.InvariantCulture) == startTime &&
                     DateTime.ParseExact(r.EndTime, "HH:mm", CultureInfo.InvariantCulture) == endTime);
 
+
+
                 if (hasExactMatch)
                 {
                     return BadRequest("There is a reservation with the same start and end times for the same day and room");
                 }
+
+
 
                 // Actualizar propiedades de reserva
                 reservaItem.MeetingRoomId = reserve.MeetingRoomId;
@@ -330,7 +398,11 @@ namespace Backend.Controllers
                 reservaItem.EndTime = reserve.EndTime;
                 reservaItem.UserId = reserve.UserId;
 
+
+
                 await _context.SaveChangesAsync();
+
+
 
                 return NoContent();
             }
