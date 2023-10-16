@@ -8,7 +8,7 @@ namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    /*[Authorize] //<-*//*- Verificar el token */
+    [Authorize] 
     public class CityController : ControllerBase
     {
         private readonly AplicationDbContext _context;
@@ -18,7 +18,7 @@ namespace Backend.Controllers
             this._context = context;
         }
 
-        //Enviar la lista de Cities
+        //Enviar la lista de Ciudades
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -53,6 +53,7 @@ namespace Backend.Controllers
             }
         }
 
+        //Obtener los ciudades pero con la id del country y el nombre
         [HttpGet ("CitiesWithCountries")]
         public async Task<IActionResult> GetCitiesWithCountries()
         {
@@ -80,6 +81,7 @@ namespace Backend.Controllers
             }
         }
 
+        //Obtener ciudades al pasar un nombre de pais en ingles
         [HttpGet("byCountryName/{countryName}")]
         public async Task<IActionResult> ListCitiesWithCountryName(string countryName)
         {
@@ -140,6 +142,7 @@ namespace Backend.Controllers
             }
         }
 
+        // Eliminar la ciudad con el nombre de pais pasada
         [HttpDelete("byCityName/{cityName}")]
         public async Task<IActionResult> RemoveByCityName(string cityName)
         {
@@ -162,7 +165,7 @@ namespace Backend.Controllers
                 return BadRequest(e.Message);
             }
         }
-        //Add city
+        //Añadir una ciudad pasando un objeto City
         [HttpPost]
         public async Task<IActionResult> Post(City city)
         {
@@ -180,6 +183,7 @@ namespace Backend.Controllers
             }
         }
 
+        // Editar una ciudad pasando la id y el objeto City
         [HttpPut("{cityId}")]
         public async Task<IActionResult> Put(int cityId, City city)
         {
@@ -209,6 +213,7 @@ namespace Backend.Controllers
             }
         }
 
+        // Editar una ciuada pasando el nombre de la ciudad y el objeto City
         [HttpPut("UpdateByCityname/{cityName}")]
         public async Task<IActionResult> UpdateByCityName(string cityName, City city)
         {
@@ -232,6 +237,8 @@ namespace Backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        // Obtener la ciudad pasada la id del pais
         [HttpGet("country/{countryId}")]
         public async Task<IActionResult> GetCitiesByCountry(int countryId)
         {

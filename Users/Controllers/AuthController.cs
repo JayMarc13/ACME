@@ -21,6 +21,7 @@ namespace Users.Controllers
             _userManager = userManager;
         }
         
+        // Registrar a un usuario
         [HttpPost("Register")]
         public async Task<IActionResult> RegisterUser(LoginUser user) 
         {
@@ -31,6 +32,7 @@ namespace Users.Controllers
             return BadRequest("Algo no funciona!");
         }
 
+        // Logear un usuario
         [HttpPost("Login")]
         public async Task<IActionResult> Login(LoginUser user) 
         {
@@ -50,6 +52,8 @@ namespace Users.Controllers
             }
             return Unauthorized();
         }
+
+        // Cambiar la contraseña del usuario
         [HttpPost("ChangePassword")]
         // Asegura que solo usuarios autenticados puedan cambiar su contraseña
         public async Task<IActionResult> ChangePassword(ChangePasswordRequest request)
@@ -72,6 +76,7 @@ namespace Users.Controllers
             return BadRequest(new { message = "Los datos proporcionados son inválidos." });
         }
 
+        // Añadir un rol a un usuario
         [HttpPost("AddRol")]
         public async Task<IActionResult> AddRol(String userId, String rol)
 
@@ -88,6 +93,7 @@ namespace Users.Controllers
 
         }
 
+        // Verificar si un usuario es Administrador
         [HttpGet("verificationAdm")]
         public async Task<IActionResult> GetVerificationAdm(String userId)
         {

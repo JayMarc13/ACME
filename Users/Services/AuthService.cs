@@ -51,7 +51,7 @@ namespace Users.Services
             return false;
         }
 
-
+        // Generar el token para que el usuario pueda acceder a la información o para hacer reservas
         public string GenerateTokenString(LoginUser user)
         {
 
@@ -123,6 +123,8 @@ namespace Users.Services
 
             return tokenString;
         }
+
+
         //cambio de contraseña
         public async Task<bool> ChangePassword(LoginUser user, ChangePassword model)
         {
@@ -145,14 +147,10 @@ namespace Users.Services
             return false;
         }
 
+        // Añadir un rol a un usuario pasand la id del usuario y el tipo de rol
         public async Task<bool> addRol(String userId, String rolName)
         {
 
-            //if (!await _roleManager.RoleExistsAsync(rolName))
-            //{
-            //    var role = new IdentityRole(rolName);
-            //    await _roleManager.CreateAsync(role);
-            //}
             var identityUser = await _userManager.FindByIdAsync(userId);
             //var identityUser = await _userManager.FindByNameAsync(userName);
             if (identityUser != null)
@@ -203,6 +201,7 @@ namespace Users.Services
             return false;
         }
 
+        // Comprobar que el usuario si es administrador
         public async Task<bool> isAdministrador(String userId)
         {
             var identityUser = await _userManager.FindByIdAsync(userId);

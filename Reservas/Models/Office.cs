@@ -7,5 +7,6 @@
 
         //Foreign Key City
         public int CityId { get; set; }
+        public string capacidad { get; set; }
     }
 }

@@ -1,11 +1,13 @@
 ﻿using Users.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Users.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UsersController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -31,7 +33,7 @@ namespace Users.Controllers
             }
         }
 
-        //Retornar el usuario con la id que se ha pasado
+        // Obtener el usuario con su id
         [HttpGet("{userId}")]
         public async Task<IActionResult> Get(string userId)
         {
@@ -63,7 +65,7 @@ namespace Users.Controllers
             }
         }
 
-        // Eliminar usuario con la id pasada 
+        // Eliminar usuario con su id 
         [HttpDelete("{userId}")]
         public async Task<IActionResult> Delete(string userId)
         {
@@ -88,7 +90,7 @@ namespace Users.Controllers
         }
 
      
-
+        // Editar el usuario pasando su id y su nuevos datos
         [HttpPut("{userId}")]
         public async Task<IActionResult> Put(string userId, AppUsers user)
         {
