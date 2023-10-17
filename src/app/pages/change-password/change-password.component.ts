@@ -67,7 +67,6 @@ ngOnInit(){
       nuevaContraseña: this.form.value.newPassword,
       confirmarNuevaContraseña: this.form.value.repeatNewPassword
      }
-     console.log(this.NewPasswordUser.confirmarNuevaContraseña);
      if(this.loginUser && this.NewPasswordUser && this.NewPasswordUser.confirmarNuevaContraseña == this.NewPasswordUser.nuevaContraseña){
       let updatePassword: changePasswordUser = {
         user: this.loginUser,

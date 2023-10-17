@@ -58,8 +58,6 @@ export class AddEditUsersComponent implements OnInit {
       password: password
     };
 
-    console.log(userData);
-
     this._registerService.userRegister(userData)
       .subscribe(
         () => {

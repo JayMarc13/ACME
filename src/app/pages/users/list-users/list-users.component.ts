@@ -49,7 +49,6 @@ export class ListUsersComponent {
     const userName = sessionStorage.getItem('user');
     if(userName != null){
       this.userNameSession = userName;
-      // console.log(this.userNameSession);
     }
     
     
@@ -95,7 +94,6 @@ export class ListUsersComponent {
               isAdmin => {
                 // Actualiza la propiedad isAdmin del usuario correspondiente
                 data[i].isAdmin = isAdmin;
-                console.log(`Usuario con ID ${userId} es administrador: ${isAdmin}`);
               }
             );
           }
@@ -114,10 +112,7 @@ export class ListUsersComponent {
   onToggleChange(event: any, userName: string) {
     const isAdministrador = event.checked;
 
-    console.log("cambio "+isAdministrador);
-
     this.getUserId(userName).subscribe(userId => {
-      console.log("ID del usuario: " + userId);
       if(isAdministrador){
         this.addRoleToUser(userId,'Administrador');
       }else{
@@ -129,7 +124,6 @@ export class ListUsersComponent {
   addRoleToUser( userId : string, rol : string){
     this._rolService.AddRoleToUser(userId, rol).subscribe(
       data => {
-        console.log(data);
       }
     );
   }

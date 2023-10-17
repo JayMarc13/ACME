@@ -55,7 +55,6 @@ export class ProfileComponent implements OnInit {
         this.profilepictureId = profileData.profilepictureId;
       },
       (error) => {
-        console.error('Error al obtener el perfil:', error);
       }
     );
 

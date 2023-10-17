@@ -136,11 +136,9 @@ export class FormReserveComponent {
     this.ReserveString = this.form.value.ReserveDate;
     let horasSeleccionada = this.form.value.hours;
     let startTimeSeleccionada = this.form.value.startHour;
-    console.log(startTimeSeleccionada);
     let positionHora = this.horas.indexOf(startTimeSeleccionada);
     this.horasSeleccionada = horasSeleccionada;
     this.startTimeSeleccionada = startTimeSeleccionada;
-    console.log(horasSeleccionada);
     switch(horasSeleccionada){
       case "1h":
         this.form = new FormGroup({
@@ -185,7 +183,6 @@ export class FormReserveComponent {
           this.mostrarElemento = true;
         break;
     }
-    console.log(this.pathName);
 
   //    // Check if 'reserveId' has a value (assuming you set it when editing the reservation)
    }
@@ -256,10 +253,8 @@ export class FormReserveComponent {
       (data: profile[]) => {
         const listUsers = data;  
         this.listUsers = listUsers.map( valor => valor.userName);
-        console.log(this.listUsers);
       },
       (error) => {
-        console.error('Error al obtener usuarios:', error);
       }
     );
   }

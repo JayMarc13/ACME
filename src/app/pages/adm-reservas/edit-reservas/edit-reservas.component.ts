@@ -65,7 +65,6 @@ ngOnInit(): void{
 obtenerBookingsById(reservaId: number ) {
     this.loading = true;
     this._bookingService.getBookingsById(reservaId).subscribe((data: Object) => {
-      // console.log("editar reservaa "+ JSON.stringify(data) );
       const reserva : Booking = data as Booking;
       this.meetingRoomId= reserva.meetingRoomId;
       this.userId=reserva.userId;
@@ -87,14 +86,12 @@ obtenerMeetingRoomName(meetingRoomId: number){
     this._meetingRoomService.getRoom(meetingRoomId).subscribe((data:Object) =>{
       const meetingRoom : MeetingRoom = data as MeetingRoom;
       this.meetingRoomName = meetingRoom.meetingRoomName;
-      console.log("holsdfr "+ meetingRoom.meetingRoomName);
     })
   }
 obtenerUserName(userId: string){
   this._userService.getUserById(userId).subscribe((data:Object) =>{
     const userRecuperado : users = data as users;
     this.userName = userRecuperado.userName;
-    console.log("holsdfr "+ this.userName);
   })
 }
 
@@ -121,8 +118,6 @@ editarReserva(reservaId:number, reserva: Booking) {
 
       // Construir la fecha en formato YYYY-MM-DD
       const fechaFormateada = `${year}-${month}-${day}`;
-
-      console.log("nuevafecha"+fechaFormateada); // Salida: "2023-09-15"
 
       this.reserva ={
         reserveDate: fechaFormateada,

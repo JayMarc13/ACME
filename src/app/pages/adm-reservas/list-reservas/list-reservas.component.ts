@@ -64,7 +64,6 @@ export class ListReservasComponent {
         return reservas;
       })
     ).subscribe((data: Booking[]) => {
-      console.log(data);
       this.loading = false;
       this.dataSource.data = data;
     });
