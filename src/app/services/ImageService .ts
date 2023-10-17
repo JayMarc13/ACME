@@ -7,11 +7,11 @@ export class ImageService {
   private imageUrl: string = '';
   private profilepictureId: string = '';
 
-  setImageUrl(url: string) {
+  setImage(url: string) {
     this.imageUrl = url;
   }
 
-  getImageUrl(): string {
+  getImage(): string {
     return this.imageUrl;
   }
 }
