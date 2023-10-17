@@ -3,6 +3,7 @@ export interface profile {
   userName : string;
   normalizedUserName: string;
   email: string;
+  profilepictureId: string;
   normalizedEmail: string;
   emailConfirmed: boolean;
   passwordHash: string;

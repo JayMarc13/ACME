@@ -15,20 +15,21 @@ import { ImageService } from 'src/app/services/ImageService ';
   styleUrls: ['change.p.profile.picture.component.css']
 })
 export class ChangePProfilePictureComponent implements OnInit {
+  url: string ="";
   constructor(
     private imageService: ImageService,
     private elementRef: ElementRef,
     private _snackBar: MatSnackBar,
     private dialogRef: MatDialogRef<ChangePProfilePictureComponent>,
     private snackBar: MatSnackBar) {
+
+      
       
     }
 
-    url="https://imgs.search.brave.com/MWlI8P3aJROiUDO9A-LqFyca9kSRIxOtCg_Vf1xd9BA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc";
-
 
     ngOnInit() {
-    this.imageService.setImageUrl(this.url);
+    this.url= this.imageService.getImageUrl();
     }
 
     onNoClick(): void {

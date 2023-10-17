@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ImageService {
   private imageUrl: string = '';
+  private profilepictureId: string = '';
 
   setImageUrl(url: string) {
     this.imageUrl = url;
