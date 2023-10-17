@@ -55,7 +55,6 @@ saveUserData() {
     user.normalizedUserName = this.form.value.name;
     user.email = this.form.value.email;
     user.phoneNumber = this.form.value.phone;
-    console.log(user.id);
     if(user.id){
       this.profileService.editUserProfile(user.id,user).subscribe(() => {
         sessionStorage.setItem('user', user.userName);

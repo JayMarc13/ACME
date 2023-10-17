@@ -33,13 +33,10 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit() {
+    this.profilepictureId  = this.imageService.getImage();
     if(this.profilepictureId == undefined){
       this.profilepictureId == this.default_url;
-    }
-    else{
-      this.imageService.setImageUrl(this.default_url);
-      this.profilepictureId  = this.imageService.getImageUrl();
-    }
+    } 
        
     
     const nombreEmail = sessionStorage.getItem('user');
@@ -58,7 +55,6 @@ export class ProfileComponent implements OnInit {
         this.profilepictureId = profileData.profilepictureId;
       },
       (error) => {
-        console.error('Error al obtener el perfil:', error);
       }
     );
 

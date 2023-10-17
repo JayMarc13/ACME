@@ -50,7 +50,6 @@ export class ListCityComponent {
   obtenerCity() {
     this.loading = true;
     this._cityService.getCitys().subscribe(data => {
-      console.log(data);
       this.loading = false;
       this.dataSource.data = data;
     });

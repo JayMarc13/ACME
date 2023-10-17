@@ -19,7 +19,5 @@ export class NavbarComponent {
     if(userRole=="Administrador"){
       this.mostrarElemento= true;
     }
-
-    console.log(userRole);
   }
 }

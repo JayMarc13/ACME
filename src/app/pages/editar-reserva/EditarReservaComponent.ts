@@ -77,7 +77,6 @@ export class EditarReservaComponent {
   obtenerBookingsById(reservaId: number ) {
     this.loading = true;
     this._bookingService.getBookingsById(reservaId).subscribe((data: Object) => {
-      // console.log("editar reservaa "+ JSON.stringify(data) );
       const reserva : Booking = data as Booking;
       this.meetingRoomId= reserva.meetingRoomId;
       this.userId=reserva.userId;
@@ -100,7 +99,6 @@ export class EditarReservaComponent {
     this._meetingRoomService.getRoom(meetingRoomId).subscribe((data:Object) =>{
       const meetingRoom : MeetingRoom = data as MeetingRoom;
       this.meetingRoomName = meetingRoom.meetingRoomName;
-      console.log("holsdfr "+ meetingRoom.meetingRoomName);
     })
   }
   editarReserva(reservaId:number, reserva: Booking) {
@@ -127,7 +125,6 @@ export class EditarReservaComponent {
       // Construir la fecha en formato YYYY-MM-DD
       const fechaFormateada = `${year}-${month}-${day}`;
 
-      console.log("nuevafecha"+fechaFormateada); // Salida: "2023-09-15"
 
       this.reserva ={
         reserveDate: fechaFormateada,

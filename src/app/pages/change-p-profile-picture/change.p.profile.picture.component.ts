@@ -21,15 +21,11 @@ export class ChangePProfilePictureComponent implements OnInit {
     private elementRef: ElementRef,
     private _snackBar: MatSnackBar,
     private dialogRef: MatDialogRef<ChangePProfilePictureComponent>,
-    private snackBar: MatSnackBar) {
-
-      
-      
-    }
+    private snackBar: MatSnackBar) {}
 
 
     ngOnInit() {
-    this.url= this.imageService.getImageUrl();
+    this.url= this.imageService.getImage();
     }
 
     onNoClick(): void {
@@ -42,7 +38,7 @@ export class ChangePProfilePictureComponent implements OnInit {
         reader.readAsDataURL(e.target.files[0]);
         reader.onload = (event: any) => {
           this.url = event.target.result;
-          this.imageService.setImageUrl(this.url); // Guarda la URL en el servicio
+          this.imageService.setImage(this.url); // Guarda la URL en el servicio
         }
       }
     }

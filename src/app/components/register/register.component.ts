@@ -59,8 +59,6 @@ export class RegisterComponent implements OnInit {
       password: password
     };
 
-    console.log(register);
-
     this._registerService.userRegister(register)
       .subscribe(
         () => {

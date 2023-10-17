@@ -77,7 +77,6 @@ export class AgregarEditarCityComponent {
       this.onNoClick();
     } else {
       this.agregarCity(city);
-      console.log(city);
       this.onNoClick();
     }
   }

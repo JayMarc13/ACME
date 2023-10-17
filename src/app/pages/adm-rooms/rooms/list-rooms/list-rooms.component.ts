@@ -49,7 +49,6 @@ export class ListRoomsComponent {
   obtenerRoom() {
     this.loading = true;
     this._meetingRoomService.getMeetingRooms().subscribe(data => {
-      console.log(data);
       this.loading = false;
       this.dataSource.data = data;
     });
