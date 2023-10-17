@@ -3,4 +3,5 @@ export interface MeetingRoom{
     meetingRoomName: string,
     officeId: number,
     nameOffice?: string,
+    capacity: number,
 }
