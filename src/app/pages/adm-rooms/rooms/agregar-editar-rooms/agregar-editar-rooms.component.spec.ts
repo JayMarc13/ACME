@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AgregarEditarCityComponent } from './agregar-editar-rooms.component';
+import { AgregarEditarRoomsComponent } from './agregar-editar-rooms.component';
 
 describe('AgregarEditarCityComponent', () => {
-  let component: AgregarEditarCityComponent;
-  let fixture: ComponentFixture<AgregarEditarCityComponent>;
+  let component: AgregarEditarRoomsComponent;
+  let fixture: ComponentFixture<AgregarEditarRoomsComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AgregarEditarCityComponent]
+      declarations: [AgregarEditarRoomsComponent]
     });
-    fixture = TestBed.createComponent(AgregarEditarCityComponent);
+    fixture = TestBed.createComponent(AgregarEditarRoomsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

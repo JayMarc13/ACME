@@ -18,6 +18,13 @@
         </mat-grid-tile>
 
         <mat-grid-tile [colspan]="2">
+          <mat-form-field class="input" appearance="outline">
+            <mat-label>Capacity</mat-label>
+            <input formControlName="capacity" matInput>
+          </mat-form-field>
+        </mat-grid-tile>
+        
+        <mat-grid-tile [colspan]="2">
           <button [disabled]="form.invalid" type="submit" class="btnAceptar" mat-raised-button color="primary">Aceptar</button>
           <button mat-raised-button routerLink="/home/admRooms/rooms/listaRoom">Volver</button>
         </mat-grid-tile>

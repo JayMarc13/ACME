@@ -14,9 +14,10 @@ import { PopRemoveQuestionComponent } from 'src/app/pages/pop-remove-question/po
   styleUrls: ['./list-rooms.component.css']
 })
 export class ListRoomsComponent {
-  displayedColumns: string[] = ['meetingRoomId', 'meetingRoomName', 'nameOffice', 'Acciones'];
+  displayedColumns: string[] = ['meetingRoomId', 'meetingRoomName', 'nameOffice', 'capacity','Acciones'];
   dataSource = new MatTableDataSource<MeetingRoom>();
   loading: boolean = false;
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -26,6 +27,8 @@ export class ListRoomsComponent {
 
   ngOnInit(): void {
     this.obtenerRoom();
+
+
   }
   //Paginaciones y ordenar
   ngAfterViewInit() {

@@ -15,7 +15,7 @@ export class AgregarEditarRoomsComponent {
   form: FormGroup
   meetingRoomId: number;
   Operacion: string = 'Add';
-
+ 
 
   constructor(private _meetingRoomService: MeetingRoomService,
     private fb: FormBuilder,
@@ -24,7 +24,8 @@ export class AgregarEditarRoomsComponent {
     private aRoute: ActivatedRoute) {
     this.form = this.fb.group({
       meetingRoomName: ['', Validators.required], ////Campo requerido
-      officeId: ['', Validators.required]
+      officeId: ['', Validators.required],
+      capacity: ['', Validators.required]
     })
 
     this.meetingRoomId = Number(this.aRoute.snapshot.paramMap.get('meetingRoomId'));
@@ -36,6 +37,8 @@ export class AgregarEditarRoomsComponent {
       this.Operacion = 'Editar';
       this.obtenerRoom(this.meetingRoomId);
     }
+
+
   }
 
   obtenerRoom(meetingRoomId: number) {
@@ -43,7 +46,8 @@ export class AgregarEditarRoomsComponent {
     this._meetingRoomService.getRoom(this.meetingRoomId).subscribe(data => {
       this.form.setValue({
         meetingRoomName: data.meetingRoomName,
-        officeId: data.officeId
+        officeId: data.officeId,
+        capacity: data.capacity
       })
       this.loading = false;
     });
@@ -53,12 +57,13 @@ export class AgregarEditarRoomsComponent {
 
   //Metodos
   agregarEditarRoom() {
-    
+
     //Definir el objeto
     const meetingRoom: MeetingRoom = {
       meetingRoomName: this.form.value.meetingRoomName,
       officeId: this.form.value.officeId,
-      meetingRoomId: 0
+      meetingRoomId: 0,
+      capacity: this.form.value.capacity,
     }
 
     if (this.meetingRoomId != 0) {

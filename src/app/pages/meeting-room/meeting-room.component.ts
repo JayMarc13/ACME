@@ -12,7 +12,7 @@ import { MeetingRoomService } from 'src/app/services/meeting-room.service';
   styleUrls: ['./meeting-room.component.css']
 })
 export class MeetingRoomComponent {
-  displayedColumns: string[] = ['meetingRoomId', 'meetingRoomName', 'nameOffice'];
+  displayedColumns: string[] = ['meetingRoomId', 'meetingRoomName', 'nameOffice', 'capacity'];
   dataSource = new MatTableDataSource<MeetingRoom>();
   loading: boolean = false;
 

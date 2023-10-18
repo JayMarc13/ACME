@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { RoomsRoutingModule } from './rooms-routing.module';
 import { SharedModule } from '../../../shared/shared.module';
-import { VerRoomsComponent } from './ver-rooms/ver-rooms.component';
 import { ListRoomsComponent } from './list-rooms/list-rooms.component';
 import { AgregarEditarRoomsComponent } from './agregar-editar-rooms/agregar-editar-rooms.component';
 
@@ -11,9 +10,7 @@ import { AgregarEditarRoomsComponent } from './agregar-editar-rooms/agregar-edit
 @NgModule({
   declarations: [
     ListRoomsComponent,
-    VerRoomsComponent,
     AgregarEditarRoomsComponent,
-    VerRoomsComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +18,7 @@ import { AgregarEditarRoomsComponent } from './agregar-editar-rooms/agregar-edit
     SharedModule
   ],
   exports: [
-    
+    AgregarEditarRoomsComponent
   ]
 })
 export class RoomsModule { }

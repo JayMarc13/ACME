@@ -45,3 +45,15 @@ td, th {
   Background: black;
   font-size: 3.5vh;
 }
+.person {
+  color: grey;
+  width: 25px;
+  height: 22px;
+  position: absolute;
+  margin-right: 15px;
+}
+.contenedor {
+  border: 1px solid #000; /* Borde negro */
+  padding: 10px; /* Espacio interno */
+}
+
