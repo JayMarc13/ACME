@@ -155,6 +155,25 @@ namespace Backend.Controllers
             }
         }
 
+        //Añadir nueva Meeting Rooms
+        [HttpPost]
+        [Authorize(Roles = "Administrador")]
+        public async Task<IActionResult> Post(MeetingRoom meetingRoom)
+        {
+            try
+            {
+                _context.Add(meetingRoom);
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction("Get", new { MeetingRoomId = meetingRoom.MeetingRoomId }, meetingRoom);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+        }
+
         // Obtener Salas pasando coincidiendo con la id de oficina 
         [HttpGet("office/{officeId}")]
         public async Task<IActionResult> GetRoomsByOffice(int officeId)
