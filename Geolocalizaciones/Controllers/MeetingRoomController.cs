@@ -53,7 +53,8 @@ namespace Backend.Controllers
                         MeetingRoomId = MeetingRoom.MeetingRoomId,
                         MeetingRoomName = MeetingRoom.MeetingRoomName,
                         OfficeId = MeetingRoom.OfficeId,
-                        NameOffice = Office.NameOffice
+                        NameOffice = Office.NameOffice,
+                        Capacity = MeetingRoom.Capacity,
                     }
                 ).ToListAsync();
 
@@ -144,6 +145,7 @@ namespace Backend.Controllers
 
                 meetingRoomItem.MeetingRoomName = meetingRoom.MeetingRoomName;
                 meetingRoomItem.OfficeId = meetingRoom.OfficeId;
+                meetingRoomItem.Capacity = meetingRoom.Capacity;
 
                 await _context.SaveChangesAsync();
 
