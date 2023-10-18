@@ -85,6 +85,7 @@ namespace Backend.Controllers
 
         // Eliminar oficina con la id pasada 
         [HttpDelete("{meetingRoomId}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Delete(int meetingRoomId)
         {
             try
@@ -124,6 +125,7 @@ namespace Backend.Controllers
 
         // Editar la sala pasando la id y el objeto de MeetingRoom
         [HttpPut("{meetingRoomId}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Put(int meetingRoomId, MeetingRoom meetingRoom)
         {
             try

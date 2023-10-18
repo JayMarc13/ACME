@@ -24,7 +24,6 @@ namespace Backend.Controllers
         {
             try
             {
-                Thread.Sleep(500);
                 var listaCities = await _context.City.ToListAsync();
                 return Ok(listaCities);
             }
@@ -120,6 +119,7 @@ namespace Backend.Controllers
 
         // Eliminar el ciudad con la id pasada 
         [HttpDelete("{cityId}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Delete(int cityId)
         {
             try
@@ -144,6 +144,7 @@ namespace Backend.Controllers
 
         // Eliminar la ciudad con el nombre de pais pasada
         [HttpDelete("byCityName/{cityName}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> RemoveByCityName(string cityName)
         {
             try
@@ -167,6 +168,7 @@ namespace Backend.Controllers
         }
         //Añadir una ciudad pasando un objeto City
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Post(City city)
         {
             try
@@ -185,6 +187,7 @@ namespace Backend.Controllers
 
         // Editar una ciudad pasando la id y el objeto City
         [HttpPut("{cityId}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Put(int cityId, City city)
         {
             try
@@ -215,6 +218,7 @@ namespace Backend.Controllers
 
         // Editar una ciuada pasando el nombre de la ciudad y el objeto City
         [HttpPut("UpdateByCityname/{cityName}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> UpdateByCityName(string cityName, City city)
         {
             try

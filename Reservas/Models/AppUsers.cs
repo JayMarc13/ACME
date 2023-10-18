@@ -38,6 +38,5 @@ namespace Reservas.Models
 
         public int AccessFailedCount { get; set; }
 
-
     }
 }

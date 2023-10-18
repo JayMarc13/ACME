@@ -57,6 +57,7 @@ namespace Backend.Controllers
 
         // Eliminar el pais con la id pasada 
         [HttpDelete("{countryId}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Delete(int countryId)
         {
             try
@@ -81,6 +82,7 @@ namespace Backend.Controllers
 
         //Añadir nuevo país pasando un objeto Country
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Post(Country country)
         {
             try
@@ -100,6 +102,7 @@ namespace Backend.Controllers
 
         //Editar el country pasando la id del pais y objeto Country
         [HttpPut("{countryId}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Put(int countryId, Country country)
         {
             try

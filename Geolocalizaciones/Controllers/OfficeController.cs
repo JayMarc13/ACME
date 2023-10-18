@@ -85,6 +85,7 @@ namespace Backend.Controllers
 
         // Eliminar oficina con la id pasada 
         [HttpDelete("{officeId}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Delete(int officeId)
         {
             try
@@ -109,6 +110,7 @@ namespace Backend.Controllers
 
         // Añadir una nueva oficina 
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Post(Office office)
         {
             try
@@ -127,6 +129,7 @@ namespace Backend.Controllers
 
         // Modificar la oficina pasando la id y el objeto Office
         [HttpPut("{officeId}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Put(int officeId, Office office)
         {
             try

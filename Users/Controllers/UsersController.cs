@@ -19,6 +19,7 @@ namespace Users.Controllers
 
         //Enviar la lista de Users
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Get()
         {
             try
@@ -67,6 +68,7 @@ namespace Users.Controllers
 
         // Eliminar usuario con su id 
         [HttpDelete("{userId}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Delete(string userId)
         {
             try
@@ -92,6 +94,7 @@ namespace Users.Controllers
 
         // Editar el usuario pasando su id y su nuevos datos
         [HttpPut("{userId}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Put(string userId, AppUsers user)
         {
             try

@@ -7,7 +7,6 @@ namespace Users.Models
 {
     public class AppUsers
     {
- 
         public string Id { get; set; }
 
         public string UserName { get; set; }
@@ -37,7 +36,6 @@ namespace Users.Models
         public bool LockoutEnabled { get; set; }
 
         public int AccessFailedCount { get; set; }
-
 
     }
 }
