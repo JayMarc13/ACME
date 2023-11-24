@@ -5,6 +5,10 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Country } from '../../../../interfaces/country';
 import { CountryService } from '../../../../services/country.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PopRemoveQuestionComponent } from 'src/app/pages/pop-remove-question/pop-remove-question.component';
+import { AgregarEditarCountryComponent } from '../agregar-editar-country/agregar-editar-country.component';
+import { AgregarCountryComponent } from '../agregar-country/agregar-country.component';
 
 @Component({
   selector: 'app-lista-country',
@@ -21,12 +25,13 @@ export class ListaCountryComponent {
 
   //Pop up y lista countries
   constructor(private _snackBar: MatSnackBar,
-    private _countryService: CountryService) { }
+    private _countryService: CountryService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.obtenerCountries();
   }
-
+  
   //Paginaciones y ordenar
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -55,18 +60,20 @@ export class ListaCountryComponent {
     });
   }
 
-  //Funcion pop up de eliminar
-  eliminarCountry(countryId: number) {
-    this.loading = true;
 
-    this._countryService.deleteCountry(countryId).subscribe(() => {
-      this.mensajeExito();
-      this.loading = false;
-      this.obtenerCountries();
-    });
-
-
+  openDialog(identification: number){
+    let pathname = window.location.pathname;
+    const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {identification, pathname}});
   }
+
+  editarCountry(identification: number, country: Country){
+    const dialogRef = this.dialog.open(AgregarEditarCountryComponent, {data: {identification, country}});
+  }
+
+  agregarCountry() {
+    const dialogRef = this.dialog.open(AgregarCountryComponent);
+  }
+
 
   mensajeExito() {
     this._snackBar.open('El pais fue eliminada con éxito', '', {

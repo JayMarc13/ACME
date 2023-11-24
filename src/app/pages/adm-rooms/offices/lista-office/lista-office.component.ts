@@ -3,8 +3,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { office } from '../../../../interfaces/office';
+import { Office } from '../../../../interfaces/office';
 import { OfficeService } from '../../../../services/office.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PopRemoveQuestionComponent } from 'src/app/pages/pop-remove-question/pop-remove-question.component';
 
 @Component({
   selector: 'app-lista-office',
@@ -12,8 +14,8 @@ import { OfficeService } from '../../../../services/office.service';
   styleUrls: ['./lista-office.component.css']
 })
 export class ListaOfficeComponent {
-  displayedColumns: string[] = ['officeId', 'nameOffice', 'cityId', 'Acciones'];
-  dataSource = new MatTableDataSource<office>();
+  displayedColumns: string[] = ['officeId', 'nameOffice', 'cityName', 'Acciones'];
+  dataSource = new MatTableDataSource<Office>();
   loading: boolean = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -21,7 +23,8 @@ export class ListaOfficeComponent {
 
   //Pop up y lista offices
   constructor(private _snackBar: MatSnackBar,
-    private _officeService: OfficeService) { }
+    private _officeService: OfficeService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.obtenerOffices();
@@ -54,15 +57,9 @@ export class ListaOfficeComponent {
   }
 
 
-  //Funcion pop up de eliminar
-  eliminarOffice(Officeid: number) {
-    this.loading = true;
-
-    this._officeService.deleteOffice(Officeid).subscribe(() => {
-      this.mensajeExito();
-      this.loading = false;
-      this.obtenerOffices();
-    });
+  openDialog(identification: number){
+    let pathname = window.location.pathname;
+    const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {identification, pathname}});
   }
 
   mensajeExito() {

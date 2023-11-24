@@ -31,6 +31,12 @@ h2 {
 
 
 /* STRUCTURE */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+}
 
 .wrapper {
   display: flex;
@@ -75,7 +81,7 @@ h2.inactive {
 
 h2.active {
   color: #0d0d0d;
-  border-bottom: 2px solid #6723d5;
+  border-bottom: 2px solid #9b5fe9;
 }
 
 
@@ -140,13 +146,12 @@ input[type=text] {
 
   input[type=text]:focus {
     background-color: #fff;
-    border-bottom: 2px solid #5fbae9;
+    border-bottom: 2px solid #9b5fe9;
   }
 
   input[type=text]:placeholder {
     color: #cccccc;
   }
-
 
   input[type=email] {
     background-color: #f6f6f6;
@@ -170,10 +175,10 @@ input[type=text] {
   }
 
 
-  input[type=email]:focus {
-    background-color: #fff;
-    border-bottom: 2px solid #5fbae9;
-  }
+    input[type=email]:focus {
+      background-color: #fff;
+      border-bottom: 2px solid #9b5fe9;
+    }
 
   input[type=email]:placeholder {
     color: #cccccc;
@@ -205,7 +210,7 @@ input[type=password] {
 
   input[type=password]:focus {
     background-color: #fff;
-    border-bottom: 2px solid #5fbae9;
+    border-bottom: 2px solid #9b5fe9;
   }
 
   input[type=password]:placeholder {
@@ -329,7 +334,7 @@ input[type=password] {
   bottom: -10px;
   width: 0;
   height: 2px;
-  background-color: #5d5b64;
+  background-color: #6723d5;
   content: "";
   transition: width 0.2s;
 }
@@ -367,3 +372,14 @@ input[type=password] {
   text-align: center;
   margin-top: 5vh;
 }
+
+.custom-button  {
+  background-color:  #6723d5;
+  height: 50px;
+  width: 180px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border:none;
+}
+
+

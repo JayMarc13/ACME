@@ -1,7 +1,4 @@
-
 <div class="container">
-    <h1 class="title">Welcome to ACMEET</h1>
-    <p class="eslogan">Booking has never been easier</p>
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <!-- Tabs Titles -->
@@ -26,11 +23,13 @@
             <label for="inputPassword2" class="visually-hidden">Password</label>
             <input formControlName="password" [class.is-invalid]="f.password.errors && f.password.touched" name="register" id="password" type="password" class="fadeIn third" placeholder="Password">
             <div id="validationServer04Feedback" class="invalid-feedback">
-              Mandatory Password
+              Mandatory Password must have at least 8 characters,
+              Contain at least one uppercase letter, one lowercase letter,
+              and one symbol 
             </div>
+
           </div>
-          <br>
-          <input type="submit" class="fadeIn fourth" value="Sign up">
+          <button type="submit" class="btn btn-primary custom-button custom-outline fadeIn fourth">Sign up</button>
         </form>
 
         <!-- Remind Passowrd -->

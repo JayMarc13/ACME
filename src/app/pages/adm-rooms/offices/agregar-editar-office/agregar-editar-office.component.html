@@ -1,14 +1,8 @@
-<div class="title">
+<div class="containerTabla">
   <h1>{{ Operacion }} Oficina</h1>
-</div>
+
 <!-- <app-spinner *ngIf="loading"></app-spinner> -->
 
-<div class="container mat-elevation-z5">
-  <mat-card class="card">
-    <br>
-    <mat-card-title>
-      Datos del Office
-    </mat-card-title>
     <br>
     <form [formGroup]="form" (ngSubmit)="agregarEditarOffice()">
       <mat-grid-list cols="2" rowHeight="80px">
@@ -32,5 +26,4 @@
         </mat-grid-tile>
       </mat-grid-list>
     </form>
-  </mat-card>
 </div>

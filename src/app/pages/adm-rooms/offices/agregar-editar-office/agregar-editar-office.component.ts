@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OfficeService } from '../../../../services/office.service';
-import { office } from 'src/app/interfaces/office';
+import { Office } from 'src/app/interfaces/office';
 
 @Component({
   selector: 'app-agregar-editar-office',
@@ -54,7 +54,7 @@ export class AgregarEditarOfficeComponent {
   //Metodos
   agregarEditarOffice() {
     //Definir el objeto
-    const office: office = {
+    const office: Office = {
       nameOffice: this.form.value.nameOffice,
       cityId: this.form.value.cityId
     }
@@ -67,7 +67,7 @@ export class AgregarEditarOfficeComponent {
     }
   }
 
-  editaroffice(Officeid: number, office: office) {
+  editaroffice(Officeid: number, office: Office) {
     this.loading = true;
     this._officeService.updateOffice(Officeid, office).subscribe(data => {
       this.loading = false;
@@ -76,7 +76,7 @@ export class AgregarEditarOfficeComponent {
     })
   }
 
-  agregaroffice(office: office) {
+  agregaroffice(office: Office) {
     //Enivar el objeto al backend
     this._officeService.addOffice(office).subscribe(data => {
       this.mensajeExito('registrado');

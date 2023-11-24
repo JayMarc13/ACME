@@ -5,14 +5,16 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { City } from '../../../../interfaces/city';
 import { CityService } from '../../../../services/city.service';
-
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { PopRemoveQuestionComponent } from 'src/app/pages/pop-remove-question/pop-remove-question.component';
+import { AgregarEditarCityComponent } from '../agregar-editar-city/agregar-editar-city.component';
 @Component({
   selector: 'app-list-city',
   templateUrl: './list-city.component.html',
   styleUrls: ['./list-city.component.css']
 })
 export class ListCityComponent {
-  displayedColumns: string[] = ['cityId', 'cityName', 'countryId', 'Acciones'];
+  displayedColumns: string[] = ['cityId', 'cityName', 'countryName', 'Acciones'];
   dataSource = new MatTableDataSource<City>();
   loading: boolean = false;
 
@@ -20,7 +22,8 @@ export class ListCityComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
   //Pop up y lista offices
-  constructor(private _snackBar: MatSnackBar, private _cityService: CityService) { }
+  constructor(
+    private _snackBar: MatSnackBar, private _cityService: CityService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.obtenerCity();
@@ -47,22 +50,22 @@ export class ListCityComponent {
   obtenerCity() {
     this.loading = true;
     this._cityService.getCitys().subscribe(data => {
-      console.log(data);
       this.loading = false;
       this.dataSource.data = data;
     });
   }
 
+  openDialog(identification: number){
+    let pathname = window.location.pathname;
+    const dialogRef = this.dialog.open(PopRemoveQuestionComponent, {data: {identification, pathname}});
+  }
 
-  //Funcion pop up de eliminar
-  eliminarCity(cityId: number) {
-    this.loading = true;
+  editarCity(identification: number, city: City){
+    const dialogRefPassword = this.dialog.open(AgregarEditarCityComponent, {data: {identification, city}});
+  }
 
-    this._cityService.deleteCity(cityId).subscribe(() => {
-      this.mensajeExito();
-      this.loading = false;
-      this.obtenerCity();
-    });
+  agregarCity(){
+    const dialogRefPassword = this.dialog.open(AgregarEditarCityComponent, {data: {}});
   }
 
   mensajeExito() {

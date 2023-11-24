@@ -4,6 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 
+
 //Angular Materials
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -22,7 +23,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './spinner/spinner.component';
-
+import { MatTabsModule} from '@angular/material/tabs';
+import { MatSelectModule} from '@angular/material/select';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { MatTreeModule} from '@angular/material/tree';
+import { MatDialogModule} from '@angular/material/dialog';
+import { MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [SpinnerComponent],
@@ -46,7 +54,15 @@ import { SpinnerComponent } from './spinner/spinner.component';
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule,
-    NgbModule
+    NgbModule,
+    MatTabsModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMaterialTimepickerModule,
+    MatTreeModule,
+    MatDialogModule,
+    MatSlideToggleModule
   ],
   exports: [
     SpinnerComponent,
@@ -68,7 +84,15 @@ import { SpinnerComponent } from './spinner/spinner.component';
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule,
-    NgbModule
+    NgbModule,
+    MatTabsModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMaterialTimepickerModule,
+    MatTreeModule,
+    MatDialogModule,
+    MatSlideToggleModule
   ]
 })
 export class SharedModule { }

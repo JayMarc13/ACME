@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { City } from '../../../../interfaces/city';
 import { CityService } from '../../../../services/city.service';
+import { CountryService } from '../../../../services/country.service';
+import { Country } from '../../../../interfaces/country';
 
 @Component({
   selector: 'app-agregar-editar-city',
@@ -12,74 +15,84 @@ import { CityService } from '../../../../services/city.service';
 })
 export class AgregarEditarCityComponent {
   loading: boolean = false;
-  form: FormGroup
+  form: FormGroup;
   cityId: number;
   Operacion: string = 'Add';
+  countries?: Country[];
 
-
-  constructor(private _cityService: CityService,
+  constructor(
+    @Inject(MAT_DIALOG_DATA) private data: any,
+    private dialogRef: MatDialogRef<AgregarEditarCityComponent>,
+    private _cityService: CityService,
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
     private router: Router,
-    private aRoute: ActivatedRoute) {
+    private _countryService: CountryService,
+    private aRoute: ActivatedRoute
+  ) {
+    this.cityId = data.identification;
     this.form = this.fb.group({
-      cityName: ['', Validators.required], ////Campo requerido
-      countryId: ['', Validators.required]
-    })
-
-    this.cityId = Number(this.aRoute.snapshot.paramMap.get('cityId'));
+      cityName: ['', Validators.required],
+      countryId : ['', Validators.required],
+    });
   }
 
-
   ngOnInit(): void {
-    if (this.cityId != 0) {
+    if (this.cityId !== 0) {
       this.Operacion = 'Editar';
       this.obtenerCity(this.cityId);
     }
+    this._countryService.getCountries().subscribe(data => (this.countries = data));
   }
 
   obtenerCity(cityId: number) {
     this.loading = true;
     this._cityService.getCity(this.cityId).subscribe(data => {
-      this.form.setValue({
+      this.form.patchValue({
         cityName: data.cityName,
         countryId: data.countryId
-      })
+      });
       this.loading = false;
     });
   }
 
-
-
-  //Metodos
   agregarEditarCity() {
-    //Definir el objeto
+    
+    if (this.form.invalid) {
+      // Formulario inválido, muestra una alerta al navegador
+      alert('Por favor, complete todos los campos obligatorios.');
+      return;
+    }
+
     const city: City = {
       cityName: this.form.value.cityName,
       countryId: this.form.value.countryId
-    }
+        };
 
-    if (this.cityId != 0) {
+
+
+    if (this.cityId) {
       city.cityId = this.cityId;
-      this.editarcity(this.cityId, city);
+      this.editarCity(this.cityId, city);
+      this.onNoClick();
     } else {
-      this.agregarcity(city);
+      this.agregarCity(city);
+      this.onNoClick();
     }
   }
 
-  editarcity(cityId: number, city: City) {
+  editarCity(cityId: number, city: City) {
     this.loading = true;
     this._cityService.updateCity(cityId, city).subscribe(data => {
       this.loading = false;
       this.mensajeExito('actualizada');
       this.router.navigate(['/home/admRooms/cities/listaCity']);
-    })
+    });
   }
 
-  agregarcity(city: City) {
-    //Enivar el objeto al backend
+  agregarCity(city: City) {
     this._cityService.addCity(city).subscribe(data => {
-      this.mensajeExito('registrado');
+      this.mensajeExito('registrada');
       this.router.navigate(['/home/admRooms/cities/listaCity']);
     });
   }
@@ -91,4 +104,7 @@ export class AgregarEditarCityComponent {
     });
   }
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

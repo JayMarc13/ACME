@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: () => import('./bookings/bookings.module').then(m => m.BookingsModule)
       },
       {
+        path: 'meetingRoom',
+        loadChildren: () => import('./meeting-room/meeting-room.module').then(m => m. MeetingRoomModule)
+      },
+      {
         path: 'users',
         loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
       },
@@ -26,6 +30,34 @@ const routes: Routes = [
       {
         path: 'admRooms',
         loadChildren: () => import('./adm-rooms/adm-rooms.module').then(m => m.AdmRoomsModule)
+      },
+      {
+        path: 'formReserve',
+        loadChildren: () => import('./form-reserve/form-reserve.module').then(m => m.formReserveModule)
+      },
+      {
+        path: 'editarPerfil',
+        loadChildren: () => import('./editar-profile/editar-profile.module').then(m =>m.ProfileModule)
+      },
+      {
+        path: 'editarUsuario',
+        loadChildren: () => import('./editar-usuarios/editar-usuarios.module').then(m =>m.EditarUsuariosModule)
+      },
+      {
+        path: 'popRemove',
+        loadChildren: () => import('./pop-remove-question/pop-remove-question.module').then(m =>m.PopRemoveQuestionModule)
+      },
+      {
+        path: 'editarReserve/:reserveId', loadChildren: () => import('./editar-reserva/editar-reserva.module').then(m => m.EditarReservaModule)
+      },
+      {
+        path: 'admReservas',
+        loadChildren: () => import('./adm-reservas/adm-reservas.module').then(m => m.AdmReservasModule)
+      },
+
+      {
+        path: 'help',
+        loadChildren: () => import('./help/help.module').then(m => m.HelpModule)
       },
       { path: '', redirectTo: '/home/homeAdm', pathMatch: 'full' }
 
